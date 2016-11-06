@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -27,18 +27,45 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Diary,Mood," />
@@ -47,12 +74,10 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
 
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
 
 
 
@@ -75,23 +100,31 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: 'Author'
     }
   };
 </script>
 
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2011/04/08/写给春天。/"/>
+
+
   <title> 写给春天。 | Hexo </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="//schema.org/WebPage" lang="">
 
   
+
+
 
 
 
@@ -108,7 +141,7 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
@@ -134,15 +167,13 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            Home
+            Startseite
           </a>
         </li>
       
@@ -150,19 +181,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            Categories
+            Archiv
           </a>
         </li>
       
@@ -170,25 +189,19 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
             Tags
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            About
+            Schedule
           </a>
         </li>
       
 
-      
-      
       
     </ul>
   
@@ -215,7 +228,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -237,7 +250,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2011-04-08T19:59:55+08:00" content="2011-04-08">
               2011-04-08
             </time>
@@ -249,7 +262,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Mood/" itemprop="url" rel="index">
@@ -266,18 +279,13 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2011/04/08/写给春天。/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2011/04/08/写给春天。/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
 
           
+          
+
           
         </div>
       </header>
@@ -291,6 +299,20 @@
 
       
         <p>&emsp;&emsp;其实 早就想 写写日记、写写自己了，一直不想动笔，准确说是 不敢，因为我清楚的知道自己现在的状态实在可以用 惨不忍睹 形容了，以前的那些那些 所谓 好习惯 自己自己的一切 早就尼玛被我大学以来萎靡的身心 和谐的一干二净了，一条尼玛8000的鱼和一个尼玛减肥中的囊猪给了我些许的 动力，我想在这个让我感觉大家都在发情的季节，或许真该。。真的该给自己一个交代了。<br>        <a id="more"></a><br>&emsp;&emsp;尼玛自己就是一个杯具，高考考的那么垃圾 现在都tm一直不敢想，不敢面对，尼玛什么原因到现在都tm搞不清楚，或许就是命，就是感觉之前的努力全都尼玛白费了，不如尼玛好好玩玩享受欢乐时光了，相对于其他人可以欢乐每一天的生活，为了摆脱逃避父母身上的压力、别人的眼光活的真是尼玛累，初中是为了不给ma丢脸，我努力了，高中是为了自己，我也努力了，之后这样的一切就剩尼玛我这辈子想忘也忘不了的了，不想重读，不想停留，尼玛在那段最艰辛的时光，真是度日如年，貌似一周和ba ma说的话也就十几句，还好有尼玛那只囊猪陪过我说过几次，那三年真正叫得上的就是那只了。。或许尼玛当时也感觉我tm真不争气，我只能说，我真tm累了，不想再学了，真的。。尼玛记得当初还问我去不去旅游，我尼玛当时就想要是活着过下一天就尼玛不错了，还好有尼玛工大收留了我，要不尼玛估计我现在都蒸发了。<br>&emsp;&emsp;尼玛真的，上了大学就是尼玛真的上了，真的啥也不管了，如果没有算错在自己体内憋了尼玛快十年的小火球终于瞬间爆发了，努力在寻找一种在自己看来已经超越自己极限的解脱的过程真的很尼玛爽歪了，终于可以想去电影院看神马电影就尼玛逃课也去看，终于可以一天在MP4看一部电影而没有人说三道四了，终于可以尝试用酒精麻痹自己的神经了，终于可以尼玛想学习就学习，不想学尼玛一周都不碰书了，终于尼玛一个不玩游戏的自己可以和室友玩尼玛一个别人都玩腻的CS和跑跑玩尼玛6、7个小时了，终于尼玛可以鱼猪一叫就丢下一切出去压马路、喝小酒了，怎么感觉尼玛像在监狱里关了许多年出来一样，自由了。。尼玛自己才刚刚忽然觉得大家在一起真是好，原来怎么就没有过这些，感觉自己真尼玛是个晒比，所以尼玛手机不会再关机了，珍惜大家一起出去的机会，每回寝室都和他们说我的朋友怎么样怎么样了，不管他们怎么看，说的时候感觉尼玛真是爽，真的。。。<br>&emsp;&emsp;尼玛这辈子活到现在一半时间在睡觉，剩下的都干尼玛什么了，基本没出去旅游，基本没有什么真正朋友，真尼玛悲哀， 在那头囊猪出现之前我真不知道我天天尼玛怎么度过，怎么理解身边的人的，好吧，工大以来，我一直在弥补，一直在反省，一直在改正，希望你们看到。 尼玛可是学习真的离我越来越远了，尼玛你们看到的那些都是尼玛考前一个月搞得，我真的不会啥，尼玛鱼和猪总说赛马，赛尼玛，对于coding尼玛真的提不起兴趣啊，想想都尼玛一年多了啊，我都干了些什么啦，我擦啊。。。。<br>&emsp;&emsp;尼玛春天来了？，大家都如是说，好吧，我承认尼玛我已经反省很久了，从这学期开学，特别是和鱼猪看dsnn的时候，除了高yuanyuan一如既往的清纯，给猪看直了，没有记住什么别的，就是就是 觉得尼玛那些人的生活才是我想要的，在大厦，在写报告，在coding，在赚属于自己的money，在买自己想要的东西，在实现自己的构想，那才是真正梦想了，提“梦想”这个词真尼玛吓了我自己一跳了，是从我嘴里说出来的么，尼玛我现在就这个状态还提梦想，可是，现在不得不提了，尼玛“希望每天叫醒你的不是闹钟，而是梦想”这话谁说的，真么是好，或许是因为我缺失太久了，仿佛时隔一年半之后再一次与一个以前很好的朋友见了一面一样，尼玛感觉真是奇妙，可是希望这次不会让他再次因为任何事情溜走了，高考之后，我ma总说我干什么都没心了，都不会想太多了，这是好事？，尼玛不知道啊，路还要自己走啊，上天给我安排在这里，我就要从这里出发，不管喜不喜欢coding，从今天开始 我向不知道谁还可以听我诉说的人保证，我都会为了coding，，为了不再让别人看不起，为了以后还可以并驾和尼玛电气大亨和福岛能源部长出门，为了我还可以说出口得梦想，而努力coding了。。<br>&emsp;&emsp;今天有几个人又逃课出去看电影了，走在大街上，吹着风，唱着歌，我可以肯定是最后一次了吧，真的感觉世界、时间真是奇妙，偏偏在春天大家都开始，偏偏在这时给我打了一注鸡血，或许还不晚吧。希望还不算晚把，，，<br>&emsp;&emsp;生命、生活不过如此。或许四月还会像去年一样飘起大雪，可是有你们就好温 暖。我照常 经常和他人说起我有着怎样的一群朋友，寝室的他们也都快叫上名了，对于你们不了解的他们，我知道这已经足够了。好高兴鱼又说要请客了。好高兴有人一直与我分享心情。好高兴，真的好高兴，好高兴你 们叹息我的叹息 愤怒我的愤怒。<br>&emsp;&emsp;于是，春夏秋冬，那又怎样。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;– 玉米帝于2011年4月记</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
 
       
     </div>
@@ -335,29 +357,6 @@
 
     <div class="post-spread">
       
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
     </div>
   </div>
 
@@ -368,10 +367,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2011/04/08/写给春天。/"
-           data-title="写给春天。" data-url="http://yoursite.com/2011/04/08/写给春天。/">
-      </div>
     
   </div>
 
@@ -396,121 +391,73 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://avatars0.githubusercontent.com/u/5969715?v=3&s=460"
+               src="/images/avatar.gif"
                alt="Jason Li" />
           <p class="site-author-name" itemprop="name">Jason Li</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/">
+            <a href="/archives">
               <span class="site-state-item-count">54</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
-          
+
           
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
 
           
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags">
                 <span class="site-state-item-count">74</span>
-                <span class="site-state-item-name">tags</span>
-              
+                <span class="site-state-item-name">Tags</span>
+              </a>
             </div>
           
 
         </nav>
 
         
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/JasonLi1990" target="_blank">
-                  
-                    <i class="fa fa-github"></i> gitHub
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/thelinker" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.facebook.com/guanqun.li.94" target="_blank">
-                  
-                    <i class="fa fa-facebook"></i> facebook
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank">
-                  
-                    <i class="fa fa-linkedin"></i> linkedin
-                  
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
 
         <div class="links-of-author motion-element">
           
         </div>
+
+        
+        
+
+        
+        
 
       </section>
 
       
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
           <div class="post-toc">
             
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
           </div>
         </section>
       
@@ -527,7 +474,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2010 - 
+  &copy; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -536,257 +483,109 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
+        
 
-
+        
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
   
 
-
-  
-
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
-  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"jasonli1990"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
 
 
 
   
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
   
 
 
