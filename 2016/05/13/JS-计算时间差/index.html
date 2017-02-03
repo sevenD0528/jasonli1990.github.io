@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/13/JS-计算时间差/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="项目中遇到一个用JS计算时间戳差值，并找到相差多少小时的问题">
-<meta property="og:updated_time" content="2016-05-13T15:05:31.000Z">
+<meta property="og:updated_time" content="2017-02-03T08:09:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-计算时间差">
 <meta name="twitter:description" content="项目中遇到一个用JS计算时间戳差值，并找到相差多少小时的问题">
@@ -307,8 +307,7 @@
       
         <p>项目中遇到一个用JS计算时间戳差值，并找到相差多少小时的问题</p>
 <a id="more"></a>
-<p>###计算时间差</p>
-<pre><code> var starttime = &apos;2016-05-13 00:00:00&apos;;
+<h3 id="计算时间差"><a href="#计算时间差" class="headerlink" title="计算时间差"></a>计算时间差</h3><pre><code> var starttime = &apos;2016-05-13 00:00:00&apos;;
  var starttime_ms = Date.parse(new Date(starttime.replace(/-/g, &quot;/&quot;)));   // starttime 为开始时间 starttime_ms为毫秒级时间
  var days = Math.floor((new Date().getTime() - starttime_ms) / (24*3600*1000)); //天数差
    var gap = (new Date().getTime() - starttime_ms) % (24*3600*1000); //当前时间-开始时间，时间差的毫秒数%(24*3600*1000)
@@ -480,7 +479,7 @@ var seconds = Math.floor(gap3/(1000)); //秒数差
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算时间差"><span class="nav-number">1.</span> <span class="nav-text">计算时间差</span></a></li></ol></div>
             
           </div>
         </section>

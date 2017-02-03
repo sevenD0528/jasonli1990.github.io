@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tech,Frontend,line-height,height," />
+  <meta name="keywords" content="Frontend,Tech,line-height,height," />
 
 
 
@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="#line-height and height
-项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
+<meta name="description" content="line-height and height项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS_line-height问题">
 <meta property="og:url" content="http://yoursite.com/2015/11/09/CSS-line-height问题/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="#line-height and height
-项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
-<meta property="og:updated_time" content="2015-12-12T14:23:03.000Z">
+<meta property="og:description" content="line-height and height项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
+<meta property="og:updated_time" content="2017-02-03T08:13:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS_line-height问题">
-<meta name="twitter:description" content="#line-height and height
-项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
+<meta name="twitter:description" content="line-height and height项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
 
 
 
@@ -308,29 +305,24 @@
       
 
       
-        <p>#line-height and height</p>
-<p>项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。</p>
+        <h2 id="line-height-and-height"><a href="#line-height-and-height" class="headerlink" title="line-height and height"></a>line-height and height</h2><p>项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。</p>
 <a id="more"></a>
-<p>##线</p>
-<p>行高是指文本行基线间的垂直距离。要想理解得先了解几个基本概念顶线，中线，基线和底线。</p>
+<h2 id="线"><a href="#线" class="headerlink" title="线"></a>线</h2><p>行高是指文本行基线间的垂直距离。要想理解得先了解几个基本概念顶线，中线，基线和底线。</p>
 <p>top, middle, baseline和bottom,vertical-align属性钟的值就是和这四条线有关。</p>
 <p><strong>注意：基线不是最下面的线，最下面是底线</strong></p>
-<p>##CSS行高 - line-height</p>
-<p>行高 - 上下文行的基本线间的垂直距离<br>行距 - 一行底线到下一行顶线的垂直距离<br>半行距 - 行距的一半  </p>
+<h2 id="CSS行高-line-height"><a href="#CSS行高-line-height" class="headerlink" title="CSS行高 - line-height"></a>CSS行高 - line-height</h2><p>行高 - 上下文行的基本线间的垂直距离<br>行距 - 一行底线到下一行顶线的垂直距离<br>半行距 - 行距的一半  </p>
 <p>详情见博客：<a href="http://www.cnblogs.com/dolphinX/p/3236686.html" target="_blank" rel="external">http://www.cnblogs.com/dolphinX/p/3236686.html</a>   </p>
 <p>内容区 - 底线和顶线包裹的区域<br>行内框 - 每个行内元素会生成一个行内框，行内框是一个浏览器渲染模型中的一个概念，无法显示出来，在没有其他因素影响的时候（padding等），行内框等于内容区域，而设定行高时行内框高度不变，半行距【（行高-字体size）/2】分别增加/减少到内容区域的上下两边<br>行框 - 行框是指本行的一个虚拟的矩形框，是浏览器渲染模式中的一个概念，并没有实际显示。行框高度等于本行内所有元素中行内框最大的值，当有多行内容时，每行都会有自己的行框。</p>
-<p>###5种定义line-height的方式<br>1.line-height可以被定义为：body{line-height:normal;}</p>
+<h3 id="5种定义line-height的方式"><a href="#5种定义line-height的方式" class="headerlink" title="5种定义line-height的方式"></a>5种定义line-height的方式</h3><p>1.line-height可以被定义为：body{line-height:normal;}</p>
 <p>2.line-height可以被定义为：body{line-height:inherit;}</p>
 <p>3.line-height可以使用一个百分比的值body{line-height:120%;}</p>
 <p>4.line-height可以被定义为一个长度值(px,em等) body{line-height:25px;}</p>
 <p>5.line-height也可以被定义为纯数字， body{line-height:1.2}  </p>
-<p>###文字放大后边缘会重叠？ </p>
-<p>line-height直白理解就是文字高度加上文字上下的空白区域，line-height最好不要设置单位，如果固定单位后，行高就是确定值。 </p>
+<h3 id="文字放大后边缘会重叠？"><a href="#文字放大后边缘会重叠？" class="headerlink" title="文字放大后边缘会重叠？"></a>文字放大后边缘会重叠？</h3><p>line-height直白理解就是文字高度加上文字上下的空白区域，line-height最好不要设置单位，如果固定单位后，行高就是确定值。 </p>
 <p>当字体放大且没有设置元素的line-height（继承自父元素且父元素为固定值）或者其值为固定值就会出现文字超出行高范围出现重叠。 </p>
 <p>line-height有继承属性，所以正文部分内容line-height最好设置为为数字1.5，也就是字体高度*1.5的高度， </p>
 <p>这样行高会随着字体缩放跟着缩放。</p>
-<p>###如何设置文字图片行内居中？ </p>
-<p>line-height默认是baseline对其的，可以使用vertical-align:middle使其文字图片居中对齐。 </p>
+<h3 id="如何设置文字图片行内居中？"><a href="#如何设置文字图片行内居中？" class="headerlink" title="如何设置文字图片行内居中？"></a>如何设置文字图片行内居中？</h3><p>line-height默认是baseline对其的，可以使用vertical-align:middle使其文字图片居中对齐。 </p>
 
       
     </div>
@@ -353,9 +345,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tech/" rel="tag">#Tech</a>
-          
             <a href="/tags/Frontend/" rel="tag">#Frontend</a>
+          
+            <a href="/tags/Tech/" rel="tag">#Tech</a>
           
             <a href="/tags/line-height/" rel="tag">#line-height</a>
           
@@ -496,7 +488,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#line-height-and-height"><span class="nav-number">1.</span> <span class="nav-text">line-height and height</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线"><span class="nav-number">2.</span> <span class="nav-text">线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS行高-line-height"><span class="nav-number">3.</span> <span class="nav-text">CSS行高 - line-height</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5种定义line-height的方式"><span class="nav-number">3.1.</span> <span class="nav-text">5种定义line-height的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文字放大后边缘会重叠？"><span class="nav-number">3.2.</span> <span class="nav-text">文字放大后边缘会重叠？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何设置文字图片行内居中？"><span class="nav-number">3.3.</span> <span class="nav-text">如何设置文字图片行内居中？</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

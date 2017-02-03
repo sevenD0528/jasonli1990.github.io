@@ -307,8 +307,7 @@
 
       
         
-          <p>###meta基础</p>
-<p>以一个例子说明：<br>
+          <h3 id="meta基础"><a href="#meta基础" class="headerlink" title="meta基础"></a>meta基础</h3><p>以一个例子说明：<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/17/HTML5-meta基础知识/#more" rel="contents">
               阅读全文 &raquo;
@@ -552,13 +551,16 @@
 
       
         
-          <p>###行级元素与块级元素  </p>
-<p><strong>块级元素：</strong>块状元素排斥其他元素与其位于同一行，可以设定元素的宽（width）和高（height），块级元素一般是其他元素的容器，可容纳块级元素和行内元素。<br><strong>行级元素：</strong>行内元素不可以设置宽（width）和高（height），但可以与其他行内元素位于同一行，行内元素内一般不可以包含块级元素。行内元素的高度一般由元素内部的字体大小决定，宽度由内容的长度控制。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/15/CSS-行级元素与块级元素/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <a id="more"></a>
+<h3 id="行级元素与块级元素"><a href="#行级元素与块级元素" class="headerlink" title="行级元素与块级元素"></a>行级元素与块级元素</h3><p><strong>块级元素：</strong>块状元素排斥其他元素与其位于同一行，可以设定元素的宽（width）和高（height），块级元素一般是其他元素的容器，可容纳块级元素和行内元素。<br><strong>行级元素：</strong>行内元素不可以设置宽（width）和高（height），但可以与其他行内元素位于同一行，行内元素内一般不可以包含块级元素。行内元素的高度一般由元素内部的字体大小决定，宽度由内容的长度控制。<br><!-- more --></p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><ul>
+<li>块级元素：div  , p  , form,   ul,  li ,  ol, dl,    form,   address,  fieldset,  hr, menu,  table</li>
+<li>行内元素：span,   strong,   em,  br,  img ,  input,  label,  select,  textarea,  cite  </li>
+</ul>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>1）块级元素会独占一行，其宽度自动填满其父元素宽度<br>行内元素不会独占一行，相邻的行内元素会排列在同一行里，知道一行排不下，才会换行，其宽度随元素的内容而变化<br>2） 块级元素可以设置 width，height属性，行内元素设置width，height无效<br>【注意：块级元素即使设置了宽度，仍然是独占一行的】<br>3) 块级元素可以设置margin和padding<br>行内元素的水平方向的padding-left，padding-right，margin-left，margin-right 都产生边距效果，但是竖直方向的padding-top，padding-bottom，margin-top，margin-bottom都不会产生边距效果。（水平方向有效，竖直方向无效）</p>
+
+          
         
       
     </div>
@@ -675,13 +677,18 @@
 
       
         
-          <p>###HTML5 video 视频标签</p>
-<p>简单总结一下video视频标签的使用，项目中遇到的。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/02/HTML5-video浏览器支持解决方案/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <a id="more"></a>
+<h3 id="HTML5-video-视频标签"><a href="#HTML5-video-视频标签" class="headerlink" title="HTML5 video 视频标签"></a>HTML5 video 视频标签</h3><p>简单总结一下video视频标签的使用，项目中遇到的。<!-- more --><br>参考博客链接<a href="http://www.zhangxinxu.com/wordpress/2010/03/让所有浏览器支持html5-video视频标签" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2010/03/让所有浏览器支持html5-video视频标签</a><br>在HTML5里，\<video>标签是非常实用和简单的标签，但并不是所有浏览器都支持。  </video></p>
+<p>对于Chrome,Safari等浏览器支持都较好，对IE等浏览器支持还没有那么好。  </p>
+<p>根据前辈经验，有js代码可以实现对于主流浏览器的支持，下载地址为<a href="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js" target="_blank" rel="external">http://html5media.googlecode.com/svn/trunk/src/html5media.min.js</a>  </p>
+<p>这样只需要引入js文件，再写video即可。  </p>
+<pre><code>&lt;script src=&quot;http://html5media.googlecode.com/svn/trunk/src/html5media.min.js&quot;&gt;&lt;/script&gt;  
+
+&lt;video src=&quot;video.mp4&quot; width=&quot;320&quot; height=&quot;240&quot; controls autobuffer&gt;&lt;/video&gt; 
+</code></pre><p>实现原理大概是使用flash技术实现的。</p>
+
+          
         
       
     </div>
@@ -1177,12 +1184,12 @@
 
       
         
-          
-            <p>最近用到得几个动画总结。  </p>
-<p>####3D动画翻牌效果<br><a href="http://www.tuicool.com/articles/aEz6Zn" target="_blank" rel="external">http://www.tuicool.com/articles/aEz6Zn</a>  </p>
-<p>####Ballon气球效果  </p>
-
-          
+          <p>最近用到得几个动画总结。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/07/CSS3-Animation总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

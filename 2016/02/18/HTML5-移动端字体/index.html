@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/02/18/HTML5-移动端字体/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="本文参考白色橡树博客，http://www.cnblogs.com/PeunZhang/p/3592096.html">
-<meta property="og:updated_time" content="2016-02-26T06:26:11.000Z">
+<meta property="og:updated_time" content="2017-02-03T08:16:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5_移动端字体">
 <meta name="twitter:description" content="本文参考白色橡树博客，http://www.cnblogs.com/PeunZhang/p/3592096.html">
@@ -306,8 +306,7 @@
 
       
         <p>本文参考白色橡树博客，<a href="http://www.cnblogs.com/PeunZhang/p/3592096.html" target="_blank" rel="external">http://www.cnblogs.com/PeunZhang/p/3592096.html</a><br><a id="more"></a></p>
-<p>##移动端Font </p>
-<ul>
+<h2 id="移动端Font"><a href="#移动端Font" class="headerlink" title="移动端Font"></a>移动端Font</h2><ul>
 <li>各个手机系统都有自己的默认字体，且都不支持微软雅黑</li>
 <li>无特殊需求，手机端用中文默认字体即可</li>
 <li><p>英文字体和数字字体可使用Helvetica，三种系统都支持</p>
@@ -315,7 +314,7 @@
 body{font-family:Helvetica;}  
 </code></pre></li>
 </ul>
-<p>##字体单位px或rem<br>对于只需要适配少部分手机设备，且分辨率对页面影响不大的，使用px即可</p>
+<h2 id="字体单位px或rem"><a href="#字体单位px或rem" class="headerlink" title="字体单位px或rem"></a>字体单位px或rem</h2><p>对于只需要适配少部分手机设备，且分辨率对页面影响不大的，使用px即可</p>
 <p>对于需要适配各种移动设备，使用rem，例如只需要适配iPhone和iPad等分辨率差别比较挺大的设备  </p>
 <p>rem配置参考：  </p>
 <pre><code>html{font-size:10px}
@@ -327,7 +326,7 @@ body{font-family:Helvetica;}
 @media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
 @media screen and (min-width:800px){html{font-size:25px}}
 </code></pre><p>例如，如果给手机设置100px的字体大小; 对于320px的手机匹配是100px，<br>其他手机都是等比例匹配; 因此设计稿上是多少像素的话，那么转换为rem的时候，rem = 设计稿的像素/100 即可;  </p>
-<p>##微软雅黑的实现<br>如若要实现雅黑字体，可参照如下：  </p>
+<h2 id="微软雅黑的实现"><a href="#微软雅黑的实现" class="headerlink" title="微软雅黑的实现"></a>微软雅黑的实现</h2><p>如若要实现雅黑字体，可参照如下：  </p>
 <pre><code>@font-face {
     font-family: &apos;MicrosoftYaHei&apos;;
     src: url(&apos;MicrosoftYaHei.eot&apos;); /* IE9 Compat Modes */
@@ -336,15 +335,14 @@ body{font-family:Helvetica;}
              url(&apos;MicrosoftYaHei.ttf&apos;)  format(&apos;truetype&apos;), /* Safari, Android, iOS */
              url(&apos;MicrosoftYaHei.svg#MicrosoftYaHei&apos;) format(&apos;svg&apos;); /* Legacy iOS */
    }
-</code></pre><p>##CSS3 font-face<br>@font-face是CSS3中的一个模块，用于定义自己的字体于网页中。<br>语法为：  </p>
+</code></pre><h2 id="CSS3-font-face"><a href="#CSS3-font-face" class="headerlink" title="CSS3 font-face"></a>CSS3 font-face</h2><p>@font-face是CSS3中的一个模块，用于定义自己的字体于网页中。<br>语法为：  </p>
 <pre><code>@font-face {
       font-family: &lt;YourWebFontName&gt;;
       src: &lt;source&gt; [&lt;format&gt;][,&lt;source&gt; [&lt;format&gt;]]*;
       [font-weight: &lt;weight&gt;];
       [font-style: &lt;style&gt;];
     }
-</code></pre><p>####解释</p>
-<ul>
+</code></pre><h4 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h4><ul>
 <li><p>YourWebFontName:此值指的就是你自定义的字体名称，最好是使用你下载的默认字体，他将被引用到你的Web元素中的font-family。如“font-family:”YourWebFontName”;”</p>
 </li>
 <li><p>source:此值指的是你自定义的字体的存放路径，可以是相对路径也可以是绝路径；</p>
@@ -354,7 +352,7 @@ body{font-family:Helvetica;}
 <li><p>weight和style:这两个值大家一定很熟悉，weight定义字体是否为粗体，style主要定义字体样式，如斜体。</p>
 </li>
 </ul>
-<p>####字体类型简介<br>一、TureTpe(.ttf)格式：</p>
+<h4 id="字体类型简介"><a href="#字体类型简介" class="headerlink" title="字体类型简介"></a>字体类型简介</h4><p>一、TureTpe(.ttf)格式：</p>
 <p>.ttf字体是Windows和Mac的最常见的字体，是一种RAW格式，因此他不为网站优化,支持这种字体的浏览器有【IE9+,Firefox3.5+,Chrome4+,Safari3+,Opera10+,iOS Mobile Safari4.2+】；</p>
 <p>二、OpenType(.otf)格式：</p>
 <p>.otf字体被认为是一种原始的字体格式，其内置在TureType的基础上，所以也提供了更多的功能,支持这种字体的浏览器有【Firefox3.5+,Chrome4.0+,Safari3.1+,Opera10.0+,iOS Mobile Safari4.2+】；</p>
@@ -534,7 +532,7 @@ body{font-family:Helvetica;}
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#移动端Font"><span class="nav-number">1.</span> <span class="nav-text">移动端Font</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体单位px或rem"><span class="nav-number">2.</span> <span class="nav-text">字体单位px或rem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微软雅黑的实现"><span class="nav-number">3.</span> <span class="nav-text">微软雅黑的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3-font-face"><span class="nav-number">4.</span> <span class="nav-text">CSS3 font-face</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释"><span class="nav-number">4.0.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字体类型简介"><span class="nav-number">4.0.2.</span> <span class="nav-text">字体类型简介</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

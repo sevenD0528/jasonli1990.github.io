@@ -84,23 +84,20 @@
 
 
 
-<meta name="description" content="###元素类型  
-
+<meta name="description" content="元素类型
 块级元素
 内联元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS_核心概念总结">
 <meta property="og:url" content="http://yoursite.com/2016/02/24/CSS-核心概念总结/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="###元素类型  
-
+<meta property="og:description" content="元素类型
 块级元素
 内联元素">
-<meta property="og:updated_time" content="2016-02-27T07:44:05.000Z">
+<meta property="og:updated_time" content="2017-02-03T08:13:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS_核心概念总结">
-<meta name="twitter:description" content="###元素类型  
-
+<meta name="twitter:description" content="元素类型
 块级元素
 内联元素">
 
@@ -314,8 +311,7 @@
       
 
       
-        <p>###元素类型  </p>
-<ul>
+        <h3 id="元素类型"><a href="#元素类型" class="headerlink" title="元素类型"></a>元素类型</h3><ul>
 <li>块级元素</li>
 <li>内联元素</li>
 </ul>
@@ -328,8 +324,7 @@
 </ul>
 <p>display: block 元素以块级呈现<br>display: inline 元素以内联呈现<br>display: inline-block 元素既在行内显示，又能设置宽高  </p>
 <p>HTML 代码是顺序执行的，一份无任何 CSS 样式的 HTML 代码最终呈现出的页面是根据元素出现的顺序和类型排列的。块级元素就从上到下排列，遇到内联元素则从左到右排列。这种无样式的情况下，元素的分布叫普通流，元素出现的位置应该叫正常位置，同时所有元素会在页面上占据一个空间，空间大小由其盒模型决定。  </p>
-<p>###盒模型  </p>
-<p>由内而外：content -&gt; padding -&gt; border -&gt; margin<br>总宽度按道理来说计算方式为：</p>
+<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>由内而外：content -&gt; padding -&gt; border -&gt; margin<br>总宽度按道理来说计算方式为：</p>
 <pre><code>总宽度 = margin-left + border-left + padding-left + width + padding-right + border-right + margin-right
 </code></pre><p>但在不同浏览器中，计算方法不一样。<br>在 CSS3 中加了 box-sizing 这个属性。当我们设置 box-sizing: border-box;  时，border 和 padding 就被包含在了宽高之内，和 IE 之前的标准是一样的。</p>
 <pre><code>*, *:before, *:after {
@@ -351,8 +346,7 @@
 <li>如果该元素是块级元素，元素的宽度由原来的 width: 100%（占据一行），变为了 auto。</li>
 </ul>
 <p>由此观之，当 position 设置为 absolute 或 fixed，就没必要设置 display 为 block 了。而且如果你不想覆盖下层的元素，可以设置 z-index 值 达到效果。  </p>
-<p>###Float简单介绍</p>
-<ul>
+<h3 id="Float简单介绍"><a href="#Float简单介绍" class="headerlink" title="Float简单介绍"></a>Float简单介绍</h3><ul>
 <li>只有左右浮动，没有上下浮动。</li>
 <li>元素设置 float 之后，它会脱离普通流（和 position: absolute; 一样），不再占据原来那层的空间，还会覆盖下一层的元素。</li>
 <li>浮动不会对该元素的上一个兄弟元素有任何影响。</li>
@@ -362,8 +356,7 @@
 <li>该元素将变为块级元素，相当于给该元素设置了 display: block;（和position: absolute; 一样）。  </li>
 </ul>
 <hr>
-<p>###Float浮动的详细讲解  </p>
-<p>参考博客<a href="http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展一/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展一/</a>与<a href="http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展二/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展二/</a></p>
+<h3 id="Float浮动的详细讲解"><a href="#Float浮动的详细讲解" class="headerlink" title="Float浮动的详细讲解"></a>Float浮动的详细讲解</h3><p>参考博客<a href="http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展一/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展一/</a>与<a href="http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展二/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2010/01/css-float浮动的深入研究、详解及拓展二/</a></p>
 <p>要点总结：   </p>
 <p><strong>浮动出现的意义是用来让文字环绕图片的，仅此而已。</strong></p>
 <ul>
@@ -532,7 +525,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Position"><span class="nav-number">1.</span> <span class="nav-text">Position</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素类型"><span class="nav-number">1.</span> <span class="nav-text">元素类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#盒模型"><span class="nav-number">2.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Position"><span class="nav-number">3.</span> <span class="nav-text">Position</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Float简单介绍"><span class="nav-number">4.</span> <span class="nav-text">Float简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Float浮动的详细讲解"><span class="nav-number">5.</span> <span class="nav-text">Float浮动的详细讲解</span></a></li></ol></div>
             
           </div>
         </section>

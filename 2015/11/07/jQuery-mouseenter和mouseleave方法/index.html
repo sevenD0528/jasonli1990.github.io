@@ -84,22 +84,28 @@
 
 
 
-<meta name="description" content="##mouseenter()
-mouseenter()方法
-当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与 mouseleave 事件一起使用。mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。">
+<meta name="description" content="mouseenter()mouseenter()方法
+当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与 mouseleave 事件一起使用。mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。
+Syntax:   
+1$(selector).mouseenter()
+将函数绑定到mouseenter事">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery_mouseenter和mouseleave方法">
 <meta property="og:url" content="http://yoursite.com/2015/11/07/jQuery-mouseenter和mouseleave方法/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="##mouseenter()
-mouseenter()方法
-当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与 mouseleave 事件一起使用。mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。">
-<meta property="og:updated_time" content="2015-11-08T03:43:18.000Z">
+<meta property="og:description" content="mouseenter()mouseenter()方法
+当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与 mouseleave 事件一起使用。mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。
+Syntax:   
+1$(selector).mouseenter()
+将函数绑定到mouseenter事">
+<meta property="og:updated_time" content="2017-02-03T08:16:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery_mouseenter和mouseleave方法">
-<meta name="twitter:description" content="##mouseenter()
-mouseenter()方法
-当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与 mouseleave 事件一起使用。mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。">
+<meta name="twitter:description" content="mouseenter()mouseenter()方法
+当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与 mouseleave 事件一起使用。mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。
+Syntax:   
+1$(selector).mouseenter()
+将函数绑定到mouseenter事">
 
 
 
@@ -311,9 +317,9 @@ mouseenter()方法
       
 
       
-        <p>##mouseenter()</p>
-<p><strong>mouseenter()</strong>方法</p>
-<p>当鼠标指针穿过元素时，会发生 mouseenter 事件。<br>该事件大多数时候会与 mouseleave 事件一起使用。<br>mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。<br><a id="more"></a></p>
+        <a id="more"></a>
+<h2 id="mouseenter"><a href="#mouseenter" class="headerlink" title="mouseenter()"></a>mouseenter()</h2><p><strong>mouseenter()</strong>方法</p>
+<p>当鼠标指针穿过元素时，会发生 mouseenter 事件。<br>该事件大多数时候会与 mouseleave 事件一起使用。<br>mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数。<br><!-- more --></p>
 <p>Syntax:   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(selector).mouseenter()</div></pre></td></tr></table></figure>
 <p>将函数绑定到mouseenter事件  </p>
@@ -325,15 +331,11 @@ mouseenter()方法
 <p>将函数绑定到mouseleave事件 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(selector).mouseleave(function)</div></pre></td></tr></table></figure>
 <hr>
-<p>##区别</p>
-<p>###mouseover与mouseenter</p>
-<p>不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="mouseover与mouseenter"><a href="#mouseover与mouseenter" class="headerlink" title="mouseover与mouseenter"></a>mouseover与mouseenter</h3><p>不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。</p>
 <p>只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。</p>
-<p>###mouseout与mouseleave</p>
-<p>不论鼠标指针离开被选元素还是任何子元素，都会触发 mouseout 事件。</p>
+<h3 id="mouseout与mouseleave"><a href="#mouseout与mouseleave" class="headerlink" title="mouseout与mouseleave"></a>mouseout与mouseleave</h3><p>不论鼠标指针离开被选元素还是任何子元素，都会触发 mouseout 事件。</p>
 <p>只有在鼠标指针离开被选元素时，才会触发 mouseleave 事件</p>
-<p>###解释</p>
-<p>大家知道事件的冒泡特性，对于mouseover事件来说 ，当鼠标从其他元素移动到child节点时发生，但此事件会冒泡，所以会导致parent也出发mouseover。如果我们对parent注册了mouseover监听，从parent移动到child同样出发parent mouseover有时候我们不希望这样的事情发生。</p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>大家知道事件的冒泡特性，对于mouseover事件来说 ，当鼠标从其他元素移动到child节点时发生，但此事件会冒泡，所以会导致parent也出发mouseover。如果我们对parent注册了mouseover监听，从parent移动到child同样出发parent mouseover有时候我们不希望这样的事情发生。</p>
 <p>对于mouseover和mouseenter两个事件最大的区别就是mouseenter是不冒泡的事件，这时候如果注册的监听是mouseenter的话无论鼠标从任何元素移动到child时只有child元素发生mouseenter事件，而其祖宗节点都不会因为冒泡而触发此事件。</p>
 <p>对于mouseout和mouseleave也是如此，当鼠标从child移出时mouseout同样会冒泡到parent从而触发parent的mouseout，mouseleave同样无此问题。</p>
 <hr>
@@ -504,7 +506,7 @@ mouseenter()方法
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mouseenter"><span class="nav-number">1.</span> <span class="nav-text">mouseenter()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">2.</span> <span class="nav-text">区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mouseover与mouseenter"><span class="nav-number">2.1.</span> <span class="nav-text">mouseover与mouseenter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mouseout与mouseleave"><span class="nav-number">2.2.</span> <span class="nav-text">mouseout与mouseleave</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释"><span class="nav-number">2.3.</span> <span class="nav-text">解释</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

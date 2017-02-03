@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/12/12/CSS-水平居中问题/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="关于css水平居中问题，参考了几篇博客，在这里自己总结一下。源自：http://www.w3cplus.com/css/elements-horizontally-center-with-css.html">
-<meta property="og:updated_time" content="2015-12-18T03:42:34.000Z">
+<meta property="og:updated_time" content="2017-02-03T08:13:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS_水平居中问题">
 <meta name="twitter:description" content="关于css水平居中问题，参考了几篇博客，在这里自己总结一下。源自：http://www.w3cplus.com/css/elements-horizontally-center-with-css.html">
@@ -306,21 +306,18 @@
 
       
         <p>关于css水平居中问题，参考了几篇博客，在这里自己总结一下。<br>源自：<a href="http://www.w3cplus.com/css/elements-horizontally-center-with-css.html" target="_blank" rel="external">http://www.w3cplus.com/css/elements-horizontally-center-with-css.html</a><br><a id="more"></a></p>
-<p>###No.1</p>
-<ul>
+<h3 id="No-1"><a href="#No-1" class="headerlink" title="No.1"></a>No.1</h3><ul>
 <li>给元素设定一个显示宽度，然后加上margin的左右值auto</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.center &#123;</div><div class="line">	width: 960px;</div><div class="line">	margin-left: auto;</div><div class="line">	margin-right: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>优点: 浏览器兼容性强，易实现<br>缺点: 扩展差，无法自适应，需要确定宽度</p>
 <hr>
-<p>###No.2</p>
-<ul>
+<h3 id="No-2"><a href="#No-2" class="headerlink" title="No.2"></a>No.2</h3><ul>
 <li>inline-block 实现水平居中<br>仅inline-block属性是无法让元素水平居中，他的关键之处要在元素的父容器中设置text-align的属性为“center”。</li>
 </ul>
 <p>缺点：inline-block有浏览器兼容性问题。</p>
 <hr>
-<p>###No.3</p>
-<ul>
+<h3 id="No-3"><a href="#No-3" class="headerlink" title="No.3"></a>No.3</h3><ul>
 <li>浮动实现水平居中<br><pre><code><br>  .pagination {<pre><code>float: left;
 width: 100%;
 overflow: hidden;
@@ -338,20 +335,17 @@ right: 50%;/*将每个分页项向左边移动宽度的50%*/
 </code></pre>  }<br></code></pre><br>div 是块元素，默认宽度为100%，div浮动之后，内容有多宽，就会撑开有多大的容器。<br>如例子，ul的position设为relative，而后向右移动50%，<br>接着li的position也设为relative，但向反方向移动50%，从而实现了水平居中。</li>
 </ul>
 <hr>
-<p>###No.4</p>
-<ul>
+<h3 id="No-4"><a href="#No-4" class="headerlink" title="No.4"></a>No.4</h3><ul>
 <li>绝对定位水平居中</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.ele &#123;</div><div class="line">	position: absolute;</div><div class="line">	width: 宽度值;</div><div class="line">	left: 50%;</div><div class="line">	margin-left: -(宽度值/2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<p>###No.5</p>
-<ul>
+<h3 id="No-5"><a href="#No-5" class="headerlink" title="No.5"></a>No.5</h3><ul>
 <li>CSS3的flex实现水平居中方法</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">.pagination &#123;</div><div class="line">  display: -webkit-box;</div><div class="line">  -webkit-box-orient: horizontal;</div><div class="line">  -webkit-box-pack: center;</div><div class="line">  display: -moz-box;</div><div class="line">  -moz-box-orient: horizontal;</div><div class="line">  -moz-box-pack: center;</div><div class="line">  display: -o-box;</div><div class="line">  -o-box-orient: horizontal;</div><div class="line">  -o-box-pack: center;</div><div class="line">  display: -ms-box;</div><div class="line">  -ms-box-orient: horizontal;</div><div class="line">  -ms-box-pack: center;</div><div class="line">  display: box;</div><div class="line">  box-orient: horizontal;</div><div class="line">  box-pack: center;</div><div class="line">&#125;</div><div class="line">.pagination li &#123;</div><div class="line">  line-height: 25px;</div><div class="line">  margin: 0 5px;</div><div class="line">float: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<p>###No.6</p>
-<ul>
+<h3 id="No-6"><a href="#No-6" class="headerlink" title="No.6"></a>No.6</h3><ul>
 <li>CSS3的fit-content实现水平居中方法</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.pagination ul &#123;</div><div class="line">  width: -moz-fit-content;</div><div class="line">  width:-webkit-fit-content;</div><div class="line">  width: fit-content;</div><div class="line">  margin-left: auto;</div><div class="line">  margin-right: auto;</div><div class="line">&#125;</div><div class="line">.pagination li &#123;</div><div class="line">  line-height: 25px;</div><div class="line">  margin: 0 5px;</div><div class="line">float: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -517,7 +511,7 @@ right: 50%;/*将每个分页项向左边移动宽度的50%*/
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#No-1"><span class="nav-number">1.</span> <span class="nav-text">No.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#No-2"><span class="nav-number">2.</span> <span class="nav-text">No.2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#No-3"><span class="nav-number">3.</span> <span class="nav-text">No.3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#No-4"><span class="nav-number">4.</span> <span class="nav-text">No.4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#No-5"><span class="nav-number">5.</span> <span class="nav-text">No.5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#No-6"><span class="nav-number">6.</span> <span class="nav-text">No.6</span></a></li></ol></div>
             
           </div>
         </section>

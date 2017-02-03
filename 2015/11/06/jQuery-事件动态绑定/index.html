@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;项目中遇到jQuery的动态绑定，参考了几篇博客，顺便归纳总结一下。
-几种方法&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;基础：DOM对象是树形结构的，DOM中的事件会从触发事件的目标节点开始逐级向上冒泡。">
+<meta name="description" content="&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;项目中遇到jQuery的动态绑定，参考了几篇博客，顺便归纳总结一下。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery_事件动态绑定">
 <meta property="og:url" content="http://yoursite.com/2015/11/06/jQuery-事件动态绑定/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;项目中遇到jQuery的动态绑定，参考了几篇博客，顺便归纳总结一下。
-几种方法&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;基础：DOM对象是树形结构的，DOM中的事件会从触发事件的目标节点开始逐级向上冒泡。">
-<meta property="og:updated_time" content="2015-11-07T12:04:19.000Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;项目中遇到jQuery的动态绑定，参考了几篇博客，顺便归纳总结一下。">
+<meta property="og:updated_time" content="2017-02-03T08:17:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery_事件动态绑定">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;项目中遇到jQuery的动态绑定，参考了几篇博客，顺便归纳总结一下。
-几种方法&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;基础：DOM对象是树形结构的，DOM中的事件会从触发事件的目标节点开始逐级向上冒泡。">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;项目中遇到jQuery的动态绑定，参考了几篇博客，顺便归纳总结一下。">
 
 
 
@@ -309,7 +306,8 @@
 
       
         <p>&emsp;&emsp;&emsp;&emsp;项目中遇到jQuery的动态绑定，参考了几篇博客，顺便归纳总结一下。</p>
-<h2 id="几种方法"><a href="#几种方法" class="headerlink" title="几种方法"></a>几种方法</h2><p>&emsp;&emsp;&emsp;&emsp;基础：DOM对象是树形结构的，DOM中的事件会从触发事件的目标节点开始逐级向上冒泡。<a id="more"></a></p>
+<a id="more"></a>
+<h2 id="几种方法"><a href="#几种方法" class="headerlink" title="几种方法"></a>几种方法</h2><p>&emsp;&emsp;&emsp;&emsp;基础：DOM对象是树形结构的，DOM中的事件会从触发事件的目标节点开始逐级向上冒泡。<!-- more --></p>
 <h3 id="1-bind-方法"><a href="#1-bind-方法" class="headerlink" title="1. bind()方法"></a>1. bind()方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;button&apos;).bind(&apos;click&apos;, function() &#123; alert(&quot;Bind!&quot;) &#125;);</div></pre></td></tr></table></figure>
 <p>直接绑定的方法，jQuery扫描文档钟所有$(‘button’)元素，然后给每一个找的元素的click事件绑定处理函数。</p>
 <h3 id="2-live-方法"><a href="#2-live-方法" class="headerlink" title="2. live()方法"></a>2. live()方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;button&apos;).live(&apos;click&apos;, function() &#123; alert(&quot;Live!&quot;) &#125;);</div></pre></td></tr></table></figure>
