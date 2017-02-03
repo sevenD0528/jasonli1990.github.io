@@ -307,28 +307,12 @@
 
       
         
-          
-            <a id="more"></a>
-<h2 id="CSS3中text-align-justify"><a href="#CSS3中text-align-justify" class="headerlink" title="CSS3中text-align:justify"></a>CSS3中text-align:justify</h2><p>text-align属性是规定元素中的文本的水平对齐方式，最常用的值是left、right、center，那么justify是什么呢？</p>
-<p>在W3C上是这样介绍的：<br>    justify 可以使文本的两端都对齐在两端对齐文本中，文本行的左右两端都放在父元素的内边界上。然后，调整单词和字母间的间隔，使各行的长度恰好相等。</p>
-<pre><code>&lt;div class=&quot;outer&quot;&gt;
-    &lt;p class=&quot;p&quot;&gt;justify justify justify justify &lt;/p&gt;
-&lt;/div&gt;
-
-.outer {
-  width: 200px;
-  height: 200px;
-  border: solid 2px #000;
-}
-.outer p {
-    text-align: justify; 
-}
-</code></pre><p>这时会发现，文本并没有两端对齐。</p>
-<p>问题在于text-align:justify 不处理块内的最后一行文本（包括块内仅有一行文本的情况，这时既是第一行也是最后一行）</p>
-<p>所以两行的时候才会至这段文本的第一行两端对齐。</p>
-<p>针对第一行又是最后一行的情况，可以用text-align-last: justify进行处理。</p>
-
-          
+          <h2 id="CSS3中text-align-justify"><a href="#CSS3中text-align-justify" class="headerlink" title="CSS3中text-align:justify"></a>CSS3中text-align:justify</h2>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/24/CSS-justify/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -566,8 +550,7 @@
       
         
           
-            <p>##Juicer轻量级js模板引擎</p>
-<p><a href="http://www.juicer.name/docs/docs_zh_cn.html" target="_blank" rel="external">http://www.juicer.name/docs/docs_zh_cn.html</a></p>
+            <h2 id="Juicer轻量级js模板引擎"><a href="#Juicer轻量级js模板引擎" class="headerlink" title="Juicer轻量级js模板引擎"></a>Juicer轻量级js模板引擎</h2><p><a href="http://www.juicer.name/docs/docs_zh_cn.html" target="_blank" rel="external">http://www.juicer.name/docs/docs_zh_cn.html</a></p>
 
           
         
@@ -686,24 +669,12 @@
 
       
         
-          
-            <a id="more"></a>
-<h3 id="PHP-Date"><a href="#PHP-Date" class="headerlink" title="PHP Date"></a>PHP Date</h3><pre><code>&lt;?php      
-date_default_timezone_set(&apos;PRC&apos;); //默认时区      
-echo &quot;今天:&quot;,date(&quot;Y-m-d&quot;,time()),&quot;&lt;br&gt;&quot;;      
-echo &quot;2008年六月:&quot;,date(&quot;Y-m-d&quot;,strtotime(&quot;18 june 2008&quot;)),&quot;&lt;br&gt;&quot;;      
-echo &quot;昨天:&quot;,date(&quot;Y-m-d&quot;,strtotime(&quot;-1 day&quot;)), &quot;&lt;br&gt;&quot;;      
-echo &quot;明天:&quot;,date(&quot;Y-m-d&quot;,strtotime(&quot;+1 day&quot;)), &quot;&lt;br&gt;&quot;;      
-echo &quot;一周后:&quot;,date(&quot;Y-m-d&quot;,strtotime(&quot;+1 week&quot;)), &quot;&lt;br&gt;&quot;;      
-echo &quot;一周零两天四小时两秒后:&quot;,date(&quot;Y-m-d G:H:s&quot;,strtotime(&quot;+1 week 2 days 4 hours 2 seconds&quot;)), &quot;&lt;br&gt;&quot;;      
-echo &quot;下个星期四:&quot;,date(&quot;Y-m-d&quot;,strtotime(&quot;next Thursday&quot;)), &quot;&lt;br&gt;&quot;;      
-echo &quot;上个周一:&quot;.date(&quot;Y-m-d&quot;,strtotime(&quot;last Monday&quot;)).&quot;&lt;br&gt;&quot;;      
-echo &quot;一个月前:&quot;.date(&quot;Y-m-d&quot;,strtotime(&quot;last month&quot;)).&quot;&lt;br&gt;&quot;;      
-echo &quot;一个月后:&quot;.date(&quot;Y-m-d&quot;,strtotime(&quot;+1 month&quot;)).&quot;&lt;br&gt;&quot;;      
-echo &quot;十年后:&quot;.date(&quot;Y-m-d&quot;,strtotime(&quot;+10 year&quot;)).&quot;&lt;br&gt;&quot;;      
-?&gt;
-</code></pre>
-          
+          <h3 id="PHP-Date"><a href="#PHP-Date" class="headerlink" title="PHP Date"></a>PHP Date</h3>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/05/PHP-Date/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -820,62 +791,12 @@ echo &quot;十年后:&quot;.date(&quot;Y-m-d&quot;,strtotime(&quot;+10 year&quot
 
       
         
-          
-            <a id="more"></a>
-<h4 id="用border-radius画椭圆"><a href="#用border-radius画椭圆" class="headerlink" title="用border-radius画椭圆"></a>用border-radius画椭圆</h4><p>border-radius对应的值格式如下：xx xx xx xx / xx xx xx xx;<br>前面4个表示圆角的水平半径，后面四个表示圆角的垂直半径。依次顺序为：左上 右上 右下 左下。</p>
-<pre><code>&lt;style&gt;
-div{
-    width:200px;
-    height:100px;
-    background:red;
-    margin:30px;
-    float:left;
-}
-.div1{
-    width:100px;
-    height:100px;
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-}
-.div2{
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-}
-.div3{
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-}
-.div4{
-    border-radius: 0 0 50% 50% / 0 0 100% 100%;
-}
-.div5{
-    border-radius: 100% 0 0 100% / 50% 0 0 50%;
-}
-.div6{
-    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
-}
-.div7{
-    border-radius: 100% 0 0 0 / 100% 0 0 0;
-}
-.div8{
-    border-radius: 0 100% 0 0 / 0 100% 0 0;
-}
-.div9{
-    border-radius: 0 0 100% 0 / 0 0 100% 0;
-}
-.div10{
-    border-radius: 0 0 0 100% / 0 0 0 100%;
-}
-&lt;/style&gt;
-&lt;div class=&quot;div1&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div2&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div3&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div4&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div5&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div6&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div7&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div8&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div9&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div10&quot;&gt;&lt;/div&gt;
-</code></pre>
-          
+          <h4 id="用border-radius画椭圆"><a href="#用border-radius画椭圆" class="headerlink" title="用border-radius画椭圆"></a>用border-radius画椭圆</h4>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/14/CSS-Summary/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -992,76 +913,12 @@ div{
 
       
         
-          
-            <a id="more"></a>
-<h3 id="JS判断图片上传代码示例"><a href="#JS判断图片上传代码示例" class="headerlink" title="JS判断图片上传代码示例"></a>JS判断图片上传代码示例</h3><pre><code>/* 
- * 判断图片类型 
- *  
- * @param ths  
- *          type=&quot;file&quot;的javascript对象 
- * @return true-符合要求,false-不符合 
- */ 
-function checkImgType(ths){  
-    if (ths.value == &quot;&quot;) {  
-        alert(&quot;请上传图片&quot;);  
-        return false;  
-    } else {  
-        if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(ths.value)) {  
-            alert(&quot;图片类型必须是.gif,jpeg,jpg,png中的一种&quot;);  
-            ths.value = &quot;&quot;;  
-            return false;  
-        }  
-
-         else
-        {
-             var img=new Image(); 
-             img.src=filepath;   
-          while(true){ 
-                 if(img.fileSize&gt;0){ 
-                 if(img.fileSize&gt;10*1024){       
-                     alert(&quot;图片不大于10M。&quot;); 
-                      return false; 
-                      } 
-                      break; 
-                     } 
-
-                  }
-          }
-    }  
-    return true;  
-}  
-
-/* 
- * 判断图片大小 
- *  
- * @param ths  
- *          type=&quot;file&quot;的javascript对象 
- * @param width 
- *          需要符合的宽  
- * @param height 
- *          需要符合的高 
- * @return true-符合要求,false-不符合 
- */ 
-function checkImgPX(ths, width, height) {  
-    var img = null;  
-    img = document.createElement(&quot;img&quot;);  
-    document.body.insertAdjacentElement(&quot;beforeEnd&quot;, img); // firefox不行  
-    img.style.visibility = &quot;hidden&quot;;   
-    img.src = ths.value;  
-    var imgwidth = img.offsetWidth;  
-    var imgheight = img.offsetHeight;  
-
-    alert(imgwidth + &quot;,&quot; + imgheight);  
-
-    if(imgwidth != width || imgheight != height) {  
-        alert(&quot;图的尺寸应该是&quot; + width + &quot;x&quot;+ height);  
-        ths.value = &quot;&quot;;  
-        return false;  
-    }  
-    return true;  
-}  
-</code></pre>
-          
+          <h3 id="JS判断图片上传代码示例"><a href="#JS判断图片上传代码示例" class="headerlink" title="JS判断图片上传代码示例"></a>JS判断图片上传代码示例</h3>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/14/JS-判断图片上传/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1178,30 +1035,12 @@ function checkImgPX(ths, width, height) {
 
       
         
-          
-            <a id="more"></a>
-<h3 id="一秒渲染一个移动页面"><a href="#一秒渲染一个移动页面" class="headerlink" title="一秒渲染一个移动页面"></a>一秒渲染一个移动页面</h3><p>看过一篇相关文章，进行截取和记录。<br>有一点说明，这里说的并不是在1s中渲染整个页面，而是1s渲染首屏。超过1s将带来很差的用户体验。</p>
-<h4 id="移动设备上的网络预算"><a href="#移动设备上的网络预算" class="headerlink" title="移动设备上的网络预算"></a>移动设备上的网络预算</h4><ul>
-<li>200-300 ms roundtrip times for 3G networks</li>
-<li>50-100 ms roundtrip times for 4G networks</li>
-<li>3G 网络的往返时间将消耗 200-300 ms</li>
-<li>4G 网络的往返时间将消耗 50-100 ms</li>
-</ul>
-<p>基于这些，我们可以预算网络上的耗时约200ms左右。</p>
-<p>明白了这一点之后，我们来倒推一下时间。如果我们来分析一下浏览器与服务器之间一次典型的通信过程，会发现 600 ms 的时间就已经被网络本身消耗掉了：一次 DNS 查询用于将主机名（比如 google.com）解析为 IP 地址，一次网络往返用于发起 TCP 握手，以及最后一次完整的网络往返用于发送 HTTP 请求。我们就只剩下 400 ms 了！</p>
-<p><img src="/img/FrontEnd/mobile_network.png" alt=""></p>
-<ul>
-<li>DNS Lookup (200 ms)</li>
-<li>TCP Connection (200 ms)</li>
-<li>HTTP Request and Response (200 ms)</li>
-</ul>
-<p>所以只剩下400ms，其他600ms我们无能为力。<br>这400ms我们需要做到服务器响应时间控制在200ms，客户端渲染200ms。</p>
-<ul>
-<li>Server Response Time (200 ms)</li>
-<li>Client-Side Rendering (200 ms)</li>
-</ul>
-
-          
+          <h3 id="一秒渲染一个移动页面"><a href="#一秒渲染一个移动页面" class="headerlink" title="一秒渲染一个移动页面"></a>一秒渲染一个移动页面</h3>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/11/Mobile-OneSecondOnePage/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
