@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="###Cookie
-概念：w3c的范例代码:">
+<meta name="description" content="Cookie概念：w3c的范例代码:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS_原生Cookie简单例子">
 <meta property="og:url" content="http://yoursite.com/2015/12/15/JS-原生Cookie简单例子/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="###Cookie
-概念：w3c的范例代码:">
-<meta property="og:updated_time" content="2015-12-18T02:49:13.000Z">
+<meta property="og:description" content="Cookie概念：w3c的范例代码:">
+<meta property="og:updated_time" content="2017-02-03T10:58:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS_原生Cookie简单例子">
-<meta name="twitter:description" content="###Cookie
-概念：w3c的范例代码:">
+<meta name="twitter:description" content="Cookie概念：w3c的范例代码:">
 
 
 
@@ -324,8 +321,8 @@
       
 
       
-        <p>###Cookie</p>
-<p>概念：<br>w3c的范例代码:<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//设置cookie</div><div class="line">function setCookie(cname, cvalue, exdays) &#123;</div><div class="line">    var d = new Date();</div><div class="line">    d.setTime(d.getTime() + (exdays*24*60*60*1000));</div><div class="line">    var expires = &quot;expires=&quot;+d.toUTCString();</div><div class="line">    document.cookie = cname + &quot;=&quot; + cvalue + &quot;; &quot; + expires;</div><div class="line">&#125;</div><div class="line">//获取cookie</div><div class="line">function getCookie(cname) &#123;</div><div class="line">    var name = cname + &quot;=&quot;;</div><div class="line">    var ca = document.cookie.split(&apos;;&apos;);</div><div class="line">    for(var i=0; i&lt;ca.length; i++) &#123;</div><div class="line">        var c = ca[i];</div><div class="line">        while (c.charAt(0)==&apos; &apos;) c = c.substring(1);</div><div class="line">        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);</div><div class="line">    &#125;</div><div class="line">    return &quot;&quot;;</div><div class="line">&#125;</div><div class="line">//清除cookie  </div><div class="line">function clearCookie(name) &#123;  </div><div class="line">    setCookie(name, &quot;&quot;, -1);  </div><div class="line">&#125;  </div><div class="line">function checkCookie() &#123;</div><div class="line">    var user = getCookie(&quot;username&quot;);</div><div class="line">    if (user != &quot;&quot;) &#123;</div><div class="line">        alert(&quot;Welcome again &quot; + user);</div><div class="line">    &#125; else &#123;</div><div class="line">        user = prompt(&quot;Please enter your name:&quot;, &quot;&quot;);</div><div class="line">        if (user != &quot;&quot; &amp;&amp; user != null) &#123;</div><div class="line">            setCookie(&quot;username&quot;, user, 365);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">checkCookie();</div></pre></td></tr></table></figure></p>
+        <h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>概念：<br>w3c的范例代码:<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//设置cookie</div><div class="line">function setCookie(cname, cvalue, exdays) &#123;</div><div class="line">    var d = new Date();</div><div class="line">    d.setTime(d.getTime() + (exdays*24*60*60*1000));</div><div class="line">    var expires = &quot;expires=&quot;+d.toUTCString();</div><div class="line">    document.cookie = cname + &quot;=&quot; + cvalue + &quot;; &quot; + expires;</div><div class="line">&#125;</div><div class="line">//获取cookie</div><div class="line">function getCookie(cname) &#123;</div><div class="line">    var name = cname + &quot;=&quot;;</div><div class="line">    var ca = document.cookie.split(&apos;;&apos;);</div><div class="line">    for(var i=0; i&lt;ca.length; i++) &#123;</div><div class="line">        var c = ca[i];</div><div class="line">        while (c.charAt(0)==&apos; &apos;) c = c.substring(1);</div><div class="line">        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);</div><div class="line">    &#125;</div><div class="line">    return &quot;&quot;;</div><div class="line">&#125;</div><div class="line">//清除cookie  </div><div class="line">function clearCookie(name) &#123;  </div><div class="line">    setCookie(name, &quot;&quot;, -1);  </div><div class="line">&#125;  </div><div class="line">function checkCookie() &#123;</div><div class="line">    var user = getCookie(&quot;username&quot;);</div><div class="line">    if (user != &quot;&quot;) &#123;</div><div class="line">        alert(&quot;Welcome again &quot; + user);</div><div class="line">    &#125; else &#123;</div><div class="line">        user = prompt(&quot;Please enter your name:&quot;, &quot;&quot;);</div><div class="line">        if (user != &quot;&quot; &amp;&amp; user != null) &#123;</div><div class="line">            setCookie(&quot;username&quot;, user, 365);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">checkCookie();</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -435,7 +432,7 @@
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar_bw.jpg"
+               src="/images/avatar_2.png"
                alt="Jason Li" />
           <p class="site-author-name" itemprop="name">Jason Li</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -536,7 +533,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">1.</span> <span class="nav-text">Cookie</span></a></li></ol></div>
             
           </div>
         </section>
