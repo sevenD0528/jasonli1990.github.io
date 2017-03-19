@@ -1,0 +1,803 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,Html5," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Html5首屏优化总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5首屏优化原则">
+<meta property="og:url" content="http://yoursite.com/2017/03/18/H5首屏优化原则/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Html5首屏优化总结">
+<meta property="og:updated_time" content="2017-03-18T07:50:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5首屏优化原则">
+<meta name="twitter:description" content="Html5首屏优化总结">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/18/H5首屏优化原则/"/>
+
+
+  <title> H5首屏优化原则 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                H5首屏优化原则
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-03-18T14:11:56+08:00" content="2017-03-18">
+              2017-03-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">-FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/18/H5首屏优化原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/18/H5首屏优化原则/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Html5首屏优化总结"><a href="#Html5首屏优化总结" class="headerlink" title="Html5首屏优化总结"></a>Html5首屏优化总结</h3><a id="more"></a>
+<p>####概述</p>
+<p>首屏时间即是浏览器窗口区域充满所需要的时间，是衡量一个网站用户体验好与坏的指标。</p>
+<p>5秒以内比较优秀，10秒以内是可以接受，10秒以上用户会选择离开或刷新。</p>
+<p>####网页加载原理</p>
+<p>加载HTML，HTML的各种DOM会并行加载，但若碰到CSS和JS外链文件会阻断HTML加载，单线程加载。</p>
+<p>从图片和CSS来说，HTML的IMG&gt;内嵌CSS图片&gt;内联CSS图片&gt;外联CSS图片&gt;JS加载图片。所以建议将与卖点相关的图片以IMG形式插入，按照渲染顺序，此类图片是最先显示加载的，这样有利于用户第一时间看到最关键的信息点。</p>
+<p>####减少加载时间的方法</p>
+<ul>
+<li>延迟加载，优先加载第一屏的图片，有一些lazyload插件可以使用。</li>
+<li>尽可能压缩图片，可以利用在线图片压缩工具，例如tinypng。<a href="http://www.tinypng.com/" target="_blank" rel="external">http://www.tinypng.com/</a></li>
+<li>将JS放到HTML最后的地方，能最后加载，优先保证基础信息。</li>
+</ul>
+<h4 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略"></a>优化策略</h4><ul>
+<li>尽量减少HTTP请求个数，须权衡。</li>
+</ul>
+<p>合并图片（css sprites，内置图片使用数据），合并css，js，且要考虑合并后的文件体积。</p>
+<ul>
+<li>使用CDN（内容分发网络）</li>
+</ul>
+<p>关注CDN的三类实现，镜像、高速缓存、专线，以及智能路由器和负载均衡。</p>
+<ul>
+<li>为文件头指定Expires或Cache-Control，使内容具有缓存性。</li>
+</ul>
+<p>区分静态内容和动态内容，避免以后页面访问中不必要的HTTP请求。</p>
+<ul>
+<li>避免空的src和href</li>
+</ul>
+<p>留意具有这连个属性的标签如link，script,img,iframe等。</p>
+<ul>
+<li>gzip压缩内容</li>
+</ul>
+<p>Gzip压缩所有可能的文件类型以来减少文件体积</p>
+<ul>
+<li>把css放在顶部</li>
+</ul>
+<p>实现页面有秩序地加载，这对于拥有较多内容的页面和网速较慢的用户来说更为重要，同时，HTML规范清楚指出样式表要放包含页面的<head>区域内。</head></p>
+<ul>
+<li>把js放在底部</li>
+</ul>
+<p>HTTP/1.1规范建议，浏览器每个主机名的并行下载内容不超过两个，而问题在于脚本阻止了页面的平行下载，即便主机名不相同。</p>
+<ul>
+<li>避免使用css表达式</li>
+</ul>
+<p>页面显示和缩放，滚动乃至移动鼠标时，css表达式的计算频率使我们要关注的。可以考虑一次性表达式或者使用事件句柄来代替css表达式。</p>
+<ul>
+<li>将CSS和JS放在外部文件中</li>
+</ul>
+<p>权衡内置代码带来的HTTP请求减少与通过使用外部文件进行缓存带来的好处的折中点</p>
+<ul>
+<li>减少DNS查找次数</li>
+</ul>
+<p>权衡减少DNS查找次数和保持较高程度并行下载两者之间的关系</p>
+<ul>
+<li>精简CSS和JS</li>
+</ul>
+<p>减少下载文件体积，可以考虑压缩工具JSMin和YUI Compressor</p>
+<ul>
+<li>避免跳转</li>
+</ul>
+<p>为了确保“后退”按钮正确使用，使用标准的3XXHTTP状态码，用域中注意避免返斜杠”/“的跳转，跨域使用Alias或者mod_rewirte建立CNAME（保存一个域名与两外一个域名之间关系的DNS记录）</p>
+<ul>
+<li>剔除重复的JS和CSS</li>
+</ul>
+<p>重复调用脚本，除了增加额外的HTTP请求外，多次运算也会浪费时间。</p>
+<ul>
+<li>配置ETags</li>
+</ul>
+<p>Entity tags（Etags）实体标签是web服务器和浏览器用于判断浏览器缓存中的内容和服务器中的原始内容是否匹配的一种机制（实体就是所说的内容，包括图片、脚本、样式。）。使用ETags减少Web应用带宽和负载。</p>
+<ul>
+<li>使Ajax可缓存</li>
+</ul>
+<p>利用时间戳，更精巧的实现响应可缓存与服务器数据同步更新</p>
+<ul>
+<li>尽早刷新输出缓冲</li>
+</ul>
+<p>对于css，js文件的并行下载更有意义</p>
+<ul>
+<li>使用GET来完成Ajax请求</li>
+</ul>
+<p>当使用XMLHttpRequest时，浏览器中的POST方法是一个两步走的过程，首先发送文件头，然后才发送数据。在url小于2k时使用GET获取数据时更有意义</p>
+<ul>
+<li>延迟加载</li>
+</ul>
+<p>确定页面运行正常后，再加载脚本本来实现如拖放和动画，或者隐藏部分的内容以及折叠内容</p>
+<ul>
+<li>预加载</li>
+</ul>
+<p>无条件加载、有条件加载和预加载</p>
+<ul>
+<li>减少DOM元素个数</li>
+</ul>
+<p>使用更合适或者在语意是更贴切的标签，要考虑大量DOM元素中循环的性能开销</p>
+<ul>
+<li>根据域名划分页面内容</li>
+</ul>
+<p>最大限度地实现平行下载</p>
+<ul>
+<li>尽量减少iframe的个数</li>
+</ul>
+<p>即使内容为空，加载也需要时间，会组织页面加载，没有语意，注意iframe相对于其他DOM元素高出1-2个数量级的开销，他会在典型方式下阻止onload事件。</p>
+<ul>
+<li>避免404</li>
+</ul>
+<p>HTTP请求时间消耗很大的，有些站点把404错误响应页面改为“你是不是~~”，这种虽然改进了用户体验但是同样会浪费服务器资源。</p>
+<ul>
+<li>减少Cookie的大小</li>
+</ul>
+<p>去除不必要的cookie<br>使cookie体积尽量小，以减少对用户响应的影响</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/Html5/" rel="tag">#Html5</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/11/udontknowjs6/" rel="next" title="udontknowjs6">
+                <i class="fa fa-chevron-left"></i> udontknowjs6
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/18/XMLHttpRequest对象/" rel="prev" title="XMLHttpRequest对象">
+                XMLHttpRequest对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/18/H5首屏优化原则/"
+           data-title="H5首屏优化原则" data-url="http://yoursite.com/2017/03/18/H5首屏优化原则/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar_2.png"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Html5首屏优化总结"><span class="nav-number">1.</span> <span class="nav-text">Html5首屏优化总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化策略"><span class="nav-number">1.1.</span> <span class="nav-text">优化策略</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jasonli1990"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
