@@ -94,7 +94,7 @@
 参考Google Web Fundamentals文档。">
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/QQ20170319-163306.png">
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/QQ20170319-165056.png">
-<meta property="og:updated_time" content="2017-03-19T09:07:54.000Z">
+<meta property="og:updated_time" content="2017-03-19T09:11:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器渲染机制">
 <meta name="twitter:description" content="###浏览器的渲染机制
@@ -364,6 +364,8 @@
 <li>js的下载和执行会阻塞Dom树的构建（严谨地说是中断了Dom树的更新），所以script标签放在首屏范围内的HTML代码段里会截断首屏的内容。</li>
 <li>普通script标签放在body底部，做与不做async或者defer处理，都不会影响首屏时间，但影响DomContentLoad和load的时间，进而影响依赖他们的代码的执行的开始时间。</li>
 </ul>
+<p>script标签的位置会影响首屏时间么？</p>
+<p>答案是：不影响（如果这里里的首屏指的是页面从白板变成网页画面——也就是第一次Painting），但有可能截断首屏的内容，使其只显示上面一部分。</p>
 
       
     </div>
@@ -404,6 +406,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/22/CSS-多行截断/" rel="prev" title="CSS_多行截断">
+                CSS_多行截断 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -475,7 +481,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

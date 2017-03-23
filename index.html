@@ -254,6 +254,352 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/23/移动端浮层内滚动窗体不滚动的处理-转张鑫旭/" itemprop="url">
+                  移动端浮层内滚动窗体不滚动的处理-转张鑫旭
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T22:33:07+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">-FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/23/移动端浮层内滚动窗体不滚动的处理-转张鑫旭/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/移动端浮层内滚动窗体不滚动的处理-转张鑫旭/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###</p>
+<p>CSS代码：</p>
+<pre><code>.noscroll,
+.noscroll body {
+    overflow: hidden;
+}
+.noscroll body {
+    position: relative;
+}
+</code></pre><p>JS代码：</p>
+<pre><code>$.smartScroll = function(container, selectorScrollable) {
+    // 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
+    if (!selectorScrollable || container.data(&apos;isBindScroll&apos;)) {
+        return;
+    }
+
+    // 是否是搓浏览器
+    // 自己在这里添加判断和筛选
+    var isSBBrowser;
+
+    var data = {
+        posY: 0,
+        maxscroll: 0
+    };
+
+    // 事件处理
+    container.on({
+        touchstart: function (event) {
+            var events = event.touches[0] || event;
+
+            // 先求得是不是滚动元素或者滚动元素的子元素
+            var elTarget = $(event.target);
+
+            if (!elTarget.length) {
+                return;    
+            }
+
+            var elScroll;
+
+            // 获取标记的滚动元素，自身或子元素皆可
+            if (elTarget.is(selectorScrollable)) {
+                elScroll = elTarget;
+            } else if ((elScroll = elTarget.parents(selectorScrollable)).length == 0) {
+                elScroll = null;
+            }
+
+            if (!elScroll) {
+                return;
+            }
+
+            // 当前滚动元素标记
+            data.elScroll = elScroll;
+
+            // 垂直位置标记
+            data.posY = events.pageY;
+            data.scrollY = elScroll.scrollTop();
+            // 是否可以滚动
+            data.maxscroll = elScroll[0].scrollHeight - elScroll[0].clientHeight;
+        },
+        touchmove: function () {
+            // 如果不足于滚动，则禁止触发整个窗体元素的滚动
+            if (data.maxscroll &lt;= 0 || isSBBrowser) {
+                // 禁止滚动
+                event.preventDefault();
+            }
+            // 滚动元素
+            var elScroll = data.elScroll;
+            // 当前的滚动高度
+            var scrollTop = elScroll.scrollTop();
+
+            // 现在移动的垂直位置，用来判断是往上移动还是往下
+            var events = event.touches[0] || event;
+            // 移动距离
+            var distanceY = events.pageY - data.posY;
+
+            if (isSBBrowser) {
+                elScroll.scrollTop(data.scrollY - distanceY);
+                elScroll.trigger(&apos;scroll&apos;);
+                return;
+            }
+
+            // 上下边缘检测
+            if (distanceY &gt; 0 &amp;&amp; scrollTop == 0) {
+                // 往上滑，并且到头
+                // 禁止滚动的默认行为
+                event.preventDefault();
+                return;
+            }
+
+            // 下边缘检测
+            if (distanceY &lt; 0 &amp;&amp; (scrollTop + 1 &gt;= data.maxscroll)) {
+                // 往下滑，并且到头
+                // 禁止滚动的默认行为
+                event.preventDefault();
+                return;
+            }
+        },
+        touchend: function () {
+            data.maxscroll = 0;
+        }    
+    });
+
+    // 防止多次重复绑定
+    container.data(&apos;isBindScroll&apos;, true);
+};
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/22/CSS-多行截断/" itemprop="url">
+                  CSS_多行截断
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-03-22T18:46:58+08:00" content="2017-03-22">
+              2017-03-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">-FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/22/CSS-多行截断/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/22/CSS-多行截断/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>###CSS-多行截断问题</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/22/CSS-多行截断/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/19/浏览器渲染机制/" itemprop="url">
                   浏览器渲染机制
                 </a>
@@ -1206,250 +1552,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/05/PHP-Date/" itemprop="url">
-                  PHP_Date
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-08-05T14:39:45+08:00" content="2016-08-05">
-              2016-08-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/05/PHP-Date/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/05/PHP-Date/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="PHP-Date"><a href="#PHP-Date" class="headerlink" title="PHP Date"></a>PHP Date</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/05/PHP-Date/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/14/CSS-Summary/" itemprop="url">
-                  CSS_Summary
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-14T11:56:25+08:00" content="2016-07-14">
-              2016-07-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/14/CSS-Summary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/CSS-Summary/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="用border-radius画椭圆"><a href="#用border-radius画椭圆" class="headerlink" title="用border-radius画椭圆"></a>用border-radius画椭圆</h4>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/14/CSS-Summary/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1495,7 +1597,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
