@@ -323,114 +323,12 @@
 
       
         
-          
-            <p>###</p>
-<p>CSS代码：</p>
-<pre><code>.noscroll,
-.noscroll body {
-    overflow: hidden;
-}
-.noscroll body {
-    position: relative;
-}
-</code></pre><p>JS代码：</p>
-<pre><code>$.smartScroll = function(container, selectorScrollable) {
-    // 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
-    if (!selectorScrollable || container.data(&apos;isBindScroll&apos;)) {
-        return;
-    }
-
-    // 是否是搓浏览器
-    // 自己在这里添加判断和筛选
-    var isSBBrowser;
-
-    var data = {
-        posY: 0,
-        maxscroll: 0
-    };
-
-    // 事件处理
-    container.on({
-        touchstart: function (event) {
-            var events = event.touches[0] || event;
-
-            // 先求得是不是滚动元素或者滚动元素的子元素
-            var elTarget = $(event.target);
-
-            if (!elTarget.length) {
-                return;    
-            }
-
-            var elScroll;
-
-            // 获取标记的滚动元素，自身或子元素皆可
-            if (elTarget.is(selectorScrollable)) {
-                elScroll = elTarget;
-            } else if ((elScroll = elTarget.parents(selectorScrollable)).length == 0) {
-                elScroll = null;
-            }
-
-            if (!elScroll) {
-                return;
-            }
-
-            // 当前滚动元素标记
-            data.elScroll = elScroll;
-
-            // 垂直位置标记
-            data.posY = events.pageY;
-            data.scrollY = elScroll.scrollTop();
-            // 是否可以滚动
-            data.maxscroll = elScroll[0].scrollHeight - elScroll[0].clientHeight;
-        },
-        touchmove: function () {
-            // 如果不足于滚动，则禁止触发整个窗体元素的滚动
-            if (data.maxscroll &lt;= 0 || isSBBrowser) {
-                // 禁止滚动
-                event.preventDefault();
-            }
-            // 滚动元素
-            var elScroll = data.elScroll;
-            // 当前的滚动高度
-            var scrollTop = elScroll.scrollTop();
-
-            // 现在移动的垂直位置，用来判断是往上移动还是往下
-            var events = event.touches[0] || event;
-            // 移动距离
-            var distanceY = events.pageY - data.posY;
-
-            if (isSBBrowser) {
-                elScroll.scrollTop(data.scrollY - distanceY);
-                elScroll.trigger(&apos;scroll&apos;);
-                return;
-            }
-
-            // 上下边缘检测
-            if (distanceY &gt; 0 &amp;&amp; scrollTop == 0) {
-                // 往上滑，并且到头
-                // 禁止滚动的默认行为
-                event.preventDefault();
-                return;
-            }
-
-            // 下边缘检测
-            if (distanceY &lt; 0 &amp;&amp; (scrollTop + 1 &gt;= data.maxscroll)) {
-                // 往下滑，并且到头
-                // 禁止滚动的默认行为
-                event.preventDefault();
-                return;
-            }
-        },
-        touchend: function () {
-            data.maxscroll = 0;
-        }    
-    });
-
-    // 防止多次重复绑定
-    container.data(&apos;isBindScroll&apos;, true);
-};
-</code></pre>
-          
+          <h3 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h3>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/23/移动端浮层内滚动窗体不滚动的处理-转张鑫旭/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -547,7 +445,7 @@
 
       
         
-          <p>###CSS-多行截断问题</p>
+          <h3 id="CSS-多行截断问题"><a href="#CSS-多行截断问题" class="headerlink" title="CSS-多行截断问题"></a>CSS-多行截断问题</h3>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/22/CSS-多行截断/#more" rel="contents">
               Read more &raquo;
@@ -669,8 +567,7 @@
 
       
         
-          <p>###浏览器的渲染机制</p>
-<p>参考Google Web Fundamentals文档。</p>
+          <h3 id="浏览器的渲染机制"><a href="#浏览器的渲染机制" class="headerlink" title="浏览器的渲染机制"></a>浏览器的渲染机制</h3><p>参考Google Web Fundamentals文档。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/19/浏览器渲染机制/#more" rel="contents">
               Read more &raquo;
@@ -792,7 +689,7 @@
 
       
         
-          <p>###XMLHttpRequest对象<br>
+          <h3 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest对象</h3>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/18/XMLHttpRequest对象/#more" rel="contents">
               Read more &raquo;

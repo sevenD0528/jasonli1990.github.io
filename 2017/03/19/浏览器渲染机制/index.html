@@ -84,21 +84,18 @@
 
 
 
-<meta name="description" content="###浏览器的渲染机制
-参考Google Web Fundamentals文档。">
+<meta name="description" content="浏览器的渲染机制参考Google Web Fundamentals文档。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器渲染机制">
 <meta property="og:url" content="http://yoursite.com/2017/03/19/浏览器渲染机制/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="###浏览器的渲染机制
-参考Google Web Fundamentals文档。">
+<meta property="og:description" content="浏览器的渲染机制参考Google Web Fundamentals文档。">
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/QQ20170319-163306.png">
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/QQ20170319-165056.png">
-<meta property="og:updated_time" content="2017-03-19T09:11:31.000Z">
+<meta property="og:updated_time" content="2017-03-23T14:37:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器渲染机制">
-<meta name="twitter:description" content="###浏览器的渲染机制
-参考Google Web Fundamentals文档。">
+<meta name="twitter:description" content="浏览器的渲染机制参考Google Web Fundamentals文档。">
 <meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/QQ20170319-163306.png">
 
 
@@ -327,11 +324,9 @@
       
 
       
-        <p>###浏览器的渲染机制</p>
-<p>参考Google Web Fundamentals文档。</p>
+        <h3 id="浏览器的渲染机制"><a href="#浏览器的渲染机制" class="headerlink" title="浏览器的渲染机制"></a>浏览器的渲染机制</h3><p>参考Google Web Fundamentals文档。</p>
 <a id="more"></a>
-<p>####概念</p>
-<ul>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
 <li><p>DOM：Document Object Model，浏览器将HTML解析成树形的数据结构，简称DOM。</p>
 </li>
 <li><p>CSSOM：CSS Object Model，浏览器将CSS代码解析成树形的数据结构。</p>
@@ -347,8 +342,7 @@
 <p><img src="/img/FrontEnd/QQ20170319-165056.png" alt="Tree"></p>
 <p>Render Tree 和DOM一样，以多叉树的形式保存了每个节点的css属性、节点本身属性、以及节点的孩子节点。</p>
 <p><strong>注意</strong>：display:none 的节点不会被加入 Render Tree，而 visibility: hidden 则会，所以，如果某个节点最开始是不显示的，设为 display:none 是更优的。（具体可以看这里）</p>
-<p>####浏览器渲染过程</p>
-<ol>
+<h4 id="浏览器渲染过程"><a href="#浏览器渲染过程" class="headerlink" title="浏览器渲染过程"></a>浏览器渲染过程</h4><ol>
 <li>Create/Update DOM And request css/image/js：浏览器请求到HTML代码后，在生成DOM的最开始阶段（应该是 Bytes → characters 后），并行发起css、图片、js的请求，无论他们是否在HEAD里。<br>注意：发起 js 文件的下载 request 并不需要 DOM 处理到那个 script 节点，比如：简单的正则匹配就能做到这一点，虽然实际上并不一定是通过正则：）。这是很多人在理解渲染机制的时候存在的误区。</li>
 <li>Create/Update Render CSSOM：CSS文件下载完成，开始构建CSSOM</li>
 <li>Create/Update Render Tree：所有CSS文件下载完成，CSSOM构建结束后，和 DOM 一起生成 Render Tree。</li>
@@ -357,8 +351,7 @@
 </ol>
 <p>以上五个步骤前3个步骤之所有使用 “Create/Update” 是因为DOM、CSSOM、Render Tree都可能在第一次Painting后又被更新多次，比如JS修改了DOM或者CSS属性。</p>
 <p>Layout 和 Painting 也会被重复执行，除了DOM、CSSOM更新的原因外，图片下载完成后也需要调用Layout 和 Painting来更新网页。</p>
-<p>####总结</p>
-<ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
 <li>首屏时间和DomContentLoad事件没有必然的先后关系</li>
 <li>所有CSS尽早加载是减少首屏时间的最关键</li>
 <li>js的下载和执行会阻塞Dom树的构建（严谨地说是中断了Dom树的更新），所以script标签放在首屏范围内的HTML代码段里会截断首屏的内容。</li>
@@ -574,7 +567,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器的渲染机制"><span class="nav-number">1.</span> <span class="nav-text">浏览器的渲染机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器渲染过程"><span class="nav-number">1.2.</span> <span class="nav-text">浏览器渲染过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
