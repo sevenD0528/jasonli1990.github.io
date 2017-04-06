@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/18/XMLHttpRequest对象/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="XMLHttpRequest对象">
-<meta property="og:updated_time" content="2017-03-23T14:36:46.000Z">
+<meta property="og:updated_time" content="2017-03-28T07:15:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XMLHttpRequest对象">
 <meta name="twitter:description" content="XMLHttpRequest对象">
@@ -295,13 +295,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/18/XMLHttpRequest对象/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/18/XMLHttpRequest对象/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -335,6 +328,27 @@
 <pre><code>xmlhttp = new XMLHttpRequest();
 </code></pre><p>老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象:</p>
 <pre><code>xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+</code></pre><p>亲测了 IE5, IE5.5, IE6, IE7, IE8, IE9, IE10, IE edge等浏览器, IE5及之后的浏览器均可以通过如下语句获取xhr对象:</p>
+<pre><code>    var xhr = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);// 即MSXML3
+var xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);// 很老的api,虽然浏览器支持,功能可能不完善,故不建议使用
+</code></pre><p>全平台兼容的XMLHttpRequest对象 </p>
+<pre><code>function getXHR(){
+var xhr = null;
+  if(window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try {
+      xhr = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+    } catch (e) {
+      try {
+        xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+      } catch (e) { 
+        alert(&quot;您的浏览器暂不支持Ajax!&quot;);
+      }
+    }
+  }
+  return xhr;
+}
 </code></pre>
       
     </div>
@@ -405,10 +419,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/03/18/XMLHttpRequest对象/"
-           data-title="XMLHttpRequest对象" data-url="http://yoursite.com/2017/03/18/XMLHttpRequest对象/">
-      </div>
     
   </div>
 
@@ -666,30 +676,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"jasonli1990"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 
