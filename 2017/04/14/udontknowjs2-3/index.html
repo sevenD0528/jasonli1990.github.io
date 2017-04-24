@@ -1,0 +1,735 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,JS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="原生函数概述JS内建函数（built-in function），也叫原生函数（native function）。
+• String()• Number()• Boolean()• Array()• Object()• Function()• RegExp()• Date()• Error()• Symbol()——ES6中新加入的!
+原生函数可以被当作构造函数来使用,但其构造出来的对象可能会和我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="udontknowjs2-3">
+<meta property="og:url" content="http://yoursite.com/2017/04/14/udontknowjs2-3/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="原生函数概述JS内建函数（built-in function），也叫原生函数（native function）。
+• String()• Number()• Boolean()• Array()• Object()• Function()• RegExp()• Date()• Error()• Symbol()——ES6中新加入的!
+原生函数可以被当作构造函数来使用,但其构造出来的对象可能会和我们">
+<meta property="og:updated_time" content="2017-04-23T14:30:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="udontknowjs2-3">
+<meta name="twitter:description" content="原生函数概述JS内建函数（built-in function），也叫原生函数（native function）。
+• String()• Number()• Boolean()• Array()• Object()• Function()• RegExp()• Date()• Error()• Symbol()——ES6中新加入的!
+原生函数可以被当作构造函数来使用,但其构造出来的对象可能会和我们">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/14/udontknowjs2-3/"/>
+
+
+  <title> udontknowjs2-3 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                udontknowjs2-3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-04-14T11:54:50+08:00" content="2017-04-14">
+              2017-04-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="原生函数"><a href="#原生函数" class="headerlink" title="原生函数"></a>原生函数</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>JS内建函数（built-in function），也叫原生函数（native function）。</p>
+<p>• String()<br>• Number()<br>• Boolean()<br>• Array()<br>• Object()<br>• Function()<br>• RegExp()<br>• Date()<br>• Error()<br>• Symbol()——ES6中新加入的!</p>
+<p>原生函数可以被当作构造函数来使用,但其构造出来的对象可能会和我们设想的有所出入:</p>
+<pre><code>var a = new String( &quot;abc&quot; );
+typeof a; // 是&quot;object&quot;,不是&quot;String&quot; 
+a instanceof String; // true 
+Object.prototype.toString.call( a ); // &quot;[object String]&quot;
+</code></pre><p>所以<strong>构造函数返回的是封装了基本类型值得封装对象，typeof在这里返回的是对象类型的子对象</strong></p>
+<h4 id="内部属性-Class"><a href="#内部属性-Class" class="headerlink" title="内部属性[[Class]]"></a>内部属性[[Class]]</h4><p>所有 typeof 返回值为 “object” 的对象(如数组)都包含一个内部属性 [[Class]]</p>
+<p>这个属性无法直接访问, 一般通过Object.prototype.toString(..) 来查看</p>
+<pre><code>   Object.prototype.toString.call( [1,2,3] );
+// &quot;[object Array]&quot;
+  Object.prototype.toString.call( /regex-literal/i );
+// &quot;[object RegExp]&quot;
+
+   Object.prototype.toString.call( null );
+// &quot;[object Null]&quot;
+  Object.prototype.toString.call( undefined );
+// &quot;[object Undefined]&quot;
+</code></pre><h4 id="封装对象包装"><a href="#封装对象包装" class="headerlink" title="封装对象包装"></a>封装对象包装</h4><p>由于基本类型值没有 .length 和 .toString() 这样的属性和方法,需要通过封装对象才能访问,此时 JavaScript 会自动为 基本类型值包装(box 或者 wrap)一个封装对象:</p>
+<pre><code>var a = &quot;abc&quot;;
+a.length; // 3
+a.toUpperCase(); // &quot;ABC&quot;
+</code></pre><p>**封装对象有些地方需要注意<br>比如 Boolean:</p>
+<pre><code> var a = new Boolean( false );
+if (!a) {
+    console.log( &quot;Oops&quot; ); // 执行不到这里
+}
+</code></pre><p>为 false 创建了一个封装对象,然而该对象是真值</p>
+<pre><code>var a = &quot;abc&quot;;
+var b = new String( a );
+var c = Object( a );
+typeof a; // &quot;string&quot;
+typeof b; // &quot;object&quot;
+typeof c; // &quot;object&quot;
+b instanceof String; // true
+c instanceof String; // true
+Object.prototype.toString.call( b ); // &quot;[object String]&quot;
+Object.prototype.toString.call( c ); // &quot;[object String]&quot;
+</code></pre><h4 id="拆封"><a href="#拆封" class="headerlink" title="拆封"></a>拆封</h4><p>如果想要得到封装对象中的基本类型值,可以使用 valueOf() 函数:</p>
+<pre><code>var a = new String( &quot;abc&quot; );
+var b = new Number( 42 );
+var c = new Boolean( true );
+a.valueOf(); // &quot;abc&quot;
+b.valueOf(); // 42
+c.valueOf(); // true
+</code></pre><h4 id="原生函数作为构造函数"><a href="#原生函数作为构造函数" class="headerlink" title="原生函数作为构造函数"></a>原生函数作为构造函数</h4><p>关于数组(array)、对象(object)、函数(function)和正则表达式,我们通常喜欢以常 量的形式来创建它们。实际上,使用常量和使用构造函数的效果是一样的(创建的值都是 通过封装对象来包装)。</p>
+<pre><code>var a = new Array( 1, 2, 3 );
+a; // [1, 2, 3]
+var b = [1, 2, 3];
+b; // [1, 2, 3]
+</code></pre><p>构造函数 Array(..) 不要求必须带 new 关键字。不带时,它会被自动补上。 因此Array(1,2,3)和new Array(1,2,3)的效果是一样的。</p>
+<p><strong>我们将包含至少一个“空单元”的数组称为“稀疏数组”。</strong></p>
+<pre><code>var a = new Array( 3 );
+var b = [ undefined, undefined, undefined ];
+var c = [];
+c.length = 3;
+
+a; 
+b; 
+c;
+</code></pre><p>b在当前版本的Chrome中显示为[ undefined, undefined, undefined ],而a和c则显示为[ undefined x 3 ]。</p>
+<h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol(..)"></a>Symbol(..)</h4><p>ES6中新加入了一个基本数据类型 ——符号(Symbol)。符号是具有唯一性的特殊值(并非绝对), 用它来命名对象属性不容易导致重名。</p>
+<p>符号并非对象, 而是一种简单标量基本类型</p>
+<h4 id="原生原型"><a href="#原生原型" class="headerlink" title="原生原型"></a>原生原型</h4><p>原生构造函数有自己的 .prototype 对象,如 Array.prototype、String.prototype等。这些对象包含其对应子类型所特有的行为特征。</p>
+<p>所有的函数都可以 调用 Function.prototype 中的 apply(..)、call(..) 和 bind(..)</p>
+<p><strong>Function.prototype 是一个函数,RegExp.prototype 是一个正则表达式,而 Array. prototype 是一个数组</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/13/udontknowjs2-2/" rel="next" title="udontknowjs2-2">
+                <i class="fa fa-chevron-left"></i> udontknowjs2-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/14/Webpack学习笔记1/" rel="prev" title="Webpack学习笔记1">
+                Webpack学习笔记1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar_2.png"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原生函数"><span class="nav-number">1.</span> <span class="nav-text">原生函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部属性-Class"><span class="nav-number">1.2.</span> <span class="nav-text">内部属性[[Class]]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装对象包装"><span class="nav-number">1.3.</span> <span class="nav-text">封装对象包装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拆封"><span class="nav-number">1.4.</span> <span class="nav-text">拆封</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原生函数作为构造函数"><span class="nav-number">1.5.</span> <span class="nav-text">原生函数作为构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Symbol"><span class="nav-number">1.6.</span> <span class="nav-text">Symbol(..)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原生原型"><span class="nav-number">1.7.</span> <span class="nav-text">原生原型</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
