@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="FrontEnd,CSS," />
+  <meta name="keywords" content="FrontEnd,Less,Css," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="用border-radius画椭圆">
+<meta name="description" content="Less简介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS Summary">
-<meta property="og:url" content="http://yoursite.com/2016/07/14/CSS-Summary/index.html">
+<meta property="og:title" content="Less学习笔记-1">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/Less学习笔记-1/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="用border-radius画椭圆">
-<meta property="og:updated_time" content="2017-04-25T16:37:06.000Z">
+<meta property="og:description" content="Less简介">
+<meta property="og:updated_time" content="2017-04-25T03:40:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS Summary">
-<meta name="twitter:description" content="用border-radius画椭圆">
+<meta name="twitter:title" content="Less学习笔记-1">
+<meta name="twitter:description" content="Less简介">
 
 
 
@@ -114,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/14/CSS-Summary/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/21/Less学习笔记-1/"/>
 
 
-  <title> CSS Summary | Jason Li </title>
+  <title> Less学习笔记-1 | Jason Li </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="en">
@@ -255,7 +255,7 @@
             
             
               
-                CSS Summary
+                Less学习笔记-1
               
             
           </h1>
@@ -267,8 +267,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-14T11:56:25+08:00" content="2016-07-14">
-              2016-07-14
+            <time itemprop="dateCreated" datetime="2017-04-21T00:51:14+08:00" content="2017-04-21">
+              2017-04-21
             </time>
           </span>
 
@@ -314,60 +314,14 @@
       
 
       
-        <h4 id="用border-radius画椭圆"><a href="#用border-radius画椭圆" class="headerlink" title="用border-radius画椭圆"></a>用border-radius画椭圆</h4><a id="more"></a>
-<p>border-radius对应的值格式如下：xx xx xx xx / xx xx xx xx;<br>前面4个表示圆角的水平半径，后面四个表示圆角的垂直半径。依次顺序为：左上 右上 右下 左下。</p>
-<pre><code>&lt;style&gt;
-div{
-    width:200px;
-    height:100px;
-    background:red;
-    margin:30px;
-    float:left;
-}
-.div1{
-    width:100px;
-    height:100px;
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-}
-.div2{
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-}
-.div3{
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-}
-.div4{
-    border-radius: 0 0 50% 50% / 0 0 100% 100%;
-}
-.div5{
-    border-radius: 100% 0 0 100% / 50% 0 0 50%;
-}
-.div6{
-    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
-}
-.div7{
-    border-radius: 100% 0 0 0 / 100% 0 0 0;
-}
-.div8{
-    border-radius: 0 100% 0 0 / 0 100% 0 0;
-}
-.div9{
-    border-radius: 0 0 100% 0 / 0 0 100% 0;
-}
-.div10{
-    border-radius: 0 0 0 100% / 0 0 0 100%;
-}
-&lt;/style&gt;
-&lt;div class=&quot;div1&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div2&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div3&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div4&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div5&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div6&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div7&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div8&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div9&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;div10&quot;&gt;&lt;/div&gt;
-</code></pre>
+        <h3 id="Less简介"><a href="#Less简介" class="headerlink" title="Less简介"></a>Less简介</h3><a id="more"></a>
+<ul>
+<li><p>第一种方式是直接在html页面引用.less文件，然后借助less.js去编译less文件动态生成css样式而存在于当前页面，这种方式适用于开发模式。</p>
+</li>
+<li><p>第二种方式是我们首先写好.less文件的语法，然后借助工具生成对应的.css文件，然后客户端直接引用.css文件即可。比如我们常用的bootstrap.css就是通过工具编译而成，这种方式更适合运行环境。</p>
+</li>
+</ul>
+
       
     </div>
 
@@ -391,7 +345,9 @@ div{
           
             <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
           
-            <a href="/tags/CSS/" rel="tag">#CSS</a>
+            <a href="/tags/Less/" rel="tag">#Less</a>
+          
+            <a href="/tags/Css/" rel="tag">#Css</a>
           
         </div>
       
@@ -400,16 +356,16 @@ div{
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/14/JS-判断图片上传/" rel="next" title="JS_判断图片上传">
-                <i class="fa fa-chevron-left"></i> JS_判断图片上传
+              <a href="/2017/04/14/Webpack学习笔记1/" rel="next" title="Webpack学习笔记1">
+                <i class="fa fa-chevron-left"></i> Webpack学习笔记1
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/05/PHP-Date/" rel="prev" title="PHP_Date">
-                PHP_Date <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/24/直播服务推流基础总结/" rel="prev" title="直播服务推流基础总结">
+                直播服务推流基础总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -571,7 +527,7 @@ div{
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#用border-radius画椭圆"><span class="nav-number">1.</span> <span class="nav-text">用border-radius画椭圆</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Less简介"><span class="nav-number">1.</span> <span class="nav-text">Less简介</span></a></li></ol></div>
             
           </div>
         </section>
