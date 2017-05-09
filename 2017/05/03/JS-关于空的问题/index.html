@@ -1,0 +1,721 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,JS,空," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="JS中判断空的问题总结活动中遇到判断数组为空的情况，在这里简单总结一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-关于空的问题">
+<meta property="og:url" content="http://yoursite.com/2017/05/03/JS-关于空的问题/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="JS中判断空的问题总结活动中遇到判断数组为空的情况，在这里简单总结一下。">
+<meta property="og:updated_time" content="2017-05-09T09:32:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-关于空的问题">
+<meta name="twitter:description" content="JS中判断空的问题总结活动中遇到判断数组为空的情况，在这里简单总结一下。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/03/JS-关于空的问题/"/>
+
+
+  <title> JS-关于空的问题 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS-关于空的问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-05-03T15:07:41+08:00" content="2017-05-03">
+              2017-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JS中判断空的问题总结"><a href="#JS中判断空的问题总结" class="headerlink" title="JS中判断空的问题总结"></a>JS中判断空的问题总结</h2><p>活动中遇到判断数组为空的情况，在这里简单总结一下。</p>
+<a id="more"></a>
+<p>一般遇到的数据值为“空值”：<br>undefined,<br>null,<br>空字符串及纯空白字符串：’’、’ ‘等<br>空数组：[]<br>空对象：{}<br>对于除此以外的数据值，均认为不为空</p>
+<h3 id="判断是否为空"><a href="#判断是否为空" class="headerlink" title="判断是否为空"></a>判断是否为空</h3><pre><code>var isEmptyValue = function(value) {
+    var type;
+    if(value == null) { // 等同于 value === undefined || value === null
+        return true;
+    }
+    type = Object.prototype.toString.call(value).slice(8, -1);
+    switch(type) {
+    case &apos;String&apos;:
+        return !$.trim(value);
+    case &apos;Array&apos;:
+        return !value.length;
+    case &apos;Object&apos;:
+        return $.isEmptyObject(value); // 普通对象使用 for...in 判断，有 key 即为 false
+    default:
+        return false; // 其他对象均视作非空
+    }
+};
+</code></pre><h3 id="数据类型判断-–-typeof"><a href="#数据类型判断-–-typeof" class="headerlink" title="数据类型判断 – typeof"></a>数据类型判断 – typeof</h3><p>一元运算符，返回值为一个<strong>字符串</strong>，该字符串说明数值类型。</p>
+<pre><code>var a = &apos;Jason&apos;; typeof a; // string
+var a = 1; typeof a; // number
+var a; typeof a; // undefined
+var a = false; typeof a; // boolean 
+
+var a = []; typeof a; // object
+var a = null; typeof a; // object
+var a = document; typeof a; // object
+
+var a = function() {}; typeof a; // function
+</code></pre><p>由上可见，null,对象，数组是object类型<br>对于函数类型返回的则是function，再比如typeof(Date)，typeof(eval)等。</p>
+<h3 id="js判断数组类型的方法"><a href="#js判断数组类型的方法" class="headerlink" title="js判断数组类型的方法"></a>js判断数组类型的方法</h3><h4 id="方法一-instanceof"><a href="#方法一-instanceof" class="headerlink" title="方法一 instanceof"></a>方法一 instanceof</h4><p>instanceof 用于判断一个变量是否某个对象的实例，是一个三目运算式 （和typeof最实质上的区别）</p>
+<h4 id="方法二-constructor"><a href="#方法二-constructor" class="headerlink" title="方法二 constructor"></a>方法二 constructor</h4><p>在W3C定义中的定义：constructor 属性返回对创建此对象的数组函数的引用。</p>
+<p>就是返回对象相对应的构造函数。</p>
+<p>从定义上来说跟instanceof不太一致，但效果都是一样的。</p>
+<pre><code>console.log([].constructor == Array);
+console.log({}.constructor == Object);
+console.log(&quot;string&quot;.constructor == String);
+console.log((123).constructor == Number);
+console.log(true.constructor == Boolean);
+</code></pre><p>较为严禁的写法：</p>
+<pre><code>function isArray(object){
+    return object &amp;&amp; typeof object===&apos;object&apos; &amp;&amp;
+            Array == object.constructor;
+}
+</code></pre><h4 id="方法三-特性判断法"><a href="#方法三-特性判断法" class="headerlink" title="方法三 特性判断法"></a>方法三 特性判断法</h4><p>object.propertyIsEnumerable(proName)<br>判断指定的属性是否可列举</p>
+<h4 id="方法四-最简方法"><a href="#方法四-最简方法" class="headerlink" title="方法四 最简方法"></a>方法四 最简方法</h4><pre><code>function isArray(o) {
+    return Object.prototype.toString.call(o) === ‘[object Array]‘;
+}
+</code></pre><p>ECMA中对Object.prototype.toString()的解释：</p>
+<p>Object.prototype.toString()<br>When the toString method is called, the following steps are taken:</p>
+<ol>
+<li>Get the [[Class]] property of this object.</li>
+<li>Compute a string value by concatenating the three strings “[object “, Result (1), and “]”.</li>
+<li>Return Result (2)</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+            <a href="/tags/空/" rel="tag">#空</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/30/JS-addEventListener和on的区别/" rel="next" title="JS-从addEventListener和on的区别，谈谈JS事件流">
+                <i class="fa fa-chevron-left"></i> JS-从addEventListener和on的区别，谈谈JS事件流
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/05/JS-原型继承/" rel="prev" title="JS-原型继承">
+                JS-原型继承 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar_2.png"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中判断空的问题总结"><span class="nav-number">1.</span> <span class="nav-text">JS中判断空的问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是否为空"><span class="nav-number">1.1.</span> <span class="nav-text">判断是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型判断-–-typeof"><span class="nav-number">1.2.</span> <span class="nav-text">数据类型判断 – typeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js判断数组类型的方法"><span class="nav-number">1.3.</span> <span class="nav-text">js判断数组类型的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一-instanceof"><span class="nav-number">1.3.1.</span> <span class="nav-text">方法一 instanceof</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二-constructor"><span class="nav-number">1.3.2.</span> <span class="nav-text">方法二 constructor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三-特性判断法"><span class="nav-number">1.3.3.</span> <span class="nav-text">方法三 特性判断法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法四-最简方法"><span class="nav-number">1.3.4.</span> <span class="nav-text">方法四 最简方法</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

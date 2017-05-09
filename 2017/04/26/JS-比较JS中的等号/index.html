@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/26/JS-比较JS中的等号/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="概述JS中一般判断相等时有两种运算符，等于运算符==和恒等运算符===。">
-<meta property="og:updated_time" content="2017-04-26T10:04:24.000Z">
+<meta property="og:updated_time" content="2017-05-05T03:11:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-比较JS中的==与===">
 <meta name="twitter:description" content="概述JS中一般判断相等时有两种运算符，等于运算符==和恒等运算符===。">
@@ -354,7 +354,15 @@ String(&quot;1&quot;) === Number(1) //false
 true == 1  // true, 1==1
 true == 2  // false , true转换为1， 1==2
 true == !!2// true, !2 会将数字2转换为boolean值， !2 = false, !!2 = true
-</code></pre>
+</code></pre><h2 id="对操作值进行隐式类型转的规则-1"><a href="#对操作值进行隐式类型转的规则-1" class="headerlink" title="=== 对操作值进行隐式类型转的规则"></a>=== 对操作值进行隐式类型转的规则</h2><ul>
+<li>如果<strong>类型不同</strong>，就[不相等]</li>
+<li>如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。（判断一个值是否是NaN，只能用isNaN()来判断）</li>
+<li>如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。</li>
+<li>如果两个值都是true，或者都是false，那么[相等]。</li>
+<li>如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。</li>
+<li>如果两个值都是null，或者都是undefined，那么[相等]。</li>
+</ul>
+
       
     </div>
 
@@ -394,6 +402,10 @@ true == !!2// true, !2 会将数字2转换为boolean值， !2 = false, !!2 = tru
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/30/JS-addEventListener和on的区别/" rel="prev" title="JS-从addEventListener和on的区别，谈谈JS事件流">
+                JS-从addEventListener和on的区别，谈谈JS事件流 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -461,7 +473,7 @@ true == !!2// true, !2 会将数字2转换为boolean值， !2 = false, !!2 = tru
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -478,7 +490,7 @@ true == !!2// true, !2 会将数字2转换为boolean值， !2 = false, !!2 = tru
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -554,7 +566,7 @@ true == !!2// true, !2 会将数字2转换为boolean值， !2 = false, !!2 = tru
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是否类型转换"><span class="nav-number">2.</span> <span class="nav-text">是否类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详述"><span class="nav-number">3.</span> <span class="nav-text">详述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对操作值进行隐式类型转的规则"><span class="nav-number">4.</span> <span class="nav-text">== 对操作值进行隐式类型转的规则</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是否类型转换"><span class="nav-number">2.</span> <span class="nav-text">是否类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详述"><span class="nav-number">3.</span> <span class="nav-text">详述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对操作值进行隐式类型转的规则"><span class="nav-number">4.</span> <span class="nav-text">== 对操作值进行隐式类型转的规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对操作值进行隐式类型转的规则-1"><span class="nav-number">5.</span> <span class="nav-text">=== 对操作值进行隐式类型转的规则</span></a></li></ol></div>
             
           </div>
         </section>

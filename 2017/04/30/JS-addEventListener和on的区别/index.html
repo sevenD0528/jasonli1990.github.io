@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,JS,事件流," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="addEventListener和on的区别最近听人说起一道面试题，如上，发现自己自从进了唱吧，一直在忙于写业务代码，用库代码较多，很少手写原生js代码，基础方面还有很多欠缺，可能到了多看看书和资料补补基础的时候了。
+先说说这个问题吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-从addEventListener和on的区别，谈谈JS事件流">
+<meta property="og:url" content="http://yoursite.com/2017/04/30/JS-addEventListener和on的区别/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="addEventListener和on的区别最近听人说起一道面试题，如上，发现自己自从进了唱吧，一直在忙于写业务代码，用库代码较多，很少手写原生js代码，基础方面还有很多欠缺，可能到了多看看书和资料补补基础的时候了。
+先说说这个问题吧。">
+<meta property="og:updated_time" content="2017-04-30T08:38:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-从addEventListener和on的区别，谈谈JS事件流">
+<meta name="twitter:description" content="addEventListener和on的区别最近听人说起一道面试题，如上，发现自己自从进了唱吧，一直在忙于写业务代码，用库代码较多，很少手写原生js代码，基础方面还有很多欠缺，可能到了多看看书和资料补补基础的时候了。
+先说说这个问题吧。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/30/JS-addEventListener和on的区别/"/>
+
+
+  <title> JS-从addEventListener和on的区别，谈谈JS事件流 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS-从addEventListener和on的区别，谈谈JS事件流
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-04-30T14:44:18+08:00" content="2017-04-30">
+              2017-04-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="addEventListener和on的区别"><a href="#addEventListener和on的区别" class="headerlink" title="addEventListener和on的区别"></a>addEventListener和on的区别</h2><p>最近听人说起一道面试题，如上，发现自己自从进了唱吧，一直在忙于写业务代码，用库代码较多，很少手写原生js代码，基础方面还有很多欠缺，可能到了多看看书和资料补补基础的时候了。</p>
+<p>先说说这个问题吧。</p>
+<a id="more"></a>
+<p>Example：</p>
+<pre><code>&lt;div id=&quot;box&quot;&gt;Here is the Box&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    window.onload = function() {
+        var box = document.getElementById(&apos;box&apos;);
+        box.onclick = function() {
+            console.log(&apos;This is box1&apos;);
+        }
+
+        box.onclick = function() {
+            box.style.fontSize = &apos;18px&apos;;
+            console.log(&apos;This is box2&apos;);
+        }
+    }
+&lt;/script&gt;
+</code></pre><p>控制台打印出：This is box2</p>
+<p>结果显而易见，第二个onclick事件把第一个覆盖了。大部分时候一个onclick事件已经足够，但有时可能我们也需要执行多个相同事件。</p>
+<p>这时我们就需要addEventListener事件，它可以多次绑定同一个事件并且不会覆盖上一个事件。</p>
+<p>Example:</p>
+<pre><code>&lt;div id=&quot;box&quot;&gt;Here is the Box&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    window.onload = function() {
+        var box = document.getElementById(&apos;box&apos;);
+        box.addEventListener(&apos;click&apos;, function(){
+            console.log(&quot;This is box1&quot;);
+        });
+        box.addEventListener(&apos;click&apos;, function(){
+            console.log(&quot;This is box2&quot;);
+        });
+}
+</code></pre><p>控制台打印出：<br>This is box1<br>This is box2</p>
+<p>addEventListenert方法第一个参数填写事件名，注意不需要写on，第二个参数可以是一个函数，第三个参数是指在冒泡阶段还是捕获阶段处理事件处理程序,如果为true代表捕获阶段处理,如果是false代表冒泡阶段处理，第三个参数可以省略，大多数情况也不需要用到第三个参数,不写第三个参数默认false</p>
+<h3 id="addEventListener第三个参数"><a href="#addEventListener第三个参数" class="headerlink" title="addEventListener第三个参数"></a>addEventListener第三个参数</h3><pre><code>&lt;div id=&quot;father&quot;&gt;
+    &lt;div id=&quot;child&quot;&gt;
+        child
+    &lt;/div&gt;
+&lt;/div&gt;
+
+window.onload = function() {
+    var father = document.getElem
+    entById(&apos;father&apos;);
+    var child = document.getElementById(&apos;child&apos;);
+    father.addEventListener(&apos;click&apos;, function(){
+        console.log(&quot;This is father&quot;);
+    });
+    child.addEventListener(&apos;click&apos;, function(){
+        console.log(&quot;This is child&quot;);
+    });
+}
+</code></pre><p>如果这个时候，点击child，控制台会打印：<br>This is child;<br>This is father;</p>
+<p>也就是说，事件默认情况事件下，是按照事件冒泡的执行顺序进行的。</p>
+<p>然而，如果第三个参数写的是true，则按照事件捕获的执行顺序进行的。</p>
+<p>Example：</p>
+<pre><code>window.onload = function() {
+    var father = document.getElementById(&apos;father&apos;);
+    var child = document.getElementById(&apos;child&apos;);
+    father.addEventListener(&apos;click&apos;, function(){
+        console.log(&quot;This is father&quot;);
+    }, true);
+    child.addEventListener(&apos;click&apos;, function(){
+        console.log(&quot;This is child&quot;);
+    });
+}
+</code></pre><h2 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h2><p>从上面的问题，我们来看一下JS中的事件流。</p>
+<p>事件流描述的是从页面中接收事件的顺序。</p>
+<p>据了解，IE和Netscape开发团队提出了差不多完全相反的事件流概念。</p>
+<p>IE为事件冒泡流，Netscape为事件捕获流。</p>
+<h3 id="事件冒泡（Event-Bubbling）"><a href="#事件冒泡（Event-Bubbling）" class="headerlink" title="事件冒泡（Event Bubbling）"></a>事件冒泡（Event Bubbling）</h3><p>即事件开始时由具体的元素接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;father&quot;&gt;
+        father
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>单击了div，则事件会按如下顺序传播，div-&gt;body-&gt;html-&gt;document</p>
+<p>也就是click事件沿DOM树向上传播，在每一级节点都会发生，直到传播到document对象。</p>
+<p><strong>所有现代浏览器都支持冒泡，但个别还是有不同</strong></p>
+<h3 id="事件捕获（event-capturing）"><a href="#事件捕获（event-capturing）" class="headerlink" title="事件捕获（event capturing）"></a>事件捕获（event capturing）</h3><p>事件捕获是指不太具体的节点应该早接收到事件，而具体的节点应该最后接收到事件。</p>
+<p>单击div后，click事件触发顺序为document-&gt;html-&gt;body-&gt;div</p>
+<p>###DOM事件流</p>
+<p>DOM2级事件规定的事件流包括三个阶段：事件捕获、目标阶段和事件冒泡阶段。</p>
+<p>先事件捕获，为截获事件提供了机会，然后是目标接收到事件，最后一个阶段是冒泡阶段。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+            <a href="/tags/事件流/" rel="tag">#事件流</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/26/JS-比较JS中的等号/" rel="next" title="JS-比较JS中的==与===">
+                <i class="fa fa-chevron-left"></i> JS-比较JS中的==与===
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/03/JS-关于空的问题/" rel="prev" title="JS-关于空的问题">
+                JS-关于空的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar_2.png"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#addEventListener和on的区别"><span class="nav-number">1.</span> <span class="nav-text">addEventListener和on的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addEventListener第三个参数"><span class="nav-number">1.1.</span> <span class="nav-text">addEventListener第三个参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件流"><span class="nav-number">2.</span> <span class="nav-text">事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件冒泡（Event-Bubbling）"><span class="nav-number">2.1.</span> <span class="nav-text">事件冒泡（Event Bubbling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件捕获（event-capturing）"><span class="nav-number">2.2.</span> <span class="nav-text">事件捕获（event capturing）</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

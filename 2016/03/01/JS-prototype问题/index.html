@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/03/01/JS-prototype问题/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="具体参考博客总结http://www.uw3c.com/jsviews/js12.html">
-<meta property="og:updated_time" content="2016-03-21T17:08:15.000Z">
+<meta property="og:updated_time" content="2017-05-05T07:41:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-prototype问题笔记">
 <meta name="twitter:description" content="具体参考博客总结http://www.uw3c.com/jsviews/js12.html">
@@ -315,12 +315,10 @@
 
       
         <p>具体参考博客总结<a href="http://www.uw3c.com/jsviews/js12.html" target="_blank" rel="external">http://www.uw3c.com/jsviews/js12.html</a><br><a id="more"></a></p>
-<p>###JS的prototype与<em>proto</em></p>
-<p>prototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。</p>
+<h3 id="JS的prototype与proto"><a href="#JS的prototype与proto" class="headerlink" title="JS的prototype与proto"></a>JS的prototype与<em>proto</em></h3><p>prototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。</p>
 <p>__proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。</p>
 <p>用chrome可以访问到对象的__proto__属性，IE不可以。</p>
-<p>###new的过程</p>
-<pre><code>var Person = function(){}
+<h3 id="new的过程"><a href="#new的过程" class="headerlink" title="new的过程"></a>new的过程</h3><pre><code>var Person = function(){}
 var p = new Person();
 </code></pre><ul>
 <li>var p = {}是初始化一个对象；</li>
@@ -450,7 +448,7 @@ p.sayName();
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -467,7 +465,7 @@ p.sayName();
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -543,7 +541,7 @@ p.sayName();
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS的prototype与proto"><span class="nav-number">1.</span> <span class="nav-text">JS的prototype与proto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new的过程"><span class="nav-number">2.</span> <span class="nav-text">new的过程</span></a></li></ol></div>
             
           </div>
         </section>
