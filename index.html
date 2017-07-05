@@ -254,6 +254,121 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/11/udontknowjs2-4/" itemprop="url">
+                  udontknowjs2-4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-05-11T16:22:46+08:00" content="2017-05-11">
+              2017-05-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>你不知道的JavaScript（中），第四章读书笔记。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/11/udontknowjs2-4/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/05/JS-原型继承/" itemprop="url">
                   JS-原型继承
                 </a>
@@ -316,173 +431,12 @@
 
       
         
-          
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。</p>
-<p>既然要实现继承，就一定要有一个父类。</p>
-<pre><code>// 定义一个父类 Father
-function Father(name) {
-    // 属性
-    this.name = name || &apos;father&apos;;
-    // 实例方法
-    this.say = function() {
-        console.log(&apos;My name is &apos; + this.name);
-    }
-}
-
-// 原型方法
-Father.prototype.work = function(job) {
-    console.log(this.name + &quot; &apos;s job &quot; + job);
-}
-</code></pre><h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><pre><code>function Son1() {}
-
-Son1.prototype = new Father();
-Son1.prototype.name = &apos;son1&apos;;
-
-var son1 = new Son1();
-console.log(&apos;原型链继承&apos;);
-console.log(son1.name);
-console.log(son1.work(&apos;student&apos;));
-console.log(son1.say());
-console.log(son1 instanceof Father);
-console.log(son1 instanceof Son1);
-</code></pre><p>特点：</p>
-<ul>
-<li>非常纯粹的继承关系，实例是子类的实例，也是父类的实例</li>
-<li>父类新增原型方法/原型属性，子类都能访问到</li>
-<li>简单，易于实现<br>缺点：</li>
-<li>要想为子类新增属性和方法，必须要在new Animal()这样的语句之后执行，不能放到构造器中</li>
-<li>无法实现多继承</li>
-<li>来自原型对象的引用属性是所有实例共享的（详细请看附录代码： 示例1）</li>
-<li>创建子类实例时，无法向父类构造函数传参</li>
-</ul>
-<h4 id="构造继承"><a href="#构造继承" class="headerlink" title="构造继承"></a>构造继承</h4><p>使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（不用原型）</p>
-<pre><code>function Son1(name) {
-    Father.call(this);
-    this.name = name || &apos;Son1&apos;
-}
-
-var son1 = new Son1();
-console.log(&apos;构造继承&apos;);
-console.log(son1.name);
-// console.log(son1.work(&apos;student&apos;)); // 不行，不继承原型属性方法
-console.log(son1.say());
-console.log(son1 instanceof Father); // false 
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
-<ul>
-<li>解决了1中，子类实例共享父类引用属性的问题</li>
-<li>创建子类实例时，可以向父类传递参数</li>
-<li>可以实现多继承（call多个父类对象）</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>实例并不是父类的实例，只是子类的实例</li>
-<li>只能继承父类的实例属性和方法，不能继承原型属性/方法</li>
-<li>无法实现函数复用，每个子类都有父类实例函数的副本，影响性能</li>
-</ul>
-<h4 id="实例继承"><a href="#实例继承" class="headerlink" title="实例继承"></a>实例继承</h4><p>为父类实例添加新特性，作为子类实例返回</p>
-<pre><code>function Son1(name){
-  var instance = new Father();
-  instance.name = name || &apos;Son1&apos;;
-  return instance;
-}
-
-// Test Code
-var son1 = new Son1();
-console.log(son1.name);
-// console.log(son1.sleep());
-console.log(son1 instanceof Father); // true
-console.log(son1 instanceof Son1); // false
-</code></pre><p>特点：</p>
-<ul>
-<li>不限制调用方式，不管是new 子类()还是子类(),返回的对象具有相同的效果</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li><strong>实例是父类的实例，不是子类的实例</strong></li>
-<li>不支持多继承</li>
-</ul>
-<h4 id="拷贝继承"><a href="#拷贝继承" class="headerlink" title="拷贝继承"></a>拷贝继承</h4><pre><code>function Son1(name) {
-    var father = new Father();
-    for (var p in father) {
-        Son1.prototype[p] = father[p];
-    }
-
-    Son1.prototype.name = name || &apos;Son1&apos;;
-}
-
-var son1 = new Son1();
-console.log(son1.name);
-// console.log(son1.sleep());
-console.log(son1 instanceof Father); // false
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
-<ul>
-<li>支持多继承</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>效率较低，内存占用高（因为要拷贝父类的属性）</li>
-<li>无法获取父类不可枚举的方法（不可枚举方法，不能使用for in 访问到）</li>
-</ul>
-<h4 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h4><p>通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用</p>
-<pre><code>function Son1(name) {
-    Father.call(this);
-    this.name = name || &apos;Son1&apos;;
-}
-
-Son1.prototype = new Father();
-
-var son1 = new Son1();
-console.log(&apos;组合继承&apos;);
-console.log(son1.name);
-console.log(son1.work(&apos;student&apos;));
-console.log(son1.say());
-console.log(son1 instanceof Father); // true
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
-<ul>
-<li>弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法</li>
-<li>既是子类的实例，也是父类的实例</li>
-<li>不存在引用属性共享问题</li>
-<li>可传参</li>
-<li>函数可复用</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）</li>
-</ul>
-<h4 id="寄生组合继承"><a href="#寄生组合继承" class="headerlink" title="寄生组合继承"></a>寄生组合继承</h4><p>通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点</p>
-<pre><code>function Son1(name) {
-    Father.call(this);
-    this.name = name || &apos;Son1&apos;;
-}
-
-(function(){
-    var Super = function(){};
-    Super.prototype = Father.prototype;
-    Son1.prototype = new Super();
-})();
-
-// Son1.prototype = new Father();
-
-var son1 = new Son1();
-console.log(&apos;组合继承&apos;);
-console.log(son1.name);
-console.log(son1.work(&apos;student&apos;));
-console.log(son1.say());
-console.log(son1 instanceof Father); // true
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
-<ul>
-<li>堪称完美</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>实现较为复杂</li>
-</ul>
-
-          
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/05/JS-原型继承/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1431,121 +1385,6 @@ console.log(son1 instanceof Son1); // true
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/06/udontknowjs2-1/" itemprop="url">
-                  udontknowjs2-1(你不知道的JavaScript中卷笔记2-1)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-04-06T17:19:18+08:00" content="2017-04-06">
-              2017-04-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/06/udontknowjs2-1/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1591,7 +1430,7 @@ console.log(son1 instanceof Son1); // true
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
