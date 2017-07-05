@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Frontend,JS," />
+  <meta name="keywords" content="FrontEnd,JS," />
 
 
 
@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/05/JS-Summary/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="问题总结">
-<meta property="og:updated_time" content="2017-02-03T08:23:49.000Z">
+<meta property="og:updated_time" content="2017-07-05T03:06:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS_Summary">
 <meta name="twitter:description" content="问题总结">
@@ -281,8 +281,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">Frontend</span>
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
                   </a>
                 </span>
 
@@ -315,8 +315,7 @@
 
       
         <h4 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h4><a id="more"></a>
-<h5 id="1-与-的区别"><a href="#1-与-的区别" class="headerlink" title="1. []+{} 与 {}+[]的区别"></a>1. []+{} 与 {}+[]的区别</h5><p>作者：贺师俊<br>链接：<a href="https://www.zhihu.com/question/45478070/answer/99514135" target="_blank" rel="external">https://www.zhihu.com/question/45478070/answer/99514135</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<p>先说 [] + {} 。一个数组加一个对象。<br>加法会进行隐式类型转换，规则是调用其 valueOf() 或 toString() 以取得一个非对象的值（primitive value）。如果两个值中的任何一个是字符串，则进行字符串串接，否则进行数字加法。<br>[] 和 {} 的 valueOf() 都返回对象自身，所以都会调用 toString()，最后的结果是字符串串接。[].toString() 返回空字符串，({}).toString() 返回“[object Object]”。最后的结果就是“[object Object]”。</p>
+<h5 id="1-与-的区别"><a href="#1-与-的区别" class="headerlink" title="1. []+{} 与 {}+[]的区别"></a>1. []+{} 与 {}+[]的区别</h5><p>先说 [] + {} 。一个数组加一个对象。<br>加法会进行隐式类型转换，规则是调用其 valueOf() 或 toString() 以取得一个非对象的值（primitive value）。如果两个值中的任何一个是字符串，则进行字符串串接，否则进行数字加法。<br>[] 和 {} 的 valueOf() 都返回对象自身，所以都会调用 toString()，最后的结果是字符串串接。[].toString() 返回空字符串，({}).toString() 返回“[object Object]”。最后的结果就是“[object Object]”。</p>
 <p>然后说 {} + [] 。看上去应该和上面一样。但是 {} 除了表示一个对象之外，也可以表示一个空的 block。在 [] + {} 中，[] 被解析为数组，因此后续的 + 被解析为加法运算符，而 {} 就解析为对象。但在 {} + [] 中，{} 被解析为空的 block，随后的 + 被解析为正号运算符。即实际上成了：<br>{ // empty block }<br>+[]<br>即对一个空数组执行正号运算，实际上就是把数组转型为数字。首先调用 [].valueOf() 。返回数组自身，不是primitive value，因此继续调用 [].toString() ，返回空字符串。空字符串转型为数字，返回0，即最后的结果。</p>
 
       
@@ -340,7 +339,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Frontend/" rel="tag">#Frontend</a>
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
           
             <a href="/tags/JS/" rel="tag">#JS</a>
           
@@ -437,7 +436,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
