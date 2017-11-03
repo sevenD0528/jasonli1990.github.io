@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="###POST提交数据的几种方式 项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。 遇到的场景是AngularJS中，想利用Ajax技术，Post请求进行表单提交的操作，无File类型文件提交，服务器端用PHP语言编写。">
+<meta name="description" content="POST提交数据的几种方式项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。 遇到的场景是AngularJS中，想利用Ajax技术，Post请求进行表单提交的操作，无File类型文件提交，服务器端用PHP语言编写。 先从基础">
 <meta name="keywords" content="FrontEnd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POST提交数据">
 <meta property="og:url" content="http://yoursite.com/2017/10/30/POST提交数据/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="###POST提交数据的几种方式 项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。 遇到的场景是AngularJS中，想利用Ajax技术，Post请求进行表单提交的操作，无File类型文件提交，服务器端用PHP语言编写。">
+<meta property="og:description" content="POST提交数据的几种方式项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。 遇到的场景是AngularJS中，想利用Ajax技术，Post请求进行表单提交的操作，无File类型文件提交，服务器端用PHP语言编写。 先从基础">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-01T07:01:18.000Z">
+<meta property="og:updated_time" content="2017-11-01T07:20:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POST提交数据">
-<meta name="twitter:description" content="###POST提交数据的几种方式 项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。 遇到的场景是AngularJS中，想利用Ajax技术，Post请求进行表单提交的操作，无File类型文件提交，服务器端用PHP语言编写。">
+<meta name="twitter:description" content="POST提交数据的几种方式项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。 遇到的场景是AngularJS中，想利用Ajax技术，Post请求进行表单提交的操作，无File类型文件提交，服务器端用PHP语言编写。 先从基础">
 
 
 
@@ -316,15 +316,13 @@
       
 
       
-        <p>###POST提交数据的几种方式</p>
-<p>项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。</p>
+        <h3 id="POST提交数据的几种方式"><a href="#POST提交数据的几种方式" class="headerlink" title="POST提交数据的几种方式"></a>POST提交数据的几种方式</h3><p>项目中遇到点HTTP请求的问题，关于Ajax提交表单方面。基础知识在大学的时候都接触过，但是实际工程项目中，还是有不扎实的地方，并且随着技术的进步，协议和各种框架请求方式都在更新，趁这个机会，搜些资料，总结和巩固一下这块知识。</p>
 <p>遇到的场景是AngularJS中，想利用Ajax技术，Post请求进行表单提交的操作，无File类型文件提交，服务器端用PHP语言编写。</p>
 <p>先从基础看起。</p>
 <a id="more"></a>
-<p>####HTTP</p>
-<p>#####HTTP简介<br>HTTP(HyperText Transfer Protocol)是一套计算机通过网络进行通信的规则。HTTP目前协议的版本是HTTP1.1，是一种无状态的协议。</p>
+<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><h5 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="HTTP简介"></a>HTTP简介</h5><p>HTTP(HyperText Transfer Protocol)是一套计算机通过网络进行通信的规则。HTTP目前协议的版本是HTTP1.1，是一种无状态的协议。</p>
 <p><strong>无状态</strong>是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了，在服务器端不保留连接的有关信息。</p>
-<p>#####HTTP通信<br>HTTP通信TCP三次握手就不用多说了，大学都学过。参考了些资料，简单介绍下通信过程。</p>
+<h5 id="HTTP通信"><a href="#HTTP通信" class="headerlink" title="HTTP通信"></a>HTTP通信</h5><p>HTTP通信TCP三次握手就不用多说了，大学都学过。参考了些资料，简单介绍下通信过程。</p>
 <p>HTTP遵循请求(Request)/应答(Response)模型。</p>
 <p>Web浏览器向Web服务器发送请求，Web服务器处理请求并返回适当的应答。所有HTTP连接都被构造成一套请求和应答。</p>
 <p>一次完整的HTTP通信</p>
@@ -354,10 +352,9 @@
 <blockquote>
 <p>Connection:keep-alive </p>
 </blockquote>
-<p>#####URL统一资源定位符</p>
-<p>URI(uniform resource identifier)，统一资源标识符，用来唯一的标识一个资源。而URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何定位这个资源。URN，uniform resource name，统一资源命名，是通过名字来标识资源。</p>
+<h5 id="URL统一资源定位符"><a href="#URL统一资源定位符" class="headerlink" title="URL统一资源定位符"></a>URL统一资源定位符</h5><p>URI(uniform resource identifier)，统一资源标识符，用来唯一的标识一个资源。而URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何定位这个资源。URN，uniform resource name，统一资源命名，是通过名字来标识资源。</p>
 <p>简单来说，URI是以一种抽象的，高层次概念定义统一资源标识，而URL和URN则是具体的资源标识的方式。URL和URN都是一种URI的实现。</p>
-<p>#####HTTP请求<br>http请求由三部分组成，分别是：请求行、消息报头、请求正文。</p>
+<h5 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h5><p>http请求由三部分组成，分别是：请求行、消息报头、请求正文。</p>
 <ul>
 <li><strong>请求行</strong></li>
 </ul>
@@ -367,8 +364,7 @@
 <p>Method Request-URI HTTP-Version CRLF</p>
 </blockquote>
 <p>其中 Method表示请求方法；Request-URI是一个统一资源标识符；HTTP-Version表示请求的HTTP协议版本；CRLF表示回车和换行（除了作为结尾的CRLF外，不允许出现单独的CR或LF字符）    </p>
-<p>####<em>请求方法</em></p>
-<table>
+<h4 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a><em>请求方法</em></h4><table>
 <thead>
 <tr>
 <th>请求</th>
@@ -410,8 +406,7 @@
 </tr>
 </tbody>
 </table>
-<p>####Get请求</p>
-<p>GET用于信息获取。</p>
+<h4 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h4><p>GET用于信息获取。</p>
 <ul>
 <li>GET用于获取信息而非修改信息，</li>
 <li>对同一URL的多个请求返回的结果仅有服务器行为决定。（这一点与POST方法有着明显区别）</li>
@@ -427,11 +422,10 @@
 <li>如果是中文/其他字符，则直接把字符串用BASE64加密，得出如：%E4%BD%A0%E5%A5%BD，其中％XX中的XX为该符号以16进制表示的ASCII。</li>
 </ul>
 <p>因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系了。Http协议并没有直接限制URL的长度，但是不同的浏览器和服务器通常对URL的长度定义了上限。</p>
-<p>####Post请求</p>
-<p>都知道POST请求是不把信息暴露在URL上的，所以相对安全。POST把提交的数据则放置在是HTTP包的包体中。</p>
+<h4 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h4><p>都知道POST请求是不把信息暴露在URL上的，所以相对安全。POST把提交的数据则放置在是HTTP包的包体中。</p>
 <p>GET和POST只是发送机制不同，并不是一个取一个发。</p>
 <p>通过GET提交数据，用户名和密码将明文出现在URL上，因为登录页面有可能被浏览器缓存，其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了；除此之外，使用GET提交数据还可能会造成Cross-site request forgery攻击。</p>
-<p>####Head请求<br>HEAD方法与GET方法几乎是一样的，对于HEAD请求的回应部分来说，它的HTTP头部中包含的信息与通过GET请求所得到的信息是相同的。利用这个方法，不必传输整个资源内容，就可以得到Request-URI所标识的资源的信息。该方法常用于测试超链接的有效性，是否可以访问，以及最近是否更新。</p>
+<h4 id="Head请求"><a href="#Head请求" class="headerlink" title="Head请求"></a>Head请求</h4><p>HEAD方法与GET方法几乎是一样的，对于HEAD请求的回应部分来说，它的HTTP头部中包含的信息与通过GET请求所得到的信息是相同的。利用这个方法，不必传输整个资源内容，就可以得到Request-URI所标识的资源的信息。该方法常用于测试超链接的有效性，是否可以访问，以及最近是否更新。</p>
 <ul>
 <li><strong>请求头</strong></li>
 </ul>
@@ -460,8 +454,7 @@ Accept-Encoding:gzip,deflate.
 <li><strong>请求正文</strong></li>
 </ul>
 <p>请求头和请求正文之间是一个空行，这个行非常重要，它表示请求头已经结束，接下来的是请求正文。</p>
-<p>#####HTTP应答</p>
-<p>在接收和解释请求消息后，服务器返回一个HTTP响应消息。HTTP响应也是由三个部分组成，分别是：状态行、响应头、响应正文</p>
+<h5 id="HTTP应答"><a href="#HTTP应答" class="headerlink" title="HTTP应答"></a>HTTP应答</h5><p>在接收和解释请求消息后，服务器返回一个HTTP响应消息。HTTP响应也是由三个部分组成，分别是：状态行、响应头、响应正文</p>
 <ul>
 <li><strong>状态行</strong></li>
 </ul>
@@ -535,8 +528,7 @@ Content-Type:text/html;charset=GB2312
 <li><strong>响应正文</strong></li>
 </ul>
 <p>响应正文即为服务器返回的资源。</p>
-<p>####常见的POST数据提交方式</p>
-<p>进入正题，我们都知道，HTTP协议是以ASCII码传输，建立在TCP/IP协议之上的应用层规范。</p>
+<h4 id="常见的POST数据提交方式"><a href="#常见的POST数据提交方式" class="headerlink" title="常见的POST数据提交方式"></a>常见的POST数据提交方式</h4><p>进入正题，我们都知道，HTTP协议是以ASCII码传输，建立在TCP/IP协议之上的应用层规范。</p>
 <p>上面介绍到的HTTP请求的三个部分：状态行，请求头，消息主体类似于：</p>
 <pre><code>&lt;method&gt; &lt;request-url&gt; &lt;version&gt;
 &lt;headers&gt;
@@ -817,7 +809,7 @@ $http({
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#POST提交数据的几种方式"><span class="nav-number">1.</span> <span class="nav-text">POST提交数据的几种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP简介"><span class="nav-number">1.1.1.</span> <span class="nav-text">HTTP简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP通信"><span class="nav-number">1.1.2.</span> <span class="nav-text">HTTP通信</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#URL统一资源定位符"><span class="nav-number">1.1.3.</span> <span class="nav-text">URL统一资源定位符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP请求"><span class="nav-number">1.1.4.</span> <span class="nav-text">HTTP请求</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-number">1.2.</span> <span class="nav-text">请求方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get请求"><span class="nav-number">1.3.</span> <span class="nav-text">Get请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Post请求"><span class="nav-number">1.4.</span> <span class="nav-text">Post请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Head请求"><span class="nav-number">1.5.</span> <span class="nav-text">Head请求</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP应答"><span class="nav-number">1.5.1.</span> <span class="nav-text">HTTP应答</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的POST数据提交方式"><span class="nav-number">1.6.</span> <span class="nav-text">常见的POST数据提交方式</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
