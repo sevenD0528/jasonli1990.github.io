@@ -98,8 +98,9 @@
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_1/function.png">
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_1/object.png">
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_1/numtostr.png">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_1/strtonum.png">
 <meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_1/numtobool.png">
-<meta property="og:updated_time" content="2017-11-27T06:24:32.000Z">
+<meta property="og:updated_time" content="2017-11-27T06:43:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-类型转换">
 <meta name="twitter:description" content="JavaScript类型操作以及一些规范类型的检测 类型检测优先使用 typeof。 对象类型检测使用 instanceof。 null 或 undefined的检测使用 == null。(typeof null 是 object)">
@@ -355,17 +356,16 @@ typeof a === &apos;undefined&apos; // undefined
 </ul>
 </li>
 </ul>
-<pre><code>* String转换成Number可以直接在前面加+
-
-    num = +num;
-
-![](/img/FrontEnd/js_1/strtonum.png)    
-
-* String 转Number时候如果要转换的字符串结尾包含非数字时，可以用parseInt，**使用parseInt时一定注意指定进制**
-
-
-        var b = &apos;100px&apos;;
-        parseInt(b, 10);
+<ul>
+<li><p>String转换成Number可以直接在前面加+</p>
+<pre><code>num = +num;
+</code></pre><p>  <img src="/img/FrontEnd/js_1/strtonum.png" alt="">    </p>
+</li>
+<li><p>String 转Number时候如果要转换的字符串结尾包含非数字时，可以用parseInt，<strong>使用parseInt时一定注意指定进制</strong></p>
+</li>
+</ul>
+<pre><code>var b = &apos;100px&apos;;
+parseInt(b, 10);
 </code></pre><ul>
 <li><p>转换成 Boolean 时，使用 !!</p>
 <p>  <img src="/img/FrontEnd/js_1/numtobool.png" alt="">    </p>
