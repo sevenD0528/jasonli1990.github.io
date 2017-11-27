@@ -317,59 +317,16 @@
 
       
         
-          
-            <h3 id="JavaScript类型操作以及一些规范"><a href="#JavaScript类型操作以及一些规范" class="headerlink" title="JavaScript类型操作以及一些规范"></a>JavaScript类型操作以及一些规范</h3><h4 id="类型的检测"><a href="#类型的检测" class="headerlink" title="类型的检测"></a>类型的检测</h4><ul>
+          <h3 id="JavaScript类型操作以及一些规范"><a href="#JavaScript类型操作以及一些规范" class="headerlink" title="JavaScript类型操作以及一些规范"></a>JavaScript类型操作以及一些规范</h3><h4 id="类型的检测"><a href="#类型的检测" class="headerlink" title="类型的检测"></a>类型的检测</h4><ul>
 <li>类型检测优先使用 typeof。</li>
 <li>对象类型检测使用 instanceof。</li>
 <li>null 或 undefined的检测使用 == null。(typeof null 是 object)</li>
 </ul>
-<pre><code>typeof a === &apos;string&apos; 
-</code></pre><p><img src="/img/FrontEnd/js_1/string.png" alt=""></p>
-<pre><code>typeof a === &apos;number&apos; 
-</code></pre><p><img src="/img/FrontEnd/js_1/number.png" alt=""></p>
-<pre><code>typeof a === &apos;boolean&apos; 
-</code></pre><p><img src="/img/FrontEnd/js_1/boolean.png" alt=""></p>
-<pre><code>typeof a === &apos;function&apos; 
-</code></pre><p><img src="/img/FrontEnd/js_1/function.png" alt=""></p>
-<pre><code>typeof a === &apos;object&apos; 
-</code></pre><p><img src="/img/FrontEnd/js_1/object.png" alt=""></p>
-<pre><code>a instanceof RegExp // RegExp
-a instanceof Array // Array
-a === null // null
-a == null // null or undefined
-typeof a === &apos;undefined&apos; // undefined
-</code></pre><h4 id="类型的快速转换"><a href="#类型的快速转换" class="headerlink" title="类型的快速转换"></a>类型的快速转换</h4><ul>
-<li><p>Number和String</p>
-<ul>
-<li><p>Number转换成String可以直接在后面加’’</p>
-<p>  num = num + ‘’;</p>
-<p><img src="/img/FrontEnd/js_1/numtostr.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>* String转换成Number可以直接在前面加+
-
-    num = +num;
-
-![](/img/FrontEnd/js_1/strtonum.png)    
-
-* String 转Number时候如果要转换的字符串结尾包含非数字时，可以用parseInt，**使用parseInt时一定注意指定进制**
-
-
-        var b = &apos;100px&apos;;
-        parseInt(b, 10);
-</code></pre><ul>
-<li><p>转换成 Boolean 时，使用 !!</p>
-<p>  <img src="/img/FrontEnd/js_1/numtobool.png" alt="">    </p>
-<pre><code>var a = 3.14;
-!!a;
-</code></pre></li>
-<li><p>Number去除小数点，用 Math.floor / Math.round / Math.ceil，不用parseInt</p>
-</li>
-</ul>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/11/27/JS-类型转换/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
