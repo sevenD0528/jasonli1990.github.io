@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tech,Frontend,line-height,height," />
+  <meta name="keywords" content="FrontEnd,JS,function," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="line-height and height项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
-<meta name="keywords" content="Tech,Frontend,line-height,height">
+<meta name="description" content="刚接触js方法的时候，感觉是十分混乱的，感觉上有很多种写法，今天总结几种function的相关写法。">
+<meta name="keywords" content="FrontEnd,JS,function">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS_line-height问题">
-<meta property="og:url" content="http://yoursite.com/2015/11/09/CSS-line-height问题/index.html">
+<meta property="og:title" content="JS_function">
+<meta property="og:url" content="http://yoursite.com/2015/12/26/JS-function/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="line-height and height项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
+<meta property="og:description" content="刚接触js方法的时候，感觉是十分混乱的，感觉上有很多种写法，今天总结几种function的相关写法。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-02-03T08:13:03.000Z">
+<meta property="og:updated_time" content="2017-11-30T06:46:39.692Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS_line-height问题">
-<meta name="twitter:description" content="line-height and height项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。">
+<meta name="twitter:title" content="JS_function">
+<meta name="twitter:description" content="刚接触js方法的时候，感觉是十分混乱的，感觉上有很多种写法，今天总结几种function的相关写法。">
 
 
 
@@ -116,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/11/09/CSS-line-height问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/12/26/JS-function/"/>
 
 
-  <title> CSS_line-height问题 | Jason Li </title>
+  <title> JS_function | Jason Li </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="en">
@@ -257,7 +257,7 @@
             
             
               
-                CSS_line-height问题
+                JS_function
               
             
           </h1>
@@ -269,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-11-09T00:20:59+08:00" content="2015-11-09">
-              2015-11-09
+            <time itemprop="dateCreated" datetime="2015-12-26T23:37:42+08:00" content="2015-12-26">
+              2015-12-26
             </time>
           </span>
 
@@ -316,24 +316,75 @@
       
 
       
-        <h2 id="line-height-and-height"><a href="#line-height-and-height" class="headerlink" title="line-height and height"></a>line-height and height</h2><p>项目中遇到了几个CSS高度问题，借鉴了几篇博客，正好自己借此在此总结一下。</p>
-<a id="more"></a>
-<h2 id="线"><a href="#线" class="headerlink" title="线"></a>线</h2><p>行高是指文本行基线间的垂直距离。要想理解得先了解几个基本概念顶线，中线，基线和底线。</p>
-<p>top, middle, baseline和bottom,vertical-align属性钟的值就是和这四条线有关。</p>
-<p><strong>注意：基线不是最下面的线，最下面是底线</strong></p>
-<h2 id="CSS行高-line-height"><a href="#CSS行高-line-height" class="headerlink" title="CSS行高 - line-height"></a>CSS行高 - line-height</h2><p>行高 - 上下文行的基本线间的垂直距离<br>行距 - 一行底线到下一行顶线的垂直距离<br>半行距 - 行距的一半  </p>
-<p>详情见博客：<a href="http://www.cnblogs.com/dolphinX/p/3236686.html" target="_blank" rel="external">http://www.cnblogs.com/dolphinX/p/3236686.html</a>   </p>
-<p>内容区 - 底线和顶线包裹的区域<br>行内框 - 每个行内元素会生成一个行内框，行内框是一个浏览器渲染模型中的一个概念，无法显示出来，在没有其他因素影响的时候（padding等），行内框等于内容区域，而设定行高时行内框高度不变，半行距【（行高-字体size）/2】分别增加/减少到内容区域的上下两边<br>行框 - 行框是指本行的一个虚拟的矩形框，是浏览器渲染模式中的一个概念，并没有实际显示。行框高度等于本行内所有元素中行内框最大的值，当有多行内容时，每行都会有自己的行框。</p>
-<h3 id="5种定义line-height的方式"><a href="#5种定义line-height的方式" class="headerlink" title="5种定义line-height的方式"></a>5种定义line-height的方式</h3><p>1.line-height可以被定义为：body{line-height:normal;}</p>
-<p>2.line-height可以被定义为：body{line-height:inherit;}</p>
-<p>3.line-height可以使用一个百分比的值body{line-height:120%;}</p>
-<p>4.line-height可以被定义为一个长度值(px,em等) body{line-height:25px;}</p>
-<p>5.line-height也可以被定义为纯数字， body{line-height:1.2}  </p>
-<h3 id="文字放大后边缘会重叠？"><a href="#文字放大后边缘会重叠？" class="headerlink" title="文字放大后边缘会重叠？"></a>文字放大后边缘会重叠？</h3><p>line-height直白理解就是文字高度加上文字上下的空白区域，line-height最好不要设置单位，如果固定单位后，行高就是确定值。 </p>
-<p>当字体放大且没有设置元素的line-height（继承自父元素且父元素为固定值）或者其值为固定值就会出现文字超出行高范围出现重叠。 </p>
-<p>line-height有继承属性，所以正文部分内容line-height最好设置为为数字1.5，也就是字体高度*1.5的高度， </p>
-<p>这样行高会随着字体缩放跟着缩放。</p>
-<h3 id="如何设置文字图片行内居中？"><a href="#如何设置文字图片行内居中？" class="headerlink" title="如何设置文字图片行内居中？"></a>如何设置文字图片行内居中？</h3><p>line-height默认是baseline对其的，可以使用vertical-align:middle使其文字图片居中对齐。 </p>
+        <p>刚接触js方法的时候，感觉是十分混乱的，感觉上有很多种写法，今天总结几种function的相关写法。<br><a id="more"></a></p>
+<h3 id="最简单和基本的声明和定义"><a href="#最简单和基本的声明和定义" class="headerlink" title="最简单和基本的声明和定义"></a>最简单和基本的声明和定义</h3><pre><code>function func([parameters]){
+    //content
+}  // 直接函数声明function
+var func = function([parameters]){
+    //content
+}; // 指派一个变量名给匿名函数的方式来定义它，定义函数表达式
+</code></pre><ul>
+<li>第二种写法，这个代码和前一个例子做了同样的事情。也许语法看起来比较奇怪，但它应该更能让你感觉到函数是一个对象，而且我们只是为这个对象指派了一个名称。  </li>
+<li><p>当我们指派一个这样的函数的时候，我们并不一定要求必须是匿名函数。例如：  </p>
+<pre><code>var func = function theFunc([parameters]) { 
+    //content
+} 
+alert(func([parameters])); 
+alert(theFunc([parameters])); // 结果与前面一样
+</code></pre></li>
+<li><p>使用这种方式来定义函数在面向对象编程中是很有用的，可以使函数成为一个对象的属性  </p>
+<pre><code>var myObject = new Object();
+myObject.add = function(a,b) { return a+b }; 
+// myObject 现在有一个叫做“add”的属性（或方法）
+// 而且我能够象下面这样使用它
+myObject.add(1, 2);
+</code></pre></li>
+<li><p>new 也可以定义一个函数</p>
+<pre><code>var func = new Function([parameters], functionbody);
+</code></pre></li>
+</ul>
+<p><strong>注：<br>1）new Function(…)使用了大写F，而不是小写f。 这就告诉javascript，我们将要创建一个类型是Function的对象</strong><br><strong>2）还要注意到，参数名和函数体都是作为字符串而被传递。我们可以随心所欲的增加参数，javascript知道函数体会是右括号前的最后一个字符串（如果没有参数，你能够只写函数体）</strong>  </p>
+<ul>
+<li>函数：对象<br>函数是javascript中的一种特殊形式的对象。他是一种类的数据类型，说明可以添加属性。<br>当声明了函数，实际上js就是在后台创建了一个对象，对象的名为函数名，类型为function。<br>同时还可以通过func.attribute的形式添加属性。  </li>
+<li><p>指针<br>因为function是一个对象，可以为一个function分配一个指针。如下例，变量ptr指向了对象myFunction。  </p>
+<pre><code>function myFunction(message) { 
+    alert(message);
+}
+var ptr = myFunction; // ptr指向了myFunction
+ptr(&quot;hello&quot;); // 这句会执行myFunction：输出&quot;hello&quot;
+</code></pre></li>
+</ul>
+<p>我们能够运行这个函数，就好像这个函数名已经被指针名代替了一样。所以在上面，这行ptr(“hello”); 和myFunction(“hello”);的意义是一样的。  </p>
+<ul>
+<li>函数：原型<br>每一个构造函数都有一个属性叫做原型(prototype)。这个属性可以为一个特定类声明通用的变量或者函数。<br>原型在每一个构造函数中都有它的存在<h3 id="类的构造器"><a href="#类的构造器" class="headerlink" title="类的构造器"></a>类的构造器</h3><pre><code>function class(){
+    //
+} 
+class.prototype = {}; 
+var item = new class();
+</code></pre><h3 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h3><pre><code>(function(){ 
+    //独立作用域 
+})();         
+</code></pre></li>
+</ul>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><p>匿名函数就是没有名字的函数。<br>范例1：</p>
+<pre><code>(function(){
+
+    alert(&quot;caibaojian.com&quot;);
+
+})();
+</code></pre><p>范例2：</p>
+<pre><code>var box = (function(){
+
+    alert(&quot;caibaojian.com&quot;);
+
+})();    
+</code></pre><p>范例3：</p>
+<pre><code>(function(n){
+
+    alert(n);
+
+})(100);
+</code></pre><p>具体参考博客<a href="http://www.cnblogs.com/see7di/archive/2011/06/18/2239716.html" target="_blank" rel="external">http://www.cnblogs.com/see7di/archive/2011/06/18/2239716.html</a> </p>
 
       
     </div>
@@ -356,13 +407,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tech/" rel="tag">#Tech</a>
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
           
-            <a href="/tags/Frontend/" rel="tag">#Frontend</a>
+            <a href="/tags/JS/" rel="tag">#JS</a>
           
-            <a href="/tags/line-height/" rel="tag">#line-height</a>
-          
-            <a href="/tags/height/" rel="tag">#height</a>
+            <a href="/tags/function/" rel="tag">#function</a>
           
         </div>
       
@@ -371,16 +420,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/07/jQuery-mouseenter和mouseleave方法/" rel="next" title="jQuery_mouseenter和mouseleave方法">
-                <i class="fa fa-chevron-left"></i> jQuery_mouseenter和mouseleave方法
+              <a href="/2015/12/26/Mobile-移动端解决页面点击穿透问题/" rel="next" title="Mobile_移动端解决页面点击穿透问题">
+                <i class="fa fa-chevron-left"></i> Mobile_移动端解决页面点击穿透问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/09/CSS-z-index小结/" rel="prev" title="CSS_z-index小结">
-                CSS_z-index小结 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/12/31/JS-闭包问题/" rel="prev" title="JS_闭包问题">
+                JS_闭包问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,7 +591,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#line-height-and-height"><span class="nav-number">1.</span> <span class="nav-text">line-height and height</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线"><span class="nav-number">2.</span> <span class="nav-text">线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS行高-line-height"><span class="nav-number">3.</span> <span class="nav-text">CSS行高 - line-height</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5种定义line-height的方式"><span class="nav-number">3.1.</span> <span class="nav-text">5种定义line-height的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文字放大后边缘会重叠？"><span class="nav-number">3.2.</span> <span class="nav-text">文字放大后边缘会重叠？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何设置文字图片行内居中？"><span class="nav-number">3.3.</span> <span class="nav-text">如何设置文字图片行内居中？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单和基本的声明和定义"><span class="nav-number">1.</span> <span class="nav-text">最简单和基本的声明和定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的构造器"><span class="nav-number">2.</span> <span class="nav-text">类的构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的作用"><span class="nav-number">3.</span> <span class="nav-text">闭包的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数"><span class="nav-number">4.</span> <span class="nav-text">匿名函数</span></a></li></ol></div>
             
           </div>
         </section>
