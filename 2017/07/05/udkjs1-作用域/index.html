@@ -93,7 +93,7 @@
 <meta property="og:description" content="Overview读书笔记《你不知道的JavaScript（上卷）》作用域和闭包。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2017/07/05/udkjs1-作用域/![](https://ws1.sinaimg.cn/large/006tKfTcly1fmm5aduxsdj30i201gdfq.jpg">
-<meta property="og:updated_time" content="2017-12-20T03:30:31.427Z">
+<meta property="og:updated_time" content="2017-12-20T07:38:25.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="udkjs1-作用域">
 <meta name="twitter:description" content="Overview读书笔记《你不知道的JavaScript（上卷）》作用域和闭包。">
@@ -462,7 +462,12 @@ foo(); // 1
 foo = function() { 
     console.log( 2 );
 };
-</code></pre><h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3>
+</code></pre><h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>var a = 2; 看成两个单独的声明 var a; a = 2;第一个编译阶段，第二个执行阶段</li>
+<li>有的声明(变量和函数)都会被“移动”到各自作用域的 最顶端，这个过程被称为提升</li>
+<li>声明本身会被提升，而包括函数表达式的赋值在内的赋值操作并不会提升</li>
+</ul>
+
       
     </div>
 
