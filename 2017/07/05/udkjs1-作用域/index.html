@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Overview读书笔记《你不知道的JavaScript（上卷）》作用域和闭包。">
+<meta name="keywords" content="FrontEnd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="udkjs1-作用域">
+<meta property="og:url" content="http://yoursite.com/2017/07/05/udkjs1-作用域/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Overview读书笔记《你不知道的JavaScript（上卷）》作用域和闭包。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/udkjs1-作用域/![](https://ws1.sinaimg.cn/large/006tKfTcly1fmm5aduxsdj30i201gdfq.jpg">
+<meta property="og:updated_time" content="2017-12-20T03:30:31.427Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="udkjs1-作用域">
+<meta name="twitter:description" content="Overview读书笔记《你不知道的JavaScript（上卷）》作用域和闭包。">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/05/udkjs1-作用域/![](https://ws1.sinaimg.cn/large/006tKfTcly1fmm5aduxsdj30i201gdfq.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/05/udkjs1-作用域/"/>
+
+
+  <title> udkjs1-作用域 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                udkjs1-作用域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-07-05T11:41:27+08:00" content="2017-07-05">
+              2017-07-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>读书笔记《你不知道的JavaScript（上卷）》作用域和闭包。</p>
+<a id="more"></a>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>这本书里对于赋值的操作，做了个有趣的解释，分成了LHS和RHS。</p>
+<blockquote>
+<p>当变量出现在赋值操作的左侧时进行 LHS 查询，出现在右侧时进行 RHS 查询</p>
+<p>RHS 查询与简单地查找某个变量的值别无二致，而 LHS 查询则是试图 找到变量的容器本身，从而可以对其赋值。从这个角度说，RHS 并不是真正意义上的“赋 值操作的右侧”，更准确地说是“非左侧”，RHS理解成<em><strong>retrieve his source value(取到它的源值)</strong></em>，这意味着“得到某某的 值”。</p>
+</blockquote>
+<h3 id="作用域嵌套"><a href="#作用域嵌套" class="headerlink" title="作用域嵌套"></a>作用域嵌套</h3><p>示例：</p>
+<pre><code>function foo(a) { 
+    console.log( a + b );
+}
+var b = 2; 
+foo( 2 ); // 4
+</code></pre><p>对 b 进行的 RHS 引用无法在函数 foo 内部完成，但可以在上一级作用域(在这个例子中就 是全局作用域)中完成。</p>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><pre><code>function foo(a) { 
+    console.log( a + b ); 
+    b = a;
+}
+foo( 2 );
+</code></pre><p>第一次对 b 进行 RHS 查询时是无法找到该变量的。也就是说，这是一个“未声明”的变 量，因为在任何相关的作用域中都无法找到它。</p>
+<p>如果 RHS 查询在所有嵌套的作用域中遍寻不到所需的变量，引擎就会抛出<em><strong>ReferenceError异常</strong></em>。值得注意的是，ReferenceError 是非常重要的异常类型。</p>
+<p>相较之下，当引擎执行 LHS 查询时，如果在顶层(全局作用域)中也无法找到目标变量，<br>全局作用域中就会创建一个具有该名称的变量，并将其返还给引擎，前提是程序运行在非 “严格模式”下。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><pre><code>var a = 2;
+</code></pre><p>以最简单 a = 2为例，</p>
+<ol>
+<li>首先，var a在其作用域中声明新变量。</li>
+<li>接下来，a = 2会查询(LHS查询)变量a并对其进行赋值。</li>
+</ol>
+<blockquote>
+<ul>
+<li>不成功的 RHS 引用会导致抛出 ReferenceError 异常。</li>
+<li>不成功的 LHS 引用会导致自动隐式 地创建一个全局变量(非严格模式下)，该变量使用 LHS 引用的目标作为标识符，或者抛 出 ReferenceError 异常(严格模式下)。</li>
+</ul>
+</blockquote>
+<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><blockquote>
+<p>JavaScript 中有两个机制可以“欺骗”词法作用域:eval(..) 和 with。前者可以对一段包 含一个或多个声明的“代码”字符串进行演算，并借此来修改已经存在的词法作用域(在 运行时)。后者本质上是通过将一个对象的引用当作作用域来处理，将对象的属性当作作 用域中的标识符来处理，从而创建了一个新的词法作用域(同样是在运行时)</p>
+</blockquote>
+<h2 id="函数作用域与块作用域"><a href="#函数作用域与块作用域" class="headerlink" title="函数作用域与块作用域"></a>函数作用域与块作用域</h2><h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h3><pre><code>var a = 2;
+function foo() {
+    var a = 3;
+    console.log(&apos;in foo:&apos;+a);
+}
+
+foo();
+
+console.log(&apos;out foo:&apos;+a);
+</code></pre><p>结果如图：</p>
+<p><img src="![](https://ws1.sinaimg.cn/large/006tKfTcly1fmm5aduxsdj30i201gdfq.jpg" alt="">)</p>
+<p>foo是个具名函数，在全局作用域中。</p>
+<pre><code>var a = 2;
+(function foo() {
+    var a = 3;
+    console.log(&apos;in foo:&apos;+a);
+})();
+
+console.log(&apos;out foo:&apos;+a);
+</code></pre><p>改成IIFE模式，函数可以自动运行，不需要函数名。</p>
+<h3 id="IIFE（Immediately-Invoked-Function-Expression）"><a href="#IIFE（Immediately-Invoked-Function-Expression）" class="headerlink" title="IIFE（Immediately Invoked Function Expression）"></a>IIFE（Immediately Invoked Function Expression）</h3><p><em><strong>IIFE 最常见的用法是使用一个匿名函数表达式。</strong></em></p>
+<p>还有一种写法就是把执行的()放在里面 如下：</p>
+<pre><code>var a = 2;
+(function foo() {
+    var a = 3;
+    console.log(&apos;in foo:&apos;+a);
+}());
+
+console.log(&apos;out foo:&apos;+a);
+</code></pre><ul>
+<li><p>有一种进阶的写法，就是传参数进去。</p>
+<pre><code>var a = 2;
+(function IIFE( global ) {
+        var a = 3;
+        console.log( a ); // 3         
+        console.log( global.a ); // 2
+})( window );
+</code></pre></li>
+</ul>
+<ul>
+<li><p>IIFE 还有一种变化的用途是倒置代码的运行顺序</p>
+<pre><code>var a = 2;
+(function IIFE( def ) { 
+    def( window );
+})(function def( global ) {
+    var a = 3;
+    console.log( a ); // 3         
+    console.log( global.a ); // 2
+});
+</code></pre></li>
+</ul>
+<p>function def作为参数被传递，并被调用</p>
+<h3 id="块作用域"><a href="#块作用域" class="headerlink" title="块作用域"></a>块作用域</h3><p>例如：</p>
+<pre><code>for (var i=0; i&lt;10; i++) { 
+    console.log( i );
+}
+</code></pre><p>这种写法，i会被绑定在外部作用域。</p>
+<h4 id="try-catch"><a href="#try-catch" class="headerlink" title="try/catch"></a>try/catch</h4><p>非常少有人会注意到 JavaScript 的 ES3 规范中规定 try/catch 的 catch 分句会创建一个块作<br>用域，其中声明的变量仅在 catch 内部有效。</p>
+<h4 id="let"><a href="#let" class="headerlink" title="let"></a>let</h4><p>ES6新增let关键字， 可以将变量绑定到所在作用域。</p>
+<h4 id="const"><a href="#const" class="headerlink" title="const"></a>const</h4><p>ES6 还引入了 const，同样可以用来创建块作用域变量，但其值是固定的 (常量)。之后任何试图修改值的操作都会引起错误。</p>
+<h2 id="作用域提升"><a href="#作用域提升" class="headerlink" title="作用域提升"></a>作用域提升</h2><h3 id="经典：先有鸡还是先有蛋"><a href="#经典：先有鸡还是先有蛋" class="headerlink" title="经典：先有鸡还是先有蛋"></a>经典：先有鸡还是先有蛋</h3><blockquote>
+<p>注意：<em><strong>只有声明本身会被提升，而赋值或其他运行逻辑会留在原地。</strong></em></p>
+</blockquote>
+<p>例子一： </p>
+<pre><code>a = 2;
+var a;
+console.log(a); // 2
+</code></pre><p>例子二：</p>
+<pre><code>console.log(a); // undefined
+var a = 2;
+</code></pre><p>这个例子就印证了只有声明会被提升，赋值逻辑会留在原地。</p>
+<p>第二个例子可以拆解为：</p>
+<pre><code>var a;
+console.log(a);
+a = 2;
+</code></pre><p>这个过程就好像变量和函数声明从它们在代码中出现的位置被“移动” 到了最上面。这个过程就叫作<strong>提升</strong>。</p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li><em><strong>只有函数声明会被提升，函数表达式不会</strong></em></li>
+<li>每个作用域都会有提升操作</li>
+</ul>
+</blockquote>
+<pre><code>foo(); // 不是 ReferenceError, 而是 TypeError!
+var foo = function bar() { 
+    // ...
+};
+</code></pre><p>变量标识符 foo() 被提升并分配给所在作用域(在这里是全局作用域)，因此 foo() 不会导致 ReferenceError。但是 foo 此时并没有赋值。foo() 由于对 undefined 值进行函数调用而导致非法操作， 因此抛出 TypeError 异常。</p>
+<h3 id="函数优先"><a href="#函数优先" class="headerlink" title="函数优先"></a>函数优先</h3><blockquote>
+<p><em><strong>函数声明和变量声明都会被提升，但函数会优先。</strong></em></p>
+</blockquote>
+<pre><code>foo(); // 1
+    var foo;
+function foo() { 
+    console.log( 1 );
+}
+foo = function() { 
+    console.log( 2 );
+};
+</code></pre><p>这个例子会输出1而不是2,因为引擎是这样理解的。</p>
+<pre><code>function foo() { 
+    console.log( 1 );
+}
+foo(); // 1
+foo = function() { 
+    console.log( 2 );
+};
+</code></pre><h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/11/udontknowjs2-4/" rel="next" title="udontknowjs2-4">
+                <i class="fa fa-chevron-left"></i> udontknowjs2-4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/13/Mac下Ngnix安装配置/" rel="prev" title="Mac下Ngnix安装配置">
+                Mac下Ngnix安装配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar_2.png"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">2.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域嵌套"><span class="nav-number">2.1.</span> <span class="nav-text">作用域嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常"><span class="nav-number">2.2.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">3.</span> <span class="nav-text">词法作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数作用域与块作用域"><span class="nav-number">4.</span> <span class="nav-text">函数作用域与块作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数作用域"><span class="nav-number">4.1.</span> <span class="nav-text">函数作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IIFE（Immediately-Invoked-Function-Expression）"><span class="nav-number">4.2.</span> <span class="nav-text">IIFE（Immediately Invoked Function Expression）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块作用域"><span class="nav-number">4.3.</span> <span class="nav-text">块作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#try-catch"><span class="nav-number">4.3.1.</span> <span class="nav-text">try/catch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#let"><span class="nav-number">4.3.2.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const"><span class="nav-number">4.3.3.</span> <span class="nav-text">const</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域提升"><span class="nav-number">5.</span> <span class="nav-text">作用域提升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典：先有鸡还是先有蛋"><span class="nav-number">5.1.</span> <span class="nav-text">经典：先有鸡还是先有蛋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数优先"><span class="nav-number">5.2.</span> <span class="nav-text">函数优先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-1"><span class="nav-number">5.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
