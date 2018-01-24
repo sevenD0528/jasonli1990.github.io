@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="Overview进行移动端开发的时候，需要各种对于UA的判断，从而进行机型或系统的匹配进行特殊的页面处理。以下面为例： // 判断是微信、QQ或微博中打开 var isQQorWeChatorWeibo = /micromessenger/.test(ua) || /qq\//.test(ua) || /weibo/.test(ua); // 判断是否为ios设备 var isIOS = /(iP">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-22T07:33:53.112Z">
+<meta property="og:updated_time" content="2018-01-22T07:42:10.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="Overview进行移动端开发的时候，需要各种对于UA的判断，从而进行机型或系统的匹配进行特殊的页面处理。以下面为例： // 判断是微信、QQ或微博中打开 var isQQorWeChatorWeibo = /micromessenger/.test(ua) || /qq\//.test(ua) || /weibo/.test(ua); // 判断是否为ios设备 var isIOS = /(iP">
@@ -362,35 +362,97 @@ var isAndroid = /(Android)/i.test(ua);
     console.log(ret);            //显示为Li, li
 &lt;/script&gt;
 </code></pre><p>/m用的比较少，用的时候再查吧。</p>
-<h4 id="常见匹配规则"><a href="#常见匹配规则" class="headerlink" title="常见匹配规则"></a>常见匹配规则</h4><p>\ 做为转意，即通常在”\”后面的字符不按原来意义解释，如/b/匹配字符”b”，当b前面加了反斜杆后/\b/，转意为匹配一个单词的边界。 </p>
-<p>-或-<br>对正则表达式功能字符的还原，如”*“匹配它前面元字符0次或多次，/a*/将匹配a,aa,aaa，加了”\”后，/a*/将只匹配”a*”。 </p>
-<p>^ 匹配一个输入或一行的开头，/^a/匹配”an A”，而不匹配”An a”</p>
-<p>$ 匹配一个输入或一行的结尾，/a$/匹配”An a”，而不匹配”an A”</p>
-<p>* 匹配前面元字符0次或多次，/ba*/将匹配b,ba,baa,baaa </p>
-<p>+ 匹配前面元字符1次或多次，/ba*/将匹配ba,baa,baaa </p>
-<p>? 匹配前面元字符0次或1次，/ba*/将匹配b,ba </p>
-<p>(x) 匹配x保存x在名为$1…$9的变量中 </p>
-<p>x|y 匹配x或y </p>
-<p>{n} 精确匹配n次 </p>
-<p>{n,} 匹配n次以上 </p>
-<p>{n,m} 匹配n-m次 </p>
-<p>[xyz] 字符集(character set)，匹配这个集合中的任一一个字符(或元字符) </p>
-<p>[^xyz] 不匹配这个集合中的任何一个字符 </p>
-<p>[\b] 匹配一个退格符 </p>
-<p>\b 匹配一个单词的边界 </p>
-<p>\B 匹配一个单词的非边界 </p>
-<p>\cX 这儿，X是一个控制符，/\cM/匹配Ctrl-M </p>
-<p>\d 匹配一个字数字符，/\d/ = /[0-9]/ </p>
-<p>\D 匹配一个非字数字符，/\D/ = /[^0-9]/ </p>
-<p>\n 匹配一个换行符 </p>
-<p>\r 匹配一个回车符 </p>
-<p>\s 匹配一个空白字符，包括\n,\r,\f,\t,\v等 </p>
-<p>\S 匹配一个非空白字符，等于/[^\n\f\r\t\v]/ </p>
-<p>\t 匹配一个制表符 </p>
-<p>\v 匹配一个重直制表符 </p>
-<p>\w 匹配一个可以组成单词的字符(alphanumeric，这是我的意译，含数字)，包括下划线，如[\w]匹配”$5.98”中的5，等于[a-zA-Z0-9]</p>
-<p>\W 匹配一个不可以组成单词的字符，如[\W]匹配”$5.98”中的$，等于[^a-zA-Z0-9]</p>
-<p>上面这个从一个网站趴下来的，当做手册了。</p>
+<h4 id="常见匹配规则"><a href="#常见匹配规则" class="headerlink" title="常见匹配规则"></a>常见匹配规则</h4><pre><code>\ 做为转意，即通常在&quot;\&quot;后面的字符不按原来意义解释，如/b/匹配字符&quot;b&quot;，当b前面加了反斜杆后/\b/，转意为匹配一个单词的边界。 
+
+-或- 
+对正则表达式功能字符的还原，如&quot;*&quot;匹配它前面元字符0次或多次，/a*/将匹配a,aa,aaa，加了&quot;\&quot;后，/a\*/将只匹配&quot;a*&quot;。 
+
+^ 匹配一个输入或一行的开头，/^a/匹配&quot;an A&quot;，而不匹配&quot;An a&quot;
+
+$ 匹配一个输入或一行的结尾，/a$/匹配&quot;An a&quot;，而不匹配&quot;an A&quot;
+
+* 匹配前面元字符0次或多次，/ba*/将匹配b,ba,baa,baaa 
+
++ 匹配前面元字符1次或多次，/ba*/将匹配ba,baa,baaa 
+
+? 匹配前面元字符0次或1次，/ba*/将匹配b,ba 
+
+(x) 匹配x保存x在名为$1...$9的变量中 
+
+x|y 匹配x或y 
+
+{n} 精确匹配n次 
+
+{n,} 匹配n次以上 
+
+{n,m} 匹配n-m次 
+
+[xyz] 字符集(character set)，匹配这个集合中的任一一个字符(或元字符) 
+
+[^xyz] 不匹配这个集合中的任何一个字符 
+
+[\b] 匹配一个退格符 
+
+\b 匹配一个单词的边界 
+
+\B 匹配一个单词的非边界 
+
+\cX 这儿，X是一个控制符，/\cM/匹配Ctrl-M 
+
+\d 匹配一个字数字符，/\d/ = /[0-9]/ 
+
+\D 匹配一个非字数字符，/\D/ = /[^0-9]/ 
+
+\n 匹配一个换行符 
+
+\r 匹配一个回车符 
+
+\s 匹配一个空白字符，包括\n,\r,\f,\t,\v等 
+
+\S 匹配一个非空白字符，等于/[^\n\f\r\t\v]/ 
+
+\t 匹配一个制表符 
+
+\v 匹配一个重直制表符 
+
+\w 匹配一个可以组成单词的字符(alphanumeric，这是我的意译，含数字)，包括下划线，如[\w]匹配&quot;$5.98&quot;中的5，等于[a-zA-Z0-9]
+
+\W 匹配一个不可以组成单词的字符，如[\W]匹配&quot;$5.98&quot;中的$，等于[^a-zA-Z0-9]
+</code></pre><p>上面这个从一个网站趴下来的，当做手册了。</p>
+<h4 id="常用实例"><a href="#常用实例" class="headerlink" title="常用实例"></a>常用实例</h4><pre><code>&quot;^\\d+$&quot;　　//非负整数（正整数 + 0） 
+
+&quot;^[0-9]*[1-9][0-9]*$&quot;　　//正整数 
+
+&quot;^((-\\d+)|(0+))$&quot;　　//非正整数（负整数 + 0） 
+
+&quot;^-[0-9]*[1-9][0-9]*$&quot;　　//负整数 
+
+&quot;^-?\\d+$&quot;　　　　//整数 
+
+&quot;^\\d+(\\.\\d+)?$&quot;　　//非负浮点数（正浮点数 + 0） 
+
+&quot;^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$&quot;　　//正浮点数
+
+&quot;^((-\\d+(\\.\\d+)?)|(0+(\\.0+)?))$&quot;　　//非正浮点数（负浮点数 + 0） 
+
+&quot;^(-(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*)))$&quot;　　//负浮点数
+
+&quot;^(-?\\d+)(\\.\\d+)?$&quot;　　//浮点数 
+
+&quot;^[A-Za-z]+$&quot;　　//由26个英文字母组成的字符串 
+
+&quot;^[A-Z]+$&quot;　　//由26个英文字母的大写组成的字符串 
+
+&quot;^[a-z]+$&quot;　　//由26个英文字母的小写组成的字符串 
+
+&quot;^[A-Za-z0-9]+$&quot;　　//由数字和26个英文字母组成的字符串 
+
+&quot;^\\w+$&quot;　　//由数字、26个英文字母或者下划线组成的字符串 
+
+&quot;^[\\w-]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w-]+)+$&quot;　　　　//email地址 
+
+&quot;^[a-zA-z]+://(\\w+(-\\w+)*)(\\.(\\w+(-\\w+)*))*(\\?\\S*)?$&quot;　　//url 
+</code></pre><p>参考链接 <a href="http://www.jb51.net/article/43190.htm" target="_blank" rel="external">http://www.jb51.net/article/43190.htm</a></p>
 
       
     </div>
@@ -593,7 +655,7 @@ var isAndroid = /(Android)/i.test(ua);
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是正则表达式"><span class="nav-number">2.</span> <span class="nav-text">什么是正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具"><span class="nav-number">3.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用"><span class="nav-number">4.</span> <span class="nav-text">常用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#g-i-m-说明"><span class="nav-number">4.1.</span> <span class="nav-text">/g, /i, /m 说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见匹配规则"><span class="nav-number">4.2.</span> <span class="nav-text">常见匹配规则</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是正则表达式"><span class="nav-number">2.</span> <span class="nav-text">什么是正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具"><span class="nav-number">3.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用"><span class="nav-number">4.</span> <span class="nav-text">常用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#g-i-m-说明"><span class="nav-number">4.1.</span> <span class="nav-text">/g, /i, /m 说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见匹配规则"><span class="nav-number">4.2.</span> <span class="nav-text">常见匹配规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用实例"><span class="nav-number">4.3.</span> <span class="nav-text">常用实例</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

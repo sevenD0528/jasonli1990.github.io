@@ -1111,6 +1111,7 @@ pre .javascript .function {
 }
 .posts-expand .fancybox img {
   margin: 0 auto;
+  width: 50%;
 }
 @media (max-width: 767px) {
   .posts-collapse {
@@ -1564,7 +1565,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8bffbe;
+  background: #ecac30;
 }
 .links-of-blogroll {
   font-size: 13px;
