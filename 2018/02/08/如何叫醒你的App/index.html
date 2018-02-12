@@ -1,0 +1,724 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,JS,App," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="概况在做H5活动的时候，经常遇到这样的需求，就是要把页面分享到微信、QQ、微博等第三方社交应用中，然后再跳回来原来的app中，作为一种拉新或者导流的策略，然而这个时候，问题来了，从这个圈子跳出去了，还跳的回来么，这就好比生活，在一个圈子里转来转去，跃跃欲试，岂不知跳出去容易，跳回来难啊。">
+<meta name="keywords" content="FrontEnd,JS,App">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何叫醒你的App">
+<meta property="og:url" content="http://yoursite.com/2018/02/08/如何叫醒你的App/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="概况在做H5活动的时候，经常遇到这样的需求，就是要把页面分享到微信、QQ、微博等第三方社交应用中，然后再跳回来原来的app中，作为一种拉新或者导流的策略，然而这个时候，问题来了，从这个圈子跳出去了，还跳的回来么，这就好比生活，在一个圈子里转来转去，跃跃欲试，岂不知跳出去容易，跳回来难啊。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/h5_2/H5跳转.jpeg">
+<meta property="og:updated_time" content="2018-02-12T07:26:05.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何叫醒你的App">
+<meta name="twitter:description" content="概况在做H5活动的时候，经常遇到这样的需求，就是要把页面分享到微信、QQ、微博等第三方社交应用中，然后再跳回来原来的app中，作为一种拉新或者导流的策略，然而这个时候，问题来了，从这个圈子跳出去了，还跳的回来么，这就好比生活，在一个圈子里转来转去，跃跃欲试，岂不知跳出去容易，跳回来难啊。">
+<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/h5_2/H5跳转.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/08/如何叫醒你的App/"/>
+
+
+  <title> 如何叫醒你的App | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何叫醒你的App
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-02-08T17:27:02+08:00" content="2018-02-08">
+              2018-02-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h2><p>在做H5活动的时候，经常遇到这样的需求，就是要把页面分享到微信、QQ、微博等第三方社交应用中，然后再跳回来原来的app中，作为一种拉新或者导流的策略，然而这个时候，问题来了，从这个圈子跳出去了，还跳的回来么，这就好比生活，在一个圈子里转来转去，跃跃欲试，岂不知跳出去容易，跳回来难啊。</p>
+<a id="more"></a>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>废话不多说，先上一张我们分享页的截图。我们要做到的事情就是，点击“火星下载”或者“打开App”按钮，如果用户已经安装了App，则根据业务跳转到相应的Native页面；如果用户没有安装该应用，则跳到AppStore或者应用市场去下载我们的App。</p>
+<h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><p>首先说下苹果系统，在ios9以前，唤起app的方式和安卓一样，都是通过scheme进行唤起。这种方式虽然可自定程度很高，能够巧妙地实现很多跳转，但弊端也很明显：我们只能通过scheme://example这种格式的链接来实现跳转，而且现在苹果还对这种方式的跳转加了一个提示框：“是否打开XXX”。对于对Web和原生App交互的场景需求量很大的产品来说，这样的跳转方式显然是步骤冗杂的，用户体验并不好。</p>
+<p>而在ios9以后，苹果官方提供了一种唤起app的方式，也就是传说中的universal link，直接跳转指定app不在页面做任何停留。</p>
+<h4 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h4><p>通过与客户端配合，</p>
+<ul>
+<li><p>在苹果开发者网站中打开需要使用Universal Link功能的App中的Associated Domains</p>
+</li>
+<li><p>上传apple-app-site-association到服务器根目录下</p>
+</li>
+<li><p>在AppDelegate中实现相应的方法</p>
+</li>
+</ul>
+<p>apple-app-site-association文件格式如下：</p>
+<pre><code>{
+    &quot;applinks&quot;: {
+        &quot;apps&quot;: [],
+        &quot;details&quot;: [
+            {
+                &quot;appID&quot;: &quot;XXX&quot;,
+                &quot;paths&quot;: [ &quot;**/**/*&quot; ] 
+            }
+        ]
+    }
+}
+</code></pre><h3 id="几种方式"><a href="#几种方式" class="headerlink" title="几种方式"></a>几种方式</h3><p><img src="/img/FrontEnd/h5_2/H5跳转.jpeg" alt="img"></p>
+<h4 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h4><p>微信是大多数app做分享的一种方式，但是微信的各种屏蔽策略确为app的分享跳转产生了诸多阻碍，在微信6.6版本之前，ios9提供universal link而微信还没有屏蔽universal link这段时间，是最幸福的，分享页面可以通过点击按钮第一时间跳转到app进行倒流，没有安装app的也会自然的去下载页进行下载，但是新版本微信更新后就不行了，so，不管是ios还是android，目前的跳转策略都是跳到应用宝进行跳转。</p>
+<p>哦，微信还屏蔽了itunes的链接（微笑）</p>
+<h4 id="QQ"><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h4><p>QQ目前还是支持universal link的，android平台也支持scheme唤起方式，</p>
+<h4 id="微博"><a href="#微博" class="headerlink" title="微博"></a>微博</h4><p>微博目前还支持 universal link唤起，我们只需要考虑未下载的情况。</p>
+<p>在IOS下，微博不支持打开应用宝链接，所以需要引导用户通过safari打开链接，然后从safari进行跳转操作。</p>
+<h4 id="safari"><a href="#safari" class="headerlink" title="safari"></a>safari</h4><p>Apple自家浏览器，肯定是完全支持的，universal link和itunes链接，都支持。按照正常逻辑进行跳转即可。</p>
+<h4 id="唤起App"><a href="#唤起App" class="headerlink" title="唤起App"></a>唤起App</h4><pre><code> var ifr = document.createElement(&apos;iframe&apos;);
+if (targetUrl) {
+    ifr.src = targetUrl;
+}
+else {
+    ifr.src = &apos;scheme://xxx&apos;;
+}
+
+ifr.style.display = &apos;none&apos;;
+document.body.appendChild(ifr);
+if (stayCurrentPage !== true) {
+    window.setTimeout(function () {
+        if (commonObj.browser.isAndroid || (!commonObj.browser.isAndroid &amp;&amp; (!document.webkitHidden || !document.hidden))) {
+            var a = +new Date;
+            if (a - g &lt; 1550) {
+                document.body.removeChild(ifr);
+                if (downloadUrl &amp;&amp; typeof downloadUrl === &apos;string&apos; &amp;&amp; downloadUrl.length &gt; 0) {
+                    window.location.href = downloadUrl;
+                }
+            }
+        }
+    }, 1500);
+}
+setTimeout(function () {
+    document.body.removeChild(ifr);
+}, 3000);
+</code></pre><p>看唤起是不是成功了，需要自己来计算时间，因为要是唤起成功了， setInterval的时间就会变慢，经我测试，已经用不到这种方法了，只需要使用 document.hidden||document.webkitHidden就可以，兼容性还不错</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+            <a href="/tags/App/" rel="tag">#App</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/01/JS-如何在H5中优雅的唤起App/" rel="next" title="JS-如何在H5中优雅的唤起App">
+                <i class="fa fa-chevron-left"></i> JS-如何在H5中优雅的唤起App
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/daocheng"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">87</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计"><span class="nav-number">1.2.</span> <span class="nav-text">设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Universal-Link"><span class="nav-number">1.2.1.</span> <span class="nav-text">Universal Link</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几种方式"><span class="nav-number">1.3.</span> <span class="nav-text">几种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#微信"><span class="nav-number">1.3.1.</span> <span class="nav-text">微信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QQ"><span class="nav-number">1.3.2.</span> <span class="nav-text">QQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微博"><span class="nav-number">1.3.3.</span> <span class="nav-text">微博</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#safari"><span class="nav-number">1.3.4.</span> <span class="nav-text">safari</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#唤起App"><span class="nav-number">1.3.5.</span> <span class="nav-text">唤起App</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
