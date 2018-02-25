@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,JS,String," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Overview这几天上网，看到一道这样的题目。 例题：有一个字符串 “I am a &amp;lt;%=sex%&amp;gt;, I love play &amp;lt;%=sport%&amp;gt;”, 有一个对象 { sex: ‘boy’, sport, ‘basketball’ }，如何将字符串中&amp;lt;%=xxx%&amp;gt;的变量替换成对象里的值，进行一次字符串的解析。">
+<meta name="keywords" content="FrontEnd,JS,String">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-字符串解析问题">
+<meta property="og:url" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Overview这几天上网，看到一道这样的题目。 例题：有一个字符串 “I am a &amp;lt;%=sex%&amp;gt;, I love play &amp;lt;%=sport%&amp;gt;”, 有一个对象 { sex: ‘boy’, sport, ‘basketball’ }，如何将字符串中&amp;lt;%=xxx%&amp;gt;的变量替换成对象里的值，进行一次字符串的解析。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/1.png%27">
+<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/2.png%27">
+<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/3.png%27">
+<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/4.png%27">
+<meta property="og:updated_time" content="2018-02-25T08:22:40.210Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS-字符串解析问题">
+<meta name="twitter:description" content="Overview这几天上网，看到一道这样的题目。 例题：有一个字符串 “I am a &amp;lt;%=sex%&amp;gt;, I love play &amp;lt;%=sport%&amp;gt;”, 有一个对象 { sex: ‘boy’, sport, ‘basketball’ }，如何将字符串中&amp;lt;%=xxx%&amp;gt;的变量替换成对象里的值，进行一次字符串的解析。">
+<meta name="twitter:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/1.png%27">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/25/JS-字符串解析问题/"/>
+
+
+  <title> JS-字符串解析问题 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS-字符串解析问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-02-25T14:13:30+08:00" content="2018-02-25">
+              2018-02-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>这几天上网，看到一道这样的题目。</p>
+<p>例题：有一个字符串 “I am a &lt;%=sex%&gt;, I love play &lt;%=sport%&gt;”, 有一个对象 { sex: ‘boy’, sport, ‘basketball’ }，如何将字符串中&lt;%=xxx%&gt;的变量替换成对象里的值，进行一次字符串的解析。</p>
+<a id="more"></a>
+<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>这个问题打眼一瞅，涉及到正则匹配和字符串替换的问题。</p>
+<p>我想到第一种方法就是把字符串中的特殊变量识别出来，在通过对象中对应的key进行值替换。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var str = &quot;I am a &lt;%=sex%&gt;, I love play &lt;%=sport%&gt;&quot;;
+    var obj = { 
+        sex: &apos;boy&apos;, 
+        sport: &apos;basketball&apos; 
+    };
+
+     for (var key in obj) {
+        var pattern = RegExp(&apos;&lt;%=&apos; + key + &apos;%&gt;&apos;,&apos;g&apos;);
+        str = str.replace(pattern, obj[key]);
+    }
+
+    console.log(str);
+&lt;/script&gt;
+</code></pre><h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>后来和娟架探讨，她提出了一种新奇的思路，如下：</p>
+<pre><code>var str = &quot;I am a &lt;%=sex%&gt;, I love play &lt;%=sport%&gt;&quot;;
+var obj = { 
+    sex: &apos;boy&apos;, 
+    sport: &apos;basketball&apos; 
+};
+
+str = str.replace(/&lt;%=/g, &apos;&quot;+ obj.&apos;).replace(/%&gt;/g, &apos; + &quot;&apos;);
+str = &apos;&quot;&apos;+ str +&apos;&quot;&apos;;
+
+eval(str);
+</code></pre><p>先替换，再直接执行字符串，也是可以的。</p>
+<h2 id="常用字符串方法"><a href="#常用字符串方法" class="headerlink" title="常用字符串方法"></a>常用字符串方法</h2><h3 id="charAt"><a href="#charAt" class="headerlink" title="charAt"></a>charAt</h3><p>str.charAt(index);  返回子字符串，index为字符串下标，index取值范围[0,str.length-1]</p>
+<h3 id="charCodeAt"><a href="#charCodeAt" class="headerlink" title="charCodeAt"></a>charCodeAt</h3><p>str.charCodeAt(index);  返回子字符串的unicode编码，index取值范围同上</p>
+<h3 id="fromCharCode"><a href="#fromCharCode" class="headerlink" title="fromCharCode"></a>fromCharCode</h3><p>String.fromCharCode(num1,num2,…,numN);  根据unicode编码返回字符串</p>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h3><p>str.indexOf(searchString,startIndex);  返回子字符串第一次出现的位置，从startIndex开始查找，找不到时返回-1</p>
+<pre><code>var str = &quot;abcdefg&quot;
+str.indexOf(&quot;d&quot;) // 3
+</code></pre><h3 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a>lastIndexOf</h3><p>str.lastIndexOf(searchString,startIndex);  从右往左找子字符串，找不到时返回-1</p>
+<blockquote>
+<p>由于以上两个方法只能返回1次，当需要将一段字符串里的所有searchString出现的位置都查找出来时</p>
+</blockquote>
+<pre><code>var str = &quot;hi, I&apos;m Jason. And hi, I like folk&quot;;
+var s = &quot;hi&quot;;
+var i = 0;
+
+for( ; str.indexOf(s,i) != -1 ; )
+{
+　　console.log(str.indexOf(s,i));
+　　i = str.indexOf(s,i) + s.length;
+}
+</code></pre><p>结果如下：</p>
+<p><img src="&#39;/img/FrontEnd/js_str/1.png&#39;" alt=""></p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>字符串之间的比较：比较第一个字符的unicode编码值，第一个字符要是相同，就比较第二个</p>
+<pre><code>&apos;1000&apos; &lt; &apos;2&apos; // unicode比较 true
+&apos;1000&apos; &gt; 2  // 转成数字比较 true
+</code></pre><h3 id="截取字符串"><a href="#截取字符串" class="headerlink" title="截取字符串"></a>截取字符串</h3><p>str.substring(start,end);  两个参数都为正数，返回值：[start,end) 也就是说返回从start到end-1的字符</p>
+<p>str.slice(start,end);  两个参数可正可负，负值代表从右截取，返回值：[start,end) 也就是说返回从start到end-1的字符</p>
+<h3 id="字符串分割成数组"><a href="#字符串分割成数组" class="headerlink" title="字符串分割成数组"></a>字符串分割成数组</h3><p>str.split(separator,limit);  参数1指定字符串或正则，参照2指定数组的最大长度</p>
+<p><img src="&#39;/img/FrontEnd/js_str/2.png&#39;" alt=""></p>
+<p><img src="&#39;/img/FrontEnd/js_str/3.png&#39;" alt=""></p>
+<blockquote>
+<p>join函数可以用于数组合成字符串</p>
+<ul>
+<li>arr.join(分隔符)      以,连接</li>
+<li>arr.join(‘’)         无缝连接</li>
+<li>arr.join(‘-‘)        以-连接</li>
+<li>arr.join(‘<span>‘ + str + ‘</span>‘)       以表达式连接</li>
+</ul>
+</blockquote>
+<h3 id="替换函数"><a href="#替换函数" class="headerlink" title="替换函数"></a>替换函数</h3><p>str.replace(rgExp/substr,replaceText)   返回替换后的字符串<br>见上面的例子</p>
+<h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>str.match(rgExp);  正则匹配</p>
+<p>返回数组</p>
+<p><img src="&#39;/img/FrontEnd/js_str/4.png&#39;" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+            <a href="/tags/String/" rel="tag">#String</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/08/如何叫醒你的App/" rel="next" title="如何叫醒你的App">
+                <i class="fa fa-chevron-left"></i> 如何叫醒你的App
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/daocheng"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">87</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">97</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解法一"><span class="nav-number">1.1.</span> <span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解法二"><span class="nav-number">1.2.</span> <span class="nav-text">解法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用字符串方法"><span class="nav-number">2.</span> <span class="nav-text">常用字符串方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#charAt"><span class="nav-number">2.1.</span> <span class="nav-text">charAt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#charCodeAt"><span class="nav-number">2.2.</span> <span class="nav-text">charCodeAt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fromCharCode"><span class="nav-number">2.3.</span> <span class="nav-text">fromCharCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">2.4.</span> <span class="nav-text">indexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lastIndexOf"><span class="nav-number">2.5.</span> <span class="nav-text">lastIndexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较"><span class="nav-number">2.6.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#截取字符串"><span class="nav-number">2.7.</span> <span class="nav-text">截取字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串分割成数组"><span class="nav-number">2.8.</span> <span class="nav-text">字符串分割成数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换函数"><span class="nav-number">2.9.</span> <span class="nav-text">替换函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match"><span class="nav-number">2.10.</span> <span class="nav-text">match</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
