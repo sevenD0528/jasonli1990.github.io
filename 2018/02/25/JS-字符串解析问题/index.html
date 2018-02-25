@@ -92,15 +92,15 @@
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="Overview这几天上网，看到一道这样的题目。 例题：有一个字符串 “I am a &amp;lt;%=sex%&amp;gt;, I love play &amp;lt;%=sport%&amp;gt;”, 有一个对象 { sex: ‘boy’, sport, ‘basketball’ }，如何将字符串中&amp;lt;%=xxx%&amp;gt;的变量替换成对象里的值，进行一次字符串的解析。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/1.png%27">
-<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/2.png%27">
-<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/3.png%27">
-<meta property="og:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/4.png%27">
-<meta property="og:updated_time" content="2018-02-25T08:22:40.210Z">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_str/1.png">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_str/2.png">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_str/3.png">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_str/4.png">
+<meta property="og:updated_time" content="2018-02-25T08:26:19.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-字符串解析问题">
 <meta name="twitter:description" content="Overview这几天上网，看到一道这样的题目。 例题：有一个字符串 “I am a &amp;lt;%=sex%&amp;gt;, I love play &amp;lt;%=sport%&amp;gt;”, 有一个对象 { sex: ‘boy’, sport, ‘basketball’ }，如何将字符串中&amp;lt;%=xxx%&amp;gt;的变量替换成对象里的值，进行一次字符串的解析。">
-<meta name="twitter:image" content="http://yoursite.com/2018/02/25/JS-字符串解析问题/%27/img/FrontEnd/js_str/1.png%27">
+<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/js_str/1.png">
 
 
 
@@ -372,15 +372,15 @@ for( ; str.indexOf(s,i) != -1 ; )
 　　i = str.indexOf(s,i) + s.length;
 }
 </code></pre><p>结果如下：</p>
-<p><img src="&#39;/img/FrontEnd/js_str/1.png&#39;" alt=""></p>
+<p><img src="/img/FrontEnd/js_str/1.png" alt=""></p>
 <h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>字符串之间的比较：比较第一个字符的unicode编码值，第一个字符要是相同，就比较第二个</p>
 <pre><code>&apos;1000&apos; &lt; &apos;2&apos; // unicode比较 true
 &apos;1000&apos; &gt; 2  // 转成数字比较 true
 </code></pre><h3 id="截取字符串"><a href="#截取字符串" class="headerlink" title="截取字符串"></a>截取字符串</h3><p>str.substring(start,end);  两个参数都为正数，返回值：[start,end) 也就是说返回从start到end-1的字符</p>
 <p>str.slice(start,end);  两个参数可正可负，负值代表从右截取，返回值：[start,end) 也就是说返回从start到end-1的字符</p>
 <h3 id="字符串分割成数组"><a href="#字符串分割成数组" class="headerlink" title="字符串分割成数组"></a>字符串分割成数组</h3><p>str.split(separator,limit);  参数1指定字符串或正则，参照2指定数组的最大长度</p>
-<p><img src="&#39;/img/FrontEnd/js_str/2.png&#39;" alt=""></p>
-<p><img src="&#39;/img/FrontEnd/js_str/3.png&#39;" alt=""></p>
+<p><img src="/img/FrontEnd/js_str/2.png" alt=""></p>
+<p><img src="/img/FrontEnd/js_str/3.png" alt=""></p>
 <blockquote>
 <p>join函数可以用于数组合成字符串</p>
 <ul>
@@ -393,7 +393,7 @@ for( ; str.indexOf(s,i) != -1 ; )
 <h3 id="替换函数"><a href="#替换函数" class="headerlink" title="替换函数"></a>替换函数</h3><p>str.replace(rgExp/substr,replaceText)   返回替换后的字符串<br>见上面的例子</p>
 <h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>str.match(rgExp);  正则匹配</p>
 <p>返回数组</p>
-<p><img src="&#39;/img/FrontEnd/js_str/4.png&#39;" alt=""></p>
+<p><img src="/img/FrontEnd/js_str/4.png" alt=""></p>
 
       
     </div>
