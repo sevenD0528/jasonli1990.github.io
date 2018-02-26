@@ -1,0 +1,817 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,跨域," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Overview跨域是在一个域下的文档或脚本试图去请求另一个域下的资源，这就是跨域。">
+<meta name="keywords" content="FrontEnd,跨域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域问题总结">
+<meta property="og:url" content="http://yoursite.com/2018/02/25/跨域问题总结/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Overview跨域是在一个域下的文档或脚本试图去请求另一个域下的资源，这就是跨域。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-26T10:49:47.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域问题总结">
+<meta name="twitter:description" content="Overview跨域是在一个域下的文档或脚本试图去请求另一个域下的资源，这就是跨域。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/25/跨域问题总结/"/>
+
+
+  <title> 跨域问题总结 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                跨域问题总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-02-25T21:55:18+08:00" content="2018-02-25">
+              2018-02-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>跨域是在一个域下的文档或脚本试图去请求另一个域下的资源，这就是跨域。</p>
+<a id="more"></a>
+<h4 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h4><p>同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSFR等攻击。</p>
+<p>所谓同源是指 “协议 + 域名 + 端口” 三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
+<p>举个栗子：</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>访问</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.mars.changba.com/index.html" target="_blank" rel="external">http://www.mars.changba.com/index.html</a></td>
+<td><a href="http://www.mars.changba.com/server.php" target="_blank" rel="external">http://www.mars.changba.com/server.php</a></td>
+<td>（非跨域）</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.mars.changba.com/index.html" target="_blank" rel="external">http://www.mars.changba.com/index.html</a></td>
+<td><a href="http://www.baidu.com/server.php" target="_blank" rel="external">http://www.baidu.com/server.php</a></td>
+<td>（主域名不同:123/456，跨域）</td>
+</tr>
+<tr>
+<td><a href="http://mars.changba.com/index.html" target="_blank" rel="external">http://mars.changba.com/index.html</a></td>
+<td><a href="http://changbalive.changba.com/server.php" target="_blank" rel="external">http://changbalive.changba.com/server.php</a></td>
+<td>（子域名不同:changbalive/mars，跨域）</td>
+</tr>
+<tr>
+<td><a href="http://www.mars.changba.com:8080/index.html" target="_blank" rel="external">http://www.mars.changba.com:8080/index.html</a></td>
+<td><a href="http://www.mars.changba.com:8081/server.php" target="_blank" rel="external">http://www.mars.changba.com:8081/server.php</a></td>
+<td>（端口不同:8080/8081，跨域）</td>
+</tr>
+<tr>
+<td><a href="http://www.mars.changba.com/index.html" target="_blank" rel="external">http://www.mars.changba.com/index.html</a></td>
+<td><a href="https://www.mars.changba.com/server.php" target="_blank" rel="external">https://www.mars.changba.com/server.php</a></td>
+<td>（协议不同:http/https，跨域）</td>
+</tr>
+</tbody>
+</table>
+<p>同源策略限制以下几种行为：</p>
+<ol>
+<li>Cookie、LocalStorage 和 IndexDB 无法读取</li>
+<li>DOM 和 Js对象无法获得</li>
+<li>AJAX 请求不能发送</li>
+</ol>
+<h4 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h4><p>通常为了减轻web服务器的负载，我们把js、css，img等静态资源分离到另一台独立域名的服务器上，在html页面中再通过相应的标签从不同域名下加载静态资源，而被浏览器允许，基于此原理，我们可以通过动态创建script，再请求一个带参网址实现跨域通信。</p>
+<p>原生实现：</p>
+<pre><code>&lt;script&gt;
+    var script = document.createElement(&apos;script&apos;);
+    script.type = &apos;text/javascript&apos;;
+
+    // 传参并指定回调执行函数为onBack
+    script.src = &apos;http://mars.changba.com/api/mars_test_api.php?callback=onBack&apos;;
+    document.head.appendChild(script);
+
+    // 回调执行函数
+    function onBack(res) {
+        alert(JSON.parse(JSON.stringify(res)).name);
+    }
+&lt;/script&gt;
+</code></pre><p>服务器端代码：</p>
+<pre><code>$data[&quot;userid&quot;] = 0;
+$data[&quot;name&quot;] = &apos;Jason&apos;;
+
+echo $callback.&apos;(&apos;.json_encode($data).&apos;)&apos;;
+exit;
+</code></pre><p>ajax：</p>
+<pre><code> $.ajax({
+    url: &apos;http://mars.changba.com/api/mars_test_api.php&apos;,
+    dataType: &apos;json&apos;,
+    dataType: &apos;jsonp&apos;,
+    jsonp:&quot;callback&quot;,
+    jsonpCallback:&quot;success_jsonpCallback&quot;,
+    success: function(e) {
+        console.log(&apos;sdfsdf&apos;);
+    },
+    error: function(e) {
+        console.log(&apos;55&apos;)
+        console.log(e);
+    }
+})
+</code></pre><h4 id="document-domain-iframe跨域"><a href="#document-domain-iframe跨域" class="headerlink" title="document.domain + iframe跨域"></a>document.domain + iframe跨域</h4><p>此方案仅适用于主域相同，子域不同的情况</p>
+<p>实现原理：两个页面都通过js强制设置document.domain为基础主域，就实现了同域。</p>
+<p>1.）父窗口：(www.domain.com/a.html)</p>
+<pre><code>&lt;iframe id=&quot;iframe&quot; src=&quot;http://child.domain.com/b.html&quot;&gt;&lt;/iframe&gt;
+&lt;script&gt;
+    document.domain = &apos;domain.com&apos;;
+    var user = &apos;admin&apos;;
+&lt;/script&gt;
+</code></pre><p>2.）子窗口：(child.domain.com/b.html)</p>
+<pre><code>&lt;script&gt;
+    document.domain = &apos;domain.com&apos;;
+    // 获取父窗口中变量
+    alert(&apos;get js data from parent ---&gt; &apos; + window.parent.user);
+&lt;/script&gt;
+</code></pre><h4 id="location-hash-iframe跨域"><a href="#location-hash-iframe跨域" class="headerlink" title="location.hash + iframe跨域"></a>location.hash + iframe跨域</h4><h4 id="window-name-iframe跨域"><a href="#window-name-iframe跨域" class="headerlink" title="window.name + iframe跨域"></a>window.name + iframe跨域</h4><h4 id="postMessage"><a href="#postMessage" class="headerlink" title="postMessage"></a>postMessage</h4><p>window.postMessage(message,targetOrigin)  方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、Opera等浏览器都已经支持window.postMessage方法。</p>
+<p>调用postMessage方法的window对象是指要接收消息的那一个window对象，该方法的第一个参数message为要发送的消息，类型只能为字符串；第二个参数targetOrigin用来限定接收消息的那个window对象所在的域，如果不想限定域，可以使用通配符 *  。</p>
+<p>需要接收消息的window对象，可是通过监听自身的message事件来获取传过来的消息，消息内容储存在该事件对象的data属性中。</p>
+<h4 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h4><p>Cross-Origin Resource Sharing(CORS) 是W3C为浏览器制定的可以跨域通信的规范. 通过使用 XMLHttpRequest 对象, CORS可以让开发者方便的进行跨域通信, 就像在使用同域通信一样.</p>
+<p>实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。</p>
+<h5 id="两种请求"><a href="#两种请求" class="headerlink" title="两种请求"></a>两种请求</h5><p>CORS分为简单请求和非简单请求</p>
+<p>满足以下两个条件就可以称为简单请求。</p>
+<blockquote>
+<ul>
+<li>请求方法是三种之一<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+</li>
+<li>HTTP头信息不超出以下几种字段<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>凡是不同时满足上面两个条件，就属于非简单请求</p>
+<p>对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个<strong>Origin</strong>字段</p>
+<p>如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段.</p>
+<pre><code>Access-Control-Allow-Origin: http://changba.com
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: FooBar
+Content-Type: text/html; charset=utf-8
+</code></pre><ul>
+<li>Access-Control-Allow-Origin</li>
+</ul>
+<p>该字段是必须的。它的值要么是请求时Origin字段的值，要么是一个*，表示接受任意域名的请求。</p>
+<ul>
+<li>Access-Control-Allow-Credentials</li>
+</ul>
+<p>该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为true，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可。</p>
+<ul>
+<li>Access-Control-Expose-Headers</li>
+</ul>
+<p>该字段可选。CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在Access-Control-Expose-Headers里面指定。上面的例子指定，getResponseHeader(‘FooBar’)可以返回FooBar字段的值。</p>
+<blockquote>
+<p>withCredentials属性</p>
+<p>CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，一方面要服务器同意，指定Access-Control-Allow-Credentials字段</p>
+<p>Access-Control-Allow-Credentials: true</p>
+<p>开发者必须在AJAX请求中打开withCredentials属性</p>
+<pre><code>var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+</code></pre></blockquote>
+<p>这里还需要注意两条：</p>
+<ul>
+<li><strong>如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。</strong></li>
+<li><strong>Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie</strong></li>
+</ul>
+<p>不同时满足上面两个条件的是非简单请求。由于用的不多，在这里先不总结了。</p>
+<p>CORS这种跨域方式，<strong>与JSONP相比，这种方式更强大，JSONP只支持GET请求，这种全都支持。</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/跨域/" rel="tag">#跨域</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/25/JS-字符串解析问题/" rel="next" title="JS-字符串解析问题">
+                <i class="fa fa-chevron-left"></i> JS-字符串解析问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/daocheng"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">88</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">98</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同源策略"><span class="nav-number">1.1.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSONP"><span class="nav-number">1.2.</span> <span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#document-domain-iframe跨域"><span class="nav-number">1.3.</span> <span class="nav-text">document.domain + iframe跨域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#location-hash-iframe跨域"><span class="nav-number">1.4.</span> <span class="nav-text">location.hash + iframe跨域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-name-iframe跨域"><span class="nav-number">1.5.</span> <span class="nav-text">window.name + iframe跨域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#postMessage"><span class="nav-number">1.6.</span> <span class="nav-text">postMessage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CORS"><span class="nav-number">1.7.</span> <span class="nav-text">CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#两种请求"><span class="nav-number">1.7.1.</span> <span class="nav-text">两种请求</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
