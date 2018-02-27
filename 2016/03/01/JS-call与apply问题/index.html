@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="FrontEnd,JS,call,apply," />
+  <meta name="keywords" content="FrontEnd,JS,call,apply,bind," />
 
 
 
@@ -85,16 +85,16 @@
 
 
 <meta name="description" content="ECMAScript规范给所有函数定义了call和apply方法，call与apply的第一个参数都是需要调用的函数对象，在函数体内这个参数就是this的值，剩余的参数是需要传递给函数的值">
-<meta name="keywords" content="FrontEnd,JS,call,apply">
+<meta name="keywords" content="FrontEnd,JS,call,apply,bind">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-call()与apply()问题">
+<meta property="og:title" content="JS-call、apply、bind总结">
 <meta property="og:url" content="http://yoursite.com/2016/03/01/JS-call与apply问题/index.html">
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="ECMAScript规范给所有函数定义了call和apply方法，call与apply的第一个参数都是需要调用的函数对象，在函数体内这个参数就是this的值，剩余的参数是需要传递给函数的值">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2016-03-17T12:44:11.000Z">
+<meta property="og:updated_time" content="2018-02-27T13:17:26.199Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS-call()与apply()问题">
+<meta name="twitter:title" content="JS-call、apply、bind总结">
 <meta name="twitter:description" content="ECMAScript规范给所有函数定义了call和apply方法，call与apply的第一个参数都是需要调用的函数对象，在函数体内这个参数就是this的值，剩余的参数是需要传递给函数的值">
 
 
@@ -119,7 +119,7 @@
   <link rel="canonical" href="http://yoursite.com/2016/03/01/JS-call与apply问题/"/>
 
 
-  <title> JS-call()与apply()问题 | Jason Li </title>
+  <title> JS-call、apply、bind总结 | Jason Li </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="en">
@@ -257,7 +257,7 @@
             
             
               
-                JS-call()与apply()问题
+                JS-call、apply、bind总结
               
             
           </h1>
@@ -316,8 +316,67 @@
       
 
       
-        <p>ECMAScript规范给所有函数定义了call和apply方法，call与apply的第一个参数都是需要调用的函数对象，在函数体内这个参数就是this的值，剩余的参数是需要传递给函数的值 <a id="more"></a></p>
-<p>call与apply的不同就是call传的值可以是任意的，而apply传的剩余值必须为数组。</p>
+        <p>ECMAScript规范给所有函数定义了call和apply方法，call与apply的第一个参数都是需要调用的函数对象，在函数体内这个参数就是this的值，剩余的参数是需要传递给函数的值</p>
+<a id="more"></a>
+<p>我们可能经常有这样的疑问。</p>
+<p>例如：</p>
+<pre><code> var obj = {
+    myname : &apos;Jason&apos;,
+    fn: function() {
+        console.log(this.myname)
+    }
+}
+
+var b = obj.fn;
+b(); // undefined
+obj.fn(); // Jason
+</code></pre><p>直接调用b()的时候，是undefined。这就是this的指向问题，后面也会有总结。</p>
+<p>那么现在怎么才能获取出myname呢。</p>
+<h3 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h3><pre><code>var obj = {
+    myname : &apos;Jason&apos;,
+    fn: function() {
+        console.log(this.myname)
+    }
+}
+
+var b = obj.fn;
+b.call(obj); // Jason
+</code></pre><p>简单来说，就是通过call改变的this的指向，让他指向了obj内部。</p>
+<h4 id="call还可以传参数。"><a href="#call还可以传参数。" class="headerlink" title="call还可以传参数。"></a>call还可以传参数。</h4><pre><code>var obj = {
+    myname : &apos;Jason&apos;,
+    fn: function(a, b, c) {
+        console.log(this.myname);
+        console.log(a + b + c);
+    }
+}
+
+var b = obj.fn;
+b.call(obj, 1, 2, 3); // 6
+</code></pre><h3 id="Apply"><a href="#Apply" class="headerlink" title="Apply"></a>Apply</h3><pre><code>b.apply(obj) // Jason
+</code></pre><h4 id="Apply也可以传参数，但必须是数组"><a href="#Apply也可以传参数，但必须是数组" class="headerlink" title="Apply也可以传参数，但必须是数组"></a>Apply也可以传参数，但必须是数组</h4><ul>
+<li><p>call与apply的不同就是call传的值可以是任意的，而apply传的剩余值必须为数组。</p>
+<pre><code>b.apply(obj, [1, 2, 3]); // 6
+</code></pre></li>
+</ul>
+<blockquote>
+<p>注意:如果call和apply第一个参数给null，那就是指向window全局对象。</p>
+</blockquote>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>bind方法和call、apply方法有些不同，但是不管怎么说它们都可以用来改变this的指向。</p>
+<pre><code>b.bind(obj); // nothing
+console.log(b);
+
+//   ƒ (a, b, c) {
+        console.log(this.myname);
+        console.log(a + b + c);
+    }
+</code></pre><p>发现什么都没有打印，没错，bind返回的是一个新的函数。</p>
+<pre><code>b.bind(obj)(1,2,3); // 6
+</code></pre><p>同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。</p>
+<pre><code>var b = obj.fn;
+var c = b.bind(obj, 1);
+c(2, 3); // 6
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>call和apply都是改变上下文中的this并立即执行这个函数，<br>bind方法可以让对应的函数想什么时候调就什么时候调用，并且可以将参数在执行的时候添加。</p>
+<p>下面是网上看的其他例子，也很好的解释了这三个方法</p>
 <p>参考范例：  </p>
 <pre><code>function add(a, b) { return a + b; }
 
@@ -336,8 +395,7 @@ var a1 = sub.call(add, 4, 2);
 var a2= add.call(sub, 4, 2);
 
 输出：a1=2  a2=6
-</code></pre><p>###JS模仿继承</p>
-<pre><code> function fun1() {
+</code></pre><h3 id="JS模仿继承"><a href="#JS模仿继承" class="headerlink" title="JS模仿继承"></a>JS模仿继承</h3><pre><code> function fun1() {
      this.add = function () { return this.a }
  }
 
@@ -386,6 +444,8 @@ function fun3() {
             <a href="/tags/call/" rel="tag">#call</a>
           
             <a href="/tags/apply/" rel="tag">#apply</a>
+          
+            <a href="/tags/bind/" rel="tag">#bind</a>
           
         </div>
       
@@ -472,7 +532,7 @@ function fun3() {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">88</span>
+              <span class="site-state-item-count">89</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -489,7 +549,7 @@ function fun3() {
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">98</span>
+                <span class="site-state-item-count">100</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -565,7 +625,7 @@ function fun3() {
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Call"><span class="nav-number">1.</span> <span class="nav-text">Call</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#call还可以传参数。"><span class="nav-number">1.1.</span> <span class="nav-text">call还可以传参数。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apply"><span class="nav-number">2.</span> <span class="nav-text">Apply</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Apply也可以传参数，但必须是数组"><span class="nav-number">2.1.</span> <span class="nav-text">Apply也可以传参数，但必须是数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bind"><span class="nav-number">3.</span> <span class="nav-text">bind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS模仿继承"><span class="nav-number">5.</span> <span class="nav-text">JS模仿继承</span></a></li></ol></div>
             
           </div>
         </section>
