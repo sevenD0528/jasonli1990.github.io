@@ -92,12 +92,12 @@
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 constructor 每个原型都有一个 construct">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_prototype/prototype.jpg">
-<meta property="og:updated_time" content="2018-03-01T08:24:27.403Z">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_prototype/prototype.png">
+<meta property="og:updated_time" content="2018-03-01T09:15:25.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-Prototype">
 <meta name="twitter:description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 constructor 每个原型都有一个 construct">
-<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/js_prototype/prototype.jpg">
+<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/js_prototype/prototype.png">
 
 
 
@@ -324,7 +324,7 @@
 <p>用chrome可以访问到对象的__proto__属性，IE不可以。</p>
 <a id="more"></a>
 <p>原型链可以总结为下面这张图：</p>
-<p><img src="/img/FrontEnd/js_prototype/prototype.jpg" alt=""></p>
+<p><img src="/img/FrontEnd/js_prototype/prototype.png" alt=""></p>
 <p>这个图可以看出，每个函数都有一个prototype属性，这个prototype指向哪了呢，其实是指向了一个对象，这个对象正是调用构造函数创建的实例的原型。</p>
 <pre><code>var A = function(){}
 var a = new A();
