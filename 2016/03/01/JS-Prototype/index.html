@@ -84,18 +84,20 @@
 
 
 
-<meta name="description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 用chrome可以访问到对象的__proto__属性，IE">
+<meta name="description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 constructor 每个原型都有一个 construct">
 <meta name="keywords" content="FrontEnd,JS,prototype">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS-Prototype">
 <meta property="og:url" content="http://yoursite.com/2016/03/01/JS-Prototype/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 用chrome可以访问到对象的__proto__属性，IE">
+<meta property="og:description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 constructor 每个原型都有一个 construct">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-30T08:04:20.317Z">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_prototype/prototype.jpg">
+<meta property="og:updated_time" content="2018-03-01T08:24:27.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-Prototype">
-<meta name="twitter:description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 用chrome可以访问到对象的__proto__属性，IE">
+<meta name="twitter:description" content="JS的prototype与protoprototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。 __proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。 constructor 每个原型都有一个 construct">
+<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/js_prototype/prototype.jpg">
 
 
 
@@ -316,29 +318,48 @@
       
 
       
-        <a id="more"></a>
-<h3 id="JS的prototype与proto"><a href="#JS的prototype与proto" class="headerlink" title="JS的prototype与proto"></a>JS的prototype与<em>proto</em></h3><p>prototype是函数的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。</p>
-<p>__proto__是一个对象拥有的内置属性（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。</p>
+        <h3 id="JS的prototype与proto"><a href="#JS的prototype与proto" class="headerlink" title="JS的prototype与proto"></a>JS的prototype与<em>proto</em></h3><p>prototype是<strong><strong>函数</strong></strong>的一个属性（每个函数都有一个prototype属性），这个属性是一个指针，指向一个对象。它是显示修改对象的原型的属性。</p>
+<p>__proto__是一个<strong>对象拥有的内置属性</strong>（请注意：prototype是函数的内置属性，__proto__是对象的内置属性），是JS内部使用寻找原型链的属性。</p>
+<p>constructor 每个原型都有一个 constructor 属性指向关联的构造函数</p>
 <p>用chrome可以访问到对象的__proto__属性，IE不可以。</p>
-<h3 id="Object-prototype"><a href="#Object-prototype" class="headerlink" title="Object.prototype"></a>Object.prototype</h3><p>所哟普通的prototype最终都会指向内置的Object.prototype</p>
-<h3 id="new的过程"><a href="#new的过程" class="headerlink" title="new的过程"></a>new的过程</h3><pre><code>var Person = function(){}
-var p = new Person();
+<a id="more"></a>
+<p>原型链可以总结为下面这张图：</p>
+<p><img src="/img/FrontEnd/js_prototype/prototype.jpg" alt=""></p>
+<p>这个图可以看出，每个函数都有一个prototype属性，这个prototype指向哪了呢，其实是指向了一个对象，这个对象正是调用构造函数创建的实例的原型。</p>
+<pre><code>var A = function(){}
+var a = new A();
+</code></pre><p>也就是这里面的p的原型。</p>
+<blockquote>
+<p>原型概念: 每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型”继承”属性</p>
+</blockquote>
+<pre><code>a.__proto__ === A.prototype // true
+
+A.prototype.constructor == A // true
+</code></pre><h3 id="Object-prototype"><a href="#Object-prototype" class="headerlink" title="Object.prototype"></a>Object.prototype</h3><p>所有普通的prototype最终都会指向内置的Object.prototype</p>
+<h3 id="new的过程详解"><a href="#new的过程详解" class="headerlink" title="new的过程详解"></a>new的过程详解</h3><pre><code>var A = function(){}
+var a = new A();
 </code></pre><ul>
-<li>var p = {}是初始化一个对象；</li>
-<li>p._proto_ = Person.prototype</li>
-<li>Person.call(p),构造p</li>
+<li>var a = {}是初始化一个对象；</li>
+<li>a._proto_ = A.prototype</li>
+<li>A.call(a),构造a</li>
 </ul>
 <p>举例：</p>
-<pre><code>var Person = function(){};
-Person.prototype.sayName = function() {
+<pre><code>var A = function(){};
+A.prototype.sayName = function() {
     alert(&quot;My Name is Jason&quot;);
 };
 
-Person.prototype.age = 25;
-var p = new Person();
-p.sayName();
-</code></pre><p>p是一个引用指向Person的对象。我们在Person的原型上定义了一个sayName方法和age属性，当我们执行p.age时，会先在this的内部查找（也就是构造函数内部），如果没有找到然后再沿着原型链向上追溯。<br>这里的向上追溯是怎么向上的呢？这里就要使用<strong>proto</strong>属性来链接到原型（也就是Person.prototype）进行查找。最终在原型上找到了age属性。</p>
-<p>具体参考博客总结<a href="http://www.uw3c.com/jsviews/js12.html" target="_blank" rel="external">http://www.uw3c.com/jsviews/js12.html</a></p>
+A.prototype.age = 25;
+var a = new A();
+a.sayName();
+</code></pre><p>a是一个引用指向A的对象。我们在A的原型上定义了一个sayName方法和age属性，当我们执行a.age时，会先在this的内部查找（也就是构造函数内部），如果没有找到然后再沿着原型链向上追溯。</p>
+<p>这里的向上追溯是怎么向上的呢？这里就要使用<strong>proto</strong>属性来链接到原型（也就是A.prototype）进行查找。最终在原型上找到了age属性。</p>
+<h3 id="关于constructor"><a href="#关于constructor" class="headerlink" title="关于constructor"></a>关于constructor</h3><pre><code>function A() {}
+var a = new A();
+a.constructor === A // true
+</code></pre><p>其实当获取constructor的时候，a并没有这个属性，当不能读取时，就会去原型上A.prototype上读取，原型上有个这个属性，所以就有了</p>
+<pre><code>a.constructor = A.prototype.constructor // true
+</code></pre><h3 id="关于proto"><a href="#关于proto" class="headerlink" title="关于proto"></a>关于<strong>proto</strong></h3><p>其次是 __proto__ ，绝大部分浏览器都支持这个非标准的方法访问原型，然而它并不存在于 A.prototype 中，实际上，它是来自于 Object.prototype ，与其说是一个属性，不如说是一个 getter/setter，当使用 obj.<strong>proto</strong> 时，可以理解成返回了 Object.getPrototypeOf(obj)。</p>
 
       
     </div>
@@ -545,7 +566,7 @@ p.sayName();
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS的prototype与proto"><span class="nav-number">1.</span> <span class="nav-text">JS的prototype与proto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype"><span class="nav-number">2.</span> <span class="nav-text">Object.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new的过程"><span class="nav-number">3.</span> <span class="nav-text">new的过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS的prototype与proto"><span class="nav-number">1.</span> <span class="nav-text">JS的prototype与proto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype"><span class="nav-number">2.</span> <span class="nav-text">Object.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new的过程详解"><span class="nav-number">3.</span> <span class="nav-text">new的过程详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于constructor"><span class="nav-number">4.</span> <span class="nav-text">关于constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于proto"><span class="nav-number">5.</span> <span class="nav-text">关于proto</span></a></li></ol></div>
             
           </div>
         </section>
