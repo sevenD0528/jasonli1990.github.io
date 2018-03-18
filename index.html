@@ -255,6 +255,367 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/18/Vue-插件开发初探/" itemprop="url">
+                  Vue-插件开发初探
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-03-18T17:41:08+08:00" content="2018-03-18">
+              2018-03-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&gt;地区”，<br>当时的策略是封装了一个简单的组件，每次调用import一下。</p>
+<p>后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>先上个图片，最终的效果图：</p>
+<p><img src="/img/vue_1/demo1.png" alt=""></p>
+<p>一般来说，Vue插件的开发是非常简单的。</p>
+<p>Vue插件仅仅是包含一个公开方法install的对象、这个方法有两个参数：Vue 构造器和一个可选的选项对象。</p>
+<p>网上看到的一个模板：</p>
+<pre><code>// 这是你的插件对象。 它可以导出到任何地方使用。
+const MyPlugin = {
+  // install方法是必需的
+  // 包含两个参数：Vue 构造器，一个可选的选项对象
+  install(Vue, options) {
+      // 使用minxin将功能注入所有组件
+      Vue.mixin({
+      // 添加到mixin中的任何内容将被注入到所有组件中。
+      //在这个例子中， mounted() 方法将在组件被挂载到DOM后调用
+      mounted() {
+        console.log(&apos;Mounted!&apos;);
+      }
+    });
+  }
+};
+
+export default MyPlugin;
+</code></pre><p>仿照这个例子，我们将写好的city-selection组件，生成一个插件。<br>我用的技术栈是Vue-cli + axios + elementUI，数据用的本地的data.json文件，也是网上爬的一个我国城市地区的数据文件。</p>
+<h4 id="City-vue"><a href="#City-vue" class="headerlink" title="City.vue"></a>City.vue</h4><pre><code>&lt;template id=&quot;cityselection&quot;&gt;
+    &lt;el-row class=&quot;mainbody&quot;&gt;
+      &lt;el-col :span=&quot;12&quot;&gt;
+        &lt;label&gt;省份：&lt;/label&gt;
+        &lt;el-select v-model=&quot;selectedProvince&quot; placeholder=&quot;请选择&quot;&gt;
+            &lt;el-option
+              v-for=&quot;item in provinces&quot;
+              :key=&quot;item.value&quot;
+              :label=&quot;item.label&quot;
+              :value=&quot;item.value&quot;&gt;
+            &lt;/el-option&gt;
+          &lt;/el-select&gt;
+      &lt;/el-col&gt;
+      &lt;el-col :span=&quot;12&quot;&gt;
+        &lt;label&gt;城市：&lt;/label&gt;
+        &lt;el-select v-model=&quot;selectedCity&quot; placeholder=&quot;请选择&quot;&gt;
+            &lt;el-option
+              v-for=&quot;item in cities&quot;
+              :key=&quot;item.value&quot;
+              :label=&quot;item.label&quot;
+              :value=&quot;item.value&quot;&gt;
+            &lt;/el-option&gt;
+          &lt;/el-select&gt;
+      &lt;/el-col&gt;
+    &lt;/el-row&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import axios from &apos;axios&apos;
+export default {
+  name: &apos;citySelection&apos;,
+  created() {
+    this.getData();
+  },
+  data () {
+    return {
+      cityData: &apos;&apos;,
+      provinces: [],
+      cities: [],
+      value: &apos;&apos;,
+      selectedProvince: &apos;&apos;,
+      selectedCity: &apos;&apos;
+    }
+  },
+  methods: {
+    getData () {
+      let _this = this;
+      axios.get(&apos;/static/data/data.json&apos;).then((response) =&gt; {
+          var result = response.data;
+          if (result.status == 0) {
+            _this.cityData = result.data;
+            _this.getProvince();
+          }
+      },(response) =&gt; {
+          console.log(&apos;error&apos;);
+      })
+    },
+    getProvince () {
+      let _this = this, arr = [], data = _this.cityData;
+      for (let i = 0; i &lt; data.length; i++) {
+        if (arr.indexOf(data[i].province) == -1) {
+          arr.push(data[i].province);
+          _this.provinces.push({&apos;value&apos;: data[i].province, &apos;label&apos;: data[i].province})
+        } 
+      }
+    }
+  },
+  watch: {
+    selectedProvince : function() {
+      let _this = this, data = _this.cityData;
+      _this.selectedCity = &apos;&apos;;
+      _this.cities = [];
+      for (let i = 0; i &lt; data.length; i++) {
+        if (data[i].province == _this.selectedProvince) {
+          _this.cities.push({&apos;id&apos;:data[i].code, &apos;value&apos;: data[i].title, &apos;label&apos;: data[i].title})
+        }
+
+      }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre><p>这个组件实现选择城市和地区的逻辑。</p>
+<h4 id="plugin-js"><a href="#plugin-js" class="headerlink" title="plugin.js"></a>plugin.js</h4><p>然后再用一个插件，把它封装起来，如下：</p>
+<pre><code>import city from &apos;../city/city.vue&apos;
+
+// city_selection_plug.js
+const plug = {
+  install (Vue, options) {
+    Vue.component(city.name, city)
+  }
+}
+// export the plug
+export default plug
+</code></pre><p>在main.js里面，直接注册就可以使用了。</p>
+<pre><code>import citySelection from &apos;./components/plugin/city_selection_plug.js&apos;
+
+Vue.config.productionTip = false
+
+Vue.use(citySelection)
+</code></pre><h4 id="App-vue"><a href="#App-vue" class="headerlink" title="App.vue"></a>App.vue</h4><p>app里面直接这样用就可以了</p>
+<pre><code>&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;Header&gt;&lt;/Header&gt;
+    &lt;citySelection&gt;&lt;/citySelection&gt;
+    &lt;Footer&gt;&lt;/Footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/07/ES6-Promise/" itemprop="url">
+                  ES6-Promise
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-03-07T17:56:35+08:00" content="2018-03-07">
+              2018-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>这篇文章来总结一下Promise。</p>
+<p>之前有一篇EventLoop已经接触到一些，promise虽然在我们公司的项目中用的还比较少，但已经成为现在的一种趋势，特别在es6中支持以后。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/07/ES6-Promise/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/02/27/udkjs1-this详解/" itemprop="url">
                   udkjs1-this详解.md
                 </a>
@@ -1148,236 +1509,17 @@ var isAndroid = /(Android)/i.test(ua);
 
       
         
-          
-            
-          
-        
-      
-    </div>
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>举例：</p>
+<pre><code> for (var i = 0; i &lt; 10; i++) {
+    setTimeout(function() {
+        console.log(i);
+    },100);
+}
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/16/CSS-多行省略问题/" itemprop="url">
-                  CSS-多行省略问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-12-16T16:31:25+08:00" content="2017-12-16">
-              2017-12-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>平时写H5项目或者活动的时候一定会遇到这样一个小问题，也就是文案过长需要截断的情况，以我们平台的一个例子为例，我们常做的榜单活动里，会涉及主播名称过长的时候，需要一行显示，则需要做相应的截断，平时的常见页面，用简单的css属性就可以搞的定。如下：</p>
+// 10个10
+</code></pre><p>输出十个10</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/12/16/CSS-多行省略问题/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/13/H5-Video全屏问题/" itemprop="url">
-                  H5-Video全屏问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-12-13T18:21:58+08:00" content="2017-12-13">
-              2017-12-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>在网上看的api，项目中实际试用了一下，感觉并不能满足需求，先po出代码<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/12/13/H5-Video全屏问题/#more" rel="contents">
+            <a class="btn" href="/2017/12/21/udkjs1-闭包/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1411,7 +1553,7 @@ var isAndroid = /(Android)/i.test(ua);
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1452,7 +1594,7 @@ var isAndroid = /(Android)/i.test(ua);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">89</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1469,7 +1611,7 @@ var isAndroid = /(Android)/i.test(ua);
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">105</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

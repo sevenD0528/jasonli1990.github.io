@@ -84,15 +84,18 @@
 
 
 
+<meta name="description" content="Overview举例：  for (var i = 0; i &amp;lt; 10; i++) {     setTimeout(function() {         console.log(i);     },100); }  // 10个10 输出十个10">
 <meta name="keywords" content="FrontEnd,JS,闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="udkjs1-闭包（Closure）">
 <meta property="og:url" content="http://yoursite.com/2017/12/21/udkjs1-闭包/index.html">
 <meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Overview举例：  for (var i = 0; i &amp;lt; 10; i++) {     setTimeout(function() {         console.log(i);     },100); }  // 10个10 输出十个10">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-21T03:15:25.420Z">
+<meta property="og:updated_time" content="2018-03-11T08:16:18.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="udkjs1-闭包（Closure）">
+<meta name="twitter:description" content="Overview举例：  for (var i = 0; i &amp;lt; 10; i++) {     setTimeout(function() {         console.log(i);     },100); }  // 10个10 输出十个10">
 
 
 
@@ -313,7 +316,47 @@
       
 
       
-        
+        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>举例：</p>
+<pre><code> for (var i = 0; i &lt; 10; i++) {
+    setTimeout(function() {
+        console.log(i);
+    },100);
+}
+
+// 10个10
+</code></pre><p>输出十个10</p>
+<a id="more"></a>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>上面那个例子，我们试图假设循环中的每个迭代在运行时都会给自己“捕获”一个 i 的副本。但是 根据作用域的工作原理，实际情况是尽管循环中的五个函数是在各个迭代中分别定义的， 但是它们都被封闭在一个共享的全局作用域中，因此实际上只有一个 i。</p>
+<pre><code>for (var i = 0; i &lt; 10; i++) {
+    (function() {
+        setTimeout(function() {
+            console.log(i);
+        },100);
+    })();         
+}
+
+// 10 个 10
+</code></pre><p>上面这个例子 ， 我们为每个迭代创建了一个作用域，但是还是不行，仔细看一下发现我们的IIFE只是一个空作用域。</p>
+<pre><code> for (var i = 0; i &lt; 10; i++) {
+    (function() {
+        var j = i;
+        setTimeout(function() {
+            console.log(j);
+        },100);
+    })();         
+}
+</code></pre><p>这样就可以了，将i保存在所创建的作用域里。</p>
+<p>另一种就是结合块作用域与闭包。</p>
+<pre><code>for (let i = 0; i &lt; 10; i++) {
+    setTimeout(function() {
+        console.log(i);
+    },100);
+} 
+</code></pre><p>这样就可以了。</p>
+<blockquote>
+<p>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行，这时就产生了闭包</p>
+</blockquote>
+
       
     </div>
 
@@ -426,7 +469,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">89</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -443,7 +486,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">105</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -519,7 +562,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">1.1.</span> <span class="nav-text">闭包</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
