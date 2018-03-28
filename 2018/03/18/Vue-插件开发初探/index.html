@@ -84,20 +84,20 @@
 
 
 
-<meta name="description" content="Overview不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&amp;gt;地区”，当时的策略是封装了一个简单的组件，每次调用import一下。 后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。 步骤先上个图片，最终的效果图：  一般来说，Vue插件的开发是非常简单的。 Vue插件仅仅是包含一个公开方法install的对象、这个方法有两个参数：Vue 构造器">
+<meta name="description" content="Overview不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&amp;gt;地区”，当时的策略是封装了一个简单的组件，每次调用import一下。fi后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。">
 <meta name="keywords" content="FrontEnd,JS,Vue,插件,Plugin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue-插件开发初探">
 <meta property="og:url" content="http://yoursite.com/2018/03/18/Vue-插件开发初探/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="Overview不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&amp;gt;地区”，当时的策略是封装了一个简单的组件，每次调用import一下。 后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。 步骤先上个图片，最终的效果图：  一般来说，Vue插件的开发是非常简单的。 Vue插件仅仅是包含一个公开方法install的对象、这个方法有两个参数：Vue 构造器">
+<meta property="og:description" content="Overview不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&amp;gt;地区”，当时的策略是封装了一个简单的组件，每次调用import一下。fi后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/vue_1/demo1.png">
-<meta property="og:updated_time" content="2018-03-18T10:05:31.847Z">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/vue_1/demo1.png">
+<meta property="og:updated_time" content="2018-03-28T06:33:20.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue-插件开发初探">
-<meta name="twitter:description" content="Overview不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&amp;gt;地区”，当时的策略是封装了一个简单的组件，每次调用import一下。 后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。 步骤先上个图片，最终的效果图：  一般来说，Vue插件的开发是非常简单的。 Vue插件仅仅是包含一个公开方法install的对象、这个方法有两个参数：Vue 构造器">
-<meta name="twitter:image" content="http://yoursite.com/img/vue_1/demo1.png">
+<meta name="twitter:description" content="Overview不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&amp;gt;地区”，当时的策略是封装了一个简单的组件，每次调用import一下。fi后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。">
+<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/vue_1/demo1.png">
 
 
 
@@ -318,10 +318,10 @@
       
 
       
-        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&gt;地区”，<br>当时的策略是封装了一个简单的组件，每次调用import一下。</p>
-<p>后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。</p>
+        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>不久前做东西，遇到这样一个简单的需求，就是选择框选择“城市-&gt;地区”，<br>当时的策略是封装了一个简单的组件，每次调用import一下。<br>fi<br>后来想看看Vue的插件是怎么实现的，就想到这种需求其实可以尝试做成一个公用插件。</p>
+<a id="more"></a>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>先上个图片，最终的效果图：</p>
-<p><img src="/img/vue_1/demo1.png" alt=""></p>
+<p><img src="/img/FrontEnd/vue_1/demo1.png" alt=""></p>
 <p>一般来说，Vue插件的开发是非常简单的。</p>
 <p>Vue插件仅仅是包含一个公开方法install的对象、这个方法有两个参数：Vue 构造器和一个可选的选项对象。</p>
 <p>网上看到的一个模板：</p>
@@ -498,6 +498,10 @@ Vue.use(citySelection)
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/03/19/CSS-页面字体变清晰/" rel="prev" title="CSS_页面字体变清晰">
+                CSS_页面字体变清晰 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -564,7 +568,7 @@ Vue.use(citySelection)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">91</span>
+              <span class="site-state-item-count">93</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -581,7 +585,7 @@ Vue.use(citySelection)
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-count">109</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
