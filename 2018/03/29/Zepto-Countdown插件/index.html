@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,js,countdown,zepto," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Overview项目中有个倒计时的需求，找到了github上的一个star最多的jQuery的库，如下： https://github.com/hilios/jQuery.countdown.git 使用的时候，如下： &amp;lt;!--html--&amp;gt; &amp;lt;div class=&amp;quot;countdown&amp;quot; id=&amp;quot;countdown&amp;quot;&amp;gt;     &amp;lt">
+<meta name="keywords" content="FrontEnd,js,countdown,zepto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zepto-Countdown插件">
+<meta property="og:url" content="http://yoursite.com/2018/03/29/Zepto-Countdown插件/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Overview项目中有个倒计时的需求，找到了github上的一个star最多的jQuery的库，如下： https://github.com/hilios/jQuery.countdown.git 使用的时候，如下： &amp;lt;!--html--&amp;gt; &amp;lt;div class=&amp;quot;countdown&amp;quot; id=&amp;quot;countdown&amp;quot;&amp;gt;     &amp;lt">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-29T10:14:23.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zepto-Countdown插件">
+<meta name="twitter:description" content="Overview项目中有个倒计时的需求，找到了github上的一个star最多的jQuery的库，如下： https://github.com/hilios/jQuery.countdown.git 使用的时候，如下： &amp;lt;!--html--&amp;gt; &amp;lt;div class=&amp;quot;countdown&amp;quot; id=&amp;quot;countdown&amp;quot;&amp;gt;     &amp;lt">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/29/Zepto-Countdown插件/"/>
+
+
+  <title> Zepto-Countdown插件 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Zepto-Countdown插件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-03-29T15:31:52+08:00" content="2018-03-29">
+              2018-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>项目中有个倒计时的需求，找到了github上的一个star最多的jQuery的库，如下：</p>
+<pre><code>https://github.com/hilios/jQuery.countdown.git
+</code></pre><p>使用的时候，如下：</p>
+<pre><code>&lt;!--html--&gt;
+&lt;div class=&quot;countdown&quot; id=&quot;countdown&quot;&gt;
+    &lt;p class=&quot;title&quot;&gt;&lt;span&gt;剩余挑战时间&lt;/span&gt;&lt;/p&gt;
+    &lt;p class=&quot;time&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!--js--&gt;
+$(&apos;#countdown .time&apos;).countdown(&apos;2018/04/01&apos;, function(e) {
+    $(this).html(e.strftime(&apos;%d天%H小时%M分%S秒&apos;));
+})
+</code></pre><p>下来之后有什么问题呢，就是zepto和jQuery的转化问题了。</p>
+<pre><code>&quot;use strict&quot;;
+if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
+    define([ &quot;jquery&quot; ], factory);
+} else {
+    factory(jQuery);
+}
+</code></pre><p>在定义部分之间改为传入Zepto是不好使的，会发现页面中并没有出现倒计时。</p>
+<pre><code>&quot;use strict&quot;;
+if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
+    define([ &quot;zepto&quot; ], factory);
+} else {
+    factory(Zepto);
+}
+</code></pre><p>经过排查，是事件委托惹的锅，那Zepto和jQuery的事件委托有什么不同呢。</p>
+<a id="more"></a>
+<h3 id="Zepto和jQuery事件委托"><a href="#Zepto和jQuery事件委托" class="headerlink" title="Zepto和jQuery事件委托"></a>Zepto和jQuery事件委托</h3><p>Zepto的on</p>
+<pre><code>$.fn.on = function(event, selector, data, callback, one){
+  var autoRemove, delegator, $this = this
+  if (event &amp;&amp; !isString(event)) {
+    $.each(event, function(type, fn){
+      $this.on(type, selector, data, fn, one)
+    })
+    return $this
+  }
+
+  if (!isString(selector) &amp;&amp; !isFunction(callback) &amp;&amp; callback !== false)
+    callback = data, data = selector, selector = undefined
+  if (callback === undefined || data === false)
+    callback = data, data = undefined
+
+  if (callback === false) callback = returnFalse
+
+  return $this.each(function(_, element){
+    if (one) autoRemove = function(e){
+      remove(element, e.type, callback)
+      return callback.apply(this, arguments)
+    }
+
+    if (selector) delegator = function(e){
+      var evt, match = $(e.target).closest(selector, element).get(0)
+      if (match &amp;&amp; match !== element) {
+        evt = $.extend(createProxy(e), {currentTarget: match, liveFired: element})
+        return (autoRemove || callback).apply(match, [evt].concat(slice.call(arguments, 1)))
+      }
+    }
+
+    add(element, event, callback, data, selector, delegator || autoRemove)
+  })
+}
+</code></pre><p>jQuery的on</p>
+<pre><code>      function (types, selector, data, fn,
+/*INTERNAL*/
+one) {
+    var origFn, type;
+
+    // Types can be a map of types/handlers
+    if (typeof types === &quot;object&quot;) {
+        // ( types-Object, selector, data )
+        if (typeof selector !== &quot;string&quot;) { // &amp;&amp; selector != null
+            // ( types-Object, data )
+            data = data || selector;
+            selector = undefined;
+        }
+        for (type in types) {
+            this.on(type, selector, data, types[type], one);
+        }
+        return this;
+    }
+
+    if (data == null &amp;&amp; fn == null) {
+        // ( types, fn )
+        fn = selector;
+        data = selector = undefined;
+    } else if (fn == null) {
+        if (typeof selector === &quot;string&quot;) {
+            // ( types, selector, fn )
+            fn = data;
+            data = undefined;
+        } else {
+            // ( types, data, fn )
+            fn = data;
+            data = selector;
+            selector = undefined;
+        }
+    }
+    if (fn === false) {
+        fn = returnFalse;
+    } else if (!fn) {
+        return this;
+    }
+
+    if (one === 1) {
+        origFn = fn;
+        fn = function (event) {
+            // Can use an empty set, since event contains the info
+            jQuery().off(event);
+            return origFn.apply(this, arguments);
+        };
+        // Use same guid so caller can remove using origFn
+        fn.guid = origFn.guid || (origFn.guid = jQuery.guid++);
+    }
+    return this.each(function () {
+        jQuery.event.add(this, types, fn, data, selector);
+    });
+}
+</code></pre><h4 id="Zepto的on"><a href="#Zepto的on" class="headerlink" title="Zepto的on"></a>Zepto的on</h4><p>例如：</p>
+<pre><code>&lt;div class=&quot;a&quot;&gt;
+     A 
+    &lt;div class=&quot;b&quot;&gt;
+           B 
+          &lt;div class=&quot;c&quot;&gt;
+               C
+               &lt;div class=&quot;d&quot;&gt;
+                     D
+               &lt;/div&gt;
+         &lt;/div&gt;
+     &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre><p>在代码解析的时候，所有document的所有 click 委托事件都依次放入一个队列里，click 的时候先看当前元素是不是.a，符合就执行，然后查看是不是.b，符合就执行。</p>
+<h4 id="jQuery的on"><a href="#jQuery的on" class="headerlink" title="jQuery的on"></a>jQuery的on</h4><p>document上委托了2个 click 事件，click 后判断是否当前符合条件（选择符），然后把事件拿出来执行。</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>在源码中添加：</p>
+<pre><code>function fireEvent(el, type, extra) {
+    var ev = document.createEvent(&quot;HTMLEvents&quot;);
+    // console.log(type);
+    ev.initEvent(type, true, true)
+    for (var key in extra) {
+        ev[key] = extra[key]
+        // console.log(extra[key])
+    }
+    el.dispatchEvent(ev);
+    // console.log(el);
+}
+$.fn.On = function(name, cb) {
+    if ($ == Zepto) {
+        this.get(0).addEventListener(name, cb);
+    } else {
+        this.$el.on(name, callback);
+    }
+}
+</code></pre><p>在dispatch中修改：</p>
+<pre><code>dispatchEvent: function(eventName) {
+    var event = $.Event(eventName + &quot;.countdown&quot;);
+    var event = {};
+    event.finalDate = this.finalDate;
+    event.elapsed = this.elapsed;
+    event.offset = $.extend({}, this.offset);
+    event.strftime = strftime(this.offset);
+    if ($ == Zepto) {
+        // console.log(eventName)
+        fireEvent(this.$el.get(0), eventName + &apos;.countdown&apos;, event);
+    } else {
+        this.$el.trigger(event);
+    }
+    // this.$el.trigger(event);
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/js/" rel="tag">#js</a>
+          
+            <a href="/tags/countdown/" rel="tag">#countdown</a>
+          
+            <a href="/tags/zepto/" rel="tag">#zepto</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/20/DNS-预读取/" rel="next" title="DNS-预读取">
+                <i class="fa fa-chevron-left"></i> DNS-预读取
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/daocheng"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">94</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">111</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zepto和jQuery事件委托"><span class="nav-number">2.</span> <span class="nav-text">Zepto和jQuery事件委托</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Zepto的on"><span class="nav-number">2.1.</span> <span class="nav-text">Zepto的on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery的on"><span class="nav-number">2.2.</span> <span class="nav-text">jQuery的on</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题"><span class="nav-number">3.</span> <span class="nav-text">解决问题</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
