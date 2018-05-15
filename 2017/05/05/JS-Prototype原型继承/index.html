@@ -84,18 +84,20 @@
 
 
 
-<meta name="description" content="概述原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。">
+<meta name="description" content="概述原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。 既然要实现继承，就一定要有一个父类。 123456789// 定义一个父类function father(name) &amp;#123;    //属性    this.name = name;&amp;#125;// 原型方法father.prototype.getName = function () &amp;#123;    retu">
 <meta name="keywords" content="FrontEnd,JS,继承">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS-Prototype原型继承">
 <meta property="og:url" content="http://yoursite.com/2017/05/05/JS-Prototype原型继承/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="概述原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。">
+<meta property="og:description" content="概述原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。 既然要实现继承，就一定要有一个父类。 123456789// 定义一个父类function father(name) &amp;#123;    //属性    this.name = name;&amp;#125;// 原型方法father.prototype.getName = function () &amp;#123;    retu">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-30T06:44:56.019Z">
+<meta property="og:image" content="http://yoursite.com/img/bVbawZz">
+<meta property="og:updated_time" content="2018-05-15T07:17:20.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-Prototype原型继承">
-<meta name="twitter:description" content="概述原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。">
+<meta name="twitter:description" content="概述原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。 既然要实现继承，就一定要有一个父类。 123456789// 定义一个父类function father(name) &amp;#123;    //属性    this.name = name;&amp;#125;// 原型方法father.prototype.getName = function () &amp;#123;    retu">
+<meta name="twitter:image" content="http://yoursite.com/img/bVbawZz">
 
 
 
@@ -317,60 +319,62 @@
 
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>原型和闭包是JS的两个难点，最近碰到了原型继承的概念，正好在这里总结一下。</p>
-<a id="more"></a>
 <p>既然要实现继承，就一定要有一个父类。</p>
-<pre><code>// 定义一个父类 Father
-function Father(name) {
-    // 属性
-    this.name = name || &apos;father&apos;;
-    // 实例方法
-    this.say = function() {
-        console.log(&apos;My name is &apos; + this.name);
-    }
-}
-
-// 原型方法
-Father.prototype.work = function(job) {
-    console.log(this.name + &quot; &apos;s job &quot; + job);
-}
-</code></pre><h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><pre><code>function Son1() {}
-
-Son1.prototype = new Father();
-Son1.prototype.name = &apos;son1&apos;;
-
-var son1 = new Son1();
-console.log(&apos;原型链继承&apos;);
-console.log(son1.name);
-console.log(son1.work(&apos;student&apos;));
-console.log(son1.say());
-console.log(son1 instanceof Father);
-console.log(son1 instanceof Son1);
-</code></pre><p>特点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 定义一个父类</div><div class="line">function father(name) &#123;</div><div class="line">    //属性</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">// 原型方法</div><div class="line">father.prototype.getName = function () &#123;</div><div class="line">    return this.name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><p>基本思想就是利用原型让一个引用类型继承另一个引用类型的属性和方法。</p>
+<p>回顾一下原型、实例和构造函数的关系。</p>
+<blockquote>
+<p>每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象内部的指针。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 子类</div><div class="line">function son(age) &#123;</div><div class="line">    // 属性</div><div class="line">    this.age = age;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">son.prototype = new father(&apos;jason&apos;);</div><div class="line"></div><div class="line">son.prototype.getAge = function () &#123;</div><div class="line">    return this.age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let firstchild = new son(&apos;19&apos;);</div><div class="line"></div><div class="line">console.log(firstchild.getAge()) // 19</div></pre></td></tr></table></figure>
+<p>这里需要注意几点的是：</p>
+<ul>
+<li>默认原型</li>
+</ul>
+<p>原型链的最顶端是Object，所有引用类型默认都是继承于Object的，所以默认也是有toString等方法的。</p>
+<p><img src="/img/bVbawZz" alt="clipboard.png"></p>
+<ul>
+<li>如何确定原型和实例的关系<br> 第一个方法是，instanceof，用于检测实例与原型链中出现过的构造函数。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(firstchild instanceof Object) //true</div><div class="line">console.log(firstchild instanceof son) //true</div><div class="line">console.log(firstchild instanceof father) //true</div></pre></td></tr></table></figure>
+<pre><code>第二个方法是，isPrototypeOf方法。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(Object.prototype.isPrototypeOf(firstchild)) //true</div><div class="line">console.log(son.prototype.isPrototypeOf(firstchild)) //true</div><div class="line">console.log(father.prototype.isPrototypeOf(firstchild)) //true</div></pre></td></tr></table></figure>
+<ul>
+<li>谨慎定义方法</li>
+</ul>
+<p>子类型可能要重写父类型方法，或定义父类没有的方法。不管是啥，<strong>这个方法一定要写在替换原型语句的后面</strong>。<br>还有原型链继承的时候，不能使用对象字面量创建原型方法。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">son.prototype = new father(&apos;jason&apos;);</div><div class="line"></div><div class="line">son.prototype = &#123;</div><div class="line">    getAge: function() &#123;</div><div class="line">        return this.age</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样会导致创建一个新的Object实例，而非原来的father。</p>
+<ul>
+<li>共享性和传参问题</li>
+</ul>
+<pre><code>第一，引用类型的原型属性会被所有实例共享。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function father(name) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.colors = [&apos;blue&apos;, &apos;red&apos;, &apos;white&apos;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">let firstchild = new son(&apos;19&apos;);</div><div class="line">let secondchild = new son(&apos;20&apos;);</div><div class="line">firstchild.colors.push(&quot;black&quot;);</div><div class="line">console.log(firstchild.colors) // [&quot;blue&quot;, &quot;red&quot;, &quot;white&quot;, &quot;black&quot;]</div><div class="line">console.log(secondchild.colors) // [&quot;blue&quot;, &quot;red&quot;, &quot;white&quot;, &quot;black&quot;]</div></pre></td></tr></table></figure>
+<p>第二，不能像父类型构造函数传参数，书里准确说法是，没有办法在不影响所有实例的情况下，给父类构造函数传递参数。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>优点：</p>
 <ul>
 <li>非常纯粹的继承关系，实例是子类的实例，也是父类的实例</li>
 <li>父类新增原型方法/原型属性，子类都能访问到</li>
-<li>简单，易于实现<br>缺点：</li>
-<li>要想为子类新增属性和方法，必须要在new Animal()这样的语句之后执行，不能放到构造器中</li>
+<li>简单，易于实现</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>要想为子类新增属性和方法，必须要在new father()这样的语句之后执行，不能放到构造器中</li>
 <li>无法实现多继承</li>
-<li>来自原型对象的引用属性是所有实例共享的（详细请看附录代码： 示例1）</li>
+<li><strong>来自原型对象的引用属性是所有实例共享的</strong></li>
 <li>创建子类实例时，无法向父类构造函数传参</li>
 </ul>
-<h4 id="构造继承"><a href="#构造继承" class="headerlink" title="构造继承"></a>构造继承</h4><p>使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（不用原型）</p>
-<pre><code>function Son1(name) {
-    Father.call(this);
-    this.name = name || &apos;Son1&apos;
-}
-
-var son1 = new Son1();
-console.log(&apos;构造继承&apos;);
-console.log(son1.name);
-// console.log(son1.work(&apos;student&apos;)); // 不行，不继承原型属性方法
-console.log(son1.say());
-console.log(son1 instanceof Father); // false 
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
+<h3 id="借用构造继承"><a href="#借用构造继承" class="headerlink" title="借用构造继承"></a>借用构造继承</h3><p>在子类型的构造函数中调用父类的构造函数，使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（不用原型）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function son(age) &#123;</div><div class="line">    father.call(this);</div><div class="line">    this.age = age;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">son.prototype = new father(&apos;jason&apos;);</div><div class="line"></div><div class="line">son.prototype.getAge = function () &#123;</div><div class="line">    return this.age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let firstchild = new son(&apos;19&apos;);</div><div class="line">let secondchild = new son(&apos;20&apos;);</div><div class="line">firstchild.colors.push(&quot;black&quot;);</div><div class="line"></div><div class="line">console.log(firstchild.colors); // [&quot;blue&quot;, &quot;red&quot;, &quot;white&quot;, &quot;black&quot;]</div><div class="line">console.log(secondchild.colors); // [&quot;blue&quot;, &quot;red&quot;, &quot;white&quot;]</div></pre></td></tr></table></figure>
 <ul>
-<li>解决了1中，子类实例共享父类引用属性的问题</li>
+<li>可以传递参数</li>
+<li>方法都在构造函数中定义，函数复用性丢失</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>优点：</p>
+<ul>
+<li>由例子可见，解决了1中子类实例共享父类引用属性的问题</li>
 <li>创建子类实例时，可以向父类传递参数</li>
 <li>可以实现多继承（call多个父类对象）</li>
 </ul>
@@ -380,69 +384,11 @@ console.log(son1 instanceof Son1); // true
 <li>只能继承父类的实例属性和方法，不能继承原型属性/方法</li>
 <li>无法实现函数复用，每个子类都有父类实例函数的副本，影响性能</li>
 </ul>
-<h4 id="实例继承"><a href="#实例继承" class="headerlink" title="实例继承"></a>实例继承</h4><p>为父类实例添加新特性，作为子类实例返回</p>
-<pre><code>function Son1(name){
-  var instance = new Father();
-  instance.name = name || &apos;Son1&apos;;
-  return instance;
-}
-
-// Test Code
-var son1 = new Son1();
-console.log(son1.name);
-// console.log(son1.sleep());
-console.log(son1 instanceof Father); // true
-console.log(son1 instanceof Son1); // false
-</code></pre><p>特点：</p>
+<h4 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h4><p>也就是将原型链继承和构造函数继承融合，原型链实现对原型属性和方法的继承，构造函数实现对实例属性的继承。<br>这样既保证了原型上函数的复用，也保证了每个实例有自己的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> function son(name, age) &#123;</div><div class="line">    father.call(this, name);</div><div class="line">    this.age = age;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">son.prototype = new father();</div><div class="line"></div><div class="line">son.prototype.getAge = function () &#123;</div><div class="line">    return this.age;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">let firstchild = new son(&apos;jason&apos;, &apos;19&apos;);</div><div class="line">let secondchild = new son(&apos;jason junior&apos;, &apos;18&apos;);</div><div class="line">firstchild.colors.push(&quot;black&quot;);</div><div class="line"></div><div class="line"></div><div class="line">console.log(firstchild.colors); // [&quot;blue&quot;, &quot;red&quot;, &quot;white&quot;, &quot;black&quot;]</div><div class="line">console.log(secondchild.colors); //[&quot;blue&quot;, &quot;red&quot;, &quot;white&quot;]</div><div class="line">console.log(firstchild.getName()); // jason</div><div class="line">console.log(secondchild.getName()); // jason junior</div><div class="line">console.log(firstchild.getAge()); //19</div><div class="line">console.log(secondchild.getAge()); //18</div></pre></td></tr></table></figure>
+<p>特点：</p>
 <ul>
-<li>不限制调用方式，不管是new 子类()还是子类(),返回的对象具有相同的效果</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li><strong>实例是父类的实例，不是子类的实例</strong></li>
-<li>不支持多继承</li>
-</ul>
-<h4 id="拷贝继承"><a href="#拷贝继承" class="headerlink" title="拷贝继承"></a>拷贝继承</h4><pre><code>function Son1(name) {
-    var father = new Father();
-    for (var p in father) {
-        Son1.prototype[p] = father[p];
-    }
-
-    Son1.prototype.name = name || &apos;Son1&apos;;
-}
-
-var son1 = new Son1();
-console.log(son1.name);
-// console.log(son1.sleep());
-console.log(son1 instanceof Father); // false
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
-<ul>
-<li>支持多继承</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>效率较低，内存占用高（因为要拷贝父类的属性）</li>
-<li>无法获取父类不可枚举的方法（不可枚举方法，不能使用for in 访问到）</li>
-</ul>
-<h4 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h4><p>通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用</p>
-<pre><code>function Son1(name) {
-    Father.call(this);
-    this.name = name || &apos;Son1&apos;;
-}
-
-Son1.prototype = new Father();
-
-var son1 = new Son1();
-console.log(&apos;组合继承&apos;);
-console.log(son1.name);
-console.log(son1.work(&apos;student&apos;));
-console.log(son1.say());
-console.log(son1 instanceof Father); // true
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
-<ul>
-<li>弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法</li>
+<li>可以继承实例属性/方法，也可以继承原型属性/方法</li>
 <li>既是子类的实例，也是父类的实例</li>
 <li>不存在引用属性共享问题</li>
 <li>可传参</li>
@@ -452,28 +398,17 @@ console.log(son1 instanceof Son1); // true
 <ul>
 <li>调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）</li>
 </ul>
-<h4 id="寄生组合继承"><a href="#寄生组合继承" class="headerlink" title="寄生组合继承"></a>寄生组合继承</h4><p>通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点</p>
-<pre><code>function Son1(name) {
-    Father.call(this);
-    this.name = name || &apos;Son1&apos;;
-}
-
-(function(){
-    var Super = function(){};
-    Super.prototype = Father.prototype;
-    Son1.prototype = new Super();
-})();
-
-// Son1.prototype = new Father();
-
-var son1 = new Son1();
-console.log(&apos;组合继承&apos;);
-console.log(son1.name);
-console.log(son1.work(&apos;student&apos;));
-console.log(son1.say());
-console.log(son1 instanceof Father); // true
-console.log(son1 instanceof Son1); // true
-</code></pre><p>特点：</p>
+<h4 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h4><p>为父类实例添加新特性，作为子类实例返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">let p = &#123;</div><div class="line">    name: &apos;jason&apos;,</div><div class="line">    colors: [&apos;white&apos;, &apos;black&apos;, &apos;red&apos;]</div><div class="line">&#125;</div><div class="line">function object (o) &#123;</div><div class="line">    function F() &#123;&#125;;</div><div class="line">    F.prototype = o;</div><div class="line">    return new F();</div><div class="line">&#125;</div><div class="line"></div><div class="line">let firstchild = object(p)</div><div class="line">let secondchild = object(p)</div><div class="line"></div><div class="line">firstchild.name = &apos;jason1&apos;</div><div class="line">firstchild.colors.push(&apos;blue&apos;)</div><div class="line"></div><div class="line">secondchild.name = &apos;jason2&apos;</div><div class="line">secondchild.colors.push(&apos;green&apos;)</div><div class="line"></div><div class="line">console.log(p.colors) // [&quot;white&quot;, &quot;black&quot;, &quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]</div></pre></td></tr></table></figure>
+<p>ECMAScript 5新增Object.create()方法规范原型式继承。两个参数，一个参数是新对象原型的对象，一个参数是对象定义额外属性的对象，第二个可忽略，就等于上述object函数了</p>
+<h4 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h4><p>创造一个用于封装继承过程的函数，该函数内部以某种方式增强对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function create(o) &#123;</div><div class="line">    let clone = object(o);</div><div class="line">    o.sayHi = function () &#123;</div><div class="line">        console.log(&apos;Hi&apos;)</div><div class="line">    &#125;</div><div class="line">    return o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="寄生组合继承"><a href="#寄生组合继承" class="headerlink" title="寄生组合继承"></a>寄生组合继承</h4><p>组合继承虽然好用，但是也有缺陷，就是会调用两次构造函数，一次在创建时候，一次在内部，那个call方法。</p>
+<p>所谓寄生组合继承，即通过借用构造函数方式，继承属性，通过原型链形式继承方法。</p>
+<p>沿用寄生方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function inheritPrototype (sub, sup) &#123;</div><div class="line">    let prototype = object(sup.prototype);</div><div class="line">    prototype.constructor = sub;</div><div class="line">    sub.prototype = prototype;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">function father(name) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.colors = [&apos;blue&apos;, &apos;red&apos;, &apos;white&apos;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">father.prototype.getName = function () &#123;</div><div class="line">    return this.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function son(name, age) &#123;</div><div class="line">    father.call(this, name);</div><div class="line">    this.age = age;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function object (o) &#123;</div><div class="line">    function F() &#123;&#125;;</div><div class="line">    F.prototype = o;</div><div class="line">    return new F();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function inheritPrototype (sub, super) &#123;</div><div class="line">    let prototype = object(super.prototype);</div><div class="line">    prototype.constructor = sub;</div><div class="line">    sub.prototype = prototype;</div><div class="line">&#125;</div><div class="line"></div><div class="line">inheritPrototype(son, father);</div><div class="line"></div><div class="line">son.prototype.getAge = function () &#123;</div><div class="line">    return this.age;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>优点：</p>
 <ul>
 <li>堪称完美</li>
 </ul>
@@ -481,6 +416,9 @@ console.log(son1 instanceof Son1); // true
 <ul>
 <li>实现较为复杂</li>
 </ul>
+<blockquote>
+<p>参考 &lt;<javascript高级程序设计>&gt;总结</javascript高级程序设计></p>
+</blockquote>
 
       
     </div>
@@ -594,7 +532,7 @@ console.log(son1 instanceof Son1); // true
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">94</span>
+              <span class="site-state-item-count">96</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -611,7 +549,7 @@ console.log(son1 instanceof Son1); // true
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">111</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -687,7 +625,7 @@ console.log(son1 instanceof Son1); // true
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原型链继承"><span class="nav-number">1.0.1.</span> <span class="nav-text">原型链继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造继承"><span class="nav-number">1.0.2.</span> <span class="nav-text">构造继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例继承"><span class="nav-number">1.0.3.</span> <span class="nav-text">实例继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拷贝继承"><span class="nav-number">1.0.4.</span> <span class="nav-text">拷贝继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组合继承"><span class="nav-number">1.0.5.</span> <span class="nav-text">组合继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寄生组合继承"><span class="nav-number">1.0.6.</span> <span class="nav-text">寄生组合继承</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链继承"><span class="nav-number">1.1.</span> <span class="nav-text">原型链继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#借用构造继承"><span class="nav-number">1.2.</span> <span class="nav-text">借用构造继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.2.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组合继承"><span class="nav-number">1.2.2.</span> <span class="nav-text">组合继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型式继承"><span class="nav-number">1.2.3.</span> <span class="nav-text">原型式继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寄生式继承"><span class="nav-number">1.2.4.</span> <span class="nav-text">寄生式继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寄生组合继承"><span class="nav-number">1.2.5.</span> <span class="nav-text">寄生组合继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结-1"><span class="nav-number">1.2.6.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

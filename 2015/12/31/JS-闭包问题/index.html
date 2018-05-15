@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="闭包的入门">
+<meta name="description" content="变量作用域变量的作用域无非就是两种：全局变量和局部变量。 函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！ 闭包有权访问另一个函数作用域的变量，常见的创建方式就是在一个函数内部创建另一个函数，通过另一个函数访问这个函数的局部变量。 简单的说就是，闭包就是能够读取其他函数内部变量的函数。 由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，">
 <meta name="keywords" content="FrontEnd,JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS_闭包问题">
+<meta property="og:title" content="JS_闭包">
 <meta property="og:url" content="http://yoursite.com/2015/12/31/JS-闭包问题/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="闭包的入门">
+<meta property="og:description" content="变量作用域变量的作用域无非就是两种：全局变量和局部变量。 函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！ 闭包有权访问另一个函数作用域的变量，常见的创建方式就是在一个函数内部创建另一个函数，通过另一个函数访问这个函数的局部变量。 简单的说就是，闭包就是能够读取其他函数内部变量的函数。 由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-02-03T09:49:30.000Z">
+<meta property="og:updated_time" content="2018-05-04T07:53:36.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS_闭包问题">
-<meta name="twitter:description" content="闭包的入门">
+<meta name="twitter:title" content="JS_闭包">
+<meta name="twitter:description" content="变量作用域变量的作用域无非就是两种：全局变量和局部变量。 函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！ 闭包有权访问另一个函数作用域的变量，常见的创建方式就是在一个函数内部创建另一个函数，通过另一个函数访问这个函数的局部变量。 简单的说就是，闭包就是能够读取其他函数内部变量的函数。 由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，">
 
 
 
@@ -119,7 +119,7 @@
   <link rel="canonical" href="http://yoursite.com/2015/12/31/JS-闭包问题/"/>
 
 
-  <title> JS_闭包问题 | Jason Li </title>
+  <title> JS_闭包 | Jason Li </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="en">
@@ -257,7 +257,7 @@
             
             
               
-                JS_闭包问题
+                JS_闭包
               
             
           </h1>
@@ -316,15 +316,22 @@
       
 
       
-        <h3 id="闭包的入门"><a href="#闭包的入门" class="headerlink" title="闭包的入门"></a>闭包的入门</h3><a id="more"></a>
-<p>简单的闭包讲解，参考博客<a href="http://www.html5cn.org/article-9171-1.html" target="_blank" rel="external">http://www.html5cn.org/article-9171-1.html</a>  </p>
-<p>有权访问另一个函数作用域的变量，常见的创建方式就是在一个函数内部创建另一个函数，通过另一个函数访问这个函数的局部变量。</p>
-<!-- more -->
+        <h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><p>变量的作用域无非就是两种：全局变量和局部变量。</p>
+<p>函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>有权访问另一个函数作用域的变量，常见的创建方式就是在一个函数内部创建另一个函数，通过另一个函数访问这个函数的局部变量。</p>
+<p>简单的说就是，<strong>闭包就是能够读取其他函数内部变量的函数</strong>。</p>
+<p>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。</p>
+<p>MDN中定义的是：</p>
+<blockquote>
+<p>闭包是指能够访问自由变量的函数。换句话说，在闭包中定义的函数可以“记忆”它被创建的环境。</p>
+<p>注：自由变量是既不是在本地声明又不作为参数传递的一类变量。</p>
+</blockquote>
+<a id="more"></a>
 <ul>
 <li><p>简单的例子</p>
 <pre><code>function A(){
         function B(){
-       console.log(&quot;Hello Closure!&quot;);
+            console.log(&quot;Hello Closure!&quot;);
     }
     return B;
 }
@@ -341,13 +348,54 @@ b();//Hello Closure!
 </li>
 </ul>
 <p>总结一句话：函数A的内部函数B被函数A外的一个变量b引用。所以<strong>当一个内部函数被其外部函数之外的变量引用时，就形成了一个闭包</strong>  </p>
-<ul>
-<li><p>闭包的作用<br>在一个模块中定义一个变量，希望这个变量保存在内存中又不会污染全局变量，就用闭包来定义这个模板。</p>
-</li>
-<li><p>闭包优点，也是缺点，局部变量驻留在内存中，可以回避使用全局变量，但由于闭包里的资源不会被立刻销毁回收，所以可能占用更多的内存，过度使用闭包会导致性能下降。</p>
-</li>
+<h3 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h3><p>在一个模块中定义一个变量，希望这个变量保存在内存中又不会污染全局变量，就用闭包来定义这个模板。</p>
+<p>它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p>
+<h3 id="闭包的注意点"><a href="#闭包的注意点" class="headerlink" title="闭包的注意点"></a>闭包的注意点</h3><ul>
+<li>闭包优点，也是缺点，局部变量驻留在内存中，可以回避使用全局变量，但由于闭包里的资源不会被立刻销毁回收，所以可能占用更多的内存，过度使用闭包会导致性能下降。</li>
+<li>闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。</li>
 </ul>
 <p><strong>注意：可以使用之后，给它加null，接触引用。</strong></p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>例子1：</p>
+<pre><code>var name = &quot;The Window&quot;; // 全局
+var object = {　　　　
+    name: &quot;My Object&quot;, // 局部
+    getNameFunc: function () { // 对象中的方法，this指向obj这个对象　　　　　　
+        return function () {　// 闭包　　　　　　　
+            return this.name; // this指向window　　　　
+        }; 　　　　
+    }　
+};
+　
+alert(object.getNameFunc()()); // The Window
+</code></pre><p>例子2：</p>
+<pre><code>var name = &quot;The Window&quot;; // 全局
+var object = {　　　　
+    name: &quot;My Object&quot;, // 局部
+    getNameFunc: function () { // 对象中的方法，this指向obj这个对象　　　　　　
+        return function () {　// 闭包　　　
+            var that = this;　// 将getNameFunc()的this保存在that变量中　
+            return that.name; // this指向window　　　　
+        }; 　　　　
+    }　
+};
+　
+alert(object.getNameFunc()()); // My Object
+</code></pre><p>例子3：</p>
+<pre><code>var name = &quot;The Window&quot;; // 全局
+var object = {　　　　
+    name: &quot;My Object&quot;, // 局部
+    getNameFunc: function () { // 对象中的方法，this指向obj这个对象　　　　　　
+        return function () {　// 闭包　　　
+            var that = this;　// 将getNameFunc()的this保存在that变量中　
+            return that.name; // this指向window　　　　
+        }; 　　　　
+    }　
+};
+　
+alert(object.getNameFunc().call(object)); // My Object call改变this指向
+</code></pre><p>参考博客:</p>
+<p><a href="http://www.html5cn.org/article-9171-1.html" target="_blank" rel="external">http://www.html5cn.org/article-9171-1.html</a> </p>
+<p><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html</a></p>
 
       
     </div>
@@ -459,7 +507,7 @@ b();//Hello Closure!
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">94</span>
+              <span class="site-state-item-count">96</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -476,7 +524,7 @@ b();//Hello Closure!
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">111</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -552,7 +600,7 @@ b();//Hello Closure!
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的入门"><span class="nav-number">1.</span> <span class="nav-text">闭包的入门</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量作用域"><span class="nav-number">1.</span> <span class="nav-text">变量作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的作用"><span class="nav-number">3.</span> <span class="nav-text">闭包的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的注意点"><span class="nav-number">4.</span> <span class="nav-text">闭包的注意点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举例"><span class="nav-number">5.</span> <span class="nav-text">举例</span></a></li></ol></div>
             
           </div>
         </section>
