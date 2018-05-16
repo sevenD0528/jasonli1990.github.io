@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="小程序-分享事件">
+<meta name="description" content="小程序-分享事件小程序APIhttps://developers.weixin.qq.com/miniprogram/dev/api/share.html onShareAppMessage(options)在 Page 中定义 onShareAppMessage 函数，设置该页面的转发信息。  只有定义了此事件处理函数，右上角菜单才会显示 “转发” 按钮 用户点击转发按钮的时候会调用 此事件需要">
 <meta name="keywords" content="FrontEnd,小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序-分享事件">
 <meta property="og:url" content="http://yoursite.com/2018/04/27/小程序-分享事件/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="小程序-分享事件">
+<meta property="og:description" content="小程序-分享事件小程序APIhttps://developers.weixin.qq.com/miniprogram/dev/api/share.html onShareAppMessage(options)在 Page 中定义 onShareAppMessage 函数，设置该页面的转发信息。  只有定义了此事件处理函数，右上角菜单才会显示 “转发” 按钮 用户点击转发按钮的时候会调用 此事件需要">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-27T03:41:29.612Z">
+<meta property="og:updated_time" content="2018-05-16T07:11:59.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序-分享事件">
-<meta name="twitter:description" content="小程序-分享事件">
+<meta name="twitter:description" content="小程序-分享事件小程序APIhttps://developers.weixin.qq.com/miniprogram/dev/api/share.html onShareAppMessage(options)在 Page 中定义 onShareAppMessage 函数，设置该页面的转发信息。  只有定义了此事件处理函数，右上角菜单才会显示 “转发” 按钮 用户点击转发按钮的时候会调用 此事件需要">
 
 
 
@@ -316,7 +316,67 @@
       
 
       
-        <h2 id="小程序-分享事件"><a href="#小程序-分享事件" class="headerlink" title="小程序-分享事件"></a>小程序-分享事件</h2>
+        <h2 id="小程序-分享事件"><a href="#小程序-分享事件" class="headerlink" title="小程序-分享事件"></a>小程序-分享事件</h2><h3 id="小程序API"><a href="#小程序API" class="headerlink" title="小程序API"></a>小程序API</h3><p><a href="https://developers.weixin.qq.com/miniprogram/dev/api/share.html" target="_blank" rel="external">https://developers.weixin.qq.com/miniprogram/dev/api/share.html</a></p>
+<h3 id="onShareAppMessage-options"><a href="#onShareAppMessage-options" class="headerlink" title="onShareAppMessage(options)"></a>onShareAppMessage(options)</h3><p>在 Page 中定义 onShareAppMessage 函数，设置该页面的转发信息。</p>
+<ul>
+<li>只有定义了此事件处理函数，右上角菜单才会显示 “转发” 按钮</li>
+<li>用户点击转发按钮的时候会调用</li>
+<li>此事件需要 return 一个 Object，用于自定义转发内容</li>
+</ul>
+<h3 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h3><p>项目中，我在公共组件封装一个分享方法。</p>
+<pre><code>const sharePage = (title, path, imgUrl, cb) =&gt; {
+  // 设置菜单中的转发按钮触发转发事件时的转发内容
+  let shareObj = {
+    title: title, // 标题
+    path: path, // 路径
+    imageUrl: imgUrl,     // 自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+    success: function (res) {
+      console.log(title, path, imgUrl)
+      // 转发成功之后的回调
+      if (res.errMsg == &apos;shareAppMessage:ok&apos;) {
+        wx.showModal({
+          title: &apos;提示&apos;,
+          content: &apos;转发成功&apos;,
+          showCancel: false
+        })
+      }
+    },
+    fail: function (res) {
+　　　　// 转发失败之后的回调
+　　　　if (res.errMsg == &apos;shareAppMessage:fail cancel&apos;) {
+　　　　    // 用户取消转发
+          // wx.showToast({
+          //   title: &apos;取消转发&apos;,
+          //   icon: &apos;none&apos;,
+          //   duration: 2000,
+          // })
+　　　　} else if (res.errMsg == &apos;shareAppMessage:fail&apos;) {
+　　　  // 转发失败，其中 detail message 为详细失败信息
+        wx.showModal({
+          title: &apos;提示&apos;,
+          content: &apos;转发失败&apos;,
+          showCancel: false
+        })
+      }
+    },
+  };
+</code></pre><p>使用的时候，在业务js中如下即可：</p>
+<pre><code>onShareAppMessage: function (options) {
+       let self = this;
+    let title = &apos;哈哈哈&apos;
+    let shareObj = app.changba.sharePage(title, &quot;/pages/userinfo/userinfo&quot;, &quot;/images/sharebg_p.png&quot;)
+    console.log(shareObj);     // shareBtn
+    // 来自页面内的按钮的转发
+    if (options.from == &apos;button&apos;) {
+        var e = options.target.dataset;
+        console.log(options);     // shareBtn
+        console.log(e.name);     // shareBtn
+        // 此处可以修改 shareObj 中的内容
+    }
+    // 返回shareObj
+    return shareObj;
+}
+</code></pre>
       
     </div>
 
@@ -520,7 +580,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序-分享事件"><span class="nav-number">1.</span> <span class="nav-text">小程序-分享事件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序-分享事件"><span class="nav-number">1.</span> <span class="nav-text">小程序-分享事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序API"><span class="nav-number">1.1.</span> <span class="nav-text">小程序API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onShareAppMessage-options"><span class="nav-number">1.2.</span> <span class="nav-text">onShareAppMessage(options)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范例"><span class="nav-number">1.3.</span> <span class="nav-text">范例</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
