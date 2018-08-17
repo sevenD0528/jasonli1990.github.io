@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="问题小程序开发过程中，会遇到在App启动onLaunch的时候，发起登录请求获取微信用户信息，并注册到我妈自己的服务器上以便使用，然而，这个过程中，  app on launch -&amp;gt; request -&amp;gt; success -&amp;gt; page onload   是无法判断success和page onload哪个先来的，会导致页面初始化数据失败的情况。 解决方案一就是在request">
+<meta name="description" content="问题小程序开发过程中，会遇到在App启动onLaunch的时候，发起登录请求获取微信用户信息，并注册到我妈自己的服务器上以便使用，然而，这个过程中，  app on launch -&amp;gt; request -&amp;gt; success -&amp;gt; page onload   是无法判断success和page onload哪个先来的，会导致页面初始化数据失败的情况。">
 <meta name="keywords" content="FrontEnd,JS,小程序,前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序_onLaunch异步回调数据加载问题">
 <meta property="og:url" content="http://yoursite.com/2018/05/07/小程序-onLaunch异步回调数据加载问题/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="问题小程序开发过程中，会遇到在App启动onLaunch的时候，发起登录请求获取微信用户信息，并注册到我妈自己的服务器上以便使用，然而，这个过程中，  app on launch -&amp;gt; request -&amp;gt; success -&amp;gt; page onload   是无法判断success和page onload哪个先来的，会导致页面初始化数据失败的情况。 解决方案一就是在request">
+<meta property="og:description" content="问题小程序开发过程中，会遇到在App启动onLaunch的时候，发起登录请求获取微信用户信息，并注册到我妈自己的服务器上以便使用，然而，这个过程中，  app on launch -&amp;gt; request -&amp;gt; success -&amp;gt; page onload   是无法判断success和page onload哪个先来的，会导致页面初始化数据失败的情况。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-07T12:32:44.586Z">
+<meta property="og:updated_time" content="2018-08-17T06:40:12.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序_onLaunch异步回调数据加载问题">
-<meta name="twitter:description" content="问题小程序开发过程中，会遇到在App启动onLaunch的时候，发起登录请求获取微信用户信息，并注册到我妈自己的服务器上以便使用，然而，这个过程中，  app on launch -&amp;gt; request -&amp;gt; success -&amp;gt; page onload   是无法判断success和page onload哪个先来的，会导致页面初始化数据失败的情况。 解决方案一就是在request">
+<meta name="twitter:description" content="问题小程序开发过程中，会遇到在App启动onLaunch的时候，发起登录请求获取微信用户信息，并注册到我妈自己的服务器上以便使用，然而，这个过程中，  app on launch -&amp;gt; request -&amp;gt; success -&amp;gt; page onload   是无法判断success和page onload哪个先来的，会导致页面初始化数据失败的情况。">
 
 
 
@@ -321,6 +321,7 @@
 <p>app on launch -&gt; request -&gt; success -&gt; page onload </p>
 </blockquote>
 <p>是无法判断success和page onload哪个先来的，会导致页面初始化数据失败的情况。</p>
+<a id="more"></a>
 <h3 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h3><p>就是在request success中处理，使用getCurrentPages方法获取是否页面先于success生成，如果生成我们就强制让页面再次渲染。</p>
 <p>这显然是一种hack的方式， 在实际使用过程当中，如果登录逻辑比较复杂，这个方法不是十分便利，page onload在一些特殊情况也会被调用，这显然不是我们想看到的</p>
 <pre><code>if (getCurrentPages().length != 0) {
@@ -390,6 +391,10 @@ if (app.globalData.sessionkey) {
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/06/23/小程序初体验/" rel="prev" title="小程序初体验">
+                小程序初体验 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -456,7 +461,7 @@ if (app.globalData.sessionkey) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">96</span>
+              <span class="site-state-item-count">97</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

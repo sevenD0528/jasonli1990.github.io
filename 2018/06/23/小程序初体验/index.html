@@ -1,0 +1,708 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,小程序," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Overview项目背景 2017年1月9日，我们赢来了微信小程序，而在今年，小程序已经在完全融入到我们的生活中，可以说无处不在，赢来了一场真正的大爆发。微信之父张小龙在形容小程序时，是这样说的  小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又">
+<meta name="keywords" content="FrontEnd,小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序初体验">
+<meta property="og:url" content="http://yoursite.com/2018/06/23/小程序初体验/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Overview项目背景 2017年1月9日，我们赢来了微信小程序，而在今年，小程序已经在完全融入到我们的生活中，可以说无处不在，赢来了一场真正的大爆发。微信之父张小龙在形容小程序时，是这样说的  小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/img/bVbcDAt">
+<meta property="og:image" content="http://yoursite.com/img/bVbcDHt">
+<meta property="og:image" content="http://yoursite.com/img/bVbcDGn">
+<meta property="og:image" content="http://yoursite.com/img/bVbcDWT">
+<meta property="og:updated_time" content="2018-08-17T06:41:03.458Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小程序初体验">
+<meta name="twitter:description" content="Overview项目背景 2017年1月9日，我们赢来了微信小程序，而在今年，小程序已经在完全融入到我们的生活中，可以说无处不在，赢来了一场真正的大爆发。微信之父张小龙在形容小程序时，是这样说的  小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又">
+<meta name="twitter:image" content="http://yoursite.com/img/bVbcDAt">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/23/小程序初体验/"/>
+
+
+  <title> 小程序初体验 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                小程序初体验
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-06-23T13:42:28+08:00" content="2018-06-23">
+              2018-06-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p><img src="/img/bVbcDAt" alt="clipboard.png"></p>
+<p>2017年1月9日，我们赢来了微信小程序，而在今年，小程序已经在完全融入到我们的生活中，可以说无处不在，赢来了一场真正的大爆发。微信之父张小龙在形容小程序时，是这样说的</p>
+<blockquote>
+<p>小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。</p>
+</blockquote>
+<p>而网友们在形容小程序的时候，是这么说的</p>
+<blockquote>
+<p>App就像原配，一年用不了几次；<br>服务号就像小三，每个月固定用几次；<br>小程序就像炮友，用完即走；</p>
+</blockquote>
+<p>那么在你点击启动一个小程序的时候，这个“炮友”是如何做到无需安装卸载，触手可及，用完即走的呢，这其中又发生了哪些不可告人的事情呢。</p>
+<a id="more"></a>
+<h2 id="小程序框架浅析"><a href="#小程序框架浅析" class="headerlink" title="小程序框架浅析"></a>小程序框架浅析</h2><p>大家都说小程序体验好，即开即用，比普通Webview的H5页面体验好很多，这个问题的我认为需要从几个方面考虑，首先呢，抛开业务层面的设计和优化，就是小程序底层框架的设计和实现方面的特点。</p>
+<p>当我们新建或打开一个小程序项目，即可看到如下图的项目结构。</p>
+<p><img src="/img/bVbcDHt" alt="图片描述"></p>
+<p>（官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/structure.html）" target="_blank" rel="external">https://developers.weixin.qq.com/miniprogram/dev/framework/structure.html）</a></p>
+<p>官方文档规定，入口文件app.js， 全局样式文件app.wxss，全局配置文件app.json，<br>每个页面中再分视图wxml，wxss和逻辑js、文件配置json等，从这里我们可以看出，整个小程序的上层框架，也就是大体分为视图层和逻辑层两个部分。</p>
+<p>如下图，</p>
+<p><img src="/img/bVbcDGn" alt="clipboard.png"></p>
+<p>小程序中View层主要用来渲染页面结构，App Service层用来逻辑处理、数据请求、接口调用，它们在两个线程里运行，整个小程序是只有一个App Service的，并且整个小程序的生命周期内它是常驻内存的。View层主要使用WebView渲染，而App Service逻辑层是使用JSCore运行。</p>
+<p>View和AppService是双线程通信的，主要通过系统层的JSBridage进行通信，AppService把数据变化通知到View，表现方法也就是setData方法，触发View页面更新，View把触发的事件通知到AppService进行业务处理。</p>
+<p>这里要说的是，小程序是没有DOM结构的，那么视图层的渲染是如何做到的呢，就是运行环境中会把WXML中的节点树结构，转化为js的对象，进行渲染，这也是小程序体验优于普通分享页面的一大原因，省去了很多关于浏览器DOM的操作。</p>
+<h2 id="唱吧小程序底层搭建"><a href="#唱吧小程序底层搭建" class="headerlink" title="唱吧小程序底层搭建"></a>唱吧小程序底层搭建</h2><p>话说回来，搭建唱吧小程序底层的时候，其实也就是对上述提到的微信API层的一次封装和改造，尤其是在关于网络请求的改造和小程序启动的登录流程方面，我们前端团队又做了哪些尝试和优化呢。</p>
+<ul>
+<li>网络请求方面</li>
+</ul>
+<p>首先网络请求优化方面，微信提供的请求接口基本长这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">wx.request(&#123;</div><div class="line">  url: &apos;test.php&apos;, //仅为示例，并非真实的接口地址</div><div class="line">  data: &#123;</div><div class="line">     x: &apos;&apos; ,</div><div class="line">     y: &apos;&apos;</div><div class="line">  &#125;,</div><div class="line">  header: &#123;</div><div class="line">      &apos;content-type&apos;: &apos;application/json&apos; // 默认值</div><div class="line">  &#125;,</div><div class="line">  success: function(res) &#123;</div><div class="line">    console.log(res.data)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>是不是和什么很像，没错，就是古老的$.ajax，这时候我们又想起了ajax的回调地狱，如果页面的请求很多，请求的顺序还有限定，瞬间又是各种嵌套，可以说是要从请求到懵逼了。</p>
+<p>所以为了解决回调地狱和同时优化请求代码逻辑，我们在封装wx.request的同时，引入了async/await语法糖，用到了来自facebook的regenerator模块（详情请戳：<a href="https://github.com/facebook/regenerator），async、await函数经babel编译后，regenerator-runtime模块用于提供功能实现。" target="_blank" rel="external">https://github.com/facebook/regenerator），async、await函数经babel编译后，regenerator-runtime模块用于提供功能实现。</a></p>
+<p>实现过程中，单独提一个公共方法，返回封装wx.request的promise<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//wechat.js</div><div class="line"></div><div class="line">const request = (url,options) =&gt; &#123;</div><div class="line">  return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">    wx.request(&#123;</div><div class="line">      url: url,</div><div class="line">      method: options.method,</div><div class="line">      data: Object.assign(&#123;&#125;, options.data),</div><div class="line">      header: options.header,</div><div class="line">      success: resolve,</div><div class="line">      fail: reject</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">// changba.js</div><div class="line"></div><div class="line">const regeneratorRuntime = require(&apos;./regenerator-runtime.js&apos;)</div><div class="line">const wechat = require(&apos;./wechat&apos;)</div><div class="line">const URI = &apos;xxx&apos;</div><div class="line"></div><div class="line">const requestAPI = async (url,opt) =&gt; &#123;</div><div class="line">  const app = getApp()</div><div class="line">  let options = Object.assign(&#123;data: &#123;&#125;&#125;,opt)</div><div class="line">    if (/^\/api\/(.+)$/.test(url)) &#123;</div><div class="line">        url = URI + url;</div><div class="line">    &#125;</div><div class="line">    if (!options.method) &#123;</div><div class="line">        options.method = &apos;POST&apos;;</div><div class="line">    &#125;</div><div class="line">    let header = &#123;</div><div class="line">        &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;</div><div class="line">    &#125;</div><div class="line">    options.header = options.header || header ;</div><div class="line">    //除了login方法  其余接口都要加入sessionInfo也就是后端加密过的session_key</div><div class="line">    if (!url.includes(&apos;/checkCode&apos;)) &#123;</div><div class="line">      options.data[&apos;sessionInfo&apos;] = app.globalData.sessionkey;</div><div class="line">    &#125;</div><div class="line">    let isTimeout = false;</div><div class="line">    try &#123;</div><div class="line">      const ree = await wechat.checkSession();</div><div class="line">    &#125; catch (error) &#123;</div><div class="line">      isTimeout = true;</div><div class="line">    &#125;;</div><div class="line">    try &#123;</div><div class="line">      if (isTimeout) &#123;</div><div class="line">        console.log(&apos;session_key过期&apos;)</div><div class="line">        let aaa = await login(app);</div><div class="line">      &#125;</div><div class="line">      wx.showLoading(&#123;</div><div class="line">        title: &apos;加载中&apos;</div><div class="line">      &#125;);</div><div class="line">        const res = await wechat.request(url,options)</div><div class="line">        if (res &amp;&amp; res.statusCode) &#123;</div><div class="line">            if (res.statusCode != 200) &#123;</div><div class="line">                if (wx.hideLoading) &#123;</div><div class="line">                    wx.hideLoading()</div><div class="line">                &#125;</div><div class="line">                wx.showModal(&#123;</div><div class="line">                    content: wechat.errMsg(res.statusCode).message || &apos;请求失败，请重新尝试&apos;,</div><div class="line">                    title: &apos;提示&apos;,</div><div class="line">                    showCancel: false</div><div class="line">                &#125;)</div><div class="line">            &#125; else &#123;</div><div class="line">                if (res.data &amp;&amp; res.data.code === 1) &#123;</div><div class="line">                  if (wx.hideLoading) &#123;</div><div class="line">                     wx.hideLoading()</div><div class="line">                  &#125;</div><div class="line">                  return res.data</div><div class="line">                &#125; else &#123;</div><div class="line">                    // xxx 其他情况业务逻辑处理</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; catch (error) &#123;</div><div class="line">        console.log(&apos;请求异常信息：&apos; + error)</div><div class="line">        if (wx.hideLoading) &#123;</div><div class="line">          wx.hideLoading()</div><div class="line">        &#125;</div><div class="line">        wx.showModal(&#123;</div><div class="line">            content: &apos;请求信息异常&apos;,</div><div class="line">            title: &apos;&apos;,</div><div class="line">            showCancel: false</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述封装过程中，除了考虑到请求超时、检查用户身份等操作，在else里还可以加入session过期等相关其他的业务处理逻辑，这也是自己搭建请求的好处。</p>
+<p>然而在经历这样两层封装之后，在写业务逻辑代码的过程中，就可以一目了然，清晰且书写自如，如果习惯了fetch以及axios的朋友应该都会比较喜欢这种写法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">async getdata() &#123;</div><div class="line">  let self = this;</div><div class="line">  let cb_share = await app.changba.requestAPI(&apos;/api/xxx&apos;, &#123; data: &#123; id: self.data.id &#125; &#125;);</div><div class="line">  if (cb_share &amp;&amp; cb_share.code === 1) &#123;</div><div class="line">        // xxx</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>登录流程方面</li>
+</ul>
+<p>微信给出的官方文档长这样：</p>
+<p><img src="/img/bVbcDWT" alt="图片描述"></p>
+<p>看着是不是很头大，最头大的不是实现这个流程，而是实现了之后，你还会需要考虑更多的问题。</p>
+<p>基本的流程不用多说，就是使用wx.login()可以获得开发者服务器向微信接口服务器请求获得session_key等数据时所需要的参数code，开发者服务器以code+appid+appsecret换取用户唯一标识openid和会话密钥session_key。但每一次调用wx.login()都会更新微信接口服务器上的session_key。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let we_login = await wechat.login() // 微信登录</div><div class="line">let cb_login = await requestAPI(&apos;xxxx/checkCode&apos;, &#123; data: &#123;code: we_login.code&#125;&#125;)</div><div class="line">if (cb_login &amp;&amp; cb_login.code === 1) &#123;</div><div class="line">      // xxxx 业务逻辑</div><div class="line">  &#125; catch (error) &#123;</div><div class="line">    wx.showModal(&#123;</div><div class="line">      title: &apos;登录提示&apos;,</div><div class="line">      content: &apos;登录失败&apos;,</div><div class="line">      showCancel: false</div><div class="line">    &#125;)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>这里有两个坑，第一个是关于授权的问题，另一个就是关于小程序生命周期与页面生命周期初始化过程中异步请求回调顺序的问题。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/小程序/" rel="tag">#小程序</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/07/小程序-onLaunch异步回调数据加载问题/" rel="next" title="小程序_onLaunch异步回调数据加载问题">
+                <i class="fa fa-chevron-left"></i> 小程序_onLaunch异步回调数据加载问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/daocheng"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目背景"><span class="nav-number">2.</span> <span class="nav-text">项目背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序框架浅析"><span class="nav-number">3.</span> <span class="nav-text">小程序框架浅析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#唱吧小程序底层搭建"><span class="nav-number">4.</span> <span class="nav-text">唱吧小程序底层搭建</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
