@@ -92,15 +92,15 @@
 <meta property="og:site_name" content="Jason Li">
 <meta property="og:description" content="Overview项目背景 2017年1月9日，我们赢来了微信小程序，而在今年，小程序已经在完全融入到我们的生活中，可以说无处不在，赢来了一场真正的大爆发。微信之父张小龙在形容小程序时，是这样说的  小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/bVbcDAt">
-<meta property="og:image" content="http://yoursite.com/img/bVbcDHt">
-<meta property="og:image" content="http://yoursite.com/img/bVbcDGn">
-<meta property="og:image" content="http://yoursite.com/img/bVbcDWT">
-<meta property="og:updated_time" content="2018-08-17T06:41:03.458Z">
+<meta property="og:image" content="http://yoursite.com/2018/06/23/img/FrontEnd/miniprogram/1/20190311220700.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/06/23/img/FrontEnd/miniprogram/1/20190311221153.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/06/23/img/FrontEnd/miniprogram/1/20190311221221.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/06/23/img/FrontEnd/miniprogram/1/20190311221255.jpg">
+<meta property="og:updated_time" content="2019-03-11T14:13:33.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序初体验">
 <meta name="twitter:description" content="Overview项目背景 2017年1月9日，我们赢来了微信小程序，而在今年，小程序已经在完全融入到我们的生活中，可以说无处不在，赢来了一场真正的大爆发。微信之父张小龙在形容小程序时，是这样说的  小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又">
-<meta name="twitter:image" content="http://yoursite.com/img/bVbcDAt">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/23/img/FrontEnd/miniprogram/1/20190311220700.jpg">
 
 
 
@@ -321,7 +321,7 @@
       
 
       
-        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p><img src="/img/bVbcDAt" alt="clipboard.png"></p>
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p><img src="../img/FrontEnd/miniprogram/1/20190311220700.jpg" alt="clipboard.png"></p>
 <p>2017年1月9日，我们赢来了微信小程序，而在今年，小程序已经在完全融入到我们的生活中，可以说无处不在，赢来了一场真正的大爆发。微信之父张小龙在形容小程序时，是这样说的</p>
 <blockquote>
 <p>小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。</p>
@@ -334,11 +334,11 @@
 <a id="more"></a>
 <h2 id="小程序框架浅析"><a href="#小程序框架浅析" class="headerlink" title="小程序框架浅析"></a>小程序框架浅析</h2><p>大家都说小程序体验好，即开即用，比普通Webview的H5页面体验好很多，这个问题的我认为需要从几个方面考虑，首先呢，抛开业务层面的设计和优化，就是小程序底层框架的设计和实现方面的特点。</p>
 <p>当我们新建或打开一个小程序项目，即可看到如下图的项目结构。</p>
-<p><img src="/img/bVbcDHt" alt="图片描述"></p>
+<p><img src="../img/FrontEnd/miniprogram/1/20190311221153.jpg" alt="clipboard.png"></p>
 <p>（官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/structure.html）" target="_blank" rel="external">https://developers.weixin.qq.com/miniprogram/dev/framework/structure.html）</a></p>
 <p>官方文档规定，入口文件app.js， 全局样式文件app.wxss，全局配置文件app.json，<br>每个页面中再分视图wxml，wxss和逻辑js、文件配置json等，从这里我们可以看出，整个小程序的上层框架，也就是大体分为视图层和逻辑层两个部分。</p>
 <p>如下图，</p>
-<p><img src="/img/bVbcDGn" alt="clipboard.png"></p>
+<p><img src="../img/FrontEnd/miniprogram/1/20190311221221.jpg" alt="clipboard.png"></p>
 <p>小程序中View层主要用来渲染页面结构，App Service层用来逻辑处理、数据请求、接口调用，它们在两个线程里运行，整个小程序是只有一个App Service的，并且整个小程序的生命周期内它是常驻内存的。View层主要使用WebView渲染，而App Service逻辑层是使用JSCore运行。</p>
 <p>View和AppService是双线程通信的，主要通过系统层的JSBridage进行通信，AppService把数据变化通知到View，表现方法也就是setData方法，触发View页面更新，View把触发的事件通知到AppService进行业务处理。</p>
 <p>这里要说的是，小程序是没有DOM结构的，那么视图层的渲染是如何做到的呢，就是运行环境中会把WXML中的节点树结构，转化为js的对象，进行渲染，这也是小程序体验优于普通分享页面的一大原因，省去了很多关于浏览器DOM的操作。</p>
@@ -359,7 +359,7 @@
 <li>登录流程方面</li>
 </ul>
 <p>微信给出的官方文档长这样：</p>
-<p><img src="/img/bVbcDWT" alt="图片描述"></p>
+<p><img src="../img/FrontEnd/miniprogram/1/20190311221255.jpg" alt="图片描述"></p>
 <p>看着是不是很头大，最头大的不是实现这个流程，而是实现了之后，你还会需要考虑更多的问题。</p>
 <p>基本的流程不用多说，就是使用wx.login()可以获得开发者服务器向微信接口服务器请求获得session_key等数据时所需要的参数code，开发者服务器以code+appid+appsecret换取用户唯一标识openid和会话密钥session_key。但每一次调用wx.login()都会更新微信接口服务器上的session_key。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let we_login = await wechat.login() // 微信登录</div><div class="line">let cb_login = await requestAPI(&apos;xxxx/checkCode&apos;, &#123; data: &#123;code: we_login.code&#125;&#125;)</div><div class="line">if (cb_login &amp;&amp; cb_login.code === 1) &#123;</div><div class="line">      // xxxx 业务逻辑</div><div class="line">  &#125; catch (error) &#123;</div><div class="line">    wx.showModal(&#123;</div><div class="line">      title: &apos;登录提示&apos;,</div><div class="line">      content: &apos;登录失败&apos;,</div><div class="line">      showCancel: false</div><div class="line">    &#125;)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
@@ -583,7 +583,7 @@
         <div class="copyright" >
   
   &copy;  2010 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
