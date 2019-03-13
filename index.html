@@ -255,6 +255,143 @@
             
               
                 
+                <a class="post-title-link" href="/2019/03/13/CSS-font-spider/" itemprop="url">
+                  CSS-font-spider
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-03-13T16:48:37+08:00" content="2019-03-13">
+              2019-03-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Font-Spider"><a href="#Font-Spider" class="headerlink" title="Font-Spider"></a>Font-Spider</h2><p>推荐一个node工具，font-spider（字蛛是一个中文字体压缩器）， 压缩想用的字体。</p>
+<p>先看结果，用到的特殊字体impact.ttf有Original size: 138.488 KB，压缩完只有10.644 KB</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ul>
+<li>Install</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install font-spider -g</div></pre></td></tr></table></figure>
+<ul>
+<li>HTML</li>
+</ul>
+<p>比如，一个项目中，我只用到数字和%，这对于加载整个字体包来讲，是很大的开销。</p>
+<p>impact.ttf有130多k，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;cmn-hans&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</div><div class="line">    &lt;meta content=&quot;telephone=no,email=no&quot; name=&quot;format-detection&quot; /&gt;</div><div class="line">    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;</div><div class="line">    &lt;link rel=&quot;dns-prefetch&quot; href=&quot;//cb.cdn.changbaimg.com&quot; /&gt;</div><div class="line">    &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;唱吧活动&quot; /&gt;</div><div class="line">    &lt;meta name=&quot;Keywords&quot; content=&quot;唱吧&quot; /&gt;</div><div class="line">    &lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;1.css&quot; /&gt;</div><div class="line">    &lt;title&gt;Font-Spider&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div class=&quot;home&quot;&gt;</div><div class="line">      &lt;h1&gt;1234567890%&lt;/h1&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>CSS</li>
+</ul>
+<p>引入css文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*声明 WebFont*/</div><div class="line">@font-face &#123;</div><div class="line">  font-family: &apos;impact&apos;;</div><div class="line">  src: url(&apos;font/impact.ttf&apos;) format(&apos;truetype&apos;);</div><div class="line">  font-weight: normal;</div><div class="line">  font-style: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*使用选择器指定字体*/</div><div class="line">.home h1 &#123;</div><div class="line">    font-family: &apos;impact&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Font</li>
+</ul>
+<p>字体文件放入目录下即可。</p>
+<ul>
+<li>执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-spider 1.html</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Font family: impact</div><div class="line">Original size: 138.488 KB</div><div class="line">Include chars: %0123456789</div><div class="line">Chars length: 11</div><div class="line">Font id: b06c90b64076a8e1eeec396351fc2191</div><div class="line">CSS selectors: .home h1, .demo &gt; .test</div><div class="line">Font files:</div><div class="line">File font/impact.ttf created: 10.644 KB</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/06/23/小程序初体验/" itemprop="url">
                   小程序初体验
                 </a>
@@ -1330,121 +1467,6 @@ if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/25/跨域问题总结/" itemprop="url">
-                  跨域问题总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-02-25T21:55:18+08:00" content="2018-02-25">
-              2018-02-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>跨域是在一个域下的文档或脚本试图去请求另一个域下的资源，这就是跨域。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/25/跨域问题总结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1490,7 +1512,7 @@ if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
