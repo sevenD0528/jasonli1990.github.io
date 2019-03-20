@@ -1,0 +1,702 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Koa-Router 源码解析 Talk is cheap, show me the code  koa-router打开源码目录，就涉及两个重要文件，layer.js和router.js，分别对应Router和Layer对象 Layer对象是对单个路由的管理，其中包含的信息有路由路径(path)、路由请求方法(method)和路由执行函数(middleware)，并且提供路由的验证以及param">
+<meta name="keywords" content="FrontEnd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="koa-router layer.js">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/koa-router1/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Koa-Router 源码解析 Talk is cheap, show me the code  koa-router打开源码目录，就涉及两个重要文件，layer.js和router.js，分别对应Router和Layer对象 Layer对象是对单个路由的管理，其中包含的信息有路由路径(path)、路由请求方法(method)和路由执行函数(middleware)，并且提供路由的验证以及param">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-20T09:21:34.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="koa-router layer.js">
+<meta name="twitter:description" content="Koa-Router 源码解析 Talk is cheap, show me the code  koa-router打开源码目录，就涉及两个重要文件，layer.js和router.js，分别对应Router和Layer对象 Layer对象是对单个路由的管理，其中包含的信息有路由路径(path)、路由请求方法(method)和路由执行函数(middleware)，并且提供路由的验证以及param">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/20/koa-router1/"/>
+
+
+  <title> koa-router layer.js | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                koa-router layer.js
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-03-20T17:18:28+08:00" content="2019-03-20">
+              2019-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Koa-Router-源码解析"><a href="#Koa-Router-源码解析" class="headerlink" title="Koa-Router 源码解析"></a>Koa-Router 源码解析</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<h3 id="koa-router"><a href="#koa-router" class="headerlink" title="koa-router"></a>koa-router</h3><p>打开源码目录，就涉及两个重要文件，layer.js和router.js，分别对应Router和Layer对象</p>
+<p>Layer对象是对<strong>单个路由的管理</strong>，其中包含的信息有路由路径(path)、路由请求方法(method)和路由执行函数(middleware)，并且提供路由的验证以及params参数解析的方法。</p>
+<p>Router对象则是对所有注册路由的统一处理，并且它的API是面向开发者的。</p>
+<p>分析koa-router的实现原理可以从以下几个方面入手：</p>
+<ul>
+<li>Layer对象的实现</li>
+<li>路由注册</li>
+<li>路由匹配</li>
+<li>路由执行流程</li>
+</ul>
+<a id="more"></a>
+<h3 id="Layer"><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h3><p>Layer对象主要管理单个路由，是每个路由的最新处理单元。</p>
+<p>先看一下Layer对象声明的源码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Initialize a new routing Layer with given `method`, `path`, and `middleware`.</div><div class="line"> *</div><div class="line"> * @param &#123;String|RegExp&#125; path Path string or regular expression.</div><div class="line"> * @param &#123;Array&#125; methods Array of HTTP verbs.</div><div class="line"> * @param &#123;Array&#125; middleware Layer callback/middleware or series of.</div><div class="line"> * @param &#123;Object=&#125; opts</div><div class="line"> * @param &#123;String=&#125; opts.name route name</div><div class="line"> * @param &#123;String=&#125; opts.sensitive case sensitive (default: false)</div><div class="line"> * @param &#123;String=&#125; opts.strict require the trailing slash (default: false)</div><div class="line"> * @returns &#123;Layer&#125;</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">function Layer(path, methods, middleware, opts) &#123;</div><div class="line">  this.opts = opts || &#123;&#125;;</div><div class="line">  // 支持路由别名</div><div class="line">  this.name = this.opts.name || null;</div><div class="line">  this.methods = [];</div><div class="line">  this.paramNames = [];</div><div class="line">  // 将路由执行函数保存在stack中，支持输入多个处理函数</div><div class="line">  this.stack = Array.isArray(middleware) ? middleware : [middleware];</div><div class="line"></div><div class="line">  // HEAD请求头部信息与GET一致，这里就一起处理了。</div><div class="line">  methods.forEach(function(method) &#123;</div><div class="line">    var l = this.methods.push(method.toUpperCase());</div><div class="line">    if (this.methods[l-1] === &apos;GET&apos;) &#123;</div><div class="line">      this.methods.unshift(&apos;HEAD&apos;);</div><div class="line">    &#125;</div><div class="line">  &#125;, this);</div><div class="line"></div><div class="line">  // ensure middleware is a function 确保中间件类型正确</div><div class="line">  this.stack.forEach(function(fn) &#123;</div><div class="line">    var type = (typeof fn);</div><div class="line">    if (type !== &apos;function&apos;) &#123;</div><div class="line">      throw new Error(</div><div class="line">        methods.toString() + &quot; `&quot; + (this.opts.name || path) +&quot;`: `middleware` &quot;</div><div class="line">        + &quot;must be a function, not `&quot; + type + &quot;`&quot;</div><div class="line">      );</div><div class="line">    &#125;</div><div class="line">  &#125;, this);</div><div class="line"></div><div class="line">  // 根据路由路径生成路由正则表达式</div><div class="line">  // 将params参数信息保存在paramNames数组中</div><div class="line">  this.path = path;</div><div class="line">  this.regexp = pathToRegExp(path, this.paramNames, this.opts);</div><div class="line"></div><div class="line">  debug(&apos;defined route %s %s&apos;, this.methods, this.opts.prefix + this.path);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>以上构造函数，用来初始化路由路径，路由请求方法数组，路由处理函数数组，路由正则表达式以及params参数信息。</p>
+<p>其中path-to-regexp方法根据路径字符串生成正则表达式，可以实现路由的匹配以及params参数的捕获。</p>
+<ul>
+<li>验证路由</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Returns whether request `path` matches route.</div><div class="line"> *</div><div class="line"> * @param &#123;String&#125; path</div><div class="line"> * @returns &#123;Boolean&#125;</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">Layer.prototype.match = function (path) &#123;</div><div class="line">  return this.regexp.test(path);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Returns map of URL parameters for given `path` and `paramNames`.</div><div class="line"> * 根据paramNames中的参数信息以及captrues方法，可以获取到当前路由params参数的键值对：</div><div class="line"> *</div><div class="line"> * @param &#123;String&#125; path</div><div class="line"> * @param &#123;Array.&lt;String&gt;&#125; captures</div><div class="line"> * @param &#123;Object=&#125; existingParams</div><div class="line"> * @returns &#123;Object&#125;</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">Layer.prototype.params = function (path, captures, existingParams) &#123;</div><div class="line">  var params = existingParams || &#123;&#125;;</div><div class="line"></div><div class="line">  for (var len = captures.length, i=0; i&lt;len; i++) &#123;</div><div class="line">    if (this.paramNames[i]) &#123;</div><div class="line">      var c = captures[i];</div><div class="line">      params[this.paramNames[i].name] = c ? safeDecodeURIComponent(c) : c;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return params;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Returns array of regexp url path captures.</div><div class="line"> *</div><div class="line"> * @param &#123;String&#125; path</div><div class="line"> * @returns &#123;Array.&lt;String&gt;&#125;</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">Layer.prototype.captures = function (path) &#123;</div><div class="line">  if (this.opts.ignoreCaptures) return [];</div><div class="line">  return path.match(this.regexp).slice(1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>safeDecodeURIComponent</li>
+</ul>
+<p>decodeURIComponent只能转义encodeURIComponent编码过的方法，如果编码不符合要求，decodeURIComponent则会抛出URIError，所以koa-router中做了安全处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Safe decodeURIComponent, won&apos;t throw any error.</div><div class="line"> * If `decodeURIComponent` error happen, just return the original value.</div><div class="line"> *</div><div class="line"> * @param &#123;String&#125; text</div><div class="line"> * @returns &#123;String&#125; URL decode original string.</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">function safeDecodeURIComponent(text) &#123;</div><div class="line">  try &#123;</div><div class="line">    return decodeURIComponent(text);</div><div class="line">  &#125; catch (e) &#123;</div><div class="line">    return text;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>param</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Run validations on route named parameters.</div><div class="line"> *</div><div class="line"> * @example</div><div class="line"> *</div><div class="line"> * router</div><div class="line"> *   .param(&apos;user&apos;, function (id, ctx, next) &#123;</div><div class="line"> *     ctx.user = users[id];</div><div class="line"> *     if (!user) return ctx.status = 404;</div><div class="line"> *     next();</div><div class="line"> *   &#125;)</div><div class="line"> *   .get(&apos;/users/:user&apos;, function (ctx, next) &#123;</div><div class="line"> *     ctx.body = ctx.user;</div><div class="line"> *   &#125;);</div><div class="line"> *</div><div class="line"> * @param &#123;String&#125; param</div><div class="line"> * @param &#123;Function&#125; middleware</div><div class="line"> * @returns &#123;Layer&#125;</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">Layer.prototype.param = function (param, fn) &#123;</div><div class="line">  var stack = this.stack;</div><div class="line">  var params = this.paramNames;</div><div class="line">  var middleware = function (ctx, next) &#123;</div><div class="line">    return fn.call(this, ctx.params[param], ctx, next);</div><div class="line">  &#125;;</div><div class="line">  middleware.param = param;</div><div class="line"></div><div class="line">  var names = params.map(function (p) &#123;</div><div class="line">    return p.name;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  var x = names.indexOf(param);</div><div class="line">  if (x &gt; -1) &#123;</div><div class="line">    // iterate through the stack, to figure out where to place the handler fn</div><div class="line">    stack.some(function (fn, i) &#123;</div><div class="line">      // param handlers are always first, so when we find an fn w/o a param property, stop here</div><div class="line">      // if the param handler at this part of the stack comes after the one we are adding, stop here</div><div class="line">      if (!fn.param || names.indexOf(fn.param) &gt; x) &#123;</div><div class="line">        // inject this param handler right before the current item</div><div class="line">        stack.splice(i, 0, middleware);</div><div class="line">        return true; // then break the loop</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return this;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>设置路由路径的前缀</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Prefix route path.</div><div class="line"> *</div><div class="line"> * @param &#123;String&#125; prefix</div><div class="line"> * @returns &#123;Layer&#125;</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">Layer.prototype.setPrefix = function (prefix) &#123;</div><div class="line">  if (this.path) &#123;</div><div class="line">    this.path = prefix + this.path;</div><div class="line">    this.paramNames = [];</div><div class="line">    this.regexp = pathToRegExp(this.path, this.paramNames, this.opts);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return this;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>URL生成</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Generate URL for route using given `params`.</div><div class="line"> *</div><div class="line"> * @example</div><div class="line"> *</div><div class="line"> * var route = new Layer([&apos;GET&apos;], &apos;/users/:id&apos;, fn);</div><div class="line"> *</div><div class="line"> * route.url(&#123; id: 123 &#125;); // =&gt; &quot;/users/123&quot;</div><div class="line"> *</div><div class="line"> * @param &#123;Object&#125; params url parameters</div><div class="line"> * @returns &#123;String&#125;</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"></div><div class="line">Layer.prototype.url = function (params, options) &#123;</div><div class="line">  var args = params;</div><div class="line">  var url = this.path.replace(/\(\.\*\)/g, &apos;&apos;);</div><div class="line">  var toPath = pathToRegExp.compile(url);</div><div class="line">  var replaced;</div><div class="line"></div><div class="line">  if (typeof params != &apos;object&apos;) &#123;</div><div class="line">    args = Array.prototype.slice.call(arguments);</div><div class="line">    if (typeof args[args.length - 1] == &apos;object&apos;) &#123;</div><div class="line">      options = args[args.length - 1];</div><div class="line">      args = args.slice(0, args.length - 1);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  var tokens = pathToRegExp.parse(url);</div><div class="line">  var replace = &#123;&#125;;</div><div class="line"></div><div class="line">  if (args instanceof Array) &#123;</div><div class="line">    for (var len = tokens.length, i=0, j=0; i&lt;len; i++) &#123;</div><div class="line">      if (tokens[i].name) replace[tokens[i].name] = args[j++];</div><div class="line">    &#125;</div><div class="line">  &#125; else if (tokens.some(token =&gt; token.name)) &#123;</div><div class="line">    replace = params;</div><div class="line">  &#125; else &#123;</div><div class="line">    options = params;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  replaced = toPath(replace);</div><div class="line"></div><div class="line">  if (options &amp;&amp; options.query) &#123;</div><div class="line">    var replaced = new uri(replaced)</div><div class="line">    replaced.search(options.query);</div><div class="line">    return replaced.toString();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return replaced;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/20/koa-compose/" rel="next" title="koa-compose">
+                <i class="fa fa-chevron-left"></i> koa-compose
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/20/koa-router2/" rel="prev" title="koa-router router.js">
+                koa-router router.js <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/daocheng"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">103</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Koa-Router-源码解析"><span class="nav-number">1.</span> <span class="nav-text">Koa-Router 源码解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#koa-router"><span class="nav-number">1.0.1.</span> <span class="nav-text">koa-router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layer"><span class="nav-number">1.0.2.</span> <span class="nav-text">Layer</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
