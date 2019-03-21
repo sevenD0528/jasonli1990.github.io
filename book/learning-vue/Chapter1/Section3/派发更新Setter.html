@@ -1,0 +1,718 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>派发更新Setter · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Section1/nextTick.html" />
+    
+    
+    <link rel="prev" href="依赖收集Getter.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Section2/">
+            
+                <a href="../Section2/">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../Section2/入口.html">
+            
+                <a href="../Section2/入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../Section2/Vue的定义.html">
+            
+                <a href="../Section2/Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../Section2/数据驱动.html">
+            
+                <a href="../Section2/数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="../Section2/_render.html">
+            
+                <a href="../Section2/_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="../Section2/VirtualDom.html">
+            
+                <a href="../Section2/VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="../Section2/createElement.html">
+            
+                <a href="../Section2/createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="../Section2/_update.html">
+            
+                <a href="../Section2/_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="响应式对象.html">
+            
+                <a href="响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="依赖收集Getter.html">
+            
+                <a href="依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.4.3" data-path="派发更新Setter.html">
+            
+                <a href="派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../Section1/nextTick.html">
+            
+                <a href="../Section1/nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="检测变化.html">
+            
+                <a href="检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="计算属性和监听属性.html">
+            
+                <a href="计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.7" data-path="组件更新.html">
+            
+                <a href="组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >派发更新Setter</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x4F9D;&#x8D56;&#x6536;&#x96C6;">&#x4F9D;&#x8D56;&#x6536;&#x96C6;</h1>
+<h3 id="&#x4F9D;&#x8D56;&#x6536;&#x96C6;">&#x4F9D;&#x8D56;&#x6536;&#x96C6;</h3>
+<p>&#x4F9D;&#x8D56;&#x6536;&#x96C6;&#x4E4B;&#x540E;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x6D3E;&#x53D1;&#x66F4;&#x65B0;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x76F8;&#x5173;&#x7684;&#x4F9D;&#x8D56;&#x6D3E;&#x53D1;&#x66F4;&#x65B0;&#x3002;</p>
+<h4 id="setter">setter</h4>
+<p>&#x4F9D;&#x7136;&#x770B;defineReactive&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;</p>
+<pre><code>set: function reactiveSetter (newVal) {
+    const value = getter ? getter.call(obj) : val
+    /* eslint-disable no-self-compare */
+    if (newVal === value || (newVal !== newVal &amp;&amp; value !== value)) {
+    return
+    }
+    /* eslint-enable no-self-compare */
+    if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; customSetter) {
+    customSetter()
+    }
+    if (setter) {
+    setter.call(obj, newVal)
+    } else {
+    val = newVal
+    }
+    // childOb = !shallow &amp;&amp; observe(newVal)&#xFF0C;&#x5982;&#x679C; shallow &#x4E3A; false &#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F1A;&#x5BF9;&#x65B0;&#x8BBE;&#x7F6E;&#x7684;&#x503C;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x54CD;&#x5E94;&#x5F0F;&#x5BF9;&#x8C61;&#xFF1B;
+    childOb = !shallow &amp;&amp; observe(newVal)
+    // dep.notify()&#xFF0C;&#x901A;&#x77E5;&#x6240;&#x6709;&#x7684;&#x8BA2;&#x9605;&#x8005;&#xFF0C;
+    dep.notify()
+}
+</code></pre><h4 id="&#x8FC7;&#x7A0B;&#x5206;&#x6790;">&#x8FC7;&#x7A0B;&#x5206;&#x6790;</h4>
+<p>&#x540C;&#x6837;&#xFF0C;&#x4E5F;&#x662F;dep&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code>/**
+ * A dep is an observable that can have multiple
+ * directives subscribing to it.
+ */
+// A Class &#x4E00;&#x4E2A;&#x7C7B;
+// &#x8FD9;&#x91CC;&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5B83;&#x6709;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x5C5E;&#x6027; target&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x552F;&#x4E00; Watcher&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x5DE7;&#x5999;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;
+// &#x56E0;&#x4E3A;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x95F4;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684; Watcher &#x88AB;&#x8BA1;&#x7B97;&#xFF0C;&#x53E6;&#x5916;&#x5B83;&#x7684;&#x81EA;&#x8EAB;&#x5C5E;&#x6027; subs &#x4E5F;&#x662F; Watcher &#x7684;&#x6570;&#x7EC4;&#x3002;
+export default class Dep {
+  static target: ?Watcher; //Dep &#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5BF9; Watcher &#x7684;&#x4E00;&#x79CD;&#x7BA1;&#x7406;&#xFF0C;Dep &#x8131;&#x79BB; Watcher &#x5355;&#x72EC;&#x5B58;&#x5728;&#x662F;&#x6CA1;&#x6709;&#x610F;&#x4E49;&#x7684;
+  id: number;
+  subs: Array&lt;Watcher&gt;;
+
+  constructor () {
+    this.id = uid++
+    this.subs = []
+  }
+
+  addSub (sub: Watcher) {
+    this.subs.push(sub)
+  }
+
+  removeSub (sub: Watcher) {
+    remove(this.subs, sub)
+  }
+
+  depend () {
+    if (Dep.target) {
+      Dep.target.addDep(this)
+    }
+  }
+
+  notify () {
+    // stabilize the subscriber list first
+    // &#x904D;&#x5386;&#x6240;&#x6709;&#x7684; subs&#xFF0C;&#x4E5F;&#x5C31;&#x662F; Watcher &#x7684;&#x5B9E;&#x4F8B;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;&#x6BCF;&#x4E00;&#x4E2A; watcher &#x7684; update &#x65B9;&#x6CD5;&#xFF0C;
+    const subs = this.subs.slice()
+    for (let i = 0, l = subs.length; i &lt; l; i++) {
+      subs[i].update()
+    }
+  }
+}
+</code></pre><p>update&#x5B9A;&#x4E49;&#x5728;watcher&#x4E2D;&#x3002;</p>
+<pre><code>class Watcher {
+  // lazy &#x548C; sync &#x7B49;&#x72B6;&#x6001;&#x7684;&#x5206;&#x6790;&#x6211;&#x4F1A;&#x4E4B;&#x540E;&#x62BD;&#x4E00;&#x5C0F;&#x8282;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#xFF0C;&#x5728;&#x4E00;&#x822C;&#x7EC4;&#x4EF6;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x4F1A;&#x8D70;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A; queueWatcher(this) &#x7684;&#x903B;&#x8F91;&#xFF0C;
+  update () {
+    /* istanbul ignore else */
+    if (this.lazy) {
+      this.dirty = true
+    } else if (this.sync) {
+      this.run()
+    } else {
+      queueWatcher(this)
+    }
+  }
+}
+</code></pre><p>&#x9664;&#x4E86;computed&#x548C;sync&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5176;&#x4ED6;&#x4F1A;&#x8D70;&#x5230;queueWatcher(this)&#x7684;&#x903B;&#x8F91;&#x3002;</p>
+<p>queueWatcher&#x5B9A;&#x4E49;&#x5728;src/core/observer/scheduler.js&#x4E2D;</p>
+<pre><code>/**
+ * Push a watcher into the watcher queue.
+ * Jobs with duplicate IDs will be skipped unless it&apos;s
+ * pushed when the queue is being flushed.
+ */
+export function queueWatcher (watcher: Watcher) {
+  const id = watcher.id
+  if (has[id] == null) {
+    has[id] = true
+    if (!flushing) {
+      queue.push(watcher)
+    } else {
+      // if already flushing, splice the watcher based on its id
+      // if already past its id, it will be run next immediately.
+      let i = queue.length - 1
+      while (i &gt; index &amp;&amp; queue[i].id &gt; watcher.id) {
+        i--
+      }
+      queue.splice(i + 1, 0, watcher)
+    }
+    // queue the flush
+    if (!waiting) {
+      waiting = true
+      nextTick(flushSchedulerQueue)
+    }
+  }
+}
+</code></pre><p>queueWatcher&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x8FD9;&#x662F;Vue&#x7684;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#x3002;</p>
+<p><strong>&#x5B83;&#x5E76;&#x4E0D;&#x4F1A;&#x6BCF;&#x6B21;&#x6570;&#x636E;&#x6539;&#x53D8;&#x90FD;&#x89E6;&#x53D1; watcher &#x7684;&#x56DE;&#x8C03;&#xFF0C;&#x800C;&#x662F;&#x628A;&#x8FD9;&#x4E9B; watcher &#x5148;&#x6DFB;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x5728; nextTick &#x540E;&#x6267;&#x884C; flushSchedulerQueue&#x3002;</strong></p>
+<p>flushSchedulerQueue&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<pre><code>/**
+ * Flush both queues and run the watchers.
+ */
+function flushSchedulerQueue () {
+  flushing = true
+  let watcher, id
+
+  // Sort queue before flush.
+  // This ensures that:
+  // 1. Components are updated from parent to child. (because parent is always
+  //    created before the child)
+  // 2. A component&apos;s user watchers are run before its render watcher (because
+  //    user watchers are created before the render watcher)
+  // 3. If a component is destroyed during a parent component&apos;s watcher run,
+  //    its watchers can be skipped.
+  queue.sort((a, b) =&gt; a.id - b.id)
+
+  // do not cache length because more watchers might be pushed
+  // as we run existing watchers
+  for (index = 0; index &lt; queue.length; index++) {
+    watcher = queue[index]
+    id = watcher.id
+    has[id] = null
+    watcher.run()
+    // in dev build, check and stop circular updates.
+    if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; has[id] != null) {
+      circular[id] = (circular[id] || 0) + 1
+      if (circular[id] &gt; MAX_UPDATE_COUNT) {
+        warn(
+          &apos;You may have an infinite update loop &apos; + (
+            watcher.user
+              ? `in watcher with expression &quot;${watcher.expression}&quot;`
+              : `in a component render function.`
+          ),
+          watcher.vm
+        )
+        break
+      }
+    }
+  }
+
+  // keep copies of post queues before resetting state
+  const activatedQueue = activatedChildren.slice()
+  const updatedQueue = queue.slice()
+
+  resetSchedulerState()
+
+  // call component updated and activated hooks
+  callActivatedHooks(activatedQueue)
+  callUpdatedHooks(updatedQueue)
+
+  // devtool hook
+  /* istanbul ignore if */
+  if (devtools &amp;&amp; config.devtools) {
+    devtools.emit(&apos;flush&apos;)
+  }
+}
+
+function callUpdatedHooks (queue) {
+  let i = queue.length
+  while (i--) {
+    const watcher = queue[i]
+    const vm = watcher.vm
+    if (vm._watcher === watcher &amp;&amp; vm._isMounted) {
+      callHook(vm, &apos;updated&apos;)
+    }
+  }
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x68B3;&#x7406;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x961F;&#x5217;&#x6392;&#x5E8F;</li>
+</ul>
+<pre><code>queue.sort((a, b) =&gt; a.id - b.id) &#x5BF9;&#x961F;&#x5217;&#x505A;&#x4E86;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x7684;&#x6392;&#x5E8F;
+</code></pre><pre><code>* &#x7EC4;&#x4EF6;&#x7684;&#x66F4;&#x65B0;&#x7531;&#x7236;&#x5230;&#x5B50;&#xFF1B;&#x56E0;&#x4E3A;&#x7236;&#x7EC4;&#x4EF6;&#x7684;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;&#x662F;&#x5148;&#x4E8E;&#x5B50;&#x7684;&#xFF0C;&#x6240;&#x4EE5; watcher &#x7684;&#x521B;&#x5EFA;&#x4E5F;&#x662F;&#x5148;&#x7236;&#x540E;&#x5B50;&#xFF0C;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E5F;&#x5E94;&#x8BE5;&#x4FDD;&#x6301;&#x5148;&#x7236;&#x540E;&#x5B50;&#x3002;
+* &#x7528;&#x6237;&#x7684;&#x81EA;&#x5B9A;&#x4E49; watcher &#x8981;&#x4F18;&#x5148;&#x4E8E;&#x6E32;&#x67D3; watcher &#x6267;&#x884C;&#xFF1B;&#x56E0;&#x4E3A;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49; watcher &#x662F;&#x5728;&#x6E32;&#x67D3; watcher &#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x3002;
+* &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5728;&#x7236;&#x7EC4;&#x4EF6;&#x7684; watcher &#x6267;&#x884C;&#x671F;&#x95F4;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x5BF9;&#x5E94;&#x7684; watcher &#x6267;&#x884C;&#x90FD;&#x53EF;&#x4EE5;&#x88AB;&#x8DF3;&#x8FC7;&#xFF0C;&#x6240;&#x4EE5;&#x7236;&#x7EC4;&#x4EF6;&#x7684; watcher &#x5E94;&#x8BE5;&#x5148;&#x6267;&#x884C;&#x3002;
+</code></pre><ul>
+<li>&#x961F;&#x5217;&#x904D;&#x5386;</li>
+</ul>
+<p>&#x5728;&#x5BF9; queue &#x6392;&#x5E8F;&#x540E;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x8981;&#x5BF9;&#x5B83;&#x505A;&#x904D;&#x5386;&#xFF0C;&#x62FF;&#x5230;&#x5BF9;&#x5E94;&#x7684; watcher&#xFF0C;&#x6267;&#x884C; watcher.run()&#x3002;</p>
+<ul>
+<li>&#x72B6;&#x6001;&#x6062;&#x590D;</li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x6267;&#x884C; resetSchedulerState &#x51FD;&#x6570;</p>
+<pre><code>/**
+ * Reset the scheduler&apos;s state.
+ */
+function resetSchedulerState () {
+  index = queue.length = activatedChildren.length = 0
+  has = {}
+  if (process.env.NODE_ENV !== &apos;production&apos;) {
+    circular = {}
+  }
+  waiting = flushing = false
+}
+</code></pre><p>&#x903B;&#x8F91;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x628A;&#x8FD9;&#x4E9B;&#x63A7;&#x5236;&#x6D41;&#x7A0B;&#x72B6;&#x6001;&#x7684;&#x4E00;&#x4E9B;&#x53D8;&#x91CF;&#x6062;&#x590D;&#x5230;&#x521D;&#x59CB;&#x503C;&#xFF0C;&#x628A; watcher &#x961F;&#x5217;&#x6E05;&#x7A7A;&#x3002;</p>
+<p>&#x4E4B;&#x540E;&#x8D70;watcher.run()</p>
+<pre><code>  /**
+   * Scheduler job interface.
+   * Will be called by the scheduler.
+   */
+  run () {
+    if (this.active) {
+      const value = this.get() // &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x503C;
+      if (
+        value !== this.value ||
+        // Deep watchers and watchers on Object/Arrays should fire even
+        // when the value is the same, because the value may
+        // have mutated.
+        isObject(value) ||
+        this.deep
+      ) {
+        // set new value
+        const oldValue = this.value
+        this.value = value
+        if (this.user) {
+          try {
+            this.cb.call(this.vm, value, oldValue)
+          } catch (e) {
+            handleError(e, this.vm, `callback for watcher &quot;${this.expression}&quot;`)
+          }
+        } else {
+          this.cb.call(this.vm, value, oldValue)
+        }
+      }
+    }
+  }
+</code></pre><p>&#x901A;&#x8FC7; this.get() &#x5F97;&#x5230;&#x5B83;&#x5F53;&#x524D;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x505A;&#x5224;&#x65AD;&#xFF0C;&#x5982;&#x679C;&#x6EE1;&#x8DB3;&#x65B0;&#x65E7;&#x503C;&#x4E0D;&#x7B49;&#x3001;&#x65B0;&#x503C;&#x662F;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x3001;deep &#x6A21;&#x5F0F;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#xFF0C;&#x5219;&#x6267;&#x884C; watcher &#x7684;&#x56DE;&#x8C03;&#xFF0C;</p>
+<p>&#x6240;&#x4EE5;&#x8FD9;&#x5C31;&#x662F;&#x5F53;&#x6211;&#x4EEC;&#x53BB;&#x4FEE;&#x6539;&#x7EC4;&#x4EF6;&#x76F8;&#x5173;&#x7684;&#x54CD;&#x5E94;&#x5F0F;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x7EC4;&#x4EF6;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x4F1A;&#x91CD;&#x65B0;&#x6267;&#x884C; patch &#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x4F46;&#x5B83;&#x548C;&#x9996;&#x6B21;&#x6E32;&#x67D3;&#x6709;&#x6240;&#x4E0D;&#x540C;</p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x6240;&#x4EE5;Vue&#x7684;&#x6570;&#x636E;&#x4FEE;&#x6539;&#x6D3E;&#x53D1;&#x66F4;&#x65B0;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5F53;&#x6570;&#x636E;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x89E6;&#x53D1; setter &#x903B;&#x8F91;&#xFF0C;&#x628A;&#x5728;&#x4F9D;&#x8D56;&#x8FC7;&#x7A0B;&#x4E2D;&#x8BA2;&#x9605;&#x7684;&#x7684;&#x6240;&#x6709;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; watcher&#xFF0C;&#x90FD;&#x89E6;&#x53D1;&#x5B83;&#x4EEC;&#x7684; update &#x8FC7;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x53C8;&#x5229;&#x7528;&#x4E86;&#x961F;&#x5217;&#x505A;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x4F18;&#x5316;&#xFF0C;&#x5728; nextTick &#x540E;&#x6267;&#x884C;&#x6240;&#x6709; watcher &#x7684; run&#xFF0C;&#x6700;&#x540E;&#x6267;&#x884C;&#x5B83;&#x4EEC;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="依赖收集Getter.html" class="navigation navigation-prev " aria-label="Previous page: 依赖收集Getter">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Section1/nextTick.html" class="navigation navigation-next " aria-label="Next page: nextTick">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"派发更新Setter","level":"1.2.1.4.3","depth":4,"next":{"title":"nextTick","level":"1.2.1.4.4","depth":4,"path":"Chapter1/Section1/nextTick.md","ref":"Chapter1/Section1/nextTick.md","articles":[]},"previous":{"title":"依赖收集Getter","level":"1.2.1.4.2","depth":4,"path":"Chapter1/Section3/依赖收集Getter.md","ref":"Chapter1/Section3/依赖收集Getter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section3/派发更新Setter.md","mtime":"2019-01-08T03:35:14.781Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

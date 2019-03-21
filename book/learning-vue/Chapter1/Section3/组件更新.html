@@ -1,0 +1,525 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>组件更新 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="计算属性和监听属性.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Section2/">
+            
+                <a href="../Section2/">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../Section2/入口.html">
+            
+                <a href="../Section2/入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../Section2/Vue的定义.html">
+            
+                <a href="../Section2/Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../Section2/数据驱动.html">
+            
+                <a href="../Section2/数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="../Section2/_render.html">
+            
+                <a href="../Section2/_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="../Section2/VirtualDom.html">
+            
+                <a href="../Section2/VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="../Section2/createElement.html">
+            
+                <a href="../Section2/createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="../Section2/_update.html">
+            
+                <a href="../Section2/_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="响应式对象.html">
+            
+                <a href="响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="依赖收集Getter.html">
+            
+                <a href="依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="派发更新Setter.html">
+            
+                <a href="派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../Section1/nextTick.html">
+            
+                <a href="../Section1/nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="检测变化.html">
+            
+                <a href="检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="计算属性和监听属性.html">
+            
+                <a href="计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.4.7" data-path="组件更新.html">
+            
+                <a href="组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >组件更新</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7EC4;&#x4EF6;&#x66F4;&#x65B0;">&#x7EC4;&#x4EF6;&#x66F4;&#x65B0;</h1>
+<p>&#x7EC4;&#x4EF6;&#x7684;&#x66F4;&#x65B0;&#x8FD8;&#x662F;&#x8C03;&#x7528;&#x4E86; vm._update &#x65B9;&#x6CD5;</p>
+<h3 id="&#x5224;&#x65AD;">&#x5224;&#x65AD;</h3>
+<p>&#x901A;&#x8FC7; sameVNode(oldVnode, vnode) &#x5224;&#x65AD;&#x5B83;&#x4EEC;&#x662F;&#x5426;&#x662F;&#x76F8;&#x540C;&#x7684; VNode &#x6765;&#x51B3;&#x5B9A;&#x8D70;&#x4E0D;&#x540C;&#x7684;&#x66F4;&#x65B0;&#x903B;&#x8F91;</p>
+<pre><code>function sameVnode (a, b) {
+  return (
+    a.key === b.key &amp;&amp; (
+      (
+        a.tag === b.tag &amp;&amp;
+        a.isComment === b.isComment &amp;&amp;
+        isDef(a.data) === isDef(b.data) &amp;&amp;
+        sameInputType(a, b)
+      ) || (
+        isTrue(a.isAsyncPlaceholder) &amp;&amp;
+        a.asyncFactory === b.asyncFactory &amp;&amp;
+        isUndef(b.asyncFactory.error)
+      )
+    )
+  )
+}
+</code></pre><ul>
+<li><p>&#x5982;&#x679C;&#x4E24;&#x4E2A; vnode &#x7684; key &#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x5219;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF1B;</p>
+</li>
+<li><p>&#x5426;&#x5219;&#x7EE7;&#x7EED;&#x5224;&#x65AD;&#x5BF9;&#x4E8E;&#x540C;&#x6B65;&#x7EC4;&#x4EF6;&#xFF0C;&#x5219;&#x5224;&#x65AD; isComment&#x3001;data&#x3001;input &#x7C7B;&#x578B;&#x7B49;&#x662F;&#x5426;&#x76F8;&#x540C;&#xFF0C;&#x5BF9;&#x4E8E;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#xFF0C;&#x5219;&#x5224;&#x65AD; asyncFactory &#x662F;&#x5426;&#x76F8;&#x540C;&#x3002;</p>
+</li>
+</ul>
+<h3 id="&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x4E0D;&#x540C;">&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x4E0D;&#x540C;</h3>
+<p>&#x5206;&#x4E09;&#x6B65;&#xFF1A; &#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8282;&#x70B9; =&gt; &#x66F4;&#x65B0;&#x7236;&#x7684;&#x5360;&#x4F4D;&#x7B26;&#x8282;&#x70B9; =&gt; &#x5220;&#x9664;&#x65E7;&#x8282;&#x70B9;</p>
+<h3 id="&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x76F8;&#x540C;">&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x76F8;&#x540C;</h3>
+<p>&#x8C03;&#x7528; patchVNode &#x65B9;&#x6CD5;</p>
+<p>patchVnode &#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x628A;&#x65B0;&#x7684; vnodepatch &#x5230;&#x65E7;&#x7684; vnode &#x4E0A;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x5173;&#x6CE8;&#x5173;&#x952E;&#x7684;&#x6838;&#x5FC3;&#x903B;&#x8F91;</p>
+<p>&#x53EF;&#x4EE5;&#x62C6;&#x6210;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li><p>&#x6267;&#x884C; prepatch &#x94A9;&#x5B50;&#x51FD;&#x6570;</p>
+</li>
+<li><p>&#x6267;&#x884C; update &#x94A9;&#x5B50;&#x51FD;&#x6570;</p>
+</li>
+<li><p>&#x5B8C;&#x6210;patch&#x8FC7;&#x7A0B;</p>
+</li>
+</ul>
+<p>&#x5982;&#x679C; vnode &#x662F;&#x4E2A;&#x6587;&#x672C;&#x8282;&#x70B9;&#x4E14;&#x65B0;&#x65E7;&#x6587;&#x672C;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x66FF;&#x6362;&#x6587;&#x672C;&#x5185;&#x5BB9;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x6587;&#x672C;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x5224;&#x65AD;&#x5B83;&#x4EEC;&#x7684;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x5206;&#x4E86;&#x51E0;&#x79CD;&#x60C5;&#x51B5;&#x5904;&#x7406;&#xFF1A;</p>
+<ol>
+<li>oldCh &#x4E0E; ch &#x90FD;&#x5B58;&#x5728;&#x4E14;&#x4E0D;&#x76F8;&#x540C;&#x65F6;&#xFF0C;&#x4F7F;&#x7528; updateChildren &#x51FD;&#x6570;&#x6765;&#x66F4;&#x65B0;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x8FD9;&#x4E2A;&#x540E;&#x9762;&#x91CD;&#x70B9;&#x8BB2;&#x3002;</li>
+<li><p>&#x5982;&#x679C;&#x53EA;&#x6709; ch &#x5B58;&#x5728;&#xFF0C;&#x8868;&#x793A;&#x65E7;&#x8282;&#x70B9;&#x4E0D;&#x9700;&#x8981;&#x4E86;&#x3002;&#x5982;&#x679C;&#x65E7;&#x7684;&#x8282;&#x70B9;&#x662F;&#x6587;&#x672C;&#x8282;&#x70B9;&#x5219;&#x5148;&#x5C06;&#x8282;&#x70B9;&#x7684;&#x6587;&#x672C;&#x6E05;&#x9664;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; addVnodes &#x5C06; ch &#x6279;&#x91CF;&#x63D2;&#x5165;&#x5230;&#x65B0;&#x8282;&#x70B9; elm &#x4E0B;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x53EA;&#x6709; oldCh &#x5B58;&#x5728;&#xFF0C;&#x8868;&#x793A;&#x66F4;&#x65B0;&#x7684;&#x662F;&#x7A7A;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5C06;&#x65E7;&#x7684;&#x8282;&#x70B9;&#x901A;&#x8FC7; removeVnodes &#x5168;&#x90E8;&#x6E05;&#x9664;&#x3002;</p>
+</li>
+<li><p>&#x5F53;&#x53EA;&#x6709;&#x65E7;&#x8282;&#x70B9;&#x662F;&#x6587;&#x672C;&#x8282;&#x70B9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5219;&#x6E05;&#x9664;&#x5176;&#x8282;&#x70B9;&#x6587;&#x672C;&#x5185;&#x5BB9;&#x3002;</p>
+</li>
+<li><p>&#x6267;&#x884C; postpatch &#x94A9;&#x5B50;&#x51FD;&#x6570;</p>
+</li>
+</ol>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x7EC4;&#x4EF6;&#x66F4;&#x65B0;&#x7684;&#x8FC7;&#x7A0B;&#x6838;&#x5FC3;&#x5C31;&#x662F;&#x65B0;&#x65E7; vnode diff&#xFF0C;&#x5BF9;&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x76F8;&#x540C;&#x4EE5;&#x53CA;&#x4E0D;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x5206;&#x522B;&#x505A;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x4E0D;&#x540C;&#x7684;&#x66F4;&#x65B0;&#x6D41;&#x7A0B;&#x662F;&#x521B;&#x5EFA;&#x65B0;&#x8282;&#x70B9;-&gt;&#x66F4;&#x65B0;&#x7236;&#x5360;&#x4F4D;&#x7B26;&#x8282;&#x70B9;-&gt;&#x5220;&#x9664;&#x65E7;&#x8282;&#x70B9;&#xFF1B;</p>
+<p>&#x800C;&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x76F8;&#x540C;&#x7684;&#x66F4;&#x65B0;&#x6D41;&#x7A0B;&#x662F;&#x53BB;&#x83B7;&#x53D6;&#x5B83;&#x4EEC;&#x7684; children&#xFF0C;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x60C5;&#x51B5;&#x505A;&#x4E0D;&#x540C;&#x7684;&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x3002;
+<strong>&#x6700;&#x590D;&#x6742;&#x7684;&#x60C5;&#x51B5;&#x662F;&#x65B0;&#x65E7;&#x8282;&#x70B9;&#x76F8;&#x540C;&#x4E14;&#x5B83;&#x4EEC;&#x90FD;&#x5B58;&#x5728;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x6267;&#x884C; updateChildren &#x903B;&#x8F91;</strong></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="计算属性和监听属性.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 计算属性和监听属性">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"组件更新","level":"1.2.1.4.7","depth":4,"previous":{"title":"计算属性和监听属性","level":"1.2.1.4.6","depth":4,"path":"Chapter1/Section3/计算属性和监听属性.md","ref":"Chapter1/Section3/计算属性和监听属性.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section3/组件更新.md","mtime":"2019-01-09T03:11:42.140Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

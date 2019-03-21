@@ -1,0 +1,538 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>计算属性和监听属性 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="组件更新.html" />
+    
+    
+    <link rel="prev" href="检测变化.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Section2/">
+            
+                <a href="../Section2/">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../Section2/入口.html">
+            
+                <a href="../Section2/入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../Section2/Vue的定义.html">
+            
+                <a href="../Section2/Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../Section2/数据驱动.html">
+            
+                <a href="../Section2/数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="../Section2/_render.html">
+            
+                <a href="../Section2/_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="../Section2/VirtualDom.html">
+            
+                <a href="../Section2/VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="../Section2/createElement.html">
+            
+                <a href="../Section2/createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="../Section2/_update.html">
+            
+                <a href="../Section2/_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="响应式对象.html">
+            
+                <a href="响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="依赖收集Getter.html">
+            
+                <a href="依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="派发更新Setter.html">
+            
+                <a href="派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../Section1/nextTick.html">
+            
+                <a href="../Section1/nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="检测变化.html">
+            
+                <a href="检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.4.6" data-path="计算属性和监听属性.html">
+            
+                <a href="计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.7" data-path="组件更新.html">
+            
+                <a href="组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >计算属性和监听属性</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x548C;&#x76D1;&#x542C;&#x5C5E;&#x6027;">&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x548C;&#x76D1;&#x542C;&#x5C5E;&#x6027;</h1>
+<p>Vue&#x7684;&#x7EC4;&#x4EF6;&#x5BF9;&#x8C61;&#x652F;&#x6301;computed&#x548C;watch&#x4E24;&#x79CD;&#x5C5E;&#x6027;&#x3002;</p>
+<h4 id="computed">computed</h4>
+<p>&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x7684;&#x521D;&#x59CB;&#x5316;&#x662F;&#x53D1;&#x751F;&#x5728; Vue &#x5B9E;&#x4F8B;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#x7684; initState &#x51FD;&#x6570;&#x4E2D;</p>
+<p>&#x6267;&#x884C;&#x4E86; if (opts.computed) initComputed(vm, opts.computed)&#xFF0C;initComputed &#x7684;&#x5B9A;&#x4E49;&#x5728; src/core/instance/state.js &#x4E2D;</p>
+<pre><code>// initState &#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x662F;&#x5BF9; props&#x3001;methods&#x3001;data&#x3001;computed &#x548C; wathcer &#x7B49;&#x5C5E;&#x6027;&#x505A;&#x4E86;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x3002;
+export function initState (vm: Component) {
+  vm._watchers = []
+  const opts = vm.$options
+  if (opts.props) initProps(vm, opts.props) // &#x521D;&#x59CB;&#x5316; props
+  if (opts.methods) initMethods(vm, opts.methods) // &#x521D;&#x59CB;&#x5316; methods
+  if (opts.data) {
+    initData(vm) // &#x521D;&#x59CB;&#x5316;Data
+  } else {
+    observe(vm._data = {}, true /* asRootData */)
+  }
+  if (opts.computed) initComputed(vm, opts.computed) //&#x521D;&#x59CB;&#x5316;computed
+  if (opts.watch &amp;&amp; opts.watch !== nativeWatch) {
+    initWatch(vm, opts.watch) // &#x521D;&#x59CB;&#x5316;watch
+  }
+}
+</code></pre><p>initComputed&#x6E90;&#x7801;&#x5728;&#x540C;&#x4E00;&#x6587;&#x4EF6;&#x5185;&#xFF1A;</p>
+<pre><code>function initComputed (vm: Component, computed: Object) {
+  // $flow-disable-line
+  const watchers = vm._computedWatchers = Object.create(null)
+  // computed properties are just getters during SSR
+  const isSSR = isServerRendering()
+
+  for (const key in computed) {
+    const userDef = computed[key]
+    const getter = typeof userDef === &apos;function&apos; ? userDef : userDef.get
+    if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; getter == null) {
+      warn(
+        `Getter is missing for computed property &quot;${key}&quot;.`,
+        vm
+      )
+    }
+
+    if (!isSSR) {
+      // create internal watcher for the computed property.
+      watchers[key] = new Watcher(
+        vm,
+        getter || noop,
+        noop,
+        computedWatcherOptions
+      )
+    }
+
+    // component-defined computed properties are already defined on the
+    // component prototype. We only need to define computed properties defined
+    // at instantiation here.
+    if (!(key in vm)) {
+      defineComputed(vm, key, userDef)
+    } else if (process.env.NODE_ENV !== &apos;production&apos;) {
+      if (key in vm.$data) {
+        warn(`The computed property &quot;${key}&quot; is already defined in data.`, vm)
+      } else if (vm.$options.props &amp;&amp; key in vm.$options.props) {
+        warn(`The computed property &quot;${key}&quot; is already defined as a prop.`, vm)
+      }
+    }
+  }
+}
+</code></pre><h4 id="watch">watch</h4>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="检测变化.html" class="navigation navigation-prev " aria-label="Previous page: 检测变化">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="组件更新.html" class="navigation navigation-next " aria-label="Next page: 组件更新">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"计算属性和监听属性","level":"1.2.1.4.6","depth":4,"next":{"title":"组件更新","level":"1.2.1.4.7","depth":4,"path":"Chapter1/Section3/组件更新.md","ref":"Chapter1/Section3/组件更新.md","articles":[]},"previous":{"title":"检测变化","level":"1.2.1.4.5","depth":4,"path":"Chapter1/Section3/检测变化.md","ref":"Chapter1/Section3/检测变化.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section3/计算属性和监听属性.md","mtime":"2019-01-08T03:35:14.783Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

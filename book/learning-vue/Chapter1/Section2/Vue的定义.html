@@ -1,0 +1,570 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Vue的定义 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="数据驱动.html" />
+    
+    
+    <link rel="prev" href="入口.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="入口.html">
+            
+                <a href="入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.2" data-path="Vue的定义.html">
+            
+                <a href="Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="数据驱动.html">
+            
+                <a href="数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="_render.html">
+            
+                <a href="_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="VirtualDom.html">
+            
+                <a href="VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="createElement.html">
+            
+                <a href="createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="_update.html">
+            
+                <a href="_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../Section3/">
+            
+                <a href="../Section3/">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="../Section3/响应式对象.html">
+            
+                <a href="../Section3/响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="../Section3/依赖收集Getter.html">
+            
+                <a href="../Section3/依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="../Section3/派发更新Setter.html">
+            
+                <a href="../Section3/派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../Section1/nextTick.html">
+            
+                <a href="../Section1/nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="../Section3/检测变化.html">
+            
+                <a href="../Section3/检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="../Section3/计算属性和监听属性.html">
+            
+                <a href="../Section3/计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.7" data-path="../Section3/组件更新.html">
+            
+                <a href="../Section3/组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Vue的定义</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6E90;&#x7801;&#x89E3;&#x6784;">&#x6E90;&#x7801;&#x89E3;&#x6784;</h1>
+<p>&#x53C2;&#x7167;vue-2.5.17 &#x7248;&#x672C;&#xFF0C;&#x89E3;&#x6784;&#x4E00;&#x4E0B;vue&#x7684;&#x6E90;&#x7801;&#x7ED3;&#x6784;</p>
+<h3 id="vue&#x7684;&#x5B9A;&#x4E49;">Vue&#x7684;&#x5B9A;&#x4E49;</h3>
+<pre><code>
+// src/core/instance/index.js
+
+import { initMixin } from &apos;./init&apos;
+import { stateMixin } from &apos;./state&apos;
+import { renderMixin } from &apos;./render&apos;
+import { eventsMixin } from &apos;./events&apos;
+import { lifecycleMixin } from &apos;./lifecycle&apos;
+import { warn } from &apos;../util/index&apos;
+
+// new Vue &#x5B9E;&#x4F8B;&#x5316;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;
+function Vue (options) {
+  if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp;
+    !(this instanceof Vue)
+  ) {
+    warn(&apos;Vue is a constructor and should be called with the `new` keyword&apos;)
+  }
+  this._init(options)
+}
+
+initMixin(Vue)
+stateMixin(Vue)
+eventsMixin(Vue)
+lifecycleMixin(Vue)
+renderMixin(Vue)
+
+export default Vue
+</code></pre><p><strong>&#x8FD9;&#x91CC;&#x770B;&#x51FA;&#xFF0C;Vue &#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7528; Function &#x5B9E;&#x73B0;&#x7684;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x901A;&#x8FC7; new Vue &#x53BB;&#x5B9E;&#x4F8B;&#x5316;&#x5B83;&#x3002;</strong></p>
+<p>&#x9664;&#x4E86;&#x7ED9;&#x5B83;&#x7684;&#x539F;&#x578B; prototype &#x4E0A;&#x6269;&#x5C55;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD8;&#x4F1A;&#x7ED9; Vue &#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#x6269;&#x5C55;&#x5168;&#x5C40;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code>// core/global-api/index.js
+/* @flow */
+
+import config from &apos;../config&apos;
+import { initUse } from &apos;./use&apos;
+import { initMixin } from &apos;./mixin&apos;
+import { initExtend } from &apos;./extend&apos;
+import { initAssetRegisters } from &apos;./assets&apos;
+import { set, del } from &apos;../observer/index&apos;
+import { ASSET_TYPES } from &apos;shared/constants&apos;
+import builtInComponents from &apos;../components/index&apos;
+
+import {
+  warn,
+  extend,
+  nextTick,
+  mergeOptions,
+  defineReactive
+} from &apos;../util/index&apos;
+
+export function initGlobalAPI (Vue: GlobalAPI) {
+  // config
+  const configDef = {}
+  configDef.get = () =&gt; config
+  if (process.env.NODE_ENV !== &apos;production&apos;) {
+    configDef.set = () =&gt; {
+      warn(
+        &apos;Do not replace the Vue.config object, set individual fields instead.&apos;
+      )
+    }
+  }
+  Object.defineProperty(Vue, &apos;config&apos;, configDef)
+
+  // exposed util methods.
+  // NOTE: these are not considered part of the public API - avoid relying on
+  // them unless you are aware of the risk.
+  Vue.util = {
+    warn,
+    extend,
+    mergeOptions,
+    defineReactive
+  }
+
+  Vue.set = set // set &#x65B9;&#x6CD5;
+  Vue.delete = del // delete &#x65B9;&#x6CD5;
+  Vue.nextTick = nextTick // nextTick &#x65B9;&#x6CD5;
+
+  Vue.options = Object.create(null)
+  ASSET_TYPES.forEach(type =&gt; {
+    Vue.options[type + &apos;s&apos;] = Object.create(null)
+  })
+
+  // this is used to identify the &quot;base&quot; constructor to extend all plain-object
+  // components with in Weex&apos;s multi-instance scenarios.
+  Vue.options._base = Vue
+
+  extend(Vue.options.components, builtInComponents)
+
+  initUse(Vue)
+  initMixin(Vue)
+  initExtend(Vue)
+  initAssetRegisters(Vue)
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x5C31;&#x662F;&#x5728; Vue &#x4E0A;&#x6269;&#x5C55;&#x7684;&#x4E00;&#x4E9B;&#x5168;&#x5C40;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;Vue &#x5B98;&#x7F51;&#x4E2D;&#x5173;&#x4E8E;&#x5168;&#x5C40; API &#x90FD;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x627E;&#x5230;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="入口.html" class="navigation navigation-prev " aria-label="Previous page: 入口">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="数据驱动.html" class="navigation navigation-next " aria-label="Next page: 数据驱动">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Vue的定义","level":"1.2.1.2","depth":3,"next":{"title":"数据驱动","level":"1.2.1.3","depth":3,"path":"Chapter1/Section2/数据驱动.md","ref":"Chapter1/Section2/数据驱动.md","articles":[{"title":"_render","level":"1.2.1.3.1","depth":4,"path":"Chapter1/Section2/_render.md","ref":"Chapter1/Section2/_render.md","articles":[]},{"title":"Virtual Dom","level":"1.2.1.3.2","depth":4,"path":"Chapter1/Section2/VirtualDom.md","ref":"Chapter1/Section2/VirtualDom.md","articles":[]},{"title":"createElement","level":"1.2.1.3.3","depth":4,"path":"Chapter1/Section2/createElement.md","ref":"Chapter1/Section2/createElement.md","articles":[]},{"title":"_update","level":"1.2.1.3.4","depth":4,"path":"Chapter1/Section2/_update.md","ref":"Chapter1/Section2/_update.md","articles":[]}]},"previous":{"title":"入口","level":"1.2.1.1","depth":3,"path":"Chapter1/Section2/入口.md","ref":"Chapter1/Section2/入口.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section2/Vue的定义.md","mtime":"2019-01-08T03:35:14.759Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

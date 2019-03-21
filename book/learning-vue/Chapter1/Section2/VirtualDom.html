@@ -1,0 +1,589 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Virtual Dom · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="createElement.html" />
+    
+    
+    <link rel="prev" href="_render.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="入口.html">
+            
+                <a href="入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="Vue的定义.html">
+            
+                <a href="Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="数据驱动.html">
+            
+                <a href="数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="_render.html">
+            
+                <a href="_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.3.2" data-path="VirtualDom.html">
+            
+                <a href="VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="createElement.html">
+            
+                <a href="createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="_update.html">
+            
+                <a href="_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../Section3/">
+            
+                <a href="../Section3/">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="../Section3/响应式对象.html">
+            
+                <a href="../Section3/响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="../Section3/依赖收集Getter.html">
+            
+                <a href="../Section3/依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="../Section3/派发更新Setter.html">
+            
+                <a href="../Section3/派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../Section1/nextTick.html">
+            
+                <a href="../Section1/nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="../Section3/检测变化.html">
+            
+                <a href="../Section3/检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="../Section3/计算属性和监听属性.html">
+            
+                <a href="../Section3/计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.7" data-path="../Section3/组件更新.html">
+            
+                <a href="../Section3/组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Virtual Dom</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="virtual-dom">Virtual Dom</h3>
+<p>createElement&#x8FD4;&#x56DE;&#x7684;&#x5C31;&#x662F;&#x4E00;&#x4E2A;VNode&#xFF0C;&#x4E86;&#x89E3;VNode&#x9700;&#x8981;&#x5148;&#x770B;&#x4E0B;Virtual Dom</p>
+<p>Virtual DOM &#x5C31;&#x662F;&#x7528;&#x4E00;&#x4E2A;&#x539F;&#x751F;&#x7684; JS &#x5BF9;&#x8C61;&#x53BB;&#x63CF;&#x8FF0;&#x4E00;&#x4E2A; DOM &#x8282;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x6BD4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; DOM &#x7684;&#x4EE3;&#x4EF7;&#x8981;&#x5C0F;&#x5F88;&#x591A;&#x3002;&#x5728; Vue.js &#x4E2D;&#xFF0C;Virtual DOM &#x662F;&#x7528; VNode &#x8FD9;&#x4E48;&#x4E00;&#x4E2A; Class &#x53BB;&#x63CF;&#x8FF0;&#xFF0C;&#x5B83;&#x662F;&#x5B9A;&#x4E49;&#x5728; src/core/vdom/vnode.js &#x4E2D;&#x7684;&#x3002;</p>
+<pre><code>/* @flow */
+
+export default class VNode {
+  tag: string | void; // &#x6807;&#x7B7E;
+  data: VNodeData | void;
+  children: ?Array&lt;VNode&gt;;
+  text: string | void;
+  elm: Node | void;
+  ns: string | void;
+  context: Component | void; // rendered in this component&apos;s scope
+  key: string | number | void;
+  componentOptions: VNodeComponentOptions | void;
+  componentInstance: Component | void; // component instance
+  parent: VNode | void; // component placeholder node
+
+  // strictly internal
+  raw: boolean; // contains raw HTML? (server only)
+  isStatic: boolean; // hoisted static node
+  isRootInsert: boolean; // necessary for enter transition check
+  isComment: boolean; // empty comment placeholder?
+  isCloned: boolean; // is a cloned node?
+  isOnce: boolean; // is a v-once node?
+  asyncFactory: Function | void; // async component factory function
+  asyncMeta: Object | void;
+  isAsyncPlaceholder: boolean;
+  ssrContext: Object | void;
+  fnContext: Component | void; // real context vm for functional nodes
+  fnOptions: ?ComponentOptions; // for SSR caching
+  fnScopeId: ?string; // functional scope id support
+
+  constructor (
+    tag?: string,
+    data?: VNodeData,
+    children?: ?Array&lt;VNode&gt;,
+    text?: string,
+    elm?: Node,
+    context?: Component,
+    componentOptions?: VNodeComponentOptions,
+    asyncFactory?: Function
+  ) {
+    this.tag = tag
+    this.data = data
+    this.children = children
+    this.text = text
+    this.elm = elm
+    this.ns = undefined
+    this.context = context
+    this.fnContext = undefined
+    this.fnOptions = undefined
+    this.fnScopeId = undefined
+    this.key = data &amp;&amp; data.key
+    this.componentOptions = componentOptions
+    this.componentInstance = undefined
+    this.parent = undefined
+    this.raw = false
+    this.isStatic = false
+    this.isRootInsert = true
+    this.isComment = false
+    this.isCloned = false
+    this.isOnce = false
+    this.asyncFactory = asyncFactory
+    this.asyncMeta = undefined
+    this.isAsyncPlaceholder = false
+  }
+
+  // DEPRECATED: alias for componentInstance for backwards compat.
+  /* istanbul ignore next */
+  get child (): Component | void {
+    return this.componentInstance
+  }
+}
+
+export const createEmptyVNode = (text: string = &apos;&apos;) =&gt; {
+  const node = new VNode()
+  node.text = text
+  node.isComment = true
+  return node
+}
+
+export function createTextVNode (val: string | number) {
+  return new VNode(undefined, undefined, undefined, String(val))
+}
+
+// optimized shallow clone
+// used for static nodes and slot nodes because they may be reused across
+// multiple renders, cloning them avoids errors when DOM manipulations rely
+// on their elm reference.
+export function cloneVNode (vnode: VNode): VNode {
+  const cloned = new VNode(
+    vnode.tag,
+    vnode.data,
+    vnode.children,
+    vnode.text,
+    vnode.elm,
+    vnode.context,
+    vnode.componentOptions,
+    vnode.asyncFactory
+  )
+  cloned.ns = vnode.ns
+  cloned.isStatic = vnode.isStatic
+  cloned.key = vnode.key
+  cloned.isComment = vnode.isComment
+  cloned.fnContext = vnode.fnContext
+  cloned.fnOptions = vnode.fnOptions
+  cloned.fnScopeId = vnode.fnScopeId
+  cloned.isCloned = true
+  return cloned
+}
+</code></pre><h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x5176;&#x5B9E; VNode &#x662F;&#x5BF9;&#x771F;&#x5B9E; DOM &#x7684;&#x4E00;&#x79CD;&#x62BD;&#x8C61;&#x63CF;&#x8FF0;&#xFF0C;&#x5B83;&#x7684;&#x6838;&#x5FC3;&#x5B9A;&#x4E49;&#x65E0;&#x975E;&#x5C31;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x5C5E;&#x6027;&#xFF0C;&#x6807;&#x7B7E;&#x540D;&#x3001;&#x6570;&#x636E;&#x3001;&#x5B50;&#x8282;&#x70B9;&#x3001;&#x952E;&#x503C;&#x7B49;&#xFF0C;&#x5176;&#x5B83;&#x5C5E;&#x6027;&#x90FD;&#x662F;&#x90FD;&#x662F;&#x7528;&#x6765;&#x6269;&#x5C55; VNode &#x7684;&#x7075;&#x6D3B;&#x6027;&#x4EE5;&#x53CA;&#x5B9E;&#x73B0;&#x4E00;&#x4E9B;&#x7279;&#x6B8A; feature &#x7684;&#x3002;</p>
+<p>&#x7531;&#x4E8E; VNode &#x53EA;&#x662F;&#x7528;&#x6765;&#x6620;&#x5C04;&#x5230;&#x771F;&#x5B9E; DOM &#x7684;&#x6E32;&#x67D3;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5305;&#x542B;&#x64CD;&#x4F5C; DOM &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x662F;&#x975E;&#x5E38;&#x8F7B;&#x91CF;&#x548C;&#x7B80;&#x5355;&#x7684;&#x3002;</p>
+<p>Virtual DOM &#x9664;&#x4E86;&#x5B83;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x6620;&#x5C04;&#x5230;&#x771F;&#x5B9E;&#x7684; DOM &#x5B9E;&#x9645;&#x4E0A;&#x8981;&#x7ECF;&#x5386; VNode &#x7684; create&#x3001;diff&#x3001;patch &#x7B49;&#x8FC7;&#x7A0B;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="_render.html" class="navigation navigation-prev " aria-label="Previous page: _render">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="createElement.html" class="navigation navigation-next " aria-label="Next page: createElement">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Virtual Dom","level":"1.2.1.3.2","depth":4,"next":{"title":"createElement","level":"1.2.1.3.3","depth":4,"path":"Chapter1/Section2/createElement.md","ref":"Chapter1/Section2/createElement.md","articles":[]},"previous":{"title":"_render","level":"1.2.1.3.1","depth":4,"path":"Chapter1/Section2/_render.md","ref":"Chapter1/Section2/_render.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section2/VirtualDom.md","mtime":"2019-01-08T03:35:14.758Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

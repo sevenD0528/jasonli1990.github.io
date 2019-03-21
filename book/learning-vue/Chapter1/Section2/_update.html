@@ -1,0 +1,1582 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>_update · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Section3/" />
+    
+    
+    <link rel="prev" href="createElement.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="入口.html">
+            
+                <a href="入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="Vue的定义.html">
+            
+                <a href="Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="数据驱动.html">
+            
+                <a href="数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="_render.html">
+            
+                <a href="_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="VirtualDom.html">
+            
+                <a href="VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="createElement.html">
+            
+                <a href="createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.3.4" data-path="_update.html">
+            
+                <a href="_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../Section3/">
+            
+                <a href="../Section3/">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="../Section3/响应式对象.html">
+            
+                <a href="../Section3/响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="../Section3/依赖收集Getter.html">
+            
+                <a href="../Section3/依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="../Section3/派发更新Setter.html">
+            
+                <a href="../Section3/派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../Section1/nextTick.html">
+            
+                <a href="../Section1/nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="../Section3/检测变化.html">
+            
+                <a href="../Section3/检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="../Section3/计算属性和监听属性.html">
+            
+                <a href="../Section3/计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.7" data-path="../Section3/组件更新.html">
+            
+                <a href="../Section3/组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >_update</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="update">_update</h3>
+<p>_update&#xFF0C;&#x7528;&#x4E8E;&#x628A;VNode&#x6E32;&#x67D3;&#x6210;&#x4E00;&#x4E2A;&#x771F;&#x5B9E;&#x7684;DOM&#x5E76;&#x8F93;&#x51FA;&#xFF0C;&#x5B83;&#x5728;src/core/instance/lifecycle.js&#x4E2D;</p>
+<p>&#x5B83;&#x662F;&#x5B9E;&#x4F8B;&#x7684;&#x4E00;&#x4E2A;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x673A;&#x6709; 2 &#x4E2A;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;<strong>&#x9996;&#x6B21;&#x6E32;&#x67D3;</strong>&#xFF0C;&#x4E00;&#x4E2A;&#x662F;<strong>&#x6570;&#x636E;&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;</strong></p>
+<pre><code>// _update &#x7684;&#x6838;&#x5FC3;&#x5C31;&#x662F;&#x8C03;&#x7528; vm.__patch__ &#x65B9;&#x6CD5;,&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5B9E;&#x9645;&#x4E0A;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x5E73;&#x53F0;&#xFF0C;&#x6BD4;&#x5982; web &#x548C; weex &#x4E0A;&#x7684;&#x5B9A;&#x4E49;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;
+Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
+    const vm: Component = this
+    if (vm._isMounted) {
+      callHook(vm, &apos;beforeUpdate&apos;)
+    }
+    const prevEl = vm.$el
+    const prevVnode = vm._vnode
+    const prevActiveInstance = activeInstance
+    activeInstance = vm
+    vm._vnode = vnode
+    // Vue.prototype.__patch__ is injected in entry points
+    // based on the rendering backend used.
+    if (!prevVnode) {
+      // initial render
+      vm.$el = vm.__patch__(
+        vm.$el, vnode, hydrating, false /* removeOnly */,
+        vm.$options._parentElm,
+        vm.$options._refElm
+      )
+      // no need for the ref nodes after initial patch
+      // this prevents keeping a detached DOM tree in memory (#5851)
+      vm.$options._parentElm = vm.$options._refElm = null
+    } else {
+      // updates
+      vm.$el = vm.__patch__(prevVnode, vnode)
+    }
+    activeInstance = prevActiveInstance
+    // update __vue__ reference
+    if (prevEl) {
+      prevEl.__vue__ = null
+    }
+    if (vm.$el) {
+      vm.$el.__vue__ = vm
+    }
+    // if parent is an HOC, update its $el as well
+    if (vm.$vnode &amp;&amp; vm.$parent &amp;&amp; vm.$vnode === vm.$parent._vnode) {
+      vm.$parent.$el = vm.$el
+    }
+    // updated hook is called by the scheduler to ensure that children are
+    // updated in a parent&apos;s updated hook.
+}
+</code></pre><p>vm.<strong>patch</strong>&#x5B9A;&#x4E49;&#x5728;src/platforms/web/runtime/index.js&#x4E2D;</p>
+<pre><code>import { patch } from &apos;./patch&apos;
+
+...
+
+// install platform patch function
+Vue.prototype.__patch__ = inBrowser ? patch : noop
+</code></pre><p>&#x751A;&#x81F3;&#x5728; web &#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x662F;&#x5426;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x4E5F;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4EA7;&#x751F;&#x5F71;&#x54CD;&#x3002;&#x56E0;&#x4E3A;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x4E2D;&#xFF0C;&#x6CA1;&#x6709;&#x771F;&#x5B9E;&#x7684;&#x6D4F;&#x89C8;&#x5668; DOM &#x73AF;&#x5883;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x628A; VNode &#x6700;&#x7EC8;&#x8F6C;&#x6362;&#x6210; DOM&#xFF0C;&#x56E0;&#x6B64;&#x662F;&#x4E00;&#x4E2A;&#x7A7A;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x6E32;&#x67D3;&#x4E2D;&#xFF0C;&#x5B83;&#x6307;&#x5411;&#x4E86; patch &#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x5728; src/platforms/web/runtime/patch.js&#x4E2D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4ECE;&quot;./patch&quot;&#x5BFC;&#x5165;&#x7684;</p>
+<pre><code>/* @flow */
+
+import * as nodeOps from &apos;web/runtime/node-ops&apos;
+import { createPatchFunction } from &apos;core/vdom/patch&apos;
+import baseModules from &apos;core/vdom/modules/index&apos;
+import platformModules from &apos;web/runtime/modules/index&apos;
+
+// the directive module should be applied last, after all
+// built-in modules have been applied.
+const modules = platformModules.concat(baseModules)
+
+// &#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#x662F;&#x8C03;&#x7528; createPatchFunction &#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x8FD9;&#x91CC;&#x4F20;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x542B; nodeOps &#x53C2;&#x6570;&#x548C; modules &#x53C2;&#x6570;&#x3002;
+// 1. nodeOps &#x5C01;&#x88C5;&#x4E86;&#x4E00;&#x7CFB;&#x5217; DOM &#x64CD;&#x4F5C;&#x7684;&#x65B9;&#x6CD5;
+// 2. modules &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x6A21;&#x5757;&#x7684;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;
+export const patch: Function = createPatchFunction({ nodeOps, modules })
+</code></pre><p>&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#x662F;&#x8C03;&#x7528; createPatchFunction &#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x8FD9;&#x91CC;&#x4F20;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x542B; nodeOps &#x53C2;&#x6570;&#x548C; modules &#x53C2;&#x6570;&#x3002;</p>
+<ul>
+<li>nodeOps &#x5C01;&#x88C5;&#x4E86;&#x4E00;&#x7CFB;&#x5217; DOM &#x64CD;&#x4F5C;&#x7684;&#x65B9;&#x6CD5;</li>
+<li>modules &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x6A21;&#x5757;&#x7684;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;</li>
+</ul>
+<p>&#x7136;&#x9E45;&#xFF0C;createPatchFunction&#x53C8;&#x662F;&#x5728;src/core/vdom/patch.js&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+<pre><code>const hooks = [&apos;create&apos;, &apos;activate&apos;, &apos;update&apos;, &apos;remove&apos;, &apos;destroy&apos;]
+
+function sameVnode (a, b) {
+  return (
+    a.key === b.key &amp;&amp; (
+      (
+        a.tag === b.tag &amp;&amp;
+        a.isComment === b.isComment &amp;&amp;
+        isDef(a.data) === isDef(b.data) &amp;&amp;
+        sameInputType(a, b)
+      ) || (
+        isTrue(a.isAsyncPlaceholder) &amp;&amp;
+        a.asyncFactory === b.asyncFactory &amp;&amp;
+        isUndef(b.asyncFactory.error)
+      )
+    )
+  )
+}
+
+function sameInputType (a, b) {
+  if (a.tag !== &apos;input&apos;) return true
+  let i
+  const typeA = isDef(i = a.data) &amp;&amp; isDef(i = i.attrs) &amp;&amp; i.type
+  const typeB = isDef(i = b.data) &amp;&amp; isDef(i = i.attrs) &amp;&amp; i.type
+  return typeA === typeB || isTextInputType(typeA) &amp;&amp; isTextInputType(typeB)
+}
+
+function createKeyToOldIdx (children, beginIdx, endIdx) {
+  let i, key
+  const map = {}
+  for (i = beginIdx; i &lt;= endIdx; ++i) {
+    key = children[i].key
+    if (isDef(key)) map[key] = i
+  }
+  return map
+}
+
+export function createPatchFunction (backend) {
+  let i, j
+  const cbs = {}
+
+  const { modules, nodeOps } = backend
+
+  for (i = 0; i &lt; hooks.length; ++i) {
+    cbs[hooks[i]] = []
+    for (j = 0; j &lt; modules.length; ++j) {
+      if (isDef(modules[j][hooks[i]])) {
+        cbs[hooks[i]].push(modules[j][hooks[i]])
+      }
+    }
+  }
+
+  function emptyNodeAt (elm) {
+    return new VNode(nodeOps.tagName(elm).toLowerCase(), {}, [], undefined, elm)
+  }
+
+  function createRmCb (childElm, listeners) {
+    function remove () {
+      if (--remove.listeners === 0) {
+        removeNode(childElm)
+      }
+    }
+    remove.listeners = listeners
+    return remove
+  }
+
+  function removeNode (el) {
+    const parent = nodeOps.parentNode(el)
+    // element may have already been removed due to v-html / v-text
+    if (isDef(parent)) {
+      nodeOps.removeChild(parent, el)
+    }
+  }
+
+  function isUnknownElement (vnode, inVPre) {
+    return (
+      !inVPre &amp;&amp;
+      !vnode.ns &amp;&amp;
+      !(
+        config.ignoredElements.length &amp;&amp;
+        config.ignoredElements.some(ignore =&gt; {
+          return isRegExp(ignore)
+            ? ignore.test(vnode.tag)
+            : ignore === vnode.tag
+        })
+      ) &amp;&amp;
+      config.isUnknownElement(vnode.tag)
+    )
+  }
+
+  let creatingElmInVPre = 0
+
+  function createElm (
+    vnode,
+    insertedVnodeQueue,
+    parentElm,
+    refElm,
+    nested,
+    ownerArray,
+    index
+  ) {
+    if (isDef(vnode.elm) &amp;&amp; isDef(ownerArray)) {
+      // This vnode was used in a previous render!
+      // now it&apos;s used as a new node, overwriting its elm would cause
+      // potential patch errors down the road when it&apos;s used as an insertion
+      // reference node. Instead, we clone the node on-demand before creating
+      // associated DOM element for it.
+      vnode = ownerArray[index] = cloneVNode(vnode)
+    }
+
+    vnode.isRootInsert = !nested // for transition enter check
+    if (createComponent(vnode, insertedVnodeQueue, parentElm, refElm)) {
+      return
+    }
+
+    const data = vnode.data
+    const children = vnode.children
+    const tag = vnode.tag
+    if (isDef(tag)) {
+      if (process.env.NODE_ENV !== &apos;production&apos;) {
+        if (data &amp;&amp; data.pre) {
+          creatingElmInVPre++
+        }
+        if (isUnknownElement(vnode, creatingElmInVPre)) {
+          warn(
+            &apos;Unknown custom element: &lt;&apos; + tag + &apos;&gt; - did you &apos; +
+            &apos;register the component correctly? For recursive components, &apos; +
+            &apos;make sure to provide the &quot;name&quot; option.&apos;,
+            vnode.context
+          )
+        }
+      }
+
+      vnode.elm = vnode.ns
+        ? nodeOps.createElementNS(vnode.ns, tag)
+        : nodeOps.createElement(tag, vnode)
+      setScope(vnode)
+
+      /* istanbul ignore if */
+      if (__WEEX__) {
+        // in Weex, the default insertion order is parent-first.
+        // List items can be optimized to use children-first insertion
+        // with append=&quot;tree&quot;.
+        const appendAsTree = isDef(data) &amp;&amp; isTrue(data.appendAsTree)
+        if (!appendAsTree) {
+          if (isDef(data)) {
+            invokeCreateHooks(vnode, insertedVnodeQueue)
+          }
+          insert(parentElm, vnode.elm, refElm)
+        }
+        createChildren(vnode, children, insertedVnodeQueue)
+        if (appendAsTree) {
+          if (isDef(data)) {
+            invokeCreateHooks(vnode, insertedVnodeQueue)
+          }
+          insert(parentElm, vnode.elm, refElm)
+        }
+      } else {
+        createChildren(vnode, children, insertedVnodeQueue)
+        if (isDef(data)) {
+          invokeCreateHooks(vnode, insertedVnodeQueue)
+        }
+        insert(parentElm, vnode.elm, refElm)
+      }
+
+      if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; data &amp;&amp; data.pre) {
+        creatingElmInVPre--
+      }
+    } else if (isTrue(vnode.isComment)) {
+      vnode.elm = nodeOps.createComment(vnode.text)
+      insert(parentElm, vnode.elm, refElm)
+    } else {
+      vnode.elm = nodeOps.createTextNode(vnode.text)
+      insert(parentElm, vnode.elm, refElm)
+    }
+  }
+
+  function createComponent (vnode, insertedVnodeQueue, parentElm, refElm) {
+    let i = vnode.data
+    if (isDef(i)) {
+      const isReactivated = isDef(vnode.componentInstance) &amp;&amp; i.keepAlive
+      if (isDef(i = i.hook) &amp;&amp; isDef(i = i.init)) {
+        i(vnode, false /* hydrating */, parentElm, refElm)
+      }
+      // after calling the init hook, if the vnode is a child component
+      // it should&apos;ve created a child instance and mounted it. the child
+      // component also has set the placeholder vnode&apos;s elm.
+      // in that case we can just return the element and be done.
+      if (isDef(vnode.componentInstance)) {
+        initComponent(vnode, insertedVnodeQueue)
+        if (isTrue(isReactivated)) {
+          reactivateComponent(vnode, insertedVnodeQueue, parentElm, refElm)
+        }
+        return true
+      }
+    }
+  }
+
+  function initComponent (vnode, insertedVnodeQueue) {
+    if (isDef(vnode.data.pendingInsert)) {
+      insertedVnodeQueue.push.apply(insertedVnodeQueue, vnode.data.pendingInsert)
+      vnode.data.pendingInsert = null
+    }
+    vnode.elm = vnode.componentInstance.$el
+    if (isPatchable(vnode)) {
+      invokeCreateHooks(vnode, insertedVnodeQueue)
+      setScope(vnode)
+    } else {
+      // empty component root.
+      // skip all element-related modules except for ref (#3455)
+      registerRef(vnode)
+      // make sure to invoke the insert hook
+      insertedVnodeQueue.push(vnode)
+    }
+  }
+
+  function reactivateComponent (vnode, insertedVnodeQueue, parentElm, refElm) {
+    let i
+    // hack for #4339: a reactivated component with inner transition
+    // does not trigger because the inner node&apos;s created hooks are not called
+    // again. It&apos;s not ideal to involve module-specific logic in here but
+    // there doesn&apos;t seem to be a better way to do it.
+    let innerNode = vnode
+    while (innerNode.componentInstance) {
+      innerNode = innerNode.componentInstance._vnode
+      if (isDef(i = innerNode.data) &amp;&amp; isDef(i = i.transition)) {
+        for (i = 0; i &lt; cbs.activate.length; ++i) {
+          cbs.activate[i](emptyNode, innerNode)
+        }
+        insertedVnodeQueue.push(innerNode)
+        break
+      }
+    }
+    // unlike a newly created component,
+    // a reactivated keep-alive component doesn&apos;t insert itself
+    insert(parentElm, vnode.elm, refElm)
+  }
+
+  function insert (parent, elm, ref) {
+    if (isDef(parent)) {
+      if (isDef(ref)) {
+        if (ref.parentNode === parent) {
+          nodeOps.insertBefore(parent, elm, ref)
+        }
+      } else {
+        nodeOps.appendChild(parent, elm)
+      }
+    }
+  }
+
+  function createChildren (vnode, children, insertedVnodeQueue) {
+    if (Array.isArray(children)) {
+      if (process.env.NODE_ENV !== &apos;production&apos;) {
+        checkDuplicateKeys(children)
+      }
+      for (let i = 0; i &lt; children.length; ++i) {
+        createElm(children[i], insertedVnodeQueue, vnode.elm, null, true, children, i)
+      }
+    } else if (isPrimitive(vnode.text)) {
+      nodeOps.appendChild(vnode.elm, nodeOps.createTextNode(String(vnode.text)))
+    }
+  }
+
+  function isPatchable (vnode) {
+    while (vnode.componentInstance) {
+      vnode = vnode.componentInstance._vnode
+    }
+    return isDef(vnode.tag)
+  }
+
+  function invokeCreateHooks (vnode, insertedVnodeQueue) {
+    for (let i = 0; i &lt; cbs.create.length; ++i) {
+      cbs.create[i](emptyNode, vnode)
+    }
+    i = vnode.data.hook // Reuse variable
+    if (isDef(i)) {
+      if (isDef(i.create)) i.create(emptyNode, vnode)
+      if (isDef(i.insert)) insertedVnodeQueue.push(vnode)
+    }
+  }
+
+  // set scope id attribute for scoped CSS.
+  // this is implemented as a special case to avoid the overhead
+  // of going through the normal attribute patching process.
+  function setScope (vnode) {
+    let i
+    if (isDef(i = vnode.fnScopeId)) {
+      nodeOps.setStyleScope(vnode.elm, i)
+    } else {
+      let ancestor = vnode
+      while (ancestor) {
+        if (isDef(i = ancestor.context) &amp;&amp; isDef(i = i.$options._scopeId)) {
+          nodeOps.setStyleScope(vnode.elm, i)
+        }
+        ancestor = ancestor.parent
+      }
+    }
+    // for slot content they should also get the scopeId from the host instance.
+    if (isDef(i = activeInstance) &amp;&amp;
+      i !== vnode.context &amp;&amp;
+      i !== vnode.fnContext &amp;&amp;
+      isDef(i = i.$options._scopeId)
+    ) {
+      nodeOps.setStyleScope(vnode.elm, i)
+    }
+  }
+
+  function addVnodes (parentElm, refElm, vnodes, startIdx, endIdx, insertedVnodeQueue) {
+    for (; startIdx &lt;= endIdx; ++startIdx) {
+      createElm(vnodes[startIdx], insertedVnodeQueue, parentElm, refElm, false, vnodes, startIdx)
+    }
+  }
+
+  function invokeDestroyHook (vnode) {
+    let i, j
+    const data = vnode.data
+    if (isDef(data)) {
+      if (isDef(i = data.hook) &amp;&amp; isDef(i = i.destroy)) i(vnode)
+      for (i = 0; i &lt; cbs.destroy.length; ++i) cbs.destroy[i](vnode)
+    }
+    if (isDef(i = vnode.children)) {
+      for (j = 0; j &lt; vnode.children.length; ++j) {
+        invokeDestroyHook(vnode.children[j])
+      }
+    }
+  }
+
+  function removeVnodes (parentElm, vnodes, startIdx, endIdx) {
+    for (; startIdx &lt;= endIdx; ++startIdx) {
+      const ch = vnodes[startIdx]
+      if (isDef(ch)) {
+        if (isDef(ch.tag)) {
+          removeAndInvokeRemoveHook(ch)
+          invokeDestroyHook(ch)
+        } else { // Text node
+          removeNode(ch.elm)
+        }
+      }
+    }
+  }
+
+  function removeAndInvokeRemoveHook (vnode, rm) {
+    if (isDef(rm) || isDef(vnode.data)) {
+      let i
+      const listeners = cbs.remove.length + 1
+      if (isDef(rm)) {
+        // we have a recursively passed down rm callback
+        // increase the listeners count
+        rm.listeners += listeners
+      } else {
+        // directly removing
+        rm = createRmCb(vnode.elm, listeners)
+      }
+      // recursively invoke hooks on child component root node
+      if (isDef(i = vnode.componentInstance) &amp;&amp; isDef(i = i._vnode) &amp;&amp; isDef(i.data)) {
+        removeAndInvokeRemoveHook(i, rm)
+      }
+      for (i = 0; i &lt; cbs.remove.length; ++i) {
+        cbs.remove[i](vnode, rm)
+      }
+      if (isDef(i = vnode.data.hook) &amp;&amp; isDef(i = i.remove)) {
+        i(vnode, rm)
+      } else {
+        rm()
+      }
+    } else {
+      removeNode(vnode.elm)
+    }
+  }
+
+  function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly) {
+    let oldStartIdx = 0
+    let newStartIdx = 0
+    let oldEndIdx = oldCh.length - 1
+    let oldStartVnode = oldCh[0]
+    let oldEndVnode = oldCh[oldEndIdx]
+    let newEndIdx = newCh.length - 1
+    let newStartVnode = newCh[0]
+    let newEndVnode = newCh[newEndIdx]
+    let oldKeyToIdx, idxInOld, vnodeToMove, refElm
+
+    // removeOnly is a special flag used only by &lt;transition-group&gt;
+    // to ensure removed elements stay in correct relative positions
+    // during leaving transitions
+    const canMove = !removeOnly
+
+    if (process.env.NODE_ENV !== &apos;production&apos;) {
+      checkDuplicateKeys(newCh)
+    }
+
+    while (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) {
+      if (isUndef(oldStartVnode)) {
+        oldStartVnode = oldCh[++oldStartIdx] // Vnode has been moved left
+      } else if (isUndef(oldEndVnode)) {
+        oldEndVnode = oldCh[--oldEndIdx]
+      } else if (sameVnode(oldStartVnode, newStartVnode)) {
+        patchVnode(oldStartVnode, newStartVnode, insertedVnodeQueue)
+        oldStartVnode = oldCh[++oldStartIdx]
+        newStartVnode = newCh[++newStartIdx]
+      } else if (sameVnode(oldEndVnode, newEndVnode)) {
+        patchVnode(oldEndVnode, newEndVnode, insertedVnodeQueue)
+        oldEndVnode = oldCh[--oldEndIdx]
+        newEndVnode = newCh[--newEndIdx]
+      } else if (sameVnode(oldStartVnode, newEndVnode)) { // Vnode moved right
+        patchVnode(oldStartVnode, newEndVnode, insertedVnodeQueue)
+        canMove &amp;&amp; nodeOps.insertBefore(parentElm, oldStartVnode.elm, nodeOps.nextSibling(oldEndVnode.elm))
+        oldStartVnode = oldCh[++oldStartIdx]
+        newEndVnode = newCh[--newEndIdx]
+      } else if (sameVnode(oldEndVnode, newStartVnode)) { // Vnode moved left
+        patchVnode(oldEndVnode, newStartVnode, insertedVnodeQueue)
+        canMove &amp;&amp; nodeOps.insertBefore(parentElm, oldEndVnode.elm, oldStartVnode.elm)
+        oldEndVnode = oldCh[--oldEndIdx]
+        newStartVnode = newCh[++newStartIdx]
+      } else {
+        if (isUndef(oldKeyToIdx)) oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)
+        idxInOld = isDef(newStartVnode.key)
+          ? oldKeyToIdx[newStartVnode.key]
+          : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx)
+        if (isUndef(idxInOld)) { // New element
+          createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx)
+        } else {
+          vnodeToMove = oldCh[idxInOld]
+          if (sameVnode(vnodeToMove, newStartVnode)) {
+            patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue)
+            oldCh[idxInOld] = undefined
+            canMove &amp;&amp; nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm)
+          } else {
+            // same key but different element. treat as new element
+            createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx)
+          }
+        }
+        newStartVnode = newCh[++newStartIdx]
+      }
+    }
+    if (oldStartIdx &gt; oldEndIdx) {
+      refElm = isUndef(newCh[newEndIdx + 1]) ? null : newCh[newEndIdx + 1].elm
+      addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx, insertedVnodeQueue)
+    } else if (newStartIdx &gt; newEndIdx) {
+      removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx)
+    }
+  }
+
+  function checkDuplicateKeys (children) {
+    const seenKeys = {}
+    for (let i = 0; i &lt; children.length; i++) {
+      const vnode = children[i]
+      const key = vnode.key
+      if (isDef(key)) {
+        if (seenKeys[key]) {
+          warn(
+            `Duplicate keys detected: &apos;${key}&apos;. This may cause an update error.`,
+            vnode.context
+          )
+        } else {
+          seenKeys[key] = true
+        }
+      }
+    }
+  }
+
+  function findIdxInOld (node, oldCh, start, end) {
+    for (let i = start; i &lt; end; i++) {
+      const c = oldCh[i]
+      if (isDef(c) &amp;&amp; sameVnode(node, c)) return i
+    }
+  }
+
+  function patchVnode (oldVnode, vnode, insertedVnodeQueue, removeOnly) {
+    if (oldVnode === vnode) {
+      return
+    }
+
+    const elm = vnode.elm = oldVnode.elm
+
+    if (isTrue(oldVnode.isAsyncPlaceholder)) {
+      if (isDef(vnode.asyncFactory.resolved)) {
+        hydrate(oldVnode.elm, vnode, insertedVnodeQueue)
+      } else {
+        vnode.isAsyncPlaceholder = true
+      }
+      return
+    }
+
+    // reuse element for static trees.
+    // note we only do this if the vnode is cloned -
+    // if the new node is not cloned it means the render functions have been
+    // reset by the hot-reload-api and we need to do a proper re-render.
+    if (isTrue(vnode.isStatic) &amp;&amp;
+      isTrue(oldVnode.isStatic) &amp;&amp;
+      vnode.key === oldVnode.key &amp;&amp;
+      (isTrue(vnode.isCloned) || isTrue(vnode.isOnce))
+    ) {
+      vnode.componentInstance = oldVnode.componentInstance
+      return
+    }
+
+    let i
+    const data = vnode.data
+    if (isDef(data) &amp;&amp; isDef(i = data.hook) &amp;&amp; isDef(i = i.prepatch)) {
+      i(oldVnode, vnode)
+    }
+
+    const oldCh = oldVnode.children
+    const ch = vnode.children
+    if (isDef(data) &amp;&amp; isPatchable(vnode)) {
+      for (i = 0; i &lt; cbs.update.length; ++i) cbs.update[i](oldVnode, vnode)
+      if (isDef(i = data.hook) &amp;&amp; isDef(i = i.update)) i(oldVnode, vnode)
+    }
+    if (isUndef(vnode.text)) {
+      if (isDef(oldCh) &amp;&amp; isDef(ch)) {
+        if (oldCh !== ch) updateChildren(elm, oldCh, ch, insertedVnodeQueue, removeOnly)
+      } else if (isDef(ch)) {
+        if (isDef(oldVnode.text)) nodeOps.setTextContent(elm, &apos;&apos;)
+        addVnodes(elm, null, ch, 0, ch.length - 1, insertedVnodeQueue)
+      } else if (isDef(oldCh)) {
+        removeVnodes(elm, oldCh, 0, oldCh.length - 1)
+      } else if (isDef(oldVnode.text)) {
+        nodeOps.setTextContent(elm, &apos;&apos;)
+      }
+    } else if (oldVnode.text !== vnode.text) {
+      nodeOps.setTextContent(elm, vnode.text)
+    }
+    if (isDef(data)) {
+      if (isDef(i = data.hook) &amp;&amp; isDef(i = i.postpatch)) i(oldVnode, vnode)
+    }
+  }
+
+  function invokeInsertHook (vnode, queue, initial) {
+    // delay insert hooks for component root nodes, invoke them after the
+    // element is really inserted
+    if (isTrue(initial) &amp;&amp; isDef(vnode.parent)) {
+      vnode.parent.data.pendingInsert = queue
+    } else {
+      for (let i = 0; i &lt; queue.length; ++i) {
+        queue[i].data.hook.insert(queue[i])
+      }
+    }
+  }
+
+  let hydrationBailed = false
+  // list of modules that can skip create hook during hydration because they
+  // are already rendered on the client or has no need for initialization
+  // Note: style is excluded because it relies on initial clone for future
+  // deep updates (#7063).
+  const isRenderedModule = makeMap(&apos;attrs,class,staticClass,staticStyle,key&apos;)
+
+  // Note: this is a browser-only function so we can assume elms are DOM nodes.
+  function hydrate (elm, vnode, insertedVnodeQueue, inVPre) {
+    let i
+    const { tag, data, children } = vnode
+    inVPre = inVPre || (data &amp;&amp; data.pre)
+    vnode.elm = elm
+
+    if (isTrue(vnode.isComment) &amp;&amp; isDef(vnode.asyncFactory)) {
+      vnode.isAsyncPlaceholder = true
+      return true
+    }
+    // assert node match
+    if (process.env.NODE_ENV !== &apos;production&apos;) {
+      if (!assertNodeMatch(elm, vnode, inVPre)) {
+        return false
+      }
+    }
+    if (isDef(data)) {
+      if (isDef(i = data.hook) &amp;&amp; isDef(i = i.init)) i(vnode, true /* hydrating */)
+      if (isDef(i = vnode.componentInstance)) {
+        // child component. it should have hydrated its own tree.
+        initComponent(vnode, insertedVnodeQueue)
+        return true
+      }
+    }
+    if (isDef(tag)) {
+      if (isDef(children)) {
+        // empty element, allow client to pick up and populate children
+        if (!elm.hasChildNodes()) {
+          createChildren(vnode, children, insertedVnodeQueue)
+        } else {
+          // v-html and domProps: innerHTML
+          if (isDef(i = data) &amp;&amp; isDef(i = i.domProps) &amp;&amp; isDef(i = i.innerHTML)) {
+            if (i !== elm.innerHTML) {
+              /* istanbul ignore if */
+              if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp;
+                typeof console !== &apos;undefined&apos; &amp;&amp;
+                !hydrationBailed
+              ) {
+                hydrationBailed = true
+                console.warn(&apos;Parent: &apos;, elm)
+                console.warn(&apos;server innerHTML: &apos;, i)
+                console.warn(&apos;client innerHTML: &apos;, elm.innerHTML)
+              }
+              return false
+            }
+          } else {
+            // iterate and compare children lists
+            let childrenMatch = true
+            let childNode = elm.firstChild
+            for (let i = 0; i &lt; children.length; i++) {
+              if (!childNode || !hydrate(childNode, children[i], insertedVnodeQueue, inVPre)) {
+                childrenMatch = false
+                break
+              }
+              childNode = childNode.nextSibling
+            }
+            // if childNode is not null, it means the actual childNodes list is
+            // longer than the virtual children list.
+            if (!childrenMatch || childNode) {
+              /* istanbul ignore if */
+              if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp;
+                typeof console !== &apos;undefined&apos; &amp;&amp;
+                !hydrationBailed
+              ) {
+                hydrationBailed = true
+                console.warn(&apos;Parent: &apos;, elm)
+                console.warn(&apos;Mismatching childNodes vs. VNodes: &apos;, elm.childNodes, children)
+              }
+              return false
+            }
+          }
+        }
+      }
+      if (isDef(data)) {
+        let fullInvoke = false
+        for (const key in data) {
+          if (!isRenderedModule(key)) {
+            fullInvoke = true
+            invokeCreateHooks(vnode, insertedVnodeQueue)
+            break
+          }
+        }
+        if (!fullInvoke &amp;&amp; data[&apos;class&apos;]) {
+          // ensure collecting deps for deep class bindings for future updates
+          traverse(data[&apos;class&apos;])
+        }
+      }
+    } else if (elm.data !== vnode.text) {
+      elm.data = vnode.text
+    }
+    return true
+  }
+
+  function assertNodeMatch (node, vnode, inVPre) {
+    if (isDef(vnode.tag)) {
+      return vnode.tag.indexOf(&apos;vue-component&apos;) === 0 || (
+        !isUnknownElement(vnode, inVPre) &amp;&amp;
+        vnode.tag.toLowerCase() === (node.tagName &amp;&amp; node.tagName.toLowerCase())
+      )
+    } else {
+      return node.nodeType === (vnode.isComment ? 8 : 3)
+    }
+  }
+
+  // createPatchFunction &#x5185;&#x90E8;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#xFF0C;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A; patch &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x8D4B;&#x503C;&#x7ED9;&#x4E86; vm._update &#x51FD;&#x6570;&#x91CC;&#x8C03;&#x7528;&#x7684; vm.__patch__&#x3002;
+  return function patch (oldVnode, vnode, hydrating, removeOnly, parentElm, refElm) {
+    if (isUndef(vnode)) {
+      if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
+      return
+    }
+
+    let isInitialPatch = false
+    const insertedVnodeQueue = []
+
+    if (isUndef(oldVnode)) {
+      // empty mount (likely as component), create new root element
+      isInitialPatch = true
+      createElm(vnode, insertedVnodeQueue, parentElm, refElm)
+    } else {
+      const isRealElement = isDef(oldVnode.nodeType)
+      if (!isRealElement &amp;&amp; sameVnode(oldVnode, vnode)) {
+        // patch existing root node
+        patchVnode(oldVnode, vnode, insertedVnodeQueue, removeOnly)
+      } else {
+        if (isRealElement) {
+          // mounting to a real element
+          // check if this is server-rendered content and if we can perform
+          // a successful hydration.
+          if (oldVnode.nodeType === 1 &amp;&amp; oldVnode.hasAttribute(SSR_ATTR)) {
+            oldVnode.removeAttribute(SSR_ATTR)
+            hydrating = true
+          }
+          if (isTrue(hydrating)) {
+            if (hydrate(oldVnode, vnode, insertedVnodeQueue)) {
+              invokeInsertHook(vnode, insertedVnodeQueue, true)
+              return oldVnode
+            } else if (process.env.NODE_ENV !== &apos;production&apos;) {
+              warn(
+                &apos;The client-side rendered virtual DOM tree is not matching &apos; +
+                &apos;server-rendered content. This is likely caused by incorrect &apos; +
+                &apos;HTML markup, for example nesting block-level elements inside &apos; +
+                &apos;&lt;p&gt;, or missing &lt;tbody&gt;. Bailing hydration and performing &apos; +
+                &apos;full client-side render.&apos;
+              )
+            }
+          }
+          // either not server-rendered, or hydration failed.
+          // create an empty node and replace it
+          oldVnode = emptyNodeAt(oldVnode)
+        }
+
+        // replacing existing element
+        const oldElm = oldVnode.elm
+        const parentElm = nodeOps.parentNode(oldElm)
+
+        // create new node
+        createElm(
+          vnode,
+          insertedVnodeQueue,
+          // extremely rare edge case: do not insert if old element is in a
+          // leaving transition. Only happens when combining transition +
+          // keep-alive + HOCs. (#4590)
+          oldElm._leaveCb ? null : parentElm,
+          nodeOps.nextSibling(oldElm)
+        )
+
+        // update parent placeholder node element, recursively
+        if (isDef(vnode.parent)) {
+          let ancestor = vnode.parent
+          const patchable = isPatchable(vnode)
+          while (ancestor) {
+            for (let i = 0; i &lt; cbs.destroy.length; ++i) {
+              cbs.destroy[i](ancestor)
+            }
+            ancestor.elm = vnode.elm
+            if (patchable) {
+              for (let i = 0; i &lt; cbs.create.length; ++i) {
+                cbs.create[i](emptyNode, ancestor)
+              }
+              // #6513
+              // invoke insert hooks that may have been merged by create hooks.
+              // e.g. for directives that uses the &quot;inserted&quot; hook.
+              const insert = ancestor.data.hook.insert
+              if (insert.merged) {
+                // start at index 1 to avoid re-invoking component mounted hook
+                for (let i = 1; i &lt; insert.fns.length; i++) {
+                  insert.fns[i]()
+                }
+              }
+            } else {
+              registerRef(ancestor)
+            }
+            ancestor = ancestor.parent
+          }
+        }
+
+        // destroy old node
+        if (isDef(parentElm)) {
+          removeVnodes(parentElm, [oldVnode], 0, 0)
+        } else if (isDef(oldVnode.tag)) {
+          invokeDestroyHook(oldVnode)
+        }
+      }
+    }
+
+    invokeInsertHook(vnode, insertedVnodeQueue, isInitialPatch)
+
+    return vnode.elm
+  }
+}
+</code></pre><p>createPatchFunction &#x5185;&#x90E8;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#xFF0C;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A; patch &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x8D4B;&#x503C;&#x7ED9;&#x4E86; vm.<em>update &#x51FD;&#x6570;&#x91CC;&#x8C03;&#x7528;&#x7684; vm.\</em>_patch__&#x3002;</p>
+<blockquote>
+<p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;patch&#xFF0C;&#x4E3A;&#x4F55; Vue.js &#x6E90;&#x7801;&#x7ED5;&#x4E86;&#x8FD9;&#x4E48;&#x4E00;&#x5927;&#x5708;&#xFF0C;&#x628A;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#x5206;&#x6563;&#x5230;&#x5404;&#x4E2A;&#x76EE;&#x5F55;&#x3002;
+&#x56E0;&#x4E3A;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x8FC7;&#xFF0C;patch &#x662F;&#x5E73;&#x53F0;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x5728; Web &#x548C; Weex &#x73AF;&#x5883;&#xFF0C;&#x5B83;&#x4EEC;&#x628A;&#x865A;&#x62DF; DOM &#x6620;&#x5C04;&#x5230; &#x201C;&#x5E73;&#x53F0; DOM&#x201D; &#x7684;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9; &#x201C;DOM&#x201D; &#x5305;&#x62EC;&#x7684;&#x5C5E;&#x6027;&#x6A21;&#x5757;&#x521B;&#x5EFA;&#x548C;&#x66F4;&#x65B0;&#x4E5F;&#x4E0D;&#x5C3D;&#x76F8;&#x540C;&#x3002;&#x56E0;&#x6B64;&#x6BCF;&#x4E2A;&#x5E73;&#x53F0;&#x90FD;&#x6709;&#x5404;&#x81EA;&#x7684; nodeOps &#x548C; modules&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x6258;&#x7BA1;&#x5728; src/platforms &#x8FD9;&#x4E2A;&#x5927;&#x76EE;&#x5F55;&#x4E0B;&#x3002;
+&#x800C;&#x4E0D;&#x540C;&#x5E73;&#x53F0;&#x7684; patch &#x7684;&#x4E3B;&#x8981;&#x903B;&#x8F91;&#x90E8;&#x5206;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x90E8;&#x5206;&#x516C;&#x5171;&#x7684;&#x90E8;&#x5206;&#x6258;&#x7BA1;&#x5728; core &#x8FD9;&#x4E2A;&#x5927;&#x76EE;&#x5F55;&#x4E0B;&#x3002;&#x5DEE;&#x5F02;&#x5316;&#x90E8;&#x5206;&#x53EA;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x6765;&#x533A;&#x522B;&#xFF0C;&#x8FD9;&#x91CC;&#x7528;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x67EF;&#x91CC;&#x5316;&#x7684;&#x6280;&#x5DE7;&#xFF0C;&#x901A;&#x8FC7; createPatchFunction &#x628A;&#x5DEE;&#x5F02;&#x5316;&#x53C2;&#x6570;&#x63D0;&#x524D;&#x56FA;&#x5316;&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x7528;&#x6BCF;&#x6B21;&#x8C03;&#x7528; patch &#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F20;&#x9012; nodeOps &#x548C; modules &#x4E86;&#xFF0C;&#x8FD9;&#x79CD;&#x7F16;&#x7A0B;&#x6280;&#x5DE7;&#x4E5F;&#x975E;&#x5E38;&#x503C;&#x5F97;&#x5B66;&#x4E60;&#x3002;</p>
+</blockquote>
+<p>patch &#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x63A5;&#x6536; 4&#x4E2A;&#x53C2;&#x6570;&#xFF0C;</p>
+<pre><code>return function patch (oldVnode, vnode, hydrating, removeOnly, parentElm, refElm) { }
+</code></pre><ul>
+<li>oldVnode &#x8868;&#x793A;&#x65E7;&#x7684; VNode &#x8282;&#x70B9;&#xFF0C;&#x5B83;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x5B58;&#x5728;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A; DOM &#x5BF9;&#x8C61;&#xFF1B;</li>
+<li>vnode &#x8868;&#x793A;&#x6267;&#x884C; _render &#x540E;&#x8FD4;&#x56DE;&#x7684; VNode &#x7684;&#x8282;&#x70B9;&#xFF1B;</li>
+<li>hydrating &#x8868;&#x793A;&#x662F;&#x5426;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#xFF1B;</li>
+<li>removeOnly &#x662F;&#x7ED9; transition-group &#x7528;&#x7684;</li>
+</ul>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4F8B;&#x5B50;1-1&#xFF1A;</p>
+<pre><code>var app = new Vue({
+  el: &apos;#app&apos;,
+  render: function (createElement) {
+    return createElement(&apos;div&apos;, {
+      attrs: {
+        id: &apos;app&apos;
+      },
+    }, this.message)
+  },
+  data: {
+    message: &apos;Hello Vue!&apos;
+  }
+})
+</code></pre><p>&#x5728;_update&#x7684;&#x65F6;&#x5019;&#xFF0C;patch&#x65B9;&#x6CD5;&#x5C31;&#x662F;</p>
+<pre><code>// initial render
+vm.$el = vm.__patch__(vm.$el, vnode, hydrating, false /* removeOnly */)
+</code></pre><ul>
+<li>&#x4F20;&#x5165;&#x7684; vm.$el &#x5BF9;&#x5E94;&#x7684;&#x662F;&#x4F8B;&#x5B50;&#x4E2D; id &#x4E3A; app &#x7684; DOM &#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5728; index.html &#x6A21;&#x677F;&#x4E2D;&#x5199;&#x7684; &quot;<div id="app">&quot;, vm.$el &#x7684;&#x8D4B;&#x503C;&#x662F;&#x5728;&#x4E4B;&#x524D; mountComponent &#x51FD;&#x6570;&#x505A;&#x7684;</div></li>
+<li>vnode &#x5BF9;&#x5E94;&#x7684;&#x662F;&#x8C03;&#x7528; render &#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;</li>
+<li>hydrating &#x5728;&#x975E;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x60C5;&#x51B5;&#x4E0B;&#x4E3A; false</li>
+<li>removeOnly &#x4E3A; false</li>
+</ul>
+<h4 id="patch&#x91CC;&#x7684;&#x5173;&#x952E;&#x65B9;&#x6CD5;">patch&#x91CC;&#x7684;&#x5173;&#x952E;&#x65B9;&#x6CD5;</h4>
+<p>&#x5982;&#x4F8B;&#x5B50;1-1&#xFF0C;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x7684; oldVnode &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A; DOM container&#xFF0C;&#x6240;&#x4EE5; isRealElement &#x4E3A; true&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x53C8;&#x901A;&#x8FC7; emptyNodeAt &#x65B9;&#x6CD5;&#x628A; oldVnode &#x8F6C;&#x6362;&#x6210; VNode &#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8C03;&#x7528; createElm &#x65B9;&#x6CD5;</p>
+<pre><code>if (isUndef(oldVnode)) {
+    // empty mount (likely as component), create new root element
+    isInitialPatch = true
+    createElm(vnode, insertedVnodeQueue, parentElm, refElm)
+} else {
+    const isRealElement = isDef(oldVnode.nodeType)
+    if (!isRealElement &amp;&amp; sameVnode(oldVnode, vnode)) {
+    // patch existing root node
+    patchVnode(oldVnode, vnode, insertedVnodeQueue, removeOnly)
+    } else {
+    if (isRealElement) {
+        // mounting to a real element
+        // check if this is server-rendered content and if we can perform
+        // a successful hydration.
+        if (oldVnode.nodeType === 1 &amp;&amp; oldVnode.hasAttribute(SSR_ATTR)) {
+        oldVnode.removeAttribute(SSR_ATTR)
+        hydrating = true
+        }
+        if (isTrue(hydrating)) {
+        if (hydrate(oldVnode, vnode, insertedVnodeQueue)) {
+            invokeInsertHook(vnode, insertedVnodeQueue, true)
+            return oldVnode
+        } else if (process.env.NODE_ENV !== &apos;production&apos;) {
+            warn(
+            &apos;The client-side rendered virtual DOM tree is not matching &apos; +
+            &apos;server-rendered content. This is likely caused by incorrect &apos; +
+            &apos;HTML markup, for example nesting block-level elements inside &apos; +
+            &apos;&lt;p&gt;, or missing &lt;tbody&gt;. Bailing hydration and performing &apos; +
+            &apos;full client-side render.&apos;
+            )
+        }
+        }
+        // either not server-rendered, or hydration failed.
+        // create an empty node and replace it
+        oldVnode = emptyNodeAt(oldVnode)
+    }
+
+    // replacing existing element
+    const oldElm = oldVnode.elm
+    const parentElm = nodeOps.parentNode(oldElm)
+
+    // create new node
+    // createElm &#x7684;&#x4F5C;&#x7528;&#x662F;&#x901A;&#x8FC7;&#x865A;&#x62DF;&#x8282;&#x70B9;&#x521B;&#x5EFA;&#x771F;&#x5B9E;&#x7684; DOM &#x5E76;&#x63D2;&#x5165;&#x5230;&#x5B83;&#x7684;&#x7236;&#x8282;&#x70B9;&#x4E2D;&#x3002; 
+    createElm(
+        vnode,
+        insertedVnodeQueue,
+        // extremely rare edge case: do not insert if old element is in a
+        // leaving transition. Only happens when combining transition +
+        // keep-alive + HOCs. (#4590)
+        oldElm._leaveCb ? null : parentElm,
+        nodeOps.nextSibling(oldElm)
+    )
+
+    // update parent placeholder node element, recursively
+    if (isDef(vnode.parent)) {
+        let ancestor = vnode.parent
+        const patchable = isPatchable(vnode)
+        while (ancestor) {
+        for (let i = 0; i &lt; cbs.destroy.length; ++i) {
+            cbs.destroy[i](ancestor)
+        }
+        ancestor.elm = vnode.elm
+        if (patchable) {
+            for (let i = 0; i &lt; cbs.create.length; ++i) {
+            cbs.create[i](emptyNode, ancestor)
+            }
+            // #6513
+            // invoke insert hooks that may have been merged by create hooks.
+            // e.g. for directives that uses the &quot;inserted&quot; hook.
+            const insert = ancestor.data.hook.insert
+            if (insert.merged) {
+            // start at index 1 to avoid re-invoking component mounted hook
+            for (let i = 1; i &lt; insert.fns.length; i++) {
+                insert.fns[i]()
+            }
+            }
+        } else {
+            registerRef(ancestor)
+        }
+        ancestor = ancestor.parent
+        }
+    }
+
+    // destroy old node
+    if (isDef(parentElm)) {
+        removeVnodes(parentElm, [oldVnode], 0, 0)
+    } else if (isDef(oldVnode.tag)) {
+        invokeDestroyHook(oldVnode)
+    }
+    }
+}
+</code></pre><p>createElm &#x7684;&#x4F5C;&#x7528;&#x662F;&#x901A;&#x8FC7;&#x865A;&#x62DF;&#x8282;&#x70B9;&#x521B;&#x5EFA;&#x771F;&#x5B9E;&#x7684; DOM &#x5E76;&#x63D2;&#x5165;&#x5230;&#x5B83;&#x7684;&#x7236;&#x8282;&#x70B9;&#x4E2D;&#x3002;</p>
+<pre><code>function createElm (
+    vnode,
+    insertedVnodeQueue,
+    parentElm,
+    refElm,
+    nested,
+    ownerArray,
+    index
+  ) {
+    if (isDef(vnode.elm) &amp;&amp; isDef(ownerArray)) {
+      // This vnode was used in a previous render!
+      // now it&apos;s used as a new node, overwriting its elm would cause
+      // potential patch errors down the road when it&apos;s used as an insertion
+      // reference node. Instead, we clone the node on-demand before creating
+      // associated DOM element for it.
+      vnode = ownerArray[index] = cloneVNode(vnode)
+    }
+
+    vnode.isRootInsert = !nested // for transition enter check
+    if (createComponent(vnode, insertedVnodeQueue, parentElm, refElm)) {
+      return
+    }
+
+    const data = vnode.data
+    const children = vnode.children
+    const tag = vnode.tag
+    if (isDef(tag)) {
+      if (process.env.NODE_ENV !== &apos;production&apos;) {
+        if (data &amp;&amp; data.pre) {
+          creatingElmInVPre++
+        }
+        if (isUnknownElement(vnode, creatingElmInVPre)) {
+          warn(
+            &apos;Unknown custom element: &lt;&apos; + tag + &apos;&gt; - did you &apos; +
+            &apos;register the component correctly? For recursive components, &apos; +
+            &apos;make sure to provide the &quot;name&quot; option.&apos;,
+            vnode.context
+          )
+        }
+      }
+
+      // &#x63A5;&#x4E0B;&#x6765;&#x5224;&#x65AD; vnode &#x662F;&#x5426;&#x5305;&#x542B; tag&#xFF0C;&#x5982;&#x679C;&#x5305;&#x542B;&#xFF0C;&#x5148;&#x7B80;&#x5355;&#x5BF9; tag &#x7684;&#x5408;&#x6CD5;&#x6027;&#x5728;&#x975E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#x505A;&#x6821;&#x9A8C;&#xFF0C;&#x770B;&#x662F;&#x5426;&#x662F;&#x4E00;&#x4E2A;&#x5408;&#x6CD5;&#x6807;&#x7B7E;&#xFF1B;
+      // &#x7136;&#x540E;&#x518D;&#x53BB;&#x8C03;&#x7528;&#x5E73;&#x53F0; DOM &#x7684;&#x64CD;&#x4F5C;&#x53BB;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5360;&#x4F4D;&#x7B26;&#x5143;&#x7D20;&#x3002;
+      vnode.elm = vnode.ns
+        ? nodeOps.createElementNS(vnode.ns, tag)
+        : nodeOps.createElement(tag, vnode)
+      setScope(vnode)
+
+      /* istanbul ignore if */
+      if (__WEEX__) {
+        // in Weex, the default insertion order is parent-first.
+        // List items can be optimized to use children-first insertion
+        // with append=&quot;tree&quot;.
+        const appendAsTree = isDef(data) &amp;&amp; isTrue(data.appendAsTree)
+        if (!appendAsTree) {
+          if (isDef(data)) {
+            invokeCreateHooks(vnode, insertedVnodeQueue)
+          }
+          insert(parentElm, vnode.elm, refElm)
+        }
+        createChildren(vnode, children, insertedVnodeQueue)
+        if (appendAsTree) {
+          if (isDef(data)) {
+            invokeCreateHooks(vnode, insertedVnodeQueue)
+          }
+          insert(parentElm, vnode.elm, refElm)
+        }
+      } else {
+        // createChildren &#x65B9;&#x6CD5;&#x53BB;&#x521B;&#x5EFA;&#x5B50;&#x5143;&#x7D20;
+        createChildren(vnode, children, insertedVnodeQueue)
+        if (isDef(data)) {
+          invokeCreateHooks(vnode, insertedVnodeQueue)
+        }
+        insert(parentElm, vnode.elm, refElm)
+      }
+
+      if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; data &amp;&amp; data.pre) {
+        creatingElmInVPre--
+      }
+    } else if (isTrue(vnode.isComment)) {
+      vnode.elm = nodeOps.createComment(vnode.text)
+      insert(parentElm, vnode.elm, refElm)
+    } else {
+      vnode.elm = nodeOps.createTextNode(vnode.text)
+      insert(parentElm, vnode.elm, refElm)
+    }
+  }
+</code></pre><p>&#x5176;&#x4E2D;&#xFF1A;</p>
+<p>&#x5224;&#x65AD; vnode &#x662F;&#x5426;&#x5305;&#x542B; tag&#xFF0C;&#x5982;&#x679C;&#x5305;&#x542B;&#xFF0C;&#x5148;&#x7B80;&#x5355;&#x5BF9; tag &#x7684;&#x5408;&#x6CD5;&#x6027;&#x5728;&#x975E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#x505A;&#x6821;&#x9A8C;&#xFF0C;&#x770B;&#x662F;&#x5426;&#x662F;&#x4E00;&#x4E2A;&#x5408;&#x6CD5;&#x6807;&#x7B7E;&#xFF1B;&#x7136;&#x540E;&#x518D;&#x53BB;&#x8C03;&#x7528;&#x5E73;&#x53F0; DOM &#x7684;&#x64CD;&#x4F5C;&#x53BB;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5360;&#x4F4D;&#x7B26;&#x5143;&#x7D20;&#x3002;</p>
+<pre><code>vnode.elm = vnode.ns
+    ? nodeOps.createElementNS(vnode.ns, tag)
+    : nodeOps.createElement(tag, vnode)
+</code></pre><p>&#x63A5;&#x4E0B;&#x6765;&#x8C03;&#x7528; createChildren &#x65B9;&#x6CD5;&#x53BB;&#x521B;&#x5EFA;&#x5B50;&#x5143;&#x7D20;&#xFF0C;</p>
+<pre><code>// createChildren &#x65B9;&#x6CD5;&#x53BB;&#x521B;&#x5EFA;&#x5B50;&#x5143;&#x7D20;
+createChildren(vnode, children, insertedVnodeQueue)
+
+// createChildren &#x65B9;&#x6CD5;&#x53BB;&#x521B;&#x5EFA;&#x5B50;&#x5143;&#x7D20;
+// &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x904D;&#x5386;&#x5B50;&#x865A;&#x62DF;&#x8282;&#x70B9;&#xFF0C;&#x9012;&#x5F52;&#x8C03;&#x7528; createElm&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x7684;&#x904D;&#x5386;&#x7B97;&#x6CD5;&#xFF0C;
+// &#x8FD9;&#x91CC;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#x5728;&#x904D;&#x5386;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x628A; vnode.elm &#x4F5C;&#x4E3A;&#x7236;&#x5BB9;&#x5668;&#x7684; DOM &#x8282;&#x70B9;&#x5360;&#x4F4D;&#x7B26;&#x4F20;&#x5165;&#x3002;
+function createChildren (vnode, children, insertedVnodeQueue) {
+    if (Array.isArray(children)) {
+        if (process.env.NODE_ENV !== &apos;production&apos;) {
+            checkDuplicateKeys(children)
+        }
+        for (let i = 0; i &lt; children.length; ++i) {
+            createElm(children[i], insertedVnodeQueue, vnode.elm, null, true, children, i)
+        }
+    } else if (isPrimitive(vnode.text)) {
+        nodeOps.appendChild(vnode.elm, nodeOps.createTextNode(String(vnode.text)))
+    }
+}
+</code></pre><p>&#x6700;&#x540E;&#xFF0C;&#x63A5;&#x7740;&#x518D;&#x8C03;&#x7528; invokeCreateHooks &#x65B9;&#x6CD5;&#x6267;&#x884C;&#x6240;&#x6709;&#x7684; create &#x7684;&#x94A9;&#x5B50;&#x5E76;&#x628A; vnode push &#x5230; insertedVnodeQueue &#x4E2D;&#x3002;</p>
+<pre><code>if (isDef(data)) {
+    invokeCreateHooks(vnode, insertedVnodeQueue)
+}
+insert(parentElm, vnode.elm, refElm)
+</code></pre><p>insert&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x5728;patch.js&#x4E2D;</p>
+<pre><code>// &#x6700;&#x540E;&#x8C03;&#x7528; insert &#x65B9;&#x6CD5;&#x628A; DOM &#x63D2;&#x5165;&#x5230;&#x7236;&#x8282;&#x70B9;&#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x9012;&#x5F52;&#x8C03;&#x7528;&#xFF0C;&#x5B50;&#x5143;&#x7D20;&#x4F1A;&#x4F18;&#x5148;&#x8C03;&#x7528; insert&#xFF0C;&#x6240;&#x4EE5;&#x6574;&#x4E2A; vnode &#x6811;&#x8282;&#x70B9;&#x7684;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x662F;&#x5148;&#x5B50;&#x540E;&#x7236;
+function insert (parent, elm, ref) {
+    if (isDef(parent)) {
+        if (isDef(ref)) {
+        if (ref.parentNode === parent) {
+            // &#x5728;&#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#xFF0C;runtime/node-ops.js&#x4E2D;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x539F;&#x751F; DOM &#x7684; API &#x8FDB;&#x884C; DOM &#x64CD;&#x4F5C;
+            nodeOps.insertBefore(parent, elm, ref)
+        }
+        } else {
+        nodeOps.appendChild(parent, elm)
+        }
+    }
+}
+</code></pre><p>nodeOps&#x5728;platforms&#x4E2D;&#x7684;node-ops&#x4E2D;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code>export function insertBefore (parentNode: Node, newNode: Node, referenceNode: Node) {
+  parentNode.insertBefore(newNode, referenceNode)
+}
+
+export function appendChild (node: Node, child: Node) {
+  node.appendChild(child)
+}
+</code></pre><p>&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x539F;&#x751F; DOM &#x7684; API &#x8FDB;&#x884C; DOM &#x64CD;&#x4F5C;</p>
+<p>&#x5728; createElm &#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C; vnode &#x8282;&#x70B9;&#x4E0D;&#x5305;&#x542B; tag&#xFF0C;&#x5219;&#x5B83;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x4E00;&#x4E2A;&#x6CE8;&#x91CA;&#x6216;&#x8005;&#x7EAF;&#x6587;&#x672C;&#x8282;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x63D2;&#x5165;&#x5230;&#x7236;&#x5143;&#x7D20;&#x4E2D;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6700;&#x5185;&#x5C42;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x672C; vnode&#xFF0C;&#x5B83;&#x7684; text &#x503C;&#x53D6;&#x7684;&#x5C31;&#x662F;&#x4E4B;&#x524D;&#x7684; this.message &#x7684;&#x503C; Hello Vue!&#x3002;</p>
+<p>&#x518D;&#x56DE;&#x5230; patch &#x65B9;&#x6CD5;&#xFF0C;&#x9996;&#x6B21;&#x6E32;&#x67D3;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E86; createElm &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x91CC;&#x4F20;&#x5165;&#x7684; parentElm &#x662F; oldVnode.elm &#x7684;&#x7236;&#x5143;&#x7D20;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x662F; id &#x4E3A; #app div &#x7684;&#x7236;&#x5143;&#x7D20;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; Body&#xFF1B;&#x5B9E;&#x9645;&#x4E0A;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x9012;&#x5F52;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684; DOM &#x6811;&#x5E76;&#x63D2;&#x5165;&#x5230; Body &#x4E0A;&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x81EA;&#x6B64;&#xFF0C;&#x6574;&#x4E2A;Vue&#x7684;&#x6E32;&#x67D3;&#x6210;DOM&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x5F52;&#x7EB3;&#x4E3A;&#xFF1A;</p>
+<blockquote>
+<p>new Vue -&gt; init&#x65B9;&#x6CD5; -&gt; $mount -&gt; compile -&gt; render&#x51FD;&#x6570; -&gt; vnode -&gt; patch&#x65B9;&#x6CD5; -&gt; DOM</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="createElement.html" class="navigation navigation-prev " aria-label="Previous page: createElement">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Section3/" class="navigation navigation-next " aria-label="Next page: 数据双向绑定">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"_update","level":"1.2.1.3.4","depth":4,"next":{"title":"数据双向绑定","level":"1.2.1.4","depth":3,"path":"Chapter1/Section3/README.md","ref":"Chapter1/Section3/README.md","articles":[{"title":"响应式对象","level":"1.2.1.4.1","depth":4,"path":"Chapter1/Section3/响应式对象.md","ref":"Chapter1/Section3/响应式对象.md","articles":[]},{"title":"依赖收集Getter","level":"1.2.1.4.2","depth":4,"path":"Chapter1/Section3/依赖收集Getter.md","ref":"Chapter1/Section3/依赖收集Getter.md","articles":[]},{"title":"派发更新Setter","level":"1.2.1.4.3","depth":4,"path":"Chapter1/Section3/派发更新Setter.md","ref":"Chapter1/Section3/派发更新Setter.md","articles":[]},{"title":"nextTick","level":"1.2.1.4.4","depth":4,"path":"Chapter1/Section1/nextTick.md","ref":"Chapter1/Section1/nextTick.md","articles":[]},{"title":"检测变化","level":"1.2.1.4.5","depth":4,"path":"Chapter1/Section3/检测变化.md","ref":"Chapter1/Section3/检测变化.md","articles":[]},{"title":"计算属性和监听属性","level":"1.2.1.4.6","depth":4,"path":"Chapter1/Section3/计算属性和监听属性.md","ref":"Chapter1/Section3/计算属性和监听属性.md","articles":[]},{"title":"组件更新","level":"1.2.1.4.7","depth":4,"path":"Chapter1/Section3/组件更新.md","ref":"Chapter1/Section3/组件更新.md","articles":[]}]},"previous":{"title":"createElement","level":"1.2.1.3.3","depth":4,"path":"Chapter1/Section2/createElement.md","ref":"Chapter1/Section2/createElement.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section2/_update.md","mtime":"2019-01-08T03:35:14.763Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

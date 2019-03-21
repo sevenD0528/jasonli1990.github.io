@@ -1,0 +1,747 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>nextTick · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Section3/检测变化.html" />
+    
+    
+    <link rel="prev" href="../Section3/派发更新Setter.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Section2/">
+            
+                <a href="../Section2/">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../Section2/入口.html">
+            
+                <a href="../Section2/入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../Section2/Vue的定义.html">
+            
+                <a href="../Section2/Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../Section2/数据驱动.html">
+            
+                <a href="../Section2/数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="../Section2/_render.html">
+            
+                <a href="../Section2/_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="../Section2/VirtualDom.html">
+            
+                <a href="../Section2/VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="../Section2/createElement.html">
+            
+                <a href="../Section2/createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="../Section2/_update.html">
+            
+                <a href="../Section2/_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../Section3/">
+            
+                <a href="../Section3/">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="../Section3/响应式对象.html">
+            
+                <a href="../Section3/响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="../Section3/依赖收集Getter.html">
+            
+                <a href="../Section3/依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="../Section3/派发更新Setter.html">
+            
+                <a href="../Section3/派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.4.4" data-path="nextTick.html">
+            
+                <a href="nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="../Section3/检测变化.html">
+            
+                <a href="../Section3/检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="../Section3/计算属性和监听属性.html">
+            
+                <a href="../Section3/计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.7" data-path="../Section3/组件更新.html">
+            
+                <a href="../Section3/组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >nextTick</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="nexttick-&#x539F;&#x7406;">nextTick &#x539F;&#x7406;</h1>
+<p>nextTick &#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5728;&#x4E0B;&#x6B21; DOM &#x66F4;&#x65B0;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x5EF6;&#x8FDF;&#x56DE;&#x8C03;&#xFF0C;&#x7528;&#x4E8E;&#x83B7;&#x5F97;&#x66F4;&#x65B0;&#x540E;&#x7684; DOM&#x3002;</p>
+<p>&#x6E90;&#x7801;&#x5728;src/core/util/next-tick.js&#x4E2D;</p>
+<h4 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h4>
+<pre><code>Vue.nextTick([callback, context]);
+</code></pre><p>&#x6458;&#x81EA;&#x5B98;&#x7F51;&#xFF1A;</p>
+<pre><code>// &#x4FEE;&#x6539;&#x6570;&#x636E;
+vm.msg = &apos;Hello&apos;
+// DOM &#x8FD8;&#x6CA1;&#x6709;&#x66F4;&#x65B0;
+Vue.nextTick(function () {
+  // DOM &#x66F4;&#x65B0;&#x4E86;
+})
+
+// &#x4F5C;&#x4E3A;&#x4E00;&#x4E2A; Promise &#x4F7F;&#x7528; (2.1.0 &#x8D77;&#x65B0;&#x589E;&#xFF0C;&#x8BE6;&#x89C1;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x63D0;&#x793A;)
+Vue.nextTick()
+  .then(function () {
+    // DOM &#x66F4;&#x65B0;&#x4E86;
+  })
+</code></pre><h4 id="js&#x8FD0;&#x884C;&#x673A;&#x5236;">JS&#x8FD0;&#x884C;&#x673A;&#x5236;</h4>
+<p>JS&#x4E24;&#x7279;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x5355;&#x7EBF;&#x7A0B;&#x8BED;&#x8A00;</li>
+<li>&#x57FA;&#x4E8E;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF; Event Loop</li>
+</ul>
+<p>&#x8BE6;&#x60C5;&#x89C1;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x7684;&#x8BF4;&#xFF1A;</p>
+<ul>
+<li>&#x6240;&#x6709;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#xFF0C;&#x90FD;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF0C;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x6808;&#xFF08;execution context stack&#xFF09;</li>
+<li>&#x4E3B;&#x7EBF;&#x7A0B;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&quot;&#x4EFB;&#x52A1;&#x961F;&#x5217;&quot;&#xFF08;task queue&#xFF09;&#x3002;&#x53EA;&#x8981;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x6709;&#x4E86;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x5728;&quot;&#x4EFB;&#x52A1;&#x961F;&#x5217;&quot;&#x4E4B;&#x4E2D;&#x653E;&#x7F6E;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</li>
+<li>&#x4E00;&#x65E6;&quot;&#x6267;&#x884C;&#x6808;&quot;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x8BFB;&#x53D6;&quot;&#x4EFB;&#x52A1;&#x961F;&#x5217;&quot;&#xFF0C;&#x770B;&#x770B;&#x91CC;&#x9762;&#x6709;&#x54EA;&#x4E9B;&#x4E8B;&#x4EF6;&#x3002;&#x90A3;&#x4E9B;&#x5BF9;&#x5E94;&#x7684;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#xFF0C;&#x4E8E;&#x662F;&#x7ED3;&#x675F;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x8FDB;&#x5165;&#x6267;&#x884C;&#x6808;&#xFF0C;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x3002;</li>
+<li>&#x4E3B;&#x7EBF;&#x7A0B;&#x91CD;&#x590D;&#x4E0A;&#x9762;&#x4E09;&#x4E2A;</li>
+</ul>
+<p>&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x4E00;&#x4E2A; tick&#xFF0C;&#x800C;&#x6240;&#x6709;&#x7684;&#x5F02;&#x6B65;&#x7ED3;&#x679C;&#x90FD;&#x662F;&#x901A;&#x8FC7; &#x201C;&#x4EFB;&#x52A1;&#x961F;&#x5217;&#x201D; &#x6765;&#x8C03;&#x5EA6;&#x88AB;&#x8C03;&#x5EA6;&#x3002; &#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x5B58;&#x653E;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x4E2A;&#x7684;&#x4EFB;&#x52A1;&#xFF08;task&#xFF09;&#x3002; &#x89C4;&#x8303;&#x4E2D;&#x89C4;&#x5B9A; task &#x5206;&#x4E3A;&#x4E24;&#x5927;&#x7C7B;&#xFF0C;&#x5206;&#x522B;&#x662F; macro task &#x548C; micro task&#xFF0C;&#x5E76;&#x4E14;&#x6BCF;&#x4E2A; macro task &#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x90FD;&#x8981;&#x6E05;&#x7A7A;&#x6240;&#x6709;&#x7684; micro task&#x3002;</p>
+<p>&#x6267;&#x884C;&#x65F6;&#x987A;&#x5E8F;&#x4E3A;&#xFF1A;</p>
+<pre><code>for (macroTask of macroTaskQueue) {
+    // 1. Handle current MACRO-TASK
+    handleMacroTask();
+
+    // 2. Handle all MICRO-TASK
+    for (microTask of microTaskQueue) {
+        handleMicroTask(microTask);
+    }
+}
+</code></pre><p>&#x5E38;&#x89C1;&#x7684; macro task &#x6709; setTimeout&#x3001;MessageChannel&#x3001;postMessage&#x3001;setImmediate&#xFF1B;
+&#x5E38;&#x89C1;&#x7684; micro task &#x6709; MutationObsever &#x548C; Promise.then&#x3002;</p>
+<h4 id="vue&#x4E2D;next-tickjs&#x7684;&#x5B9E;&#x73B0;">Vue&#x4E2D;next-tick.js&#x7684;&#x5B9E;&#x73B0;</h4>
+<pre><code>/* @flow */
+/* globals MessageChannel */
+
+import { noop } from &apos;shared/util&apos;
+import { handleError } from &apos;./error&apos;
+import { isIOS, isNative } from &apos;./env&apos;
+
+const callbacks = []
+let pending = false
+
+function flushCallbacks () {
+  pending = false
+  const copies = callbacks.slice(0)
+  callbacks.length = 0
+  for (let i = 0; i &lt; copies.length; i++) {
+    copies[i]()
+  }
+}
+
+// Here we have async deferring wrappers using both microtasks and (macro) tasks.
+// In &lt; 2.4 we used microtasks everywhere, but there are some scenarios where
+// microtasks have too high a priority and fire in between supposedly
+// sequential events (e.g. #4521, #6690) or even between bubbling of the same
+// event (#6566). However, using (macro) tasks everywhere also has subtle problems
+// when state is changed right before repaint (e.g. #6813, out-in transitions).
+// Here we use microtask by default, but expose a way to force (macro) task when
+// needed (e.g. in event handlers attached by v-on).
+let microTimerFunc
+let macroTimerFunc
+let useMacroTask = false
+
+// Determine (macro) task defer implementation.
+// Technically setImmediate should be the ideal choice, but it&apos;s only available
+// in IE. The only polyfill that consistently queues the callback after all DOM
+// events triggered in the same loop is by using MessageChannel.
+/* istanbul ignore if */
+if (typeof setImmediate !== &apos;undefined&apos; &amp;&amp; isNative(setImmediate)) {
+  macroTimerFunc = () =&gt; {
+    setImmediate(flushCallbacks)
+  }
+} else if (typeof MessageChannel !== &apos;undefined&apos; &amp;&amp; (
+  isNative(MessageChannel) ||
+  // PhantomJS
+  MessageChannel.toString() === &apos;[object MessageChannelConstructor]&apos;
+)) {
+  const channel = new MessageChannel()
+  const port = channel.port2
+  channel.port1.onmessage = flushCallbacks
+  macroTimerFunc = () =&gt; {
+    port.postMessage(1)
+  }
+} else {
+  /* istanbul ignore next */
+  macroTimerFunc = () =&gt; {
+    setTimeout(flushCallbacks, 0)
+  }
+}
+
+// Determine microtask defer implementation.
+/* istanbul ignore next, $flow-disable-line */
+if (typeof Promise !== &apos;undefined&apos; &amp;&amp; isNative(Promise)) {
+  const p = Promise.resolve()
+  microTimerFunc = () =&gt; {
+    p.then(flushCallbacks)
+    // in problematic UIWebViews, Promise.then doesn&apos;t completely break, but
+    // it can get stuck in a weird state where callbacks are pushed into the
+    // microtask queue but the queue isn&apos;t being flushed, until the browser
+    // needs to do some other work, e.g. handle a timer. Therefore we can
+    // &quot;force&quot; the microtask queue to be flushed by adding an empty timer.
+    if (isIOS) setTimeout(noop)
+  }
+} else {
+  // fallback to macro
+  microTimerFunc = macroTimerFunc
+}
+
+/**
+ * Wrap a function so that if any code inside triggers state change,
+ * the changes are queued using a (macro) task instead of a microtask.
+ */
+export function withMacroTask (fn: Function): Function {
+  return fn._withTask || (fn._withTask = function () {
+    useMacroTask = true
+    const res = fn.apply(null, arguments)
+    useMacroTask = false
+    return res
+  })
+}
+
+export function nextTick (cb?: Function, ctx?: Object) {
+  let _resolve
+  callbacks.push(() =&gt; {
+    if (cb) {
+      try {
+        cb.call(ctx)
+      } catch (e) {
+        handleError(e, ctx, &apos;nextTick&apos;)
+      }
+    } else if (_resolve) {
+      _resolve(ctx)
+    }
+  })
+  if (!pending) {
+    pending = true
+    if (useMacroTask) {
+      macroTimerFunc()
+    } else {
+      microTimerFunc()
+    }
+  }
+  // $flow-disable-line
+  if (!cb &amp;&amp; typeof Promise !== &apos;undefined&apos;) {
+    return new Promise(resolve =&gt; {
+      _resolve = resolve
+    })
+  }
+}
+</code></pre><p>&#x5176;&#x4E2D;&#xFF0C;microTimerFunc&#x548C;macroTimerFunc&#x5206;&#x522B;&#x5BF9;&#x5E94; macroTask&#x548C;microTask</p>
+<pre><code>let microTimerFunc
+let macroTimerFunc
+</code></pre><p>&#x7136;&#x540E;&#x5C31;&#x662F;&#x5E38;&#x89C4;&#x5224;&#x65AD;&#xFF1A;</p>
+<p>&#x5BF9;&#x4E8E;macroTask:</p>
+<pre><code>// &#x4F18;&#x5148;&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x652F;&#x6301;&#x539F;&#x751F; setImmediate&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x7248;&#x672C; IE &#x548C; Edge &#x624D;&#x652F;&#x6301;&#x7684;&#x7279;&#x6027;
+// &#x4E0D;&#x652F;&#x6301;&#x7684;&#x8BDD;&#x518D;&#x53BB;&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x652F;&#x6301;&#x539F;&#x751F;&#x7684; MessageChannel
+// &#x5982;&#x679C;&#x4E5F;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x8BDD;&#x5C31;&#x4F1A;&#x964D;&#x7EA7;&#x4E3A; setTimeout 0
+if (typeof setImmediate !== &apos;undefined&apos; &amp;&amp; isNative(setImmediate)) {
+  macroTimerFunc = () =&gt; {
+    setImmediate(flushCallbacks)
+  }
+} else if (typeof MessageChannel !== &apos;undefined&apos; &amp;&amp; (
+  isNative(MessageChannel) ||
+  // PhantomJS
+  MessageChannel.toString() === &apos;[object MessageChannelConstructor]&apos;
+)) {
+  const channel = new MessageChannel()
+  const port = channel.port2
+  channel.port1.onmessage = flushCallbacks
+  macroTimerFunc = () =&gt; {
+    port.postMessage(1)
+  }
+} else {
+  /* istanbul ignore next */
+  macroTimerFunc = () =&gt; {
+    setTimeout(flushCallbacks, 0)
+  }
+}
+</code></pre><p>&#x5BF9;&#x4E8E;microTask:</p>
+<pre><code>// Determine microtask defer implementation.
+/* istanbul ignore next, $flow-disable-line */
+// &#x800C;&#x5BF9;&#x4E8E; micro task &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5219;&#x68C0;&#x6D4B;&#x6D4F;&#x89C8;&#x5668;&#x662F;&#x5426;&#x539F;&#x751F;&#x652F;&#x6301; Promise&#xFF0C;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x8BDD;&#x76F4;&#x63A5;&#x6307;&#x5411; macro task &#x7684;&#x5B9E;&#x73B0;&#x3002;
+if (typeof Promise !== &apos;undefined&apos; &amp;&amp; isNative(Promise)) {
+  const p = Promise.resolve()
+  microTimerFunc = () =&gt; {
+    p.then(flushCallbacks)
+    // in problematic UIWebViews, Promise.then doesn&apos;t completely break, but
+    // it can get stuck in a weird state where callbacks are pushed into the
+    // microtask queue but the queue isn&apos;t being flushed, until the browser
+    // needs to do some other work, e.g. handle a timer. Therefore we can
+    // &quot;force&quot; the microtask queue to be flushed by adding an empty timer.
+    if (isIOS) setTimeout(noop)
+  }
+} else {
+  // fallback to macro
+  microTimerFunc = macroTimerFunc
+}
+</code></pre><p>&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<p>next-tick.js&#x4E2D;&#x6709;&#x4E24;&#x4E2A;&#x51FD;&#x6570;withMacroTask&#x548C;nextTick</p>
+<ul>
+<li>&#x5148;&#x770B;nextTick</li>
+</ul>
+<pre><code>export function nextTick (cb?: Function, ctx?: Object) {
+  let _resolve
+  callbacks.push(() =&gt; {
+    if (cb) {
+      try {
+        cb.call(ctx)
+      } catch (e) {
+        handleError(e, ctx, &apos;nextTick&apos;)
+      }
+    } else if (_resolve) {
+      _resolve(ctx)
+    }
+  })
+  if (!pending) {
+    pending = true
+    if (useMacroTask) {
+      macroTimerFunc()
+    } else {
+      microTimerFunc()
+    }
+  }
+  // $flow-disable-line
+  if (!cb &amp;&amp; typeof Promise !== &apos;undefined&apos;) {
+    return new Promise(resolve =&gt; {
+      _resolve = resolve
+    })
+  }
+}
+</code></pre><p>&#x4F8B;&#x5982;&#x6267;&#x884C; nextTick(flushSchedulerQueue) &#x3002;&#x903B;&#x8F91;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x628A;&#x4F20;&#x5165;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570; cb &#x538B;&#x5165; callbacks &#x6570;&#x7EC4;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x6027;&#x5730;&#x6839;&#x636E; useMacroTask &#x6761;&#x4EF6;&#x6267;&#x884C; macroTimerFunc &#x6216;&#x8005;&#x662F; microTimerFunc&#xFF0C;&#x800C;&#x5B83;&#x4EEC;&#x90FD;&#x4F1A;&#x5728;&#x4E0B;&#x4E00;&#x4E2A; tick &#x6267;&#x884C; flushCallbacks&#xFF0C;flushCallbacks &#x7684;&#x903B;&#x8F91;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5BF9; callbacks &#x904D;&#x5386;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code>function flushCallbacks () {
+  pending = false
+  const copies = callbacks.slice(0)
+  callbacks.length = 0
+  for (let i = 0; i &lt; copies.length; i++) {
+    copies[i]()
+  }
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528; callbacks &#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5728; nextTick &#x4E2D;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x539F;&#x56E0;&#x662F;&#x4FDD;&#x8BC1;&#x5728;&#x540C;&#x4E00;&#x4E2A; tick &#x5185;&#x591A;&#x6B21;&#x6267;&#x884C; nextTick&#xFF0C;&#x4E0D;&#x4F1A;&#x5F00;&#x542F;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#xFF0C;&#x800C;&#x628A;&#x8FD9;&#x4E9B;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x90FD;&#x538B;&#x6210;&#x4E00;&#x4E2A;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#xFF0C;&#x5728;&#x4E0B;&#x4E00;&#x4E2A; tick &#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x3002;</p>
+<ul>
+<li>withMacroTask</li>
+</ul>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;withMacroTask&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x662F;&#x5BF9;&#x51FD;&#x6570;&#x505A;&#x4E00;&#x5C42;&#x5305;&#x88C5;&#xFF0C;&#x786E;&#x4FDD;&#x51FD;&#x6570;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x6570;&#x636E;&#x4EFB;&#x610F;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x89E6;&#x53D1;&#x53D8;&#x5316;&#x6267;&#x884C; nextTick &#x7684;&#x65F6;&#x5019;&#x5F3A;&#x5236;&#x8D70; macroTimerFunc</p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x6570;&#x636E;&#x7684;&#x53D8;&#x5316;&#x5230; DOM &#x7684;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x8FC7;&#x7A0B;&#xFF0C;&#x53D1;&#x751F;&#x5728;&#x4E0B;&#x4E00;&#x4E2A; tick&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x5728;&#x5F00;&#x53D1;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6BD4;&#x5982;&#x4ECE;&#x670D;&#x52A1;&#x7AEF;&#x63A5;&#x53E3;&#x53BB;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6570;&#x636E;&#x505A;&#x4E86;&#x4FEE;&#x6539;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7684;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x53BB;&#x4F9D;&#x8D56;&#x4E86;&#x6570;&#x636E;&#x4FEE;&#x6539;&#x540E;&#x7684; DOM &#x53D8;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5FC5;&#x987B;&#x5728; nextTick &#x540E;&#x6267;&#x884C;&#x3002;</p>
+<pre><code>
+// &#x4FEE;&#x6539;&#x6570;&#x636E;
+vm.msg = &apos;Hello&apos;
+// DOM &#x8FD8;&#x6CA1;&#x6709;&#x66F4;&#x65B0;
+Vue.nextTick(function () {
+  // DOM &#x66F4;&#x65B0;&#x4E86;
+})
+
+// &#x4F5C;&#x4E3A;&#x4E00;&#x4E2A; Promise &#x4F7F;&#x7528; (2.1.0 &#x8D77;&#x65B0;&#x589E;&#xFF0C;&#x8BE6;&#x89C1;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x63D0;&#x793A;)
+Vue.nextTick().then(function () {
+    // DOM &#x66F4;&#x65B0;&#x4E86;
+})
+</code></pre><p>Vue.js &#x63D0;&#x4F9B;&#x4E86; 2 &#x79CD;&#x8C03;&#x7528; nextTick &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5168;&#x5C40; API Vue.nextTick&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5B9E;&#x4F8B;&#x4E0A;&#x7684;&#x65B9;&#x6CD5; vm.$nextTick&#xFF0C;&#x65E0;&#x8BBA;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x79CD;&#xFF0C;&#x6700;&#x540E;&#x90FD;&#x662F;&#x8C03;&#x7528; next-tick.js &#x4E2D;&#x5B9E;&#x73B0;&#x7684; nextTick &#x65B9;&#x6CD5;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../Section3/派发更新Setter.html" class="navigation navigation-prev " aria-label="Previous page: 派发更新Setter">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Section3/检测变化.html" class="navigation navigation-next " aria-label="Next page: 检测变化">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"nextTick","level":"1.2.1.4.4","depth":4,"next":{"title":"检测变化","level":"1.2.1.4.5","depth":4,"path":"Chapter1/Section3/检测变化.md","ref":"Chapter1/Section3/检测变化.md","articles":[]},"previous":{"title":"派发更新Setter","level":"1.2.1.4.3","depth":4,"path":"Chapter1/Section3/派发更新Setter.md","ref":"Chapter1/Section3/派发更新Setter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section1/nextTick.md","mtime":"2019-01-08T03:35:14.753Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

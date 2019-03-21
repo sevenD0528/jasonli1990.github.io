@@ -1,0 +1,777 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>响应式对象 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="依赖收集Getter.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Section2/">
+            
+                <a href="../Section2/">
+            
+                    
+                    源码解构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../Section2/入口.html">
+            
+                <a href="../Section2/入口.html">
+            
+                    
+                    入口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../Section2/Vue的定义.html">
+            
+                <a href="../Section2/Vue的定义.html">
+            
+                    
+                    Vue的定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../Section2/数据驱动.html">
+            
+                <a href="../Section2/数据驱动.html">
+            
+                    
+                    数据驱动
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="../Section2/_render.html">
+            
+                <a href="../Section2/_render.html">
+            
+                    
+                    _render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="../Section2/VirtualDom.html">
+            
+                <a href="../Section2/VirtualDom.html">
+            
+                    
+                    Virtual Dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="../Section2/createElement.html">
+            
+                <a href="../Section2/createElement.html">
+            
+                    
+                    createElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="../Section2/_update.html">
+            
+                <a href="../Section2/_update.html">
+            
+                    
+                    _update
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    数据双向绑定
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1.4.1" data-path="响应式对象.html">
+            
+                <a href="响应式对象.html">
+            
+                    
+                    响应式对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="依赖收集Getter.html">
+            
+                <a href="依赖收集Getter.html">
+            
+                    
+                    依赖收集Getter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="派发更新Setter.html">
+            
+                <a href="派发更新Setter.html">
+            
+                    
+                    派发更新Setter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../Section1/nextTick.html">
+            
+                <a href="../Section1/nextTick.html">
+            
+                    
+                    nextTick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="检测变化.html">
+            
+                <a href="检测变化.html">
+            
+                    
+                    检测变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="计算属性和监听属性.html">
+            
+                <a href="计算属性和监听属性.html">
+            
+                    
+                    计算属性和监听属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.7" data-path="组件更新.html">
+            
+                <a href="组件更新.html">
+            
+                    
+                    组件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >响应式对象</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x54CD;&#x5E94;&#x5F0F;&#x539F;&#x7406;">&#x54CD;&#x5E94;&#x5F0F;&#x539F;&#x7406;</h1>
+<h3 id="&#x54CD;&#x5E94;&#x5F0F;&#x5BF9;&#x8C61;">&#x54CD;&#x5E94;&#x5F0F;&#x5BF9;&#x8C61;</h3>
+<p>&#x6574;&#x4E2A;Vue&#x7684;&#x54CD;&#x5E94;&#x5F0F;&#x539F;&#x7406;&#xFF0C;&#x90FD;&#x548C;ES5&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6709;&#x5173;&#xFF0C;&#x5C31;&#x662F;Object.defineProperty</p>
+<h4 id="objectdefineproperty">Object.defineProperty</h4>
+<p>&#x4F1A;&#x76F4;&#x63A5;&#x5728;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E0A;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x5C5E;&#x6027;&#xFF0C;&#x6216;&#x8005;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x73B0;&#x6709;&#x5C5E;&#x6027;&#xFF0C; &#x5E76;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code>Object.defineProperty(obj, prop, descriptor)
+</code></pre><ul>
+<li>obj&#x662F;&#x8981;&#x5728;&#x5176;&#x4E0A;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x7684;&#x5BF9;&#x8C61;</li>
+<li>prop&#x662F;&#x8981;&#x5B9A;&#x4E49;&#x6216;&#x4FEE;&#x6539;&#x7684;&#x5C5E;&#x6027;&#x540D;&#x79F0;</li>
+<li>descriptor&#x662F;&#x5C06;&#x88AB;&#x5B9A;&#x4E49;&#x6216;&#x4FEE;&#x6539;&#x7684;&#x5C5E;&#x6027;&#x63CF;&#x8FF0;&#x7B26;</li>
+</ul>
+<p>&#x6BD4;&#x8F83;&#x6838;&#x5FC3;&#x7684;&#x662F; descriptor&#xFF0C;&#x5B83;&#x6709;&#x5F88;&#x591A;&#x53EF;&#x9009;&#x952E;&#x503C;&#xFF0C;configurable, enumerable, value, writable, get, set</p>
+<p>&#x8FD9;&#x91CC;&#x6BD4;&#x8F83;&#x5173;&#x5FC3; get&#x548C;set&#xFF0C;get &#x662F;&#x4E00;&#x4E2A;&#x7ED9;&#x5C5E;&#x6027;&#x63D0;&#x4F9B;&#x7684; getter &#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;&#x4E86;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1; getter &#x65B9;&#x6CD5;&#xFF1B;set &#x662F;&#x4E00;&#x4E2A;&#x7ED9;&#x5C5E;&#x6027;&#x63D0;&#x4F9B;&#x7684; setter &#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5BF9;&#x8BE5;&#x5C5E;&#x6027;&#x505A;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1; setter &#x65B9;&#x6CD5;&#x3002;</p>
+<h4 id="initstate">initState</h4>
+<p>&#x5728;_init&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6267;&#x884C;initState(vm)&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5185;&#x5BB9;&#x5B9A;&#x4E49;&#x5728;src/core/instance/state.js</p>
+<pre><code>// initState &#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x662F;&#x5BF9; props&#x3001;methods&#x3001;data&#x3001;computed &#x548C; wathcer &#x7B49;&#x5C5E;&#x6027;&#x505A;&#x4E86;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x3002;
+export function initState (vm: Component) {
+  vm._watchers = []
+  const opts = vm.$options
+  if (opts.props) initProps(vm, opts.props) // &#x521D;&#x59CB;&#x5316; props
+  if (opts.methods) initMethods(vm, opts.methods) // &#x521D;&#x59CB;&#x5316; methods
+  if (opts.data) {
+    initData(vm) // &#x521D;&#x59CB;&#x5316;Data
+  } else {
+    observe(vm._data = {}, true /* asRootData */)
+  }
+  if (opts.computed) initComputed(vm, opts.computed) //&#x521D;&#x59CB;&#x5316;computed
+  if (opts.watch &amp;&amp; opts.watch !== nativeWatch) {
+    initWatch(vm, opts.watch) // &#x521D;&#x59CB;&#x5316;watch
+  }
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x4E24;&#x4E2A;&#x91CD;&#x70B9;initProps&#x548C;initData&#x3002;</p>
+<h5 id="initprops">initProps</h5>
+<p>props &#x7684;&#x521D;&#x59CB;&#x5316;&#x4E3B;&#x8981;&#x8FC7;&#x7A0B;&#xFF0C;&#x5C31;&#x662F;&#x904D;&#x5386;&#x5B9A;&#x4E49;&#x7684; props &#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x904D;&#x5386;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x505A;&#x4E86;&#x4E24;&#x4EF6;&#x4E8B;&#xFF0C;</p>
+<ul>
+<li><p>&#x4E00;&#x4E2A;&#x662F;&#x8C03;&#x7528; defineReactive &#x65B9;&#x6CD5;&#x628A;&#x6BCF;&#x4E2A; prop &#x5BF9;&#x5E94;&#x7684;&#x503C;&#x53D8;&#x6210;&#x54CD;&#x5E94;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; vm._props.xxx &#x8BBF;&#x95EE;&#x5230;&#x5B9A;&#x4E49; props &#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+</li>
+<li><p>&#x4E00;&#x4E2A;&#x662F;&#x901A;&#x8FC7;proxy&#x628A;vm._props.xx&#x7684;&#x8BBF;&#x95EE;&#x4EE3;&#x7406;&#x5230;vm.xxx&#x4E0A;</p>
+</li>
+</ul>
+<pre><code>function initProps (vm: Component, propsOptions: Object) {
+  const propsData = vm.$options.propsData || {}
+  const props = vm._props = {}
+  // cache prop keys so that future props updates can iterate using Array
+  // instead of dynamic object key enumeration.
+  const keys = vm.$options._propKeys = []
+  const isRoot = !vm.$parent
+  // root instance props should be converted
+  if (!isRoot) {
+    toggleObserving(false)
+  }
+  for (const key in propsOptions) {
+    keys.push(key)
+    const value = validateProp(key, propsOptions, propsData, vm)
+    /* istanbul ignore else */
+    if (process.env.NODE_ENV !== &apos;production&apos;) {
+      const hyphenatedKey = hyphenate(key)
+      if (isReservedAttribute(hyphenatedKey) ||
+          config.isReservedAttr(hyphenatedKey)) {
+        warn(
+          `&quot;${hyphenatedKey}&quot; is a reserved attribute and cannot be used as component prop.`,
+          vm
+        )
+      }
+      defineReactive(props, key, value, () =&gt; {
+        if (vm.$parent &amp;&amp; !isUpdatingChildComponent) {
+          warn(
+            `Avoid mutating a prop directly since the value will be ` +
+            `overwritten whenever the parent component re-renders. ` +
+            `Instead, use a data or computed property based on the prop&apos;s ` +
+            `value. Prop being mutated: &quot;${key}&quot;`,
+            vm
+          )
+        }
+      })
+    } else {
+      defineReactive(props, key, value)
+    }
+    // static props are already proxied on the component&apos;s prototype
+    // during Vue.extend(). We only need to proxy props defined at
+    // instantiation here.
+    if (!(key in vm)) {
+      proxy(vm, `_props`, key)
+    }
+  }
+  toggleObserving(true)
+}
+</code></pre><h5 id="initdata">initData</h5>
+<pre><code>function initData (vm: Component) {
+  let data = vm.$options.data
+  data = vm._data = typeof data === &apos;function&apos;
+    ? getData(data, vm)
+    : data || {}
+  if (!isPlainObject(data)) {
+    data = {}
+    process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; warn(
+      &apos;data functions should return an object:\n&apos; +
+      &apos;https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function&apos;,
+      vm
+    )
+  }
+  // proxy data on instance
+  const keys = Object.keys(data)
+  const props = vm.$options.props
+  const methods = vm.$options.methods
+  let i = keys.length
+  while (i--) {
+    const key = keys[i]
+    if (process.env.NODE_ENV !== &apos;production&apos;) {
+      if (methods &amp;&amp; hasOwn(methods, key)) {
+        warn(
+          `Method &quot;${key}&quot; has already been defined as a data property.`,
+          vm
+        )
+      }
+    }
+    if (props &amp;&amp; hasOwn(props, key)) {
+      process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; warn(
+        `The data property &quot;${key}&quot; is already declared as a prop. ` +
+        `Use prop default value instead.`,
+        vm
+      )
+    } else if (!isReserved(key)) {
+      proxy(vm, `_data`, key)
+    }
+  }
+  // observe data
+  observe(data, true /* asRootData */)
+}
+</code></pre><p>data&#x7684;&#x521D;&#x59CB;&#x5316;&#x4E5F;&#x505A;&#x4E24;&#x4EF6;&#x4E8B;&#xFF0C;</p>
+<ul>
+<li><p>&#x4E00;&#x4E2A;&#x662F;&#x5BF9;&#x5B9A;&#x4E49;data&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;&#x904D;&#x5386;&#xFF0C;&#x901A;&#x8FC7;proxy&#x628A;&#x6BCF;&#x4E2A;&#x503C;vm._data.xxx&#x4EE3;&#x7406;&#x5230;vm.xxx&#x4E0A;</p>
+</li>
+<li><p>&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x8C03;&#x7528;observe&#x65B9;&#x6CD5;&#xFF0C;&#x89C2;&#x6D4B;data&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x628A;data&#x53D8;&#x6210;&#x54CD;&#x5E94;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; vm._data.xxx &#x8BBF;&#x95EE;&#x5230;&#x5B9A;&#x4E49; data &#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;</p>
+</li>
+</ul>
+<h5 id="proxy">proxy</h5>
+<p>proxy &#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x901A;&#x8FC7; Object.defineProperty &#x628A; target[sourceKey][key] &#x7684;&#x8BFB;&#x5199;&#x53D8;&#x6210;&#x4E86;&#x5BF9; target[key] &#x7684;&#x8BFB;&#x5199;&#x3002;</p>
+<pre><code>const sharedPropertyDefinition = {
+  enumerable: true,
+  configurable: true,
+  get: noop,
+  set: noop
+}
+
+export function proxy (target: Object, sourceKey: string, key: string) {
+  sharedPropertyDefinition.get = function proxyGetter () {
+    return this[sourceKey][key]
+  }
+  sharedPropertyDefinition.set = function proxySetter (val) {
+    this[sourceKey][key] = val
+  }
+  Object.defineProperty(target, key, sharedPropertyDefinition)
+}
+</code></pre><h5 id="observe">observe</h5>
+<p>observe &#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x7528;&#x6765;&#x76D1;&#x6D4B;&#x6570;&#x636E;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x5728; src/core/observer/index.js &#x4E2D;&#xFF1A;</p>
+<pre><code>/**
+ * Attempt to create an observer instance for a value,
+ * returns the new observer if successfully observed,
+ * or the existing observer if the value already has one.
+ */
+ // observe &#x65B9;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x7ED9;&#x975E; VNode &#x7684;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; Observer&#xFF0C;&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x6DFB;&#x52A0;&#x8FC7;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x5728;&#x6EE1;&#x8DB3;&#x4E00;&#x5B9A;&#x6761;&#x4EF6;&#x4E0B;&#x53BB;&#x5B9E;&#x4F8B;&#x5316;&#x4E00;&#x4E2A; Observer &#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;
+export function observe (value: any, asRootData: ?boolean): Observer | void {
+  if (!isObject(value) || value instanceof VNode) {
+    return
+  }
+  let ob: Observer | void
+  if (hasOwn(value, &apos;__ob__&apos;) &amp;&amp; value.__ob__ instanceof Observer) {
+    ob = value.__ob__
+  } else if (
+    shouldObserve &amp;&amp;
+    !isServerRendering() &amp;&amp;
+    (Array.isArray(value) || isPlainObject(value)) &amp;&amp;
+    Object.isExtensible(value) &amp;&amp;
+    !value._isVue
+  ) {
+    ob = new Observer(value)
+  }
+  if (asRootData &amp;&amp; ob) {
+    ob.vmCount++
+  }
+  return ob
+}
+</code></pre><p>Observer &#x662F;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x5B83;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x7ED9;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x6DFB;&#x52A0; getter &#x548C; setter&#xFF0C;&#x7528;&#x4E8E;&#x4F9D;&#x8D56;&#x6536;&#x96C6;&#x548C;&#x6D3E;&#x53D1;&#x66F4;&#x65B0;&#x3002;</p>
+<pre><code>/**
+ * Observer class that is attached to each observed
+ * object. Once attached, the observer converts the target
+ * object&apos;s property keys into getter/setters that
+ * collect dependencies and dispatch updates.
+ */
+export class Observer {
+  value: any;
+  dep: Dep;
+  vmCount: number; // number of vms that has this object as root $data
+
+  constructor (value: any) {
+    this.value = value
+    this.dep = new Dep()
+    this.vmCount = 0
+    def(value, &apos;__ob__&apos;, this)
+    if (Array.isArray(value)) {
+      const augment = hasProto
+        ? protoAugment
+        : copyAugment
+      augment(value, arrayMethods, arrayKeys)
+      this.observeArray(value)
+    } else {
+      this.walk(value)
+    }
+  }
+
+  /**
+   * Walk through each property and convert them into
+   * getter/setters. This method should only be called when
+   * value type is Object.
+   */
+  walk (obj: Object) {
+    const keys = Object.keys(obj)
+    for (let i = 0; i &lt; keys.length; i++) {
+      defineReactive(obj, keys[i])
+    }
+  }
+
+  /**
+   * Observe a list of Array items.
+   */
+  observeArray (items: Array&lt;any&gt;) {
+    for (let i = 0, l = items.length; i &lt; l; i++) {
+      observe(items[i])
+    }
+  }
+}
+</code></pre><p>Observer &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x903B;&#x8F91;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x9996;&#x5148;&#x5B9E;&#x4F8B;&#x5316; Dep &#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x5757;&#x7A0D;&#x540E;&#x4F1A;&#x4ECB;&#x7ECD;&#xFF0C;&#x63A5;&#x7740;&#x901A;&#x8FC7;&#x6267;&#x884C; def &#x51FD;&#x6570;&#x628A;&#x81EA;&#x8EAB;&#x5B9E;&#x4F8B;&#x6DFB;&#x52A0;&#x5230;&#x6570;&#x636E;&#x5BF9;&#x8C61; value &#x7684; __ob__ &#x5C5E;&#x6027;&#x4E0A;&#xFF0C;def &#x7684;&#x5B9A;&#x4E49;&#x5728; src/core/util/lang.js &#x4E2D;&#xFF1A;</p>
+<p>def &#x51FD;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;Object.defineProperty &#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#x8F93;&#x51FA; data &#x4E0A;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x8BE5;&#x5BF9;&#x8C61;&#x591A;&#x4E86;&#x4E00;&#x4E2A; __ob__ &#x7684;&#x5C5E;&#x6027;</p>
+<h5 id="definereactive">defineReactive</h5>
+<p>defineReactive &#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x54CD;&#x5E94;&#x5F0F;&#x5BF9;&#x8C61;&#xFF0C;&#x7ED9;&#x5BF9;&#x8C61;&#x52A8;&#x6001;&#x6DFB;&#x52A0; getter &#x548C; setter&#xFF0C;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x5728; src/core/observer/index.js &#x4E2D;&#x3002;</p>
+<pre><code>/**
+ * Define a reactive property on an Object.
+ */
+export function defineReactive (
+  obj: Object,
+  key: string,
+  val: any,
+  customSetter?: ?Function,
+  shallow?: boolean
+) {
+  const dep = new Dep()
+
+  const property = Object.getOwnPropertyDescriptor(obj, key)
+  if (property &amp;&amp; property.configurable === false) {
+    return
+  }
+
+  // cater for pre-defined getter/setters
+  const getter = property &amp;&amp; property.get
+  if (!getter &amp;&amp; arguments.length === 2) {
+    val = obj[key]
+  }
+  const setter = property &amp;&amp; property.set
+
+  let childOb = !shallow &amp;&amp; observe(val)
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get: function reactiveGetter () {
+      const value = getter ? getter.call(obj) : val
+      if (Dep.target) {
+        dep.depend()
+        if (childOb) {
+          childOb.dep.depend()
+          if (Array.isArray(value)) {
+            dependArray(value)
+          }
+        }
+      }
+      return value
+    },
+    set: function reactiveSetter (newVal) {
+      const value = getter ? getter.call(obj) : val
+      /* eslint-disable no-self-compare */
+      if (newVal === value || (newVal !== newVal &amp;&amp; value !== value)) {
+        return
+      }
+      /* eslint-enable no-self-compare */
+      if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; customSetter) {
+        customSetter()
+      }
+      if (setter) {
+        setter.call(obj, newVal)
+      } else {
+        val = newVal
+      }
+      childOb = !shallow &amp;&amp; observe(newVal)
+      dep.notify()
+    }
+  })
+}
+</code></pre><p>defineReactive &#x51FD;&#x6570;&#x6700;&#x5F00;&#x59CB;&#x521D;&#x59CB;&#x5316; Dep &#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x63A5;&#x7740;&#x62FF;&#x5230; obj &#x7684;&#x5C5E;&#x6027;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x5B50;&#x5BF9;&#x8C61;&#x9012;&#x5F52;&#x8C03;&#x7528; observe &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4FDD;&#x8BC1;&#x4E86;&#x65E0;&#x8BBA; obj &#x7684;&#x7ED3;&#x6784;&#x591A;&#x590D;&#x6742;&#xFF0C;&#x5B83;&#x7684;&#x6240;&#x6709;&#x5B50;&#x5C5E;&#x6027;&#x4E5F;&#x80FD;&#x53D8;&#x6210;&#x54CD;&#x5E94;&#x5F0F;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;&#x6216;&#x4FEE;&#x6539; obj &#x4E2D;&#x4E00;&#x4E2A;&#x5D4C;&#x5957;&#x8F83;&#x6DF1;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4E5F;&#x80FD;&#x89E6;&#x53D1; getter &#x548C; setter&#x3002;</p>
+<p>Object.defineProperty &#x53BB;&#x7ED9; obj &#x7684;&#x5C5E;&#x6027; key &#x6DFB;&#x52A0; getter &#x548C; setter&#x3002;&#x800C;&#x5173;&#x4E8E; getter &#x548C; setter &#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;</p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x6838;&#x5FC3;&#x5C31;&#x662F;&#x5229;&#x7528; Object.defineProperty &#x7ED9;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x4E86; getter &#x548C; setter</p>
+<p>getter &#x7528;&#x4E8E;&#x4F9D;&#x8D56;&#x6536;&#x96C6;&#xFF0C;setter &#x7528;&#x4E8E;&#x6D3E;&#x53D1;&#x66F4;&#x65B0;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 数据双向绑定">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="依赖收集Getter.html" class="navigation navigation-next " aria-label="Next page: 依赖收集Getter">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"响应式对象","level":"1.2.1.4.1","depth":4,"next":{"title":"依赖收集Getter","level":"1.2.1.4.2","depth":4,"path":"Chapter1/Section3/依赖收集Getter.md","ref":"Chapter1/Section3/依赖收集Getter.md","articles":[]},"previous":{"title":"数据双向绑定","level":"1.2.1.4","depth":3,"path":"Chapter1/Section3/README.md","ref":"Chapter1/Section3/README.md","articles":[{"title":"响应式对象","level":"1.2.1.4.1","depth":4,"path":"Chapter1/Section3/响应式对象.md","ref":"Chapter1/Section3/响应式对象.md","articles":[]},{"title":"依赖收集Getter","level":"1.2.1.4.2","depth":4,"path":"Chapter1/Section3/依赖收集Getter.md","ref":"Chapter1/Section3/依赖收集Getter.md","articles":[]},{"title":"派发更新Setter","level":"1.2.1.4.3","depth":4,"path":"Chapter1/Section3/派发更新Setter.md","ref":"Chapter1/Section3/派发更新Setter.md","articles":[]},{"title":"nextTick","level":"1.2.1.4.4","depth":4,"path":"Chapter1/Section1/nextTick.md","ref":"Chapter1/Section1/nextTick.md","articles":[]},{"title":"检测变化","level":"1.2.1.4.5","depth":4,"path":"Chapter1/Section3/检测变化.md","ref":"Chapter1/Section3/检测变化.md","articles":[]},{"title":"计算属性和监听属性","level":"1.2.1.4.6","depth":4,"path":"Chapter1/Section3/计算属性和监听属性.md","ref":"Chapter1/Section3/计算属性和监听属性.md","articles":[]},{"title":"组件更新","level":"1.2.1.4.7","depth":4,"path":"Chapter1/Section3/组件更新.md","ref":"Chapter1/Section3/组件更新.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/Section3/响应式对象.md","mtime":"2019-01-08T03:35:14.776Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-21T03:00:18.239Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
