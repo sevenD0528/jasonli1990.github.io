@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="FrontEnd,JS,执行机制,Event Loop," />
+  <meta name="keywords" content="FrontEnd,Koa,Node," />
 
 
 
@@ -84,21 +84,18 @@
 
 
 
-<meta name="description" content="Overview想要了解这个问题，一定要记住：  JavaScript是一门单线程语言 JavaScript的Event Loop（事件轮询）是它的执行机制">
-<meta name="keywords" content="FrontEnd,JS,执行机制,Event Loop">
+<meta name="description" content="快速搭建 Koa 项目 Talk is cheap, show me the code  koa-generator1npm i -g koa2-generator 基本用法创建项目1koa2 koa2-project 用ejs模板创建 1koa2 -e koa2-project 创建之后的目录结构 123456789101112131415161718192021222324252627[ &amp;a">
+<meta name="keywords" content="FrontEnd,Koa,Node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-搞懂JavaScript执行机制">
-<meta property="og:url" content="http://yoursite.com/2018/01/19/JS-搞懂JavaScript执行机制/index.html">
+<meta property="og:title" content="快速搭建koa项目">
+<meta property="og:url" content="http://yoursite.com/2019/03/21/快速搭建koa项目/index.html">
 <meta property="og:site_name" content="Jason Li">
-<meta property="og:description" content="Overview想要了解这个问题，一定要记住：  JavaScript是一门单线程语言 JavaScript的Event Loop（事件轮询）是它的执行机制">
+<meta property="og:description" content="快速搭建 Koa 项目 Talk is cheap, show me the code  koa-generator1npm i -g koa2-generator 基本用法创建项目1koa2 koa2-project 用ejs模板创建 1koa2 -e koa2-project 创建之后的目录结构 123456789101112131415161718192021222324252627[ &amp;a">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_event/1.png">
-<meta property="og:image" content="http://yoursite.com/img/FrontEnd/js_event/2.png">
-<meta property="og:updated_time" content="2018-01-22T02:27:32.520Z">
+<meta property="og:updated_time" content="2019-03-21T02:58:09.434Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS-搞懂JavaScript执行机制">
-<meta name="twitter:description" content="Overview想要了解这个问题，一定要记住：  JavaScript是一门单线程语言 JavaScript的Event Loop（事件轮询）是它的执行机制">
-<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/js_event/1.png">
+<meta name="twitter:title" content="快速搭建koa项目">
+<meta name="twitter:description" content="快速搭建 Koa 项目 Talk is cheap, show me the code  koa-generator1npm i -g koa2-generator 基本用法创建项目1koa2 koa2-project 用ejs模板创建 1koa2 -e koa2-project 创建之后的目录结构 123456789101112131415161718192021222324252627[ &amp;a">
 
 
 
@@ -119,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/19/JS-搞懂JavaScript执行机制/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/21/快速搭建koa项目/"/>
 
 
-  <title> JS-搞懂JavaScript执行机制 | Jason Li </title>
+  <title> 快速搭建koa项目 | Jason Li </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="en">
@@ -260,7 +257,7 @@
             
             
               
-                JS-搞懂JavaScript执行机制
+                快速搭建koa项目
               
             
           </h1>
@@ -272,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-19T15:21:16+08:00" content="2018-01-19">
-              2018-01-19
+            <time itemprop="dateCreated" datetime="2019-03-21T10:56:53+08:00" content="2019-03-21">
+              2019-03-21
             </time>
           </span>
 
@@ -319,120 +316,17 @@
       
 
       
-        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>想要了解这个问题，一定要记住：</p>
-<ul>
-<li>JavaScript是一门单线程语言</li>
-<li>JavaScript的Event Loop（事件轮询）是它的执行机制</li>
-</ul>
-<a id="more"></a>
-<h3 id="关于JavaScript的三个疑问"><a href="#关于JavaScript的三个疑问" class="headerlink" title="关于JavaScript的三个疑问"></a>关于JavaScript的三个疑问</h3><h4 id="为什么是单线程"><a href="#为什么是单线程" class="headerlink" title="为什么是单线程"></a>为什么是单线程</h4><p>场景：</p>
-<blockquote>
-<p>那么现在有2个进程，p1 p2，由于是多进程的JS，所以他们对同一个dom，同时进行操作。<br>p1 删除了该dom，而p2 编辑了该dom，同时下达2个矛盾的命令，浏览器究竟该如何执行呢？</p>
+        <h1 id="快速搭建-Koa-项目"><a href="#快速搭建-Koa-项目" class="headerlink" title="快速搭建 Koa 项目"></a>快速搭建 Koa 项目</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
 </blockquote>
-<p>显而易见，JS需要单线程</p>
-<h4 id="为什么需要异步"><a href="#为什么需要异步" class="headerlink" title="为什么需要异步"></a>为什么需要异步</h4><p>场景：</p>
-<blockquote>
-<p>如果不是异步，单线程顺序执行，自顶至尾，如果一行解析堵塞，那么后面就都将卡死。</p>
-</blockquote>
-<h4 id="单线程怎么异步"><a href="#单线程怎么异步" class="headerlink" title="单线程怎么异步"></a>单线程怎么异步</h4><p>也就是事件循环（Event Loop）</p>
-<h3 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h3><p>Ex1:</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-    console.log(&apos;1&apos;);
-    setTimeout(function() {
-        console.log(&apos;2&apos;);
-    }, 0);
-    console.log(&apos;3&apos;);
-&lt;/script&gt;
-</code></pre><p>结果很简单，可以发现，并不是1，2，3，而是1，3，2.</p>
-<p>也就是说setTimeout里的东西没有立即执行，而是延迟了一段时间才执行，也就是异步执行的。</p>
-<blockquote>
-<p>这里，我们就可以看出来，可以把js代码分为<em><strong>同步任务</strong></em>和<em><strong>异步任务</strong></em></p>
-</blockquote>
-<p>可得JS执行机制如下：</p>
-<ul>
-<li>先判断同步异步，同步就进入主线程，异步就进入event table，等待被触发。</li>
-<li>异步任务在event table中注册函数，满足触发条件的时候，就被推入event queue</li>
-<li>同步任务进入主线程后一直执行，直到主线程空闲，去event queue中查看是否有可执行的异步任务，如果有就推入主进程中</li>
-</ul>
-<p>以上，即为event loop</p>
-<h3 id="Event-Loop-2"><a href="#Event-Loop-2" class="headerlink" title="Event Loop 2"></a>Event Loop 2</h3><p>Ex2：</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-        setTimeout(function() {
-            console.log(&apos;定时器start&apos;);
-        });
-        new Promise(function(resolve){
-            console.log(&apos;for循环&apos;);
-            for(var i = 0; i &lt; 10000; i++){
-                i == 99 &amp;&amp; resolve();
-            }
-        }).then(function(){
-            console.log(&apos;then函数&apos;)
-        });
-
-        console.log(&apos;End&apos;);
-&lt;/script&gt;
-</code></pre><p>知道了Event Loop，再来看这段代码，</p>
-<ul>
-<li>setTimeout是异步任务，塞进Event Table</li>
-<li>new Promise是同步任务，塞进主进程</li>
-<li>.then是异步任务，放到Event Table</li>
-<li>console.log(‘End’); 是同步任务，被放到主进程</li>
-</ul>
-<p>所以结果是 ‘for循环’ -&gt; ‘End’ -&gt; ‘定时器start’ -&gt; ‘then函数’</p>
-<p>执行一下，发现竟然不是？？？？what？？</p>
-<p><img src="/img/FrontEnd/js_event/1.png" alt=""></p>
-<p>好吧，问题来了，让我们看一下。</p>
-<p>实际上，同步任务和异步任务的区分并不准确，应该按如下区分：</p>
-<ul>
-<li>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval</li>
-<li>micro-task(微任务)：Promise，process.nextTick</li>
-</ul>
-<p><img src="/img/FrontEnd/js_event/2.png" alt=""></p>
-<p>按照这种方式：</p>
-<ul>
-<li>执行一个宏任务，过程中如果遇到微任务，就将其放到微任务的“事件队列”里</li>
-<li>当前宏任务执行完成后，会查看微任务的“事件队列”，并将里面全部的微任务依次执行完</li>
-<li>重复以上2步骤，结合上面event loop，就是更为准确的JS执行机制了</li>
-</ul>
-<p>所以上面的代码，可以如下理解：</p>
-<ul>
-<li><p>首先执行script下的宏任务，遇到setTimeout,将其放到宏任务的“队列”里</p>
-</li>
-<li><p>遇到 new Promise直接执行，打印”马上执行for循环啦”</p>
-</li>
-<li><p>遇到then方法，是微任务，将其放到微任务的“队列”里。</p>
-</li>
-<li><p>打印 “代码执行结束”</p>
-</li>
-<li><p>本轮宏任务执行完毕，查看本轮的微任务，发现有一个then方法里的函数，打印”执行then函数啦”</p>
-</li>
-<li><p>到此,本轮的event loop 全部完成。</p>
-</li>
-<li><p>下一轮的循环里，先执行一个宏任务，发现宏任务的“队列”里有一个setTimeout里的函数,执行打印”定时器开始啦”</p>
-</li>
-</ul>
-<p>最后的执行顺序即为：</p>
-<p>所以结果是 ‘for循环’ -&gt; ‘End’ -&gt; ‘then函数’ -&gt; ‘定时器start’</p>
-<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h3><p>Ex3:</p>
-<pre><code>setTimeout(function() {
-    console.log(&apos;2&apos;);
-}, 3000);
-console.log(&apos;执行console&apos;);
-</code></pre><p> 按之前的逻辑，console.log是同步的，timeout是异步的，所以先执行console.log， 后执行timeout。 没毛病。</p>
-<pre><code>setTimeout(function() {
-    console.log(&apos;2&apos;);
-}, 3000);
-sleep(1000000);
-</code></pre><ul>
-<li>console.log(‘2’)进入Event Table并注册,计时开始。</li>
-<li>执行sleep函数，很慢，非常慢，计时仍在继续。</li>
-<li>3秒到了，计时事件timeout完成，console.log(‘2’)进入Event Queue，但是sleep也太慢了吧，还没执行完，只好等着。</li>
-<li>sleep终于执行完了，console.log(‘2’)终于从Event Queue进入了主线程执行。</li>
-</ul>
-<blockquote>
-<p>总结：setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行</p>
-</blockquote>
-
+<h4 id="koa-generator"><a href="#koa-generator" class="headerlink" title="koa-generator"></a>koa-generator</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g koa2-generator</div></pre></td></tr></table></figure>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><h5 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">koa2 koa2-project</div></pre></td></tr></table></figure>
+<p>用ejs模板创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">koa2 -e koa2-project</div></pre></td></tr></table></figure>
+<p>创建之后的目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[ &apos;|-- project&apos;,</div><div class="line">  &apos;    |-- .editorconfig&apos;,</div><div class="line">  &apos;    |-- .eslintignore&apos;,</div><div class="line">  &apos;    |-- .eslintrc.yml&apos;,</div><div class="line">  &apos;    |-- LICENSE&apos;,</div><div class="line">  &apos;    |-- README.md&apos;,</div><div class="line">  &apos;    |-- app.js&apos;,</div><div class="line">  &apos;    |-- package-lock.json&apos;,</div><div class="line">  &apos;    |-- package.json&apos;,</div><div class="line">  &apos;    |-- config&apos;,</div><div class="line">  &apos;    |   |-- index.js&apos;,</div><div class="line">  &apos;    |-- controller&apos;,</div><div class="line">  &apos;    |-- models&apos;,</div><div class="line">  &apos;    |-- public&apos;,</div><div class="line">  &apos;    |   |-- css&apos;,</div><div class="line">  &apos;    |   |   |-- style.css&apos;,</div><div class="line">  &apos;    |   |-- images&apos;,</div><div class="line">  &apos;    |   |-- js&apos;,</div><div class="line">  &apos;    |-- routes&apos;,</div><div class="line">  &apos;    |   |-- index.js&apos;,</div><div class="line">  &apos;    |   |-- users.js&apos;,</div><div class="line">  &apos;    |-- scripts&apos;,</div><div class="line">  &apos;    |-- services&apos;,</div><div class="line">  &apos;    |-- views&apos;,</div><div class="line">  &apos;        |-- error.ejs&apos;,</div><div class="line">  &apos;        |-- index.ejs&apos;,</div><div class="line">  &apos;&apos; ]</div></pre></td></tr></table></figure>
+<h4 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h4><p>官方提示的方法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DEBUG=koa2-project:* npm start</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -456,11 +350,9 @@ sleep(1000000);
           
             <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
           
-            <a href="/tags/JS/" rel="tag">#JS</a>
+            <a href="/tags/Koa/" rel="tag">#Koa</a>
           
-            <a href="/tags/执行机制/" rel="tag">#执行机制</a>
-          
-            <a href="/tags/Event-Loop/" rel="tag">#Event Loop</a>
+            <a href="/tags/Node/" rel="tag">#Node</a>
           
         </div>
       
@@ -469,17 +361,13 @@ sleep(1000000);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/12/Sublime-配置eslint/" rel="next" title="Sublime-配置eslint">
-                <i class="fa fa-chevron-left"></i> Sublime-配置eslint
+              <a href="/2019/03/20/koa-router2/" rel="next" title="koa-router router.js">
+                <i class="fa fa-chevron-left"></i> koa-router router.js
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/22/正则表达式/" rel="prev" title="正则表达式">
-                正则表达式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -640,7 +528,7 @@ sleep(1000000);
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于JavaScript的三个疑问"><span class="nav-number">2.</span> <span class="nav-text">关于JavaScript的三个疑问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么是单线程"><span class="nav-number">2.1.</span> <span class="nav-text">为什么是单线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要异步"><span class="nav-number">2.2.</span> <span class="nav-text">为什么需要异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单线程怎么异步"><span class="nav-number">2.3.</span> <span class="nav-text">单线程怎么异步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-Loop"><span class="nav-number">3.</span> <span class="nav-text">Event Loop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-Loop-2"><span class="nav-number">4.</span> <span class="nav-text">Event Loop 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout"><span class="nav-number">5.</span> <span class="nav-text">setTimeout</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速搭建-Koa-项目"><span class="nav-number">1.</span> <span class="nav-text">快速搭建 Koa 项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#koa-generator"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">koa-generator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本用法"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建项目"><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">创建项目</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行项目"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">运行项目</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

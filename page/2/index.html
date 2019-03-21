@@ -255,6 +255,148 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/29/Zepto-Countdown插件/" itemprop="url">
+                  Zepto-Countdown插件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-03-29T15:31:52+08:00" content="2018-03-29">
+              2018-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>项目中有个倒计时的需求，找到了github上的一个star最多的jQuery的库，如下：</p>
+<pre><code>https://github.com/hilios/jQuery.countdown.git
+</code></pre><p>使用的时候，如下：</p>
+<pre><code>&lt;!--html--&gt;
+&lt;div class=&quot;countdown&quot; id=&quot;countdown&quot;&gt;
+    &lt;p class=&quot;title&quot;&gt;&lt;span&gt;剩余挑战时间&lt;/span&gt;&lt;/p&gt;
+    &lt;p class=&quot;time&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!--js--&gt;
+$(&apos;#countdown .time&apos;).countdown(&apos;2018/04/01&apos;, function(e) {
+    $(this).html(e.strftime(&apos;%d天%H小时%M分%S秒&apos;));
+})
+</code></pre><p>下来之后有什么问题呢，就是zepto和jQuery的转化问题了。</p>
+<pre><code>&quot;use strict&quot;;
+if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
+    define([ &quot;jquery&quot; ], factory);
+} else {
+    factory(jQuery);
+}
+</code></pre><p>在定义部分之间改为传入Zepto是不好使的，会发现页面中并没有出现倒计时。</p>
+<pre><code>&quot;use strict&quot;;
+if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
+    define([ &quot;zepto&quot; ], factory);
+} else {
+    factory(Zepto);
+}
+</code></pre><p>经过排查，是事件委托惹的锅，那Zepto和jQuery的事件委托有什么不同呢。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/29/Zepto-Countdown插件/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/20/DNS-预读取/" itemprop="url">
                   DNS-预读取
                 </a>
@@ -1293,125 +1435,6 @@ var isAndroid = /(Android)/i.test(ua);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/JS-搞懂JavaScript执行机制/" itemprop="url">
-                  JS-搞懂JavaScript执行机制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-19T15:21:16+08:00" content="2018-01-19">
-              2018-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>想要了解这个问题，一定要记住：</p>
-<ul>
-<li>JavaScript是一门单线程语言</li>
-<li>JavaScript的Event Loop（事件轮询）是它的执行机制</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/19/JS-搞懂JavaScript执行机制/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1457,7 +1480,7 @@ var isAndroid = /(Android)/i.test(ua);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">103</span>
+              <span class="site-state-item-count">104</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

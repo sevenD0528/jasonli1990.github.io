@@ -255,6 +255,128 @@
             
               
                 
+                <a class="post-title-link" href="/2019/03/21/快速搭建koa项目/" itemprop="url">
+                  快速搭建koa项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-03-21T10:56:53+08:00" content="2019-03-21">
+              2019-03-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="快速搭建-Koa-项目"><a href="#快速搭建-Koa-项目" class="headerlink" title="快速搭建 Koa 项目"></a>快速搭建 Koa 项目</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<h4 id="koa-generator"><a href="#koa-generator" class="headerlink" title="koa-generator"></a>koa-generator</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g koa2-generator</div></pre></td></tr></table></figure>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><h5 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">koa2 koa2-project</div></pre></td></tr></table></figure>
+<p>用ejs模板创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">koa2 -e koa2-project</div></pre></td></tr></table></figure>
+<p>创建之后的目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[ &apos;|-- project&apos;,</div><div class="line">  &apos;    |-- .editorconfig&apos;,</div><div class="line">  &apos;    |-- .eslintignore&apos;,</div><div class="line">  &apos;    |-- .eslintrc.yml&apos;,</div><div class="line">  &apos;    |-- LICENSE&apos;,</div><div class="line">  &apos;    |-- README.md&apos;,</div><div class="line">  &apos;    |-- app.js&apos;,</div><div class="line">  &apos;    |-- package-lock.json&apos;,</div><div class="line">  &apos;    |-- package.json&apos;,</div><div class="line">  &apos;    |-- config&apos;,</div><div class="line">  &apos;    |   |-- index.js&apos;,</div><div class="line">  &apos;    |-- controller&apos;,</div><div class="line">  &apos;    |-- models&apos;,</div><div class="line">  &apos;    |-- public&apos;,</div><div class="line">  &apos;    |   |-- css&apos;,</div><div class="line">  &apos;    |   |   |-- style.css&apos;,</div><div class="line">  &apos;    |   |-- images&apos;,</div><div class="line">  &apos;    |   |-- js&apos;,</div><div class="line">  &apos;    |-- routes&apos;,</div><div class="line">  &apos;    |   |-- index.js&apos;,</div><div class="line">  &apos;    |   |-- users.js&apos;,</div><div class="line">  &apos;    |-- scripts&apos;,</div><div class="line">  &apos;    |-- services&apos;,</div><div class="line">  &apos;    |-- views&apos;,</div><div class="line">  &apos;        |-- error.ejs&apos;,</div><div class="line">  &apos;        |-- index.ejs&apos;,</div><div class="line">  &apos;&apos; ]</div></pre></td></tr></table></figure>
+<h4 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h4><p>官方提示的方法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DEBUG=koa2-project:* npm start</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/03/20/koa-router2/" itemprop="url">
                   koa-router router.js
                 </a>
@@ -1330,148 +1452,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/29/Zepto-Countdown插件/" itemprop="url">
-                  Zepto-Countdown插件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-03-29T15:31:52+08:00" content="2018-03-29">
-              2018-03-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>项目中有个倒计时的需求，找到了github上的一个star最多的jQuery的库，如下：</p>
-<pre><code>https://github.com/hilios/jQuery.countdown.git
-</code></pre><p>使用的时候，如下：</p>
-<pre><code>&lt;!--html--&gt;
-&lt;div class=&quot;countdown&quot; id=&quot;countdown&quot;&gt;
-    &lt;p class=&quot;title&quot;&gt;&lt;span&gt;剩余挑战时间&lt;/span&gt;&lt;/p&gt;
-    &lt;p class=&quot;time&quot;&gt;&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;!--js--&gt;
-$(&apos;#countdown .time&apos;).countdown(&apos;2018/04/01&apos;, function(e) {
-    $(this).html(e.strftime(&apos;%d天%H小时%M分%S秒&apos;));
-})
-</code></pre><p>下来之后有什么问题呢，就是zepto和jQuery的转化问题了。</p>
-<pre><code>&quot;use strict&quot;;
-if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
-    define([ &quot;jquery&quot; ], factory);
-} else {
-    factory(jQuery);
-}
-</code></pre><p>在定义部分之间改为传入Zepto是不好使的，会发现页面中并没有出现倒计时。</p>
-<pre><code>&quot;use strict&quot;;
-if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
-    define([ &quot;zepto&quot; ], factory);
-} else {
-    factory(Zepto);
-}
-</code></pre><p>经过排查，是事件委托惹的锅，那Zepto和jQuery的事件委托有什么不同呢。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/03/29/Zepto-Countdown插件/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1517,7 +1497,7 @@ if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">103</span>
+              <span class="site-state-item-count">104</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
