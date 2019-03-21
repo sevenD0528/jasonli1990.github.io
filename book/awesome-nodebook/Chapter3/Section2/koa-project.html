@@ -1,0 +1,413 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Koa项目搭建 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../Section1/koa-router-router.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Chapter1/">
+            
+                <a href="../../Chapter1/">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Chapter1/Section1/basic_1.html">
+            
+                <a href="../../Chapter1/Section1/basic_1.html">
+            
+                    
+                    Node基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Chapter1/Section1/basic_exports.html">
+            
+                <a href="../../Chapter1/Section1/basic_exports.html">
+            
+                    
+                    Exports
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter3
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../Section1/koa-basic.html">
+            
+                <a href="../Section1/koa-basic.html">
+            
+                    
+                    Koa基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../Section1/koa-sourcecode.html">
+            
+                <a href="../Section1/koa-sourcecode.html">
+            
+                    
+                    Koa源码解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../Section1/koa-compose.html">
+            
+                <a href="../Section1/koa-compose.html">
+            
+                    
+                    Koa-Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../Section1/koa-router-layer.html">
+            
+                <a href="../Section1/koa-router-layer.html">
+            
+                    
+                    Koa-Router Layer.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../Section1/koa-router-router.html">
+            
+                <a href="../Section1/koa-router-router.html">
+            
+                    
+                    Koa-Router Router.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="koa-project.html">
+            
+                <a href="koa-project.html">
+            
+                    
+                    Koa项目搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Koa项目搭建</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="koa-&#x9879;&#x76EE;">Koa &#x9879;&#x76EE;</h1>
+<blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<h4 id="koa-generator">koa-generator</h4>
+<pre><code>npm i -g koa2-generator
+</code></pre><h4 id="&#x57FA;&#x672C;&#x7528;&#x6CD5;">&#x57FA;&#x672C;&#x7528;&#x6CD5;</h4>
+<h5 id="&#x521B;&#x5EFA;&#x9879;&#x76EE;">&#x521B;&#x5EFA;&#x9879;&#x76EE;</h5>
+<pre><code>koa2 koa2-project
+</code></pre><p>&#x7528;ejs&#x6A21;&#x677F;&#x521B;&#x5EFA;</p>
+<pre><code>koa2 -e koa2-project
+</code></pre><p>&#x521B;&#x5EFA;&#x4E4B;&#x540E;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</p>
+<pre><code>[ &apos;|-- meituan&apos;,
+  &apos;    |-- .editorconfig&apos;,
+  &apos;    |-- .eslintignore&apos;,
+  &apos;    |-- .eslintrc.yml&apos;,
+  &apos;    |-- LICENSE&apos;,
+  &apos;    |-- README.md&apos;,
+  &apos;    |-- app.js&apos;,
+  &apos;    |-- package-lock.json&apos;,
+  &apos;    |-- package.json&apos;,
+  &apos;    |-- config&apos;,
+  &apos;    |   |-- index.js&apos;,
+  &apos;    |-- controller&apos;,
+  &apos;    |-- models&apos;,
+  &apos;    |-- public&apos;,
+  &apos;    |   |-- css&apos;,
+  &apos;    |   |   |-- style.css&apos;,
+  &apos;    |   |-- images&apos;,
+  &apos;    |   |-- js&apos;,
+  &apos;    |-- routes&apos;,
+  &apos;    |   |-- index.js&apos;,
+  &apos;    |   |-- users.js&apos;,
+  &apos;    |-- scripts&apos;,
+  &apos;    |-- services&apos;,
+  &apos;    |-- views&apos;,
+  &apos;        |-- error.ejs&apos;,
+  &apos;        |-- index.ejs&apos;,
+  &apos;&apos; ]
+</code></pre><h4 id="&#x8FD0;&#x884C;&#x9879;&#x76EE;">&#x8FD0;&#x884C;&#x9879;&#x76EE;</h4>
+<p>&#x5B98;&#x65B9;&#x63D0;&#x793A;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;</p>
+<pre><code>DEBUG=koa2-project:* npm start
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../Section1/koa-router-router.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Koa-Router Router.js">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Koa项目搭建","level":"1.3.3","depth":2,"previous":{"title":"Koa-Router Router.js","level":"1.3.2.3","depth":3,"path":"Chapter3/Section1/koa-router-router.md","ref":"Chapter3/Section1/koa-router-router.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter3/Section2/koa-project.md","mtime":"2019-03-20T06:38:08.096Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T08:34:57.399Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

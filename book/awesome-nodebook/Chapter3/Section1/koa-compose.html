@@ -1,0 +1,463 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Koa-Compose · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="koa-router-layer.html" />
+    
+    
+    <link rel="prev" href="koa-sourcecode.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Chapter1/">
+            
+                <a href="../../Chapter1/">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Chapter1/Section1/basic_1.html">
+            
+                <a href="../../Chapter1/Section1/basic_1.html">
+            
+                    
+                    Node基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Chapter1/Section1/basic_exports.html">
+            
+                <a href="../../Chapter1/Section1/basic_exports.html">
+            
+                    
+                    Exports
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter3
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="koa-basic.html">
+            
+                <a href="koa-basic.html">
+            
+                    
+                    Koa基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="koa-sourcecode.html">
+            
+                <a href="koa-sourcecode.html">
+            
+                    
+                    Koa源码解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.2.1" data-path="koa-compose.html">
+            
+                <a href="koa-compose.html">
+            
+                    
+                    Koa-Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="koa-router-layer.html">
+            
+                <a href="koa-router-layer.html">
+            
+                    
+                    Koa-Router Layer.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="koa-router-router.html">
+            
+                <a href="koa-router-router.html">
+            
+                    
+                    Koa-Router Router.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../Section2/koa-project.html">
+            
+                <a href="../Section2/koa-project.html">
+            
+                    
+                    Koa项目搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Koa-Compose</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="koa-compose-&#x6E90;&#x7801;&#x89E3;&#x6790;">Koa-Compose &#x6E90;&#x7801;&#x89E3;&#x6790;</h1>
+<blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<h3 id="koa-compose">koa-compose</h3>
+<p>&#x89E3;&#x6790;&#x6D0B;&#x8471;&#x6A21;&#x578B;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x70B9;&#x5C31;&#x662F;koa-compose&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code>&apos;use strict&apos;
+
+/**
+ * Expose compositor.
+ */
+// &#x66B4;&#x9732;compose&#x51FD;&#x6570;
+module.exports = compose
+
+/**
+ * Compose `middleware` returning
+ * a fully valid middleware comprised
+ * of all those which are passed.
+ *
+ * @param {Array} middleware
+ * @return {Function}
+ * @api public
+ */
+
+// compose&#x51FD;&#x6570;&#x9700;&#x8981;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x961F;&#x5217; [fn,fn,fn,fn]
+function compose (middleware) {
+  // &#x5982;&#x679C;&#x4F20;&#x5165;&#x7684;&#x4E0D;&#x662F;&#x6570;&#x7EC4;&#xFF0C;&#x5219;&#x629B;&#x51FA;&#x9519;&#x8BEF;
+  if (!Array.isArray(middleware)) throw new TypeError(&apos;Middleware stack must be an array!&apos;)
+  // &#x6570;&#x7EC4;&#x961F;&#x5217;&#x4E2D;&#x6709;&#x4E00;&#x9879;&#x4E0D;&#x4E3A;&#x51FD;&#x6570;&#xFF0C;&#x5219;&#x629B;&#x51FA;&#x9519;&#x8BEF;
+  for (const fn of middleware) {
+    if (typeof fn !== &apos;function&apos;) throw new TypeError(&apos;Middleware must be composed of functions!&apos;)
+  }
+
+  /**
+   * @param {Object} context
+   * @return {Promise}
+   * @api public
+   */
+
+   // compose&#x51FD;&#x6570;&#x8C03;&#x7528;&#x540E;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4EE5;&#x4E0B;&#x8FD9;&#x4E2A;&#x533F;&#x540D;&#x51FD;&#x6570;
+   // &#x533F;&#x540D;&#x51FD;&#x6570;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x968F;&#x4FBF;&#x4F20;&#x5165;&#xFF0C;&#x6839;&#x636E;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x51B3;&#x5B9A;
+   // &#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x65F6;&#x5019;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;next&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;undefined&#xFF0C;&#x56E0;&#x4E3A;&#x521D;&#x6B21;&#x8C03;&#x7528;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x4F20;&#x5165;next&#x53C2;&#x6570;
+   // &#x8FD9;&#x4E2A;&#x533F;&#x540D;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;promise
+  return function (context, next) {
+    // last called middleware #
+    //&#x521D;&#x59CB;&#x4E0B;&#x6807;&#x4E3A;-1
+    let index = -1
+    return dispatch(0)
+    function dispatch (i) {
+      // &#x5982;&#x679C;&#x4F20;&#x5165;i&#x4E3A;&#x8D1F;&#x6570;&#x4E14;&lt;=-1 &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Promise.reject&#x643A;&#x5E26;&#x7740;&#x9519;&#x8BEF;&#x4FE1;&#x606F;
+      // &#x6240;&#x4EE5;&#x6267;&#x884C;&#x4E24;&#x6B21;next&#x4F1A;&#x62A5;&#x51FA;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x3002;&#x5C06;&#x72B6;&#x6001;rejected&#xFF0C;&#x5C31;&#x662F;&#x786E;&#x4FDD;&#x5728;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x4E2D;next&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;
+
+
+      if (i &lt;= index) return Promise.reject(new Error(&apos;next() called multiple times&apos;))
+      // &#x6267;&#x884C;&#x4E00;&#x904D;next&#x4E4B;&#x540E;,&#x8FD9;&#x4E2A;index&#x503C;&#x5C06;&#x6539;&#x53D8;
+      index = i
+      // &#x6839;&#x636E;&#x4E0B;&#x6807;&#x53D6;&#x51FA;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;
+      let fn = middleware[i]
+      // next&#x5728;&#x8FD9;&#x4E2A;&#x5185;&#x90E8;&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x503C;&#x4E3A;undefined
+      // &#x5F53;i&#x5DF2;&#x7ECF;&#x662F;&#x6570;&#x7EC4;&#x7684;length&#x4E86;&#xFF0C;&#x8BF4;&#x660E;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#x90FD;&#x6267;&#x884C;&#x7ED3;&#x675F;&#xFF0C;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#x628A;fn&#x8BBE;&#x7F6E;&#x4E3A;undefined
+      // &#x95EE;&#x9898;&#xFF1A;&#x672C;&#x6765;middleware[i]&#x5982;&#x679C;i&#x4E3A;length&#x7684;&#x8BDD;&#x53D6;&#x5230;&#x7684;&#x503C;&#x5DF2;&#x7ECF;&#x662F;undefined&#x4E86;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x91CD;&#x65B0;&#x7ED9;fn&#x8BBE;&#x7F6E;&#x4E3A;undefined&#x5462;&#xFF1F;
+      if (i === middleware.length) fn = next
+
+      //&#x5982;&#x679C;&#x4E2D;&#x95F4;&#x4EF6;&#x904D;&#x5386;&#x5230;&#x6700;&#x540E;&#x4E86;&#x3002;&#x90A3;&#x4E48;&#x3002;&#x6B64;&#x65F6;return Promise.resolve()&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x72B6;&#x6001;&#x7684;promise
+      // &#x65B9;&#x9762;&#x4E4B;&#x540E;&#x505A;&#x8C03;&#x7528;then
+      if (!fn) return Promise.resolve()
+
+      // try catch&#x4FDD;&#x8BC1;&#x9519;&#x8BEF;&#x5728;Promise&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x80FD;&#x591F;&#x6B63;&#x5E38;&#x88AB;&#x6355;&#x83B7;&#x3002;
+
+      // &#x8C03;&#x7528;&#x540E;&#x4F9D;&#x7136;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x7684;&#x72B6;&#x6001;&#x7684;Promise&#x5BF9;&#x8C61;
+      // &#x7528;Promise&#x5305;&#x88F9;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x65B9;&#x4FBF;await&#x8C03;&#x7528;
+      // &#x8C03;&#x7528;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#xFF0C;&#x4F20;&#x5165;context&#xFF08;&#x6839;&#x636E;&#x573A;&#x666F;&#x4E0D;&#x540C;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x4E0D;&#x540C;&#x7684;&#x503C;&#xFF0C;&#x5728;KOa&#x4F20;&#x5165;&#x7684;&#x662F;ctx&#xFF09;
+      // &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;next&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x5728;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;
+      // &#x8C03;&#x7528;next&#x51FD;&#x6570;&#x540E;&#xFF0C;&#x9012;&#x5F52;&#x8C03;&#x7528;dispatch&#x51FD;&#x6570;&#xFF0C;&#x76EE;&#x7684;&#x662F;&#x6267;&#x884C;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;
+      // next&#x51FD;&#x6570;&#x5728;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x540E;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;promise&#x5BF9;&#x8C61;
+      // &#x8BFB;&#x5230;&#x8FD9;&#x91CC;&#x4E0D;&#x5F97;&#x4E0D;&#x4F69;&#x670D;&#x4F5C;&#x8005;&#x7684;&#x9AD8;&#x660E;&#x4E4B;&#x5904;&#x3002;
+      try {
+        return Promise.resolve(fn(context, function next () {
+          return dispatch(i + 1)
+        }))
+      } catch (err) {
+        return Promise.reject(err)
+      }
+    }
+  }
+}
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="koa-sourcecode.html" class="navigation navigation-prev " aria-label="Previous page: Koa源码解析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="koa-router-layer.html" class="navigation navigation-next " aria-label="Next page: Koa-Router Layer.js">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Koa-Compose","level":"1.3.2.1","depth":3,"next":{"title":"Koa-Router Layer.js","level":"1.3.2.2","depth":3,"path":"Chapter3/Section1/koa-router-layer.md","ref":"Chapter3/Section1/koa-router-layer.md","articles":[]},"previous":{"title":"Koa源码解析","level":"1.3.2","depth":2,"path":"Chapter3/Section1/koa-sourcecode.md","ref":"Chapter3/Section1/koa-sourcecode.md","articles":[{"title":"Koa-Compose","level":"1.3.2.1","depth":3,"path":"Chapter3/Section1/koa-compose.md","ref":"Chapter3/Section1/koa-compose.md","articles":[]},{"title":"Koa-Router Layer.js","level":"1.3.2.2","depth":3,"path":"Chapter3/Section1/koa-router-layer.md","ref":"Chapter3/Section1/koa-router-layer.md","articles":[]},{"title":"Koa-Router Router.js","level":"1.3.2.3","depth":3,"path":"Chapter3/Section1/koa-router-router.md","ref":"Chapter3/Section1/koa-router-router.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter3/Section1/koa-compose.md","mtime":"2019-03-12T16:05:49.302Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T08:34:57.399Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

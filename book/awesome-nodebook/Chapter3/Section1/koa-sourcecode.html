@@ -1,0 +1,689 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Koa源码解析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="koa-compose.html" />
+    
+    
+    <link rel="prev" href="koa-basic.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Chapter1/">
+            
+                <a href="../../Chapter1/">
+            
+                    
+                    Chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Chapter1/Section1/basic_1.html">
+            
+                <a href="../../Chapter1/Section1/basic_1.html">
+            
+                    
+                    Node基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Chapter1/Section1/basic_exports.html">
+            
+                <a href="../../Chapter1/Section1/basic_exports.html">
+            
+                    
+                    Exports
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Chapter3
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="koa-basic.html">
+            
+                <a href="koa-basic.html">
+            
+                    
+                    Koa基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="koa-sourcecode.html">
+            
+                <a href="koa-sourcecode.html">
+            
+                    
+                    Koa源码解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="koa-compose.html">
+            
+                <a href="koa-compose.html">
+            
+                    
+                    Koa-Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="koa-router-layer.html">
+            
+                <a href="koa-router-layer.html">
+            
+                    
+                    Koa-Router Layer.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="koa-router-router.html">
+            
+                <a href="koa-router-router.html">
+            
+                    
+                    Koa-Router Router.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../Section2/koa-project.html">
+            
+                <a href="../Section2/koa-project.html">
+            
+                    
+                    Koa项目搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Koa源码解析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="koa-&#x6E90;&#x7801;&#x89E3;&#x6790;">Koa &#x6E90;&#x7801;&#x89E3;&#x6790;</h1>
+<blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<h3 id="&#x642D;&#x5EFA;&#x57FA;&#x672C;&#x670D;&#x52A1;">&#x642D;&#x5EFA;&#x57FA;&#x672C;&#x670D;&#x52A1;</h3>
+<p>&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>const Koa = require(&apos;koa&apos;);
+
+const app = new Koa();
+
+app.listen(3000, () =&gt; {
+  console.log(&quot;server start on 3000&quot;);
+})
+</code></pre><h3 id="&#x6E90;&#x7801;&#x5206;&#x6790;">&#x6E90;&#x7801;&#x5206;&#x6790;</h3>
+<h4 id="basic">basic</h4>
+<p>Koa&#x901A;&#x8FC7;require&#x5F15;&#x5165;&#xFF0C;new&#x6210;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x53BB;&#x7528;&#x3002;</p>
+<p>&#x731C;&#x6D4B; Koa&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x6216;&#x8005;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x7528;class&#x5B9E;&#x73B0;</p>
+<p>Koa <a href="https://github.com/koajs/koa/tree/master/lib" target="_blank">&#x6E90;&#x7801;&#x5730;&#x5740;</a></p>
+<p>&#x6E90;&#x7801;&#x76EE;&#x5F55;&#x91CC; &#x5176;&#x5B9E;&#x5C31;&#x56DB;&#x4E2A;&#x6838;&#x5FC3;&#x6587;&#x4EF6; application.js context.js requrest.js response.js&#x3002;</p>
+<p>&#x800C;&#x4ECE;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x7684;&#x65B9;&#x5F0F;&#x4E0A;&#x770B;&#xFF0C;app.listen &#x7684;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x4E0E;&#x539F;&#x751F; http &#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684; server.listen &#x51E0;&#x4E4E;&#x76F8;&#x540C;&#xFF0C;&#x6211;&#x4EEC;&#x5206;&#x6790;&#xFF0C;listen &#x65B9;&#x6CD5;&#x5E94;&#x8BE5;&#x662F;&#x5BF9;&#x539F;&#x751F; http &#x6A21;&#x5757;&#x7684;&#x4E00;&#x4E2A;&#x5C01;&#x88C5;&#xFF0C;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x7684;&#x672C;&#x8D28;&#x8FD8;&#x662F;&#x9760; http &#x6A21;&#x5757;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<h3 id="&#x4E0A;&#x4E0B;&#x6587;context">&#x4E0A;&#x4E0B;&#x6587;context</h3>
+<h4 id="basic">basic</h4>
+<p>Koa&#x7684;ctx&#x4E3A;&#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528; ctx &#x7684; request &#x548C; response &#x5C5E;&#x6027;&#x83B7;&#x53D6;&#x539F; req &#x548C; res &#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x5728; ctx &#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;&#x539F;&#x751F;&#x6CA1;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>const Koa = require(&apos;koa&apos;);
+
+const app = new Koa();
+
+app.use((ctx, next) =&gt; {
+  // &#x539F;&#x751F;&#x7684; req &#x5BF9;&#x8C61;&#x7684; url &#x5C5E;&#x6027;
+  console.log(ctx.req.url);
+  console.log(ctx.request.req.url);
+  console.log(ctx.response.req.url);
+
+  // Koa &#x6269;&#x5C55;&#x7684; url
+  console.log(ctx.url);
+  console.log(ctx.request.req.url);
+
+  // &#x8BBE;&#x7F6E;&#x72B6;&#x6001;&#x7801;&#x548C;&#x54CD;&#x5E94;&#x5185;&#x5BB9;
+  ctx.response.status = 200;
+  ctx.body = &quot;Hello World&quot;;
+})
+
+app.listen(3000, () =&gt; {
+  console.log(&quot;server start on 3000&quot;);
+})
+</code></pre><h4 id="ctx">ctx</h4>
+<ul>
+<li><p>Guess1
+&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;ctx&#x4F5C;&#x4E3A;use&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;req&#x548C;res&#xFF0C;&#x540C;&#x65F6;&#x65B0;&#x589E;&#x7684;request&#x548C;response&#x5C5E;&#x6027;&#x4E5F;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;req&#x548C;res&#xFF0C;ctx &#x662F;&#x5BF9;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x96C6;&#x6210;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x7279;&#x6B8A;&#x5904;&#x7406;&#x3002;</p>
+</li>
+<li><p>Guess2
+&#x6E90;&#x7801;&#x76EE;&#x5F55;&#x6709;request&#x548C;response&#x548C;context&#x7684;&#x5355;&#x72EC;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x731C;&#x6D4B;&#x8FD9;&#x4E09;&#x4E2A;&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x7528;&#x4E8E;&#x5C01;&#x88C5; ctx &#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x800C;&#x5C01;&#x88C5; ctx &#x4E2D;&#x4E5F;&#x4F1A;&#x7528;&#x5230; req &#x548C; res&#xFF0C;&#x6240;&#x4EE5;&#x6838;&#x5FC3;&#x903B;&#x8F91;&#x5E94;&#x8BE5;&#x5728; handleRequest &#x4E2D;&#x5B9E;&#x73B0;&#x3002;</p>
+</li>
+<li>Guess3
+use&#x51FD;&#x6570;&#x5BF9;&#x4E8E;&#x4F20;&#x5165;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x6709;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#xFF0C;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E4B;&#x7C7B;&#x3002;</li>
+</ul>
+<p>&#x6DFB;&#x52A0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>const http = require(&quot;http&quot;);
+const request = require(&quot;./request&quot;);
+const response = require(&quot;./response&quot;);
+const context = require(&quot;./context&quot;);
+
+class Koa = {
+  constructor() {
+    // &#x5B58;&#x50A8;&#x4E2D;&#x95F4;&#x4EF6;
+    this.middlewares = [],
+    // &#x505A;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x901A;&#x8FC7;this&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x800C;&#x5BFC;&#x81F4;&#x5F71;&#x54CD;&#x539F;&#x5F15;&#x5165;&#x6587;&#x4EF6;&#x7684;&#x5BFC;&#x51FA;&#x5BF9;&#x8C61;
+    this.context = Object.create(context);
+    this.request = Object.create(request);
+    this.response = Object.create(response);
+  },
+  use(fn) {
+    this.middlewares.push(fn);
+  },
+  createContext(req, res) {
+    // &#x4E0A;&#x4E0B;&#x6587;
+    let ctx = this.context;
+    // &#x589E;&#x52A0; request &#x548C; response
+    ctx.request = this.request;
+    ctx.response = this.response;
+    // &#x8BA9;ctx request response&#x90FD;&#x6709;&#x539F;&#x751F;&#x7684;req&#x548C;res
+    ctx.req = ctx.request.req = ctx.response.req = req;
+    ctx.res = ctx.response.res = ctx.response.res = res;
+    // &#x8FD4;&#x56DE;ctx&#x5BF9;&#x8C61;
+    return ctx;
+  },
+  handleRequest(req, res) {
+    let ctx = this.createContext(req, res);
+  },
+  listen(...args) {
+    let server = http.createServer(this.handleRequest.bind(this));
+
+    server.listen(...args);
+  }
+}
+
+module.exports = Koa;
+</code></pre><ul>
+<li>&#x7ED9;&#x5B9E;&#x4F8B;&#x521B;&#x5EFA;&#x4E86;&#x4E09;&#x4E2A;&#x5C5E;&#x6027; context&#x3001;request &#x548C; response &#x5206;&#x522B;&#x7EE7;&#x627F;&#x4E86; context.js&#x3001;request.js &#x548C; response.js &#x5BFC;&#x51FA;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x8FD9;&#x4E48;&#x505A;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x8D4B;&#x503C;&#xFF0C;&#x662F;&#x9632;&#x6B62;&#x64CD;&#x4F5C;&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;&#x65F6; &#x201C;&#x6C61;&#x67D3;&#x201D; &#x539F;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x83B7;&#x53D6;&#x539F;&#x6A21;&#x5757;&#x5BFC;&#x51FA;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x539F;&#x578B;&#x94FE;&#x8FDB;&#x884C;&#x67E5;&#x627E;&#xFF0C;&#x5E76;&#x4E0D;&#x5F71;&#x54CD;&#x53D6;&#x503C;&#x3002;</li>
+<li>&#x6DFB;&#x52A0;middlewares&#x5C5E;&#x6027;&#xFF0C;&#x5B58;&#x50A8;&#x4E2D;&#x95F4;&#x4EF6;&#x6570;&#x7EC4;&#x3002;</li>
+</ul>
+<h4 id="request">request</h4>
+<pre><code>const url = require(&quot;url&quot;);
+
+const request = {
+  // &#x7ED9; url &#x548C; path &#x6DFB;&#x52A0; getter
+  get url() {
+    return this.req.url;
+  },
+  get path() {
+    return url.parse(this.req.url).pathname;
+  }
+}
+
+module.exports = request;
+</code></pre><p>&#x6784;&#x9020;&#x4E24;&#x4E2A;&#x5C5E;&#x6027; url &#x548C; path</p>
+<p>url&#x662F;&#x539F;&#x751F;&#x81EA;&#x5E26;&#x5C5E;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4F7F;&#x7528; ctx.request.url &#x83B7;&#x53D6;&#x662F;&#x901A;&#x8FC7; request &#x5BF9;&#x8C61;&#x8BBE;&#x7F6E;&#x7684; getter&#xFF0C;&#x5C06; ctx.request.req.url &#x7684;&#x503C;&#x8FD4;&#x56DE;&#x4E86;&#x3002;</p>
+<p>path &#x662F;&#x539F;&#x751F;req&#x6CA1;&#x6709;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x901A;&#x8FC7;&#x53D6;&#x51FA;pathname&#x8FD4;&#x56DE;getter&#xFF0C;&#x4E4B;&#x540E;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; ctx.request.path &#x6765;&#x83B7;&#x53D6;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</p>
+<h4 id="response">response</h4>
+<pre><code>// &#x7ED9; body &#x548C; status &#x6DFB;&#x52A0; getter &#x548C; setter
+const response = {
+  get body() {
+      return this._body;
+  },
+  set body(val) {
+      // &#x53EA;&#x8981;&#x7ED9; body &#x8D4B;&#x503C;&#x5C31;&#x4EE3;&#x8868;&#x54CD;&#x5E94;&#x6210;&#x529F;
+      this.status = 200;
+      this._body = val;
+  },
+  get status() {
+      return this.res.statusCode;
+  },
+  set status(val) {
+      this.res.statusCode = val;
+  }
+};
+
+module.exports = response;
+</code></pre><p>response&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x5C5E;&#x6027;&#xFF0C;body&#x548C;status&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x670D;&#x52A1;&#x5668;&#x54CD;&#x5E94;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x5FC5;&#x987B;&#x7684;&#x3002;</p>
+<h4 id="proxy">proxy</h4>
+<p>&#x4E0A;&#x9762;&#x5B9E;&#x73B0;&#x4E86;request&#x548C;response&#x5BF9;&#x5C5E;&#x6027;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x901A;&#x8FC7;ctx&#x8BBF;&#x95EE;&#x4E0D;&#x5230;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x4E00;&#x4E2A;proxy&#xFF0C;&#x8BA9;ctx&#x4E5F;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#x3002;</p>
+<pre><code>const proto = {};
+
+function defineGetter(property, key) {
+  proto.__defineGetter__(key, function() {
+    return this[property][key];
+  })
+}
+
+function defineSetter(property, key) {
+  proto.__defineSetter__(key, function(val) {
+    return this[property][key] = val;
+  })
+}
+
+// &#x5C06; request &#x7684; url &#x548C; path &#x4EE3;&#x7406;&#x7ED9; ctx
+defineGetter(&quot;request&quot;, &quot;url&quot;);
+defineGetter(&quot;request&quot;, &quot;path&quot;);
+
+// &#x5C06; response &#x7684; body &#x548C; status &#x4EE3;&#x7406;&#x7ED9; ctx
+defineGetter(&quot;response&quot;, &quot;body&quot;);
+defineSetter(&quot;response&quot;, &quot;body&quot;);
+defineGetter(&quot;response&quot;, &quot;status&quot;);
+defineSetter(&quot;response&quot;, &quot;status&quot;);
+
+module.exports = proto;
+</code></pre><p>&#x5B9E;&#x73B0;&#x4E2A;&#x4EE3;&#x7406;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;ctx&#x8BBF;&#x95EE;request&#x548C;response&#x5C5E;&#x6027;&#x7684;&#x76EE;&#x7684;&#x4E86;&#x3002;</p>
+<p>&#x548C;Vue&#x6E90;&#x7801;&#x4E2D;&#x7684;&#x539F;&#x7406;&#x4E00;&#x81F4;&#xFF0C;<strong>Object.defineProperty</strong> &#x6765;&#x65F6;&#x5B9E;&#x73B0;&#x7684;&#x4EE3;&#x7406;&#xFF0C;&#x800C;&#x5728; Koa &#x6E90;&#x7801;&#x4E2D;&#x501F;&#x52A9;&#x4E86; <strong>delegate &#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;</strong> &#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5E76;&#x5728;&#x6DFB;&#x52A0;&#x4EE3;&#x7406;&#x65F6;&#x94FE;&#x5F0F;&#x8C03;&#x7528;&#x4E86; delegate &#x5C01;&#x88C5;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x5C01;&#x88C5;&#x4E86;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5; defineGetter &#x548C; defineSetter &#x5206;&#x522B;&#x6765;&#x5B9E;&#x73B0;&#x53D6;&#x503C;&#x548C;&#x8BBE;&#x7F6E;&#x503C;&#x65F6;&#xFF0C;&#x5C06;&#x4F20;&#x5165;&#x7684;&#x5C5E;&#x6027;&#xFF08;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF09;&#x4EE3;&#x7406;&#x7ED9;&#x4F20;&#x5165;&#x7684;&#x5BF9;&#x8C61;&#xFF08;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF09;&#xFF0C;&#x51FD;&#x6570;&#x5185;&#x662F;&#x901A;&#x8FC7; Object.prototype.__defineGetter__ &#x548C; Object.prototype.__defineSetter__ &#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x70B9;&#x51FB;&#x65B9;&#x6CD5;&#x540D;&#x53EF;&#x67E5;&#x770B;&#x5B98;&#x65B9; API&#x3002;</p>
+<h3 id="&#x6D0B;&#x8471;&#x6A21;&#x578B;---&#x4E2D;&#x95F4;&#x4EF6;&#x4E32;&#x884C;">&#x6D0B;&#x8471;&#x6A21;&#x578B; - &#x4E2D;&#x95F4;&#x4EF6;&#x4E32;&#x884C;</h3>
+<p>&#x53C2;&#x8003;Kao_Basic&#x4E2D;&#x7684;&#x6D0B;&#x8471;&#x6A21;&#x578B;&#xFF0C;&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x5462;&#x3002;</p>
+<p><img src="images/onion_prototype.jpg" alt="&#x6D0B;&#x8471;&#x6A21;&#x578B;"></p>
+<p>&#x7EE7;&#x7EED;&#x6539;&#x9020;application.js</p>
+<p>&#x8FD9;&#x91CC;&#x53C2;&#x8003;koa-compose&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code>// &#x6D0B;&#x8471;&#x6A21;&#x578B;
+onion(ctx, middlewares) {
+  // &#x9012;&#x5F52;&#x51FD;&#x6570;&#xFF0C;index&#x4E3A;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x7D22;&#x5F15;
+  function dispatch(index) {
+    // &#x9000;&#x51FA;&#x6761;&#x4EF6;&#xFF0C;&#x5728;&#x6240;&#x6709;&#x4E2D;&#x95F4;&#x4EF6;&#x6267;&#x884C;&#x4E4B;&#x540E;&#x7ED9; onion &#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Promise&#xFF08;&#x517C;&#x5BB9;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x90FD;&#x6CA1;&#x5199;&#x7684;&#x60C5;&#x51B5;&#xFF09;
+    if (index === middlewares.length) {
+      return Promise.resolve();
+    }
+    // &#x53D6;&#x5F53;&#x524D;&#x4E2D;&#x95F4;&#x4EF6;
+    const mid = middlewares[index];
+
+    // &#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x4E2D;&#x95F4;&#x4EF6;&#x4F20;&#x5165;&#x7684;&#x51FD;&#x6570;&#x4E0D;&#x662F; async&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x5305;&#x88C5;&#x6210;&#x4E00;&#x4E2A; Promise
+    return Promise.resolve(mid(ctx, () =&gt; {
+      dispatch(index + 1);
+    }))
+
+  }
+  return dispatch(0);
+}
+</code></pre><p>&#x5229;&#x7528;&#x9012;&#x5F52;&#xFF0C;&#x6765;&#x89E3;&#x6D0B;&#x8471;&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x5F53;index&#x503C;&#x7B49;&#x4E8E;&#x4E2D;&#x95F4;&#x4EF6;&#x4E2A;&#x6570;&#x65F6;&#xFF0C;&#x9000;&#x51FA;&#x9012;&#x5F52;&#x3002;</p>
+<p>&#x5426;&#x5219;&#xFF0C;&#x6267;&#x884C;&#x6BCF;&#x4E00;&#x4E2A; middlewares &#x4E2D;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E14;&#x9700;&#x8981;&#x628A;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x4F53;&#x7684;&#x4EE3;&#x7801;&#x5305;&#x88C5;&#x4E00;&#x5C42;&#x6210;&#x4E3A;&#x65B0;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4F5C;&#x4E3A;&#x53C2;&#x6570; next &#x4F20;&#x5165;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x4E0A;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x8C03;&#x7528; next &#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5148;&#x6267;&#x884C;&#x4E86;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x8C03;&#x7528; next&#xFF0C;&#x53C8;&#x5148;&#x6267;&#x884C;&#x4E86;&#x4E0B;&#x4E00;&#x4E2A;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#xFF0C;&#x4F9D;&#x6B21;&#x7C7B;&#x63A8;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x4E0A;&#x9762;&#x7684;&#x4E32;&#x884C;&#x4E5F;&#x53EA;&#x662F;&#x540C;&#x6B65;&#x4E32;&#x884C;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x5185;&#x90E8;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x5F02;&#x6B65;&#xFF0C;&#x5219;&#x8C03;&#x7528;&#x5F97; next &#x51FD;&#x6570;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Promise&#xFF0C;&#x6709;&#x4E9B;&#x4E2D;&#x95F4;&#x4EF6;&#x6CA1;&#x6709;&#x6267;&#x884C;&#x5F02;&#x6B65;&#xFF0C;&#x5219;&#x4E0D;&#x9700;&#x8981; async &#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE; Promise&#xFF0C;&#x800C; Koa &#x89C4;&#x5B9A;&#x53EA;&#x8981;&#x9047;&#x5230; next &#x5C31;&#x9700;&#x8981;&#x7B49;&#x5F85;&#xFF0C;&#x5219;&#x5C06;&#x53D6;&#x51FA;&#x6BCF;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;&#x6267;&#x884C;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x4F7F;&#x7528; Promise.resolve &#x5F3A;&#x884C;&#x5305;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x6001;&#x7684; Promise&#xFF0C;&#x5C31;&#x5BF9;&#x5F02;&#x6B65;&#x8FDB;&#x884C;&#x4E86;&#x517C;&#x5BB9;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;response">&#x5B9E;&#x73B0;response</h3>
+<pre><code>handleRequest(req, res) {
+  let ctx = this.createContext(req, res);
+  // &#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x7801;&#xFF08;Koa &#x89C4;&#x5B9A;&#xFF09;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x8C03;&#x7528;&#x4E2D;&#x95F4;&#x4EF6;&#x4E4B;&#x524D;
+  ctx.status = 404;
+  // &#x6267;&#x884C;&#x6D0B;&#x8471;&#x7EC4;&#x5408;&#x4E2D;&#x95F4;&#x4EF6;
+  // this.onion(ctx, this.middlewares);
+  this.onion(ctx, this.middlewares).then(() =&gt; {
+    // &#x83B7;&#x53D6;&#x6700;&#x540E; body &#x7684;&#x503C;
+    let body = ctx.body;
+
+    // &#x68C0;&#x6D4B; ctx.body &#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x503C;&#x54CD;&#x5E94;&#x7ED9;&#x6D4F;&#x89C8;&#x5668;
+    if (Buffer.isBuffer(body) || typeof body === &quot;string&quot;) {
+        // &#x5904;&#x7406; Buffer &#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;
+        res.setHeader(&quot;Content-Type&quot;, &quot;text/plain;charset=utf8&quot;);
+        res.end(body);
+    } else if (typeof body === &quot;object&quot;) {
+        // &#x5904;&#x7406;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;
+        res.setHeader(&quot;Content-Type&quot;, &quot;application/json;charset=utf8&quot;);
+        res.end(JSON.stringify(body));
+    } else if (body instanceof Stream) {
+        // &#x5904;&#x7406;&#x6D41;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;
+        body.pipe(res);
+    } else {
+        res.end(&quot;Not Found&quot;);
+    }
+  })
+}
+</code></pre><h3 id="&#x4E2D;&#x95F4;&#x4EF6;&#x9519;&#x8BEF;&#x5904;&#x7406;">&#x4E2D;&#x95F4;&#x4EF6;&#x9519;&#x8BEF;&#x5904;&#x7406;</h3>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>const Koa = require(&quot;koa&quot;);
+
+const app = new Koa();
+
+app.use((ctx, next) =&gt; {
+    // &#x629B;&#x51FA;&#x5F02;&#x5E38;
+    throw new Error(&quot;Error&quot;);
+});
+
+// &#x6DFB;&#x52A0; error &#x76D1;&#x542C;
+app.on(&quot;error&quot;, err =&gt; {
+    console.log(err);
+});
+
+app.listen(3000, () =&gt; {
+    console.log(&quot;server start 3000&quot;);
+});
+</code></pre><p>&#x6240;&#x4EE5;&#x518D;onion&#x4E2D;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Promise&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x7528;&#x5904;&#xFF0C;&#x5C31;&#x662F;catch&#x9519;&#x8BEF;&#x3002;</p>
+<pre><code>// error
+const EventEmitter = require(&quot;events&quot;);
+const httpServer = require(&quot;_http_server&quot;);
+
+// &#x7EE7;&#x627F; EventEmitter &#x540E;&#x53EF;&#x4EE5;&#x7528;&#x521B;&#x5EFA;&#x7684;&#x5B9E;&#x4F8B; app &#x6DFB;&#x52A0; error &#x76D1;&#x542C;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; emit &#x89E6;&#x53D1;&#x76D1;&#x542C;
+class Koa extends EventEmitter {
+  constructor() {
+    super();
+    // &#x5B58;&#x50A8;&#x4E2D;&#x95F4;&#x4EF6;
+    this.middlewares = [];
+    // &#x505A;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x901A;&#x8FC7;this&#x4FEE;&#x6539;&#x5C5E;&#x6027;&#x800C;&#x5BFC;&#x81F4;&#x5F71;&#x54CD;&#x539F;&#x5F15;&#x5165;&#x6587;&#x4EF6;&#x7684;&#x5BFC;&#x51FA;&#x5BF9;&#x8C61;
+    this.context = Object.create(context);
+    this.request = Object.create(request);
+    this.response = Object.create(response);
+  }
+
+  ...
+
+  handleRequest(req, res) {
+    let ctx = this.createContext(req, res);
+    // &#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x7801;&#xFF08;Koa &#x89C4;&#x5B9A;&#xFF09;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x8C03;&#x7528;&#x4E2D;&#x95F4;&#x4EF6;&#x4E4B;&#x524D;
+    ctx.status = 404;
+    // &#x6267;&#x884C;&#x6D0B;&#x8471;&#x7EC4;&#x5408;&#x4E2D;&#x95F4;&#x4EF6;
+    // this.onion(ctx, this.middlewares);
+    this.onion(ctx, this.middlewares).then(() =&gt; {
+      // &#x83B7;&#x53D6;&#x6700;&#x540E; body &#x7684;&#x503C;
+      let body = ctx.body;
+
+      // &#x68C0;&#x6D4B; ctx.body &#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x503C;&#x54CD;&#x5E94;&#x7ED9;&#x6D4F;&#x89C8;&#x5668;
+      if (Buffer.isBuffer(body) || typeof body === &quot;string&quot;) {
+          // &#x5904;&#x7406; Buffer &#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;
+          res.setHeader(&quot;Content-Type&quot;, &quot;text/plain;charset=utf8&quot;);
+          res.end(body);
+      } else if (typeof body === &quot;object&quot;) {
+          // &#x5904;&#x7406;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;
+          res.setHeader(&quot;Content-Type&quot;, &quot;application/json;charset=utf8&quot;);
+          res.end(JSON.stringify(body));
+      } else if (body instanceof Stream) {
+          // &#x5904;&#x7406;&#x6D41;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;
+          body.pipe(res);
+      } else {
+          res.end(&quot;Not Found&quot;);
+      }
+    }).catch(err =&gt; {
+        // &#x6267;&#x884C; error &#x4E8B;&#x4EF6;
+        this.emit(&quot;error&quot;, err);
+
+        // &#x8BBE;&#x7F6E; 500 &#x72B6;&#x6001;&#x7801;
+        ctx.status = 500;
+
+        // &#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x7801;&#x5BF9;&#x5E94;&#x7684;&#x4FE1;&#x606F;&#x54CD;&#x5E94;&#x6D4F;&#x89C8;&#x5668;
+        res.end(httpServer.STATUS_CODES[ctx.status]);
+    });
+</code></pre><p>&#x4E00;&#x5F20;Koa&#x539F;&#x7406;&#x56FE;</p>
+<p><img src="../../../images/koa_prototype.jpg" alt="&#x539F;&#x7406;&#x56FE;"></p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x603B;&#x7ED3;Koa2&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x53EF;&#x5927;&#x81F4;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
+<ul>
+<li>listen&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x5668;</li>
+<li>&#x5C01;&#x88C5;&#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;ctx&#x5E76;&#x4EE3;&#x7406;&#x5C5E;&#x6027;</li>
+<li>use&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x4E2D;&#x95F4;&#x4EF6;</li>
+<li>compose&#x4E32;&#x884C;&#x6267;&#x884C;&#x4E2D;&#x95F4;&#x4EF6;</li>
+<li>&#x7EE7;&#x627F;EventEmitter&#x5B9E;&#x73B0;&#x9519;&#x8BEF;&#x76D1;&#x542C;</li>
+</ul>
+<p>&#x5176;&#x4E2D;compose&#x662F;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x4E32;&#x884C;&#x673A;&#x5236;&#xFF0C;&#x5B9E;&#x73B0;&#x6D0B;&#x8471;&#x6A21;&#x578B;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x638C;&#x63E1;&#x3002;</p>
+<p><a href="https://juejin.im/entry/5bbc5d42e51d450e8477ef33?utm_medium=be&amp;utm_source=weixinqun" target="_blank">&#x672C;&#x6587;&#x53C2;&#x8003;</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="koa-basic.html" class="navigation navigation-prev " aria-label="Previous page: Koa基础">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="koa-compose.html" class="navigation navigation-next " aria-label="Next page: Koa-Compose">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Koa源码解析","level":"1.3.2","depth":2,"next":{"title":"Koa-Compose","level":"1.3.2.1","depth":3,"path":"Chapter3/Section1/koa-compose.md","ref":"Chapter3/Section1/koa-compose.md","articles":[]},"previous":{"title":"Koa基础","level":"1.3.1","depth":2,"path":"Chapter3/Section1/koa-basic.md","ref":"Chapter3/Section1/koa-basic.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter3/Section1/koa-sourcecode.md","mtime":"2019-03-20T06:29:20.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T08:34:57.399Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
