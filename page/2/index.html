@@ -255,6 +255,127 @@
             
               
                 
+                <a class="post-title-link" href="/2018/04/27/小程序-分享事件/" itemprop="url">
+                  小程序-分享事件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-04-27T11:40:48+08:00" content="2018-04-27">
+              2018-04-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="小程序-分享事件"><a href="#小程序-分享事件" class="headerlink" title="小程序-分享事件"></a>小程序-分享事件</h2><h3 id="小程序API"><a href="#小程序API" class="headerlink" title="小程序API"></a>小程序API</h3><p><a href="https://developers.weixin.qq.com/miniprogram/dev/api/share.html" target="_blank" rel="external">https://developers.weixin.qq.com/miniprogram/dev/api/share.html</a></p>
+<h3 id="onShareAppMessage-options"><a href="#onShareAppMessage-options" class="headerlink" title="onShareAppMessage(options)"></a>onShareAppMessage(options)</h3><p>在 Page 中定义 onShareAppMessage 函数，设置该页面的转发信息。</p>
+<ul>
+<li>只有定义了此事件处理函数，右上角菜单才会显示 “转发” 按钮</li>
+<li>用户点击转发按钮的时候会调用</li>
+<li>此事件需要 return 一个 Object，用于自定义转发内容</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/27/小程序-分享事件/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/29/Zepto-Countdown插件/" itemprop="url">
                   Zepto-Countdown插件
                 </a>
@@ -1312,129 +1433,6 @@ if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/22/正则表达式/" itemprop="url">
-                  正则表达式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-22T14:27:15+08:00" content="2018-01-22">
-              2018-01-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>进行移动端开发的时候，需要各种对于UA的判断，从而进行机型或系统的匹配进行特殊的页面处理。以下面为例：</p>
-<pre><code>// 判断是微信、QQ或微博中打开
-var isQQorWeChatorWeibo = /micromessenger/.test(ua) || /qq\//.test(ua) || /weibo/.test(ua);
-// 判断是否为ios设备
-var isIOS = /(iPhone|iPad|iPod|iOS)/i.test(ua);
-
-// 判断是否为android设备
-var isAndroid = /(Android)/i.test(ua);
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/22/正则表达式/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1480,7 +1478,7 @@ var isAndroid = /(Android)/i.test(ua);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">105</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1497,7 +1495,7 @@ var isAndroid = /(Android)/i.test(ua);
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">117</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

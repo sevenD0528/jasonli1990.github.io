@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,JS,fastclick," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="重读 fastclick 源码 Talk is cheap, show me the code  最近遇到一点fastclick的报错，追踪下去，发现对于fastclick的源码其实并没有很好地理解清楚，找了些资料，决定重新读一遍。 起因移动端click事件有300ms延迟 300ms延迟的原因： 移动端有一个双击缩放功能，浏览器需要判断用户点击是否为双击缩放 导致的结果：  用户体验差，很不流畅">
+<meta name="keywords" content="FrontEnd,JS,fastclick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重读fastclick源码">
+<meta property="og:url" content="http://yoursite.com/2019/04/15/重读fastclick源码/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="重读 fastclick 源码 Talk is cheap, show me the code  最近遇到一点fastclick的报错，追踪下去，发现对于fastclick的源码其实并没有很好地理解清楚，找了些资料，决定重新读一遍。 起因移动端click事件有300ms延迟 300ms延迟的原因： 移动端有一个双击缩放功能，浏览器需要判断用户点击是否为双击缩放 导致的结果：  用户体验差，很不流畅">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-15T08:37:07.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重读fastclick源码">
+<meta name="twitter:description" content="重读 fastclick 源码 Talk is cheap, show me the code  最近遇到一点fastclick的报错，追踪下去，发现对于fastclick的源码其实并没有很好地理解清楚，找了些资料，决定重新读一遍。 起因移动端click事件有300ms延迟 300ms延迟的原因： 移动端有一个双击缩放功能，浏览器需要判断用户点击是否为双击缩放 导致的结果：  用户体验差，很不流畅">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/15/重读fastclick源码/"/>
+
+
+  <title> 重读fastclick源码 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                重读fastclick源码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-04-15T16:36:24+08:00" content="2019-04-15">
+              2019-04-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="重读-fastclick-源码"><a href="#重读-fastclick-源码" class="headerlink" title="重读 fastclick 源码"></a>重读 fastclick 源码</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<p>最近遇到一点fastclick的报错，追踪下去，发现对于fastclick的源码其实并没有很好地理解清楚，找了些资料，决定重新读一遍。</p>
+<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>移动端click事件有300ms延迟</p>
+<p>300ms延迟的原因： 移动端有一个双击缩放功能，浏览器需要判断用户点击是否为双击缩放</p>
+<p>导致的结果：</p>
+<ul>
+<li>用户体验差，很不流畅，尤其是在密集操作场景下，比如计算器等操作时，感觉反应很慢</li>
+<li>会有点击穿透问题</li>
+</ul>
+<a id="more"></a>
+<p>看个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">  &lt;div style=&quot;text-align: center&quot;&gt;</div><div class="line">    &lt;button class=&quot;btn&quot; type=&quot;button&quot;&gt;开始&lt;/button&gt;</div><div class="line">    &lt;div id=&quot;text&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;script src=&quot;./fastclick.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    let startTime;</div><div class="line">    let btn = document.querySelector(&apos;.btn&apos;);</div><div class="line">    let text = document.querySelector(&apos;#text&apos;);</div><div class="line">    // if (&apos;addEventListener&apos; in document) &#123;</div><div class="line">    //   document.addEventListener(&apos;DOMContentLoaded&apos;, function() &#123;</div><div class="line">    //     FastClick.attach(document.body);</div><div class="line">    //   &#125;, false);</div><div class="line">    // &#125;</div><div class="line">    btn.addEventListener(&apos;touchstart&apos;, function(e) &#123;</div><div class="line">      startTime = new Date().getTime();</div><div class="line">      text.innerHTML = null;</div><div class="line">    &#125;);</div><div class="line">    btn.addEventListener(&apos;touchend&apos;, function(e) &#123;</div><div class="line">      var t  = document.createElement(&apos;p&apos;);</div><div class="line">      t.innerText = &apos;touch end :&apos;+(new Date().getTime() - startTime)+&apos;ms&apos;;</div><div class="line">      text.appendChild(t)</div><div class="line">    &#125;);</div><div class="line">    btn.addEventListener(&apos;click&apos;, function(e) &#123;</div><div class="line">      var t  = document.createElement(&apos;p&apos;);</div><div class="line">      t.innerText = &apos;click :&apos;+(new Date().getTime() - startTime)+&apos;ms&apos;;</div><div class="line">      text.appendChild(t)</div><div class="line">    &#125;);</div><div class="line">  &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<p>可以看到按钮点击后，输出 touch end 88ms click 301ms</p>
+<p>每次点击结果可能不同，但是不影响结论，就是click会延迟300ms执行</p>
+<h3 id="移动端Event事件顺序"><a href="#移动端Event事件顺序" class="headerlink" title="移动端Event事件顺序"></a>移动端Event事件顺序</h3><ul>
+<li>touchstart</li>
+<li>touchmove</li>
+<li>touchend</li>
+<li>mouseover — 当指针设备移动到存在监听器的元素或其子元素的时候，mouseover事件就会被触发</li>
+<li>mouseenter — 当指针设备( 通常指鼠标 )在元素上移动时, mousemove 事件被触发</li>
+<li>mousedown</li>
+<li>click</li>
+</ul>
+<p>然而click存在300ms延迟，touch却是没有的</p>
+<h3 id="fastclick解析"><a href="#fastclick解析" class="headerlink" title="fastclick解析"></a>fastclick解析</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>利用touch模拟tap点击，如果认为是一次有效的tap，则在touchend时立即模拟一个click事件，分发到事件源（相当于主动触发一次click），同时阻止掉浏览器300ms后产生的click。</p>
+<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><ul>
+<li>先看下结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* Instantiate fast-clicking listeners on the specified layer.</div><div class="line">*</div><div class="line">* @constructor</div><div class="line">* @param &#123;Element&#125; layer The layer to listen on</div><div class="line">* @param &#123;Object&#125; [options=&#123;&#125;] The options to override the defaults</div><div class="line">*/</div><div class="line">// 构造函数</div><div class="line">function FastClick(layer, options) &#123;...&#125;</div><div class="line">/**</div><div class="line">* Windows Phone 8.1 fakes user agent string to look like Android and iPhone.</div><div class="line">*</div><div class="line">* @type boolean</div><div class="line">*/</div><div class="line">// windows phone</div><div class="line">var deviceIsWindowsPhone = navigator.userAgent.indexOf(&quot;Windows Phone&quot;) &gt;= 0;</div><div class="line"></div><div class="line">/**</div><div class="line">* Android requires exceptions.</div><div class="line">*</div><div class="line">* @type boolean</div><div class="line">*/</div><div class="line">var deviceIsAndroid = navigator.userAgent.indexOf(&apos;Android&apos;) &gt; 0 &amp;&amp; !deviceIsWindowsPhone;</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line">* iOS requires exceptions.</div><div class="line">*</div><div class="line">* @type boolean</div><div class="line">*/</div><div class="line">var deviceIsIOS = /iP(ad|hone|od)/.test(navigator.userAgent) &amp;&amp; !deviceIsWindowsPhone;</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line">* iOS 4 requires an exception for select elements.</div><div class="line">*</div><div class="line">* @type boolean</div><div class="line">*/</div><div class="line">var deviceIsIOS4 = deviceIsIOS &amp;&amp; (/OS 4_\d(_\d)?/).test(navigator.userAgent);</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line">* iOS 6.0-7.* requires the target element to be manually derived</div><div class="line">*</div><div class="line">* @type boolean</div><div class="line">*/</div><div class="line">var deviceIsIOSWithBadTarget = deviceIsIOS &amp;&amp; (/OS [6-7]_\d/).test(navigator.userAgent);</div><div class="line"></div><div class="line">/**</div><div class="line">* BlackBerry requires exceptions.</div><div class="line">*</div><div class="line">* @type boolean</div><div class="line">*/</div><div class="line">var deviceIsBlackBerry10 = navigator.userAgent.indexOf(&apos;BB10&apos;) &gt; 0;</div><div class="line">// 判断是否需要浏览器原生的click事件（针对一些特殊元素比如表单）</div><div class="line">FastClick.prototype.needsClick = function(target) &#123;...&#125;</div><div class="line">// 发送模拟的click事件</div><div class="line">FastClick.prototype.sendClick = function(targetElement, event) &#123;...&#125;</div><div class="line">// touchstart eventhandler</div><div class="line">FastClick.prototype.onTouchStart = function(event) &#123;...&#125;</div><div class="line">// touchmove eventhandler</div><div class="line">FastClick.prototype.onTouchMove = function(event) &#123;...&#125;</div><div class="line">// touchend eventhandler</div><div class="line">FastClick.prototype.onTouchEnd = function(event) &#123;...&#125;</div><div class="line">// 判断这次tap是否有效</div><div class="line">FastClick.prototype.onMouse = function(event) &#123;...&#125;</div><div class="line">// click handler 捕获阶段监听</div><div class="line">FastClick.prototype.onClick = function(event) &#123;...&#125;</div><div class="line">// 销毁fastlick，移除事件绑定</div><div class="line">FastClick.prototype.destroy = function() &#123;...&#125;</div><div class="line">// 绑定</div><div class="line">FastClick.attach = function(layer, options) &#123;</div><div class="line">  return new FastClick(layer, options);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// fastclick在各种AMD、普通模式等的定义方式</div><div class="line">if (typeof define === &apos;function&apos; &amp;&amp; typeof define.amd === &apos;object&apos; &amp;&amp; define.amd) &#123;</div><div class="line"></div><div class="line">  // AMD. Register as an anonymous module.</div><div class="line">  define(function() &#123;</div><div class="line">    return FastClick;</div><div class="line">  &#125;);</div><div class="line">&#125; else if (typeof module !== &apos;undefined&apos; &amp;&amp; module.exports) &#123;</div><div class="line">  module.exports = FastClick.attach;</div><div class="line">  module.exports.FastClick = FastClick;</div><div class="line">&#125; else &#123;</div><div class="line">  window.FastClick = FastClick;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>fastclick的使用：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (&apos;addEventListener&apos; in document) &#123;</div><div class="line">  document.addEventListener(&apos;DOMContentLoaded&apos;, function() &#123;</div><div class="line">    FastClick.attach(document.body);</div><div class="line">  &#125;, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可见attach方法其实就是执行了fastclick的构造函数初始化</p>
+<ul>
+<li>初始化</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div></pre></td><td class="code"><pre><div class="line">// Constructor 构造函数</div><div class="line">function FastClick(layer, options) &#123;</div><div class="line">  var oldOnClick;</div><div class="line"></div><div class="line">  options = options || &#123;&#125;;</div><div class="line"></div><div class="line">  /**</div><div class="line">    * Whether a click is currently being tracked.</div><div class="line">    *</div><div class="line">    * @type boolean</div><div class="line">    */</div><div class="line">  this.trackingClick = false;</div><div class="line"></div><div class="line"></div><div class="line">  /**</div><div class="line">    * Timestamp for when click tracking started.</div><div class="line">    *</div><div class="line">    * @type number</div><div class="line">    */</div><div class="line">  this.trackingClickStart = 0;</div><div class="line"></div><div class="line"></div><div class="line">  /**</div><div class="line">    * The element being tracked for a click.</div><div class="line">    *</div><div class="line">    * @type EventTarget</div><div class="line">    */</div><div class="line">  this.targetElement = null;</div><div class="line"></div><div class="line"></div><div class="line">  /**</div><div class="line">    * X-coordinate of touch start event.</div><div class="line">    *</div><div class="line">    * @type number</div><div class="line">    */</div><div class="line">  this.touchStartX = 0;</div><div class="line"></div><div class="line"></div><div class="line">  /**</div><div class="line">    * Y-coordinate of touch start event.</div><div class="line">    *</div><div class="line">    * @type number</div><div class="line">    */</div><div class="line">  this.touchStartY = 0;</div><div class="line"></div><div class="line"></div><div class="line">  /**</div><div class="line">    * ID of the last touch, retrieved from Touch.identifier.</div><div class="line">    *</div><div class="line">    * @type number</div><div class="line">    */</div><div class="line">  this.lastTouchIdentifier = 0;</div><div class="line"></div><div class="line"></div><div class="line">  /**</div><div class="line">    * Touchmove boundary, beyond which a click will be cancelled.</div><div class="line">    *</div><div class="line">    * @type number</div><div class="line">    */</div><div class="line">  this.touchBoundary = options.touchBoundary || 10;</div><div class="line"></div><div class="line"></div><div class="line">  /**</div><div class="line">    * The FastClick layer.</div><div class="line">    *</div><div class="line">    * @type Element</div><div class="line">    */</div><div class="line">  this.layer = layer;</div><div class="line"></div><div class="line">  /**</div><div class="line">    * The minimum time between tap(touchstart and touchend) events</div><div class="line">    *</div><div class="line">    * @type number</div><div class="line">    */</div><div class="line">  this.tapDelay = options.tapDelay || 200;</div><div class="line"></div><div class="line">  /**</div><div class="line">    * The maximum time for a tap</div><div class="line">    *</div><div class="line">    * @type number</div><div class="line">    */</div><div class="line">  this.tapTimeout = options.tapTimeout || 700;</div><div class="line"></div><div class="line">  if (FastClick.notNeeded(layer)) &#123;</div><div class="line">    return;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  // Some old versions of Android don&apos;t have Function.prototype.bind</div><div class="line">  // 兼容bind</div><div class="line">  function bind(method, context) &#123;</div><div class="line">    return function() &#123; return method.apply(context, arguments); &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  var methods = [&apos;onMouse&apos;, &apos;onClick&apos;, &apos;onTouchStart&apos;, &apos;onTouchMove&apos;, &apos;onTouchEnd&apos;, &apos;onTouchCancel&apos;];</div><div class="line">  var context = this;</div><div class="line">  // 方法绑定到fastclick实例</div><div class="line">  for (var i = 0, l = methods.length; i &lt; l; i++) &#123;</div><div class="line">    context[methods[i]] = bind(context[methods[i]], context);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // Set up event handlers as required</div><div class="line">  // 为当前fastclick对象绑定的layer加监听</div><div class="line">  if (deviceIsAndroid) &#123;</div><div class="line">    layer.addEventListener(&apos;mouseover&apos;, this.onMouse, true); //true 捕获阶段触发 </div><div class="line">    layer.addEventListener(&apos;mousedown&apos;, this.onMouse, true);</div><div class="line">    layer.addEventListener(&apos;mouseup&apos;, this.onMouse, true);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  layer.addEventListener(&apos;click&apos;, this.onClick, true);</div><div class="line">  layer.addEventListener(&apos;touchstart&apos;, this.onTouchStart, false);</div><div class="line">  layer.addEventListener(&apos;touchmove&apos;, this.onTouchMove, false);</div><div class="line">  layer.addEventListener(&apos;touchend&apos;, this.onTouchEnd, false);</div><div class="line">  layer.addEventListener(&apos;touchcancel&apos;, this.onTouchCancel, false);</div><div class="line"></div><div class="line">  // Hack is required for browsers that don&apos;t support Event#stopImmediatePropagation (e.g. Android 2)</div><div class="line">  // which is how FastClick normally stops click events bubbling to callbacks registered on the FastClick</div><div class="line">  // layer when they are cancelled.</div><div class="line">  if (!Event.prototype.stopImmediatePropagation) &#123;</div><div class="line">    layer.removeEventListener = function(type, callback, capture) &#123;</div><div class="line">      var rmv = Node.prototype.removeEventListener;</div><div class="line">      if (type === &apos;click&apos;) &#123;</div><div class="line">        rmv.call(layer, type, callback.hijacked || callback, capture);</div><div class="line">      &#125; else &#123;</div><div class="line">        rmv.call(layer, type, callback, capture);</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    layer.addEventListener = function(type, callback, capture) &#123;</div><div class="line">      var adv = Node.prototype.addEventListener;</div><div class="line">      if (type === &apos;click&apos;) &#123;</div><div class="line">        adv.call(layer, type, callback.hijacked || (callback.hijacked = function(event) &#123;</div><div class="line">          if (!event.propagationStopped) &#123;</div><div class="line">            callback(event);</div><div class="line">          &#125;</div><div class="line">        &#125;), capture);</div><div class="line">      &#125; else &#123;</div><div class="line">        adv.call(layer, type, callback, capture);</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // If a handler is already declared in the element&apos;s onclick attribute, it will be fired before</div><div class="line">  // FastClick&apos;s onClick handler. Fix this by pulling out the user-defined handler function and</div><div class="line">  // adding it as listener.</div><div class="line">  if (typeof layer.onclick === &apos;function&apos;) &#123;</div><div class="line"></div><div class="line">    // Android browser on at least 3.2 requires a new reference to the function in layer.onclick</div><div class="line">    // - the old one won&apos;t work if passed to addEventListener directly.</div><div class="line">    oldOnClick = layer.onclick;</div><div class="line">    layer.addEventListener(&apos;click&apos;, function(event) &#123;</div><div class="line">      oldOnClick(event);</div><div class="line">    &#125;, false);</div><div class="line">    layer.onclick = null;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>接下来是关键步骤<ul>
+<li>touchstart，touchend是如何判断tap是否有效</li>
+<li>模拟click事件</li>
+<li>阻止300ms后的click</li>
+</ul>
+</li>
+</ul>
+<p><strong>onTouchStart</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * On touch start, record the position and scroll offset.</div><div class="line">  *</div><div class="line">  * @param &#123;Event&#125; event</div><div class="line">  * @returns &#123;boolean&#125;</div><div class="line">  */</div><div class="line">// touchstart eventhandler</div><div class="line">FastClick.prototype.onTouchStart = function(event) &#123;</div><div class="line">  var targetElement, touch, selection;</div><div class="line"></div><div class="line">  // Ignore multiple touches, otherwise pinch-to-zoom is prevented if both fingers are on the FastClick element (issue #111).</div><div class="line">  // 若多点触控则不对targetElement初始化，在此提前终止避免误模拟产生click</div><div class="line">  if (event.targetTouches.length &gt; 1) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  // 获取发生事件源元素（目标阶段的元素）</div><div class="line">  targetElement = this.getTargetElementFromEventTarget(event.target);</div><div class="line">  touch = event.targetTouches[0];</div><div class="line"></div><div class="line">  if (deviceIsIOS) &#123;</div><div class="line"></div><div class="line">    // Only trusted events will deselect text on iOS (issue #49)</div><div class="line">    selection = window.getSelection();</div><div class="line">    if (selection.rangeCount &amp;&amp; !selection.isCollapsed) &#123;</div><div class="line">      return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (!deviceIsIOS4) &#123;</div><div class="line"></div><div class="line">      // Weird things happen on iOS when an alert or confirm dialog is opened from a click event callback (issue #23):</div><div class="line">      // when the user next taps anywhere else on the page, new touchstart and touchend events are dispatched</div><div class="line">      // with the same identifier as the touch event that previously triggered the click that triggered the alert.</div><div class="line">      // Sadly, there is an issue on iOS 4 that causes some normal touch events to have the same identifier as an</div><div class="line">      // immediately preceeding touch event (issue #52), so this fix is unavailable on that platform.</div><div class="line">      // Issue 120: touch.identifier is 0 when Chrome dev tools &apos;Emulate touch events&apos; is set with an iOS device UA string,</div><div class="line">      // which causes all touch events to be ignored. As this block only applies to iOS, and iOS identifiers are always long,</div><div class="line">      // random integers, it&apos;s safe to to continue if the identifier is 0 here.</div><div class="line">      if (touch.identifier &amp;&amp; touch.identifier === this.lastTouchIdentifier) &#123;</div><div class="line">        event.preventDefault();</div><div class="line">        return false;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      this.lastTouchIdentifier = touch.identifier;</div><div class="line"></div><div class="line">      // If the target element is a child of a scrollable layer (using -webkit-overflow-scrolling: touch) and:</div><div class="line">      // 1) the user does a fling scroll on the scrollable layer</div><div class="line">      // 2) the user stops the fling scroll with another tap</div><div class="line">      // then the event.target of the last &apos;touchend&apos; event will be the element that was under the user&apos;s finger</div><div class="line">      // when the fling scroll was started, causing FastClick to send a click event to that layer - unless a check</div><div class="line">      // is made to ensure that a parent layer was not scrolled before sending a synthetic click (issue #42).</div><div class="line">      this.updateScrollParent(targetElement);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  // 追踪click标记</div><div class="line">  this.trackingClick = true; </div><div class="line">  // 追踪click开始时间</div><div class="line">  this.trackingClickStart = event.timeStamp;</div><div class="line">  // 事件源元素</div><div class="line">  this.targetElement = targetElement;</div><div class="line"></div><div class="line">  // 起始坐标X</div><div class="line">  this.touchStartX = touch.pageX;</div><div class="line">  // 起始坐标Y</div><div class="line">  this.touchStartY = touch.pageY;</div><div class="line"></div><div class="line">  // Prevent phantom clicks on fast double-tap (issue #36)</div><div class="line">  if ((event.timeStamp - this.lastClickTime) &lt; this.tapDelay) &#123;</div><div class="line">    // 阻止之后的click</div><div class="line">    event.preventDefault();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return true;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>onTouchMove</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * Based on a touchmove event object, check whether the touch has moved past a boundary since it started.</div><div class="line">  *</div><div class="line">  * @param &#123;Event&#125; event</div><div class="line">  * @returns &#123;boolean&#125;</div><div class="line">  */</div><div class="line">// check has touchmoved</div><div class="line">FastClick.prototype.touchHasMoved = function(event) &#123;</div><div class="line">  var touch = event.changedTouches[0], boundary = this.touchBoundary;</div><div class="line"></div><div class="line">  if (Math.abs(touch.pageX - this.touchStartX) &gt; boundary || Math.abs(touch.pageY - this.touchStartY) &gt; boundary) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return false;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">/**</div><div class="line">  * Update the last position.</div><div class="line">  *</div><div class="line">  * @param &#123;Event&#125; event</div><div class="line">  * @returns &#123;boolean&#125;</div><div class="line">  */</div><div class="line">// touchmove handler</div><div class="line">FastClick.prototype.onTouchMove = function(event) &#123;</div><div class="line">  if (!this.trackingClick) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // If the touch has moved, cancel the click tracking</div><div class="line">  // 如果触摸移动了，也就是进行了swipe等操作，判断越界了，则cancel对于click的追踪，走原生流程</div><div class="line">  if (this.targetElement !== this.getTargetElementFromEventTarget(event.target) || this.touchHasMoved(event)) &#123;</div><div class="line">    this.trackingClick = false;</div><div class="line">    this.targetElement = null;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return true;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>onTouchEnd</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * On touch end, determine whether to send a click event at once.</div><div class="line">  *</div><div class="line">  * @param &#123;Event&#125; event</div><div class="line">  * @returns &#123;boolean&#125;</div><div class="line">  */</div><div class="line">// touchend handler</div><div class="line">FastClick.prototype.onTouchEnd = function(event) &#123;</div><div class="line">  var forElement, trackingClickStart, targetTagName, scrollParent, touch, targetElement = this.targetElement;</div><div class="line"></div><div class="line">  if (!this.trackingClick) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // Prevent phantom clicks on fast double-tap (issue #36)</div><div class="line">  // 阻止快速双击</div><div class="line">  if ((event.timeStamp - this.lastClickTime) &lt; this.tapDelay) &#123;</div><div class="line">    this.cancelNextClick = true;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line">  // 超时取消click，走原生流程，不阻止click</div><div class="line">  if ((event.timeStamp - this.trackingClickStart) &gt; this.tapTimeout) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // Reset to prevent wrong click cancel on input (issue #156).</div><div class="line">  this.cancelNextClick = false;</div><div class="line"></div><div class="line">  this.lastClickTime = event.timeStamp; // 标记离开时间</div><div class="line"></div><div class="line">  trackingClickStart = this.trackingClickStart;</div><div class="line">  this.trackingClick = false;</div><div class="line">  this.trackingClickStart = 0;</div><div class="line"></div><div class="line">  // On some iOS devices, the targetElement supplied with the event is invalid if the layer</div><div class="line">  // is performing a transition or scroll, and has to be re-detected manually. Note that</div><div class="line">  // for this to function correctly, it must be called *after* the event target is checked!</div><div class="line">  // See issue #57; also filed as rdar://13048589 .</div><div class="line">  if (deviceIsIOSWithBadTarget) &#123;</div><div class="line">    touch = event.changedTouches[0];</div><div class="line"></div><div class="line">    // In certain cases arguments of elementFromPoint can be negative, so prevent setting targetElement to null</div><div class="line">    targetElement = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset) || targetElement;</div><div class="line">    targetElement.fastClickScrollParent = this.targetElement.fastClickScrollParent;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  targetTagName = targetElement.tagName.toLowerCase();</div><div class="line">  if (targetTagName === &apos;label&apos;) &#123;</div><div class="line">    forElement = this.findControl(targetElement);</div><div class="line">    if (forElement) &#123;</div><div class="line">      this.focus(targetElement);</div><div class="line">      if (deviceIsAndroid) &#123;</div><div class="line">        return false;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      targetElement = forElement;</div><div class="line">    &#125;</div><div class="line">  &#125; else if (this.needsFocus(targetElement)) &#123;</div><div class="line"></div><div class="line">    // Case 1: If the touch started a while ago (best guess is 100ms based on tests for issue #36) then focus will be triggered anyway. Return early and unset the target element reference so that the subsequent click will be allowed through.</div><div class="line">    // Case 2: Without this exception for input elements tapped when the document is contained in an iframe, then any inputted text won&apos;t be visible even though the value attribute is updated as the user types (issue #37).</div><div class="line">    if ((event.timeStamp - trackingClickStart) &gt; 100 || (deviceIsIOS &amp;&amp; window.top !== window &amp;&amp; targetTagName === &apos;input&apos;)) &#123;</div><div class="line">      this.targetElement = null;</div><div class="line">      return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    this.focus(targetElement);</div><div class="line">    this.sendClick(targetElement, event);</div><div class="line"></div><div class="line">    // Select elements need the event to go through on iOS 4, otherwise the selector menu won&apos;t open.</div><div class="line">    // Also this breaks opening selects when VoiceOver is active on iOS6, iOS7 (and possibly others)</div><div class="line">    if (!deviceIsIOS || targetTagName !== &apos;select&apos;) &#123;</div><div class="line">      this.targetElement = null;</div><div class="line">      event.preventDefault();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  if (deviceIsIOS &amp;&amp; !deviceIsIOS4) &#123;</div><div class="line"></div><div class="line">    // Don&apos;t send a synthetic click event if the target element is contained within a parent layer that was scrolled</div><div class="line">    // and this tap is being used to stop the scrolling (usually initiated by a fling - issue #42).</div><div class="line">    scrollParent = targetElement.fastClickScrollParent;</div><div class="line">    if (scrollParent &amp;&amp; scrollParent.fastClickLastScrollTop !== scrollParent.scrollTop) &#123;</div><div class="line">      return true;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // Prevent the actual click from going though - unless the target node is marked as requiring</div><div class="line">  // real clicks or if it is in the allowlist in which case only non-programmatic clicks are permitted.</div><div class="line">  if (!this.needsClick(targetElement)) &#123;</div><div class="line">    event.preventDefault(); // 阻止click</div><div class="line">    this.sendClick(targetElement, event); // 发生模拟click事件</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return false;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>sendClick</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * Send a click event to the specified element.</div><div class="line">  *</div><div class="line">  * @param &#123;EventTarget|Element&#125; targetElement</div><div class="line">  * @param &#123;Event&#125; event</div><div class="line">  */</div><div class="line">// 发出模拟的click事件</div><div class="line">FastClick.prototype.sendClick = function(targetElement, event) &#123;</div><div class="line">  var clickEvent, touch;</div><div class="line"></div><div class="line">  // On some Android devices activeElement needs to be blurred otherwise the synthetic click will have no effect (#24)</div><div class="line">  if (document.activeElement &amp;&amp; document.activeElement !== targetElement) &#123;</div><div class="line">    document.activeElement.blur();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  touch = event.changedTouches[0];</div><div class="line"></div><div class="line">  // Synthesise a click event, with an extra attribute so it can be tracked</div><div class="line">  clickEvent = document.createEvent(&apos;MouseEvents&apos;);</div><div class="line">  clickEvent.initMouseEvent(this.determineEventType(targetElement), true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);</div><div class="line">  clickEvent.forwardedTouchEvent = true;</div><div class="line">  targetElement.dispatchEvent(clickEvent);</div><div class="line">&#125;;</div><div class="line">// 事件类型</div><div class="line">FastClick.prototype.determineEventType = function(targetElement) &#123;</div><div class="line"></div><div class="line">  //Issue #159: Android Chrome Select Box does not open with a synthetic click event</div><div class="line">  if (deviceIsAndroid &amp;&amp; targetElement.tagName.toLowerCase() === &apos;select&apos;) &#123;</div><div class="line">    return &apos;mousedown&apos;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return &apos;click&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>onClick</strong></p>
+<p>在layer的click捕获阶段监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">  * Determine mouse events which should be permitted.</div><div class="line">  *</div><div class="line">  * @param &#123;Event&#125; event</div><div class="line">  * @returns &#123;boolean&#125;</div><div class="line">  */</div><div class="line">// 判断这次鼠标是否有效</div><div class="line">FastClick.prototype.onMouse = function(event) &#123;</div><div class="line"></div><div class="line">  // If a target element was never set (because a touch event was never fired) allow the event</div><div class="line">  if (!this.targetElement) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line">  // 标记fastclick模拟产生的event</div><div class="line">  if (event.forwardedTouchEvent) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // Programmatically generated events targeting a specific element should be permitted</div><div class="line">  if (!event.cancelable) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // Derive and check the target element to see whether the mouse event needs to be permitted;</div><div class="line">  // unless explicitly enabled, prevent non-touch click events from triggering actions,</div><div class="line">  // to prevent ghost/doubleclicks.</div><div class="line">  // 是否需要原生的click</div><div class="line">  if (!this.needsClick(this.targetElement) || this.cancelNextClick) &#123;</div><div class="line"></div><div class="line">    // Prevent any user-added listeners declared on FastClick element from being fired.</div><div class="line">    if (event.stopImmediatePropagation) &#123;</div><div class="line">      event.stopImmediatePropagation(); // 阻止当前事件的冒泡行为并且阻止当前事件所在元素上的所有相同类型事件的事件处理函数的继续执行.</div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">      // Part of the hack for browsers that don&apos;t support Event#stopImmediatePropagation (e.g. Android 2)</div><div class="line">      event.propagationStopped = true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Cancel the event</div><div class="line">    // 阻止事件捕获和冒泡</div><div class="line">    event.stopPropagation();</div><div class="line">    event.preventDefault();</div><div class="line"></div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // If the mouse event is permitted, return true for the action to go through.</div><div class="line">  return true;</div><div class="line">&#125;;</div><div class="line">/**</div><div class="line">  * On actual clicks, determine whether this is a touch-generated click, a click action occurring</div><div class="line">  * naturally after a delay after a touch (which needs to be cancelled to avoid duplication), or</div><div class="line">  * an actual click which should be permitted.</div><div class="line">  *</div><div class="line">  * @param &#123;Event&#125; event</div><div class="line">  * @returns &#123;boolean&#125;</div><div class="line">  */</div><div class="line">// click handler 捕获阶段监听</div><div class="line">FastClick.prototype.onClick = function(event) &#123;</div><div class="line">  var permitted;</div><div class="line"></div><div class="line">  // It&apos;s possible for another FastClick-like library delivered with third-party code to fire a click event before FastClick does (issue #44). In that case, set the click-tracking flag back to false and return early. This will cause onTouchEnd to return early.</div><div class="line">  // 1 越界会置为false</div><div class="line">  // 2 成功模拟了一次完成tap并阻止click也会置为false</div><div class="line">  // 3 避免三方库影响</div><div class="line">  if (this.trackingClick) &#123;</div><div class="line">    this.targetElement = null;</div><div class="line">    this.trackingClick = false;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // Very odd behaviour on iOS (issue #18): if a submit element is present inside a form and the user hits enter in the iOS simulator or clicks the Go button on the pop-up OS keyboard the a kind of &apos;fake&apos; click event will be triggered with the submit-type input element as the target.</div><div class="line">  if (event.target.type === &apos;submit&apos; &amp;&amp; event.detail === 0) &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  permitted = this.onMouse(event);</div><div class="line"></div><div class="line">  // Only unset targetElement if the click is not permitted. This will ensure that the check for !targetElement in onMouse fails and the browser&apos;s click doesn&apos;t go through.</div><div class="line">  if (!permitted) &#123;</div><div class="line">    this.targetElement = null;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // If clicks are permitted, return true for the action to go through.</div><div class="line">  return permitted;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上就是fastclick的源码解析</p>
+<h4 id="preventDefault-stopPropagation-stopImmediatePropagation"><a href="#preventDefault-stopPropagation-stopImmediatePropagation" class="headerlink" title="preventDefault/stopPropagation/stopImmediatePropagation"></a>preventDefault/stopPropagation/stopImmediatePropagation</h4><p>这里面涉及到这么几个阻止冒泡的方法，有什么区别呢。</p>
+<p>MDN Summaries:</p>
+<ul>
+<li>Event.preventDefault()</li>
+</ul>
+<p>Cancels the event if it is cancelable, without stopping further propagation of the event.</p>
+<p>如果当前event.cancelable属性为true，则取消的当前事件的默认动作，但不阻止当前事件的进一步传播</p>
+<blockquote>
+<p>The preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.</p>
+</blockquote>
+<ul>
+<li>Event.stopPropagation()</li>
+</ul>
+<p>阻止当前冒泡或捕获阶段的进一步传播</p>
+<blockquote>
+<p>The stopPropagation() method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.</p>
+</blockquote>
+<ul>
+<li>Event.stopImmediatePropagation()</li>
+</ul>
+<p>阻止调用相同事件的其他监听器</p>
+<blockquote>
+<p>The stopImmediatePropagation() method of the Event interface prevents other listeners of the same event from being called.</p>
+<p>If several listeners are attached to the same element for the same event type, they are called in the order in which they were added. If stopImmediatePropagation() is invoked during one such call, no remaining listeners will be called.</p>
+</blockquote>
+<p><a href="https://codeplanet.io/preventdefault-vs-stoppropagation-vs-stopimmediatepropagation/" target="_blank" rel="external">参考</a></p>
+<h4 id="createEvent"><a href="#createEvent" class="headerlink" title="createEvent"></a>createEvent</h4><p>MDN Summary：</p>
+<blockquote>
+<p>Creates an event of the type specified. The returned object should be first initialized and can then be passed to EventTarget.dispatchEvent.</p>
+</blockquote>
+<p>创建一种类型的事件，返回一个对象，同时这个对象可以被传入dispatchEvent中进行分发。</p>
+<blockquote>
+<p>type is a string that represents the type of event to be created. Possible event types include “UIEvents”, “MouseEvents”, “MutationEvents”, and “HTMLEvents”. See Notes section for details.</p>
+</blockquote>
+<p>一共有四种模拟事件类型</p>
+<ul>
+<li>UIEvents</li>
+<li>MouseEvents</li>
+<li>MutationEvents</li>
+<li>HTMLEvents</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// Create the event. 创建事件</div><div class="line">var event = document.createEvent(&apos;Event&apos;);</div><div class="line"></div><div class="line">// Define that the event name is &apos;build&apos;. 事件名称build</div><div class="line">event.initEvent(&apos;build&apos;, true, true);</div><div class="line"></div><div class="line">// Listen for the event. 监听事件</div><div class="line">elem.addEventListener(&apos;build&apos;, function (e) &#123;</div><div class="line">  // e.target matches elem</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">// Target can be any Element or other EventTarget. 分发事件</div><div class="line">elem.dispatchEvent(event);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+            <a href="/tags/fastclick/" rel="tag">#fastclick</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/kao-快速搭建koa项目/" rel="next" title="快速搭建koa项目">
+                <i class="fa fa-chevron-left"></i> 快速搭建koa项目
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/daocheng"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">105</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">117</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jasonli1990/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重读-fastclick-源码"><span class="nav-number">1.</span> <span class="nav-text">重读 fastclick 源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#起因"><span class="nav-number">1.0.1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端Event事件顺序"><span class="nav-number">1.0.2.</span> <span class="nav-text">移动端Event事件顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastclick解析"><span class="nav-number">1.0.3.</span> <span class="nav-text">fastclick解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.0.4.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#preventDefault-stopPropagation-stopImmediatePropagation"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">preventDefault/stopPropagation/stopImmediatePropagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#createEvent"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">createEvent</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

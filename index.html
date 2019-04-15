@@ -255,6 +255,131 @@
             
               
                 
+                <a class="post-title-link" href="/2019/04/15/重读fastclick源码/" itemprop="url">
+                  重读fastclick源码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-04-15T16:36:24+08:00" content="2019-04-15">
+              2019-04-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="重读-fastclick-源码"><a href="#重读-fastclick-源码" class="headerlink" title="重读 fastclick 源码"></a>重读 fastclick 源码</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<p>最近遇到一点fastclick的报错，追踪下去，发现对于fastclick的源码其实并没有很好地理解清楚，找了些资料，决定重新读一遍。</p>
+<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>移动端click事件有300ms延迟</p>
+<p>300ms延迟的原因： 移动端有一个双击缩放功能，浏览器需要判断用户点击是否为双击缩放</p>
+<p>导致的结果：</p>
+<ul>
+<li>用户体验差，很不流畅，尤其是在密集操作场景下，比如计算器等操作时，感觉反应很慢</li>
+<li>会有点击穿透问题</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/04/15/重读fastclick源码/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/03/21/kao-快速搭建koa项目/" itemprop="url">
                   快速搭建koa项目
                 </a>
@@ -1331,127 +1456,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/04/27/小程序-分享事件/" itemprop="url">
-                  小程序-分享事件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-04-27T11:40:48+08:00" content="2018-04-27">
-              2018-04-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
-                    <span itemprop="name">FrontEnd</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="小程序-分享事件"><a href="#小程序-分享事件" class="headerlink" title="小程序-分享事件"></a>小程序-分享事件</h2><h3 id="小程序API"><a href="#小程序API" class="headerlink" title="小程序API"></a>小程序API</h3><p><a href="https://developers.weixin.qq.com/miniprogram/dev/api/share.html" target="_blank" rel="external">https://developers.weixin.qq.com/miniprogram/dev/api/share.html</a></p>
-<h3 id="onShareAppMessage-options"><a href="#onShareAppMessage-options" class="headerlink" title="onShareAppMessage(options)"></a>onShareAppMessage(options)</h3><p>在 Page 中定义 onShareAppMessage 函数，设置该页面的转发信息。</p>
-<ul>
-<li>只有定义了此事件处理函数，右上角菜单才会显示 “转发” 按钮</li>
-<li>用户点击转发按钮的时候会调用</li>
-<li>此事件需要 return 一个 Object，用于自定义转发内容</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/04/27/小程序-分享事件/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1497,7 +1501,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">105</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1514,7 +1518,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-count">117</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
