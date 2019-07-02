@@ -1,0 +1,757 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,Webpack,HMR," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="webpack HMR 原理解析 Talk is cheap, show me the code  Hot Module Replacement (HMR)是当今webpack提供的特别有用的功能之一，它允许在运行时更新所有类型的模块，而无需完全刷新。 启动Wepack">
+<meta name="keywords" content="FrontEnd,Webpack,HMR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMR原理解析">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/HMR原理解析/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="webpack HMR 原理解析 Talk is cheap, show me the code  Hot Module Replacement (HMR)是当今webpack提供的特别有用的功能之一，它允许在运行时更新所有类型的模块，而无需完全刷新。 启动Wepack">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/webpack/2/hmr-prototype.jpg?v=1">
+<meta property="og:updated_time" content="2019-06-04T08:30:43.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HMR原理解析">
+<meta name="twitter:description" content="webpack HMR 原理解析 Talk is cheap, show me the code  Hot Module Replacement (HMR)是当今webpack提供的特别有用的功能之一，它允许在运行时更新所有类型的模块，而无需完全刷新。 启动Wepack">
+<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/webpack/2/hmr-prototype.jpg?v=1">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/04/HMR原理解析/"/>
+
+
+  <title> HMR原理解析 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HMR原理解析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-06-04T16:27:45+08:00" content="2019-06-04">
+              2019-06-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="webpack-HMR-原理解析"><a href="#webpack-HMR-原理解析" class="headerlink" title="webpack HMR 原理解析"></a>webpack HMR 原理解析</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<p>Hot Module Replacement (HMR)是当今webpack提供的特别有用的功能之一，它允许在运行时更新所有类型的模块，而无需完全刷新。</p>
+<p><a href="https://webpack.docschina.org/guides/hot-module-replacement/#%E5%90%AF%E7%94%A8-hmr" target="_blank" rel="external">启动Wepack</a></p>
+<a id="more"></a>
+<h3 id="HMR原理解析"><a href="#HMR原理解析" class="headerlink" title="HMR原理解析"></a>HMR原理解析</h3><p>上图先：</p>
+<p><img src="/img/FrontEnd/webpack/2/hmr-prototype.jpg?v=1" alt=""></p>
+<ul>
+<li>上图底部红色框内是服务端，而上面的橙色框是浏览器端。</li>
+<li>绿色的方框是 webpack 代码控制的区域。蓝色方框是 webpack-dev-server 代码控制的区域，洋红色的方框是文件系统，文件修改后的变化就发生在这，而青色的方框是应用本身。</li>
+</ul>
+<p>具体步骤如下：</p>
+<ul>
+<li>第一步，在 webpack 的 watch 模式下，文件系统中某一个文件发生修改，webpack 监听到文件变化，根据配置文件对模块重新编译打包，并将打包后的代码通过简单的 JavaScript 对象保存在内存中。</li>
+</ul>
+<ul>
+<li>第二步是 webpack-dev-server 和 webpack 之间的接口交互，而在这一步，主要是 dev-server 的中间件 webpack-dev-middleware 和 webpack 之间的交互，webpack-dev-middleware 调用 webpack 暴露的 API对代码变化进行监控，并且告诉 webpack，将代码打包到内存中。</li>
+</ul>
+<ul>
+<li>第三步是 webpack-dev-server 对文件变化的一个监控，这一步不同于第一步，并不是监控代码变化重新打包。当我们在配置文件中配置了devServer.watchContentBase 为 true 的时候，Server 会监听这些配置文件夹中静态文件的变化，变化后会通知浏览器端对应用进行 live reload。注意，<strong>这儿是浏览器刷新，和 HMR 是两个概念</strong>。</li>
+</ul>
+<ul>
+<li>第四步也是 webpack-dev-server 代码的工作，该步骤主要是通过 sockjs（webpack-dev-server 的依赖）在浏览器端和服务端之间建立一个 websocket 长连接，将 webpack 编译打包的各个阶段的状态信息告知浏览器端，同时也包括第三步中 Server 监听静态文件变化的信息。浏览器端根据这些 socket 消息进行不同的操作。当然服务端传递的最主要信息还是新模块的 hash 值，后面的步骤根据这一 hash 值来进行模块热替换。</li>
+</ul>
+<ul>
+<li>webpack-dev-server/client 端并不能够请求更新的代码，也不会执行热更模块操作，而把这些工作又交回给了 webpack，webpack/hot/dev-server 的工作就是根据 webpack-dev-server/client 传给它的信息以及 dev-server 的配置决定是<strong>刷新浏览器呢还是进行模块热更新</strong>。当然如果仅仅是刷新浏览器，也就没有后面那些步骤了。</li>
+</ul>
+<ul>
+<li>HotModuleReplacement.runtime 是客户端 HMR 的中枢，它接收到上一步传递给他的新模块的 hash 值，它通过 JsonpMainTemplate.runtime 向 server 端发送 Ajax 请求，服务端返回一个 json，该 json 包含了所有要更新的模块的 hash 值，获取到更新列表后，该模块再次通过 jsonp 请求，获取到最新的模块代码。这就是上图中 7、8、9 步骤。</li>
+</ul>
+<ul>
+<li>而第 10 步是决定 HMR 成功与否的关键步骤，在该步骤中，HotModulePlugin 将会对新旧模块进行对比，决定是否更新模块，在决定更新模块后，检查模块之间的依赖关系，更新模块的同时更新模块间的依赖引用。</li>
+</ul>
+<ul>
+<li>最后一步，当 HMR 失败后，回退到 live reload 操作，也就是进行浏览器刷新来获取最新打包代码。</li>
+</ul>
+<h3 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a>源码解析</h3><p>首先开启HMR，在webpack.config.js中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">  hot: true</div><div class="line">&#125;</div><div class="line">...</div><div class="line"></div><div class="line">plugins: [</div><div class="line">  new webpack.HotModuleReplacementPlugin(), // 热更新插件</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>然后修改代码，并保存。</p>
+<h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><p>webpack-dev-middleware中调用 webpack 的 api 对文件系统 watch, webpack 重新对文件进行编译打包，然后保存到内存中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// webpack-dev-middleware/index.js</div><div class="line">// start watching</div><div class="line">if (!options.lazy) &#123;</div><div class="line">  context.watching = compiler.watch(options.watchOptions, (err) =&gt; &#123;</div><div class="line">    if (err) &#123;</div><div class="line">      context.log.error(err.stack || err);</div><div class="line">      if (err.details) &#123;</div><div class="line">        context.log.error(err.details);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125; else &#123;</div><div class="line">  context.state = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>不生成文件的原因就在于访问内存中的代码比访问文件系统中的文件更快，而且也减少了代码写入文件的开销</strong></p>
+<p>这一切都归功于memory-fs，memory-fs 是 webpack-dev-middleware 的一个依赖库，webpack-dev-middleware 将 webpack 原本的 outputFileSystem 替换成了MemoryFileSystem 实例，这样代码就将输出到内存中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">// webpack-dev-middleware/lib/fs.js</div><div class="line">const isMemoryFs =</div><div class="line">      !isConfiguredFs &amp;&amp;</div><div class="line">      !compiler.compilers &amp;&amp;</div><div class="line">      compiler.outputFileSystem instanceof MemoryFileSystem;</div><div class="line"></div><div class="line">if (isConfiguredFs) &#123;</div><div class="line">  // eslint-disable-next-line no-shadow</div><div class="line">  const &#123; fs &#125; = context.options;</div><div class="line"></div><div class="line">  if (typeof fs.join !== &apos;function&apos;) &#123;</div><div class="line">    // very shallow check</div><div class="line">    throw new Error(</div><div class="line">      &apos;Invalid options: options.fs.join() method is expected&apos;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // eslint-disable-next-line no-param-reassign</div><div class="line">  compiler.outputFileSystem = fs;</div><div class="line">  fileSystem = fs;</div><div class="line">&#125; else if (isMemoryFs) &#123;</div><div class="line">  fileSystem = compiler.outputFileSystem;</div><div class="line">&#125; else &#123;</div><div class="line">  fileSystem = new MemoryFileSystem();</div><div class="line"></div><div class="line">  // eslint-disable-next-line no-param-reassign</div><div class="line">  compiler.outputFileSystem = fileSystem;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// eslint-disable-next-line no-param-reassign</div><div class="line">context.fs = fileSystem;</div></pre></td></tr></table></figure>
+<p>这样 bundle.js 文件代码就作为一个简单 javascript 对象保存在了内存中，当浏览器请求 bundle.js 文件时，devServer就直接去内存中找到上面保存的 javascript 对象返回给浏览器端</p>
+<h4 id="devServer通知浏览器文件发生改变"><a href="#devServer通知浏览器文件发生改变" class="headerlink" title="devServer通知浏览器文件发生改变"></a>devServer通知浏览器文件发生改变</h4><p>sockjs 是服务端和浏览器端之间的桥梁，在启动 devServer 的时候，sockjs 在服务端和浏览器端建立了一个 webSocket 长连接，以便将 webpack 编译和打包的各个阶段状态告知浏览器</p>
+<p>关键点在webpack-dev-server 调用 webpack api 监听 compile的 done 事件，当compile 完成后，webpack-dev-server通过 _sendStatus 方法将编译打包后的新模块 hash 值发送到浏览器端。</p>
+<p>Server中给done事件添加钩子函数，在compile完成后调用_sendStatus。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// webpack-dev-server/lib/Server.js</div><div class="line">setupHooks() &#123;</div><div class="line">  // Listening for events</div><div class="line">  const invalidPlugin = () =&gt; &#123;</div><div class="line">    this.sockWrite(this.sockets, &apos;invalid&apos;);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  const addHooks = (compiler) =&gt; &#123;</div><div class="line">    const &#123; compile, invalid, done &#125; = compiler.hooks;</div><div class="line"></div><div class="line">    compile.tap(&apos;webpack-dev-server&apos;, invalidPlugin);</div><div class="line">    invalid.tap(&apos;webpack-dev-server&apos;, invalidPlugin);</div><div class="line">    done.tap(&apos;webpack-dev-server&apos;, (stats) =&gt; &#123;</div><div class="line">      this._sendStats(this.sockets, this.getStats(stats));</div><div class="line">      this._stats = stats;</div><div class="line">    &#125;);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  if (this.compiler.compilers) &#123;</div><div class="line">    this.compiler.compilers.forEach(addHooks);</div><div class="line">  &#125; else &#123;</div><div class="line">    addHooks(this.compiler);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="webpack-dev-server-client-接收到服务端消息做出响应"><a href="#webpack-dev-server-client-接收到服务端消息做出响应" class="headerlink" title="webpack-dev-server/client 接收到服务端消息做出响应"></a>webpack-dev-server/client 接收到服务端消息做出响应</h4><p>我们本身没有在bundle.js和entry中加入ws相关代码，这里客户端是如何接受ws消息通信的呢？</p>
+<p>是因为webpack-dev-server 修改了webpack 配置中的 entry 属性，在里面添加了 webpack-dev-client 的代码，这样在最后的 bundle.js 文件中就会有接收 websocket 消息的代码了。</p>
+<p>webpack-dev-server/client 当接收到 type 为 hash 消息后会将 hash 值暂存起来，当接收到 type 为 ok 的消息后对应用执行 reload 操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line">// 接受socket消息</div><div class="line"></div><div class="line">var onSocketMsg = &#123;</div><div class="line">  hot: function hot() &#123;</div><div class="line">    _hot = true;</div><div class="line">    log.info(&apos;[WDS] Hot Module Replacement enabled.&apos;);</div><div class="line">  &#125;,</div><div class="line">  liveReload: function liveReload() &#123;</div><div class="line">    _liveReload = true;</div><div class="line">    log.info(&apos;[WDS] Live Reloading enabled.&apos;);</div><div class="line">  &#125;,</div><div class="line">  invalid: function invalid() &#123;</div><div class="line">    log.info(&apos;[WDS] App updated. Recompiling...&apos;); // fixes #1042. overlay doesn&apos;t clear if errors are fixed but warnings remain.</div><div class="line"></div><div class="line">    if (useWarningOverlay || useErrorOverlay) &#123;</div><div class="line">      overlay.clear();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    sendMsg(&apos;Invalid&apos;);</div><div class="line">  &#125;,</div><div class="line">  hash: function hash(_hash) &#123;</div><div class="line">    currentHash = _hash;</div><div class="line">  &#125;,</div><div class="line">  &apos;still-ok&apos;: function stillOk() &#123;</div><div class="line">    log.info(&apos;[WDS] Nothing changed.&apos;);</div><div class="line"></div><div class="line">    if (useWarningOverlay || useErrorOverlay) &#123;</div><div class="line">      overlay.clear();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    sendMsg(&apos;StillOk&apos;);</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">  ok: function ok() &#123;</div><div class="line">    sendMsg(&apos;Ok&apos;);</div><div class="line"></div><div class="line">    if (useWarningOverlay || useErrorOverlay) &#123;</div><div class="line">      overlay.clear();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (initial) &#123;</div><div class="line">      return initial = false;</div><div class="line">    &#125; // eslint-disable-line no-return-assign</div><div class="line"></div><div class="line"></div><div class="line">    reloadApp();</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">// reloadApp</div><div class="line">function reloadApp() &#123;</div><div class="line">  if (isUnloading || !hotReload) &#123;</div><div class="line">    return;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  if (_hot) &#123;</div><div class="line">    log.info(&apos;[WDS] App hot update...&apos;); // eslint-disable-next-line global-require</div><div class="line"></div><div class="line">    var hotEmitter = require(&apos;webpack/hot/emitter&apos;);</div><div class="line"></div><div class="line">    hotEmitter.emit(&apos;webpackHotUpdate&apos;, currentHash);</div><div class="line"></div><div class="line">    if (typeof self !== &apos;undefined&apos; &amp;&amp; self.window) &#123;</div><div class="line">      // broadcast update to window</div><div class="line">      self.postMessage(&quot;webpackHotUpdate&quot;.concat(currentHash), &apos;*&apos;);</div><div class="line">    &#125;</div><div class="line">  &#125; // allow refreshing the page only if liveReload isn&apos;t disabled</div><div class="line">  else if (_liveReload) &#123;</div><div class="line">      var rootWindow = self; // use parent window for reload (in case we&apos;re in an iframe with no valid src)</div><div class="line"></div><div class="line">      var intervalId = self.setInterval(function () &#123;</div><div class="line">        if (rootWindow.location.protocol !== &apos;about:&apos;) &#123;</div><div class="line">          // reload immediately if protocol is valid</div><div class="line">          applyReload(rootWindow, intervalId);</div><div class="line">        &#125; else &#123;</div><div class="line">          rootWindow = rootWindow.parent;</div><div class="line"></div><div class="line">          if (rootWindow.parent === rootWindow) &#123;</div><div class="line">            // if parent equals current window we&apos;ve reached the root which would continue forever, so trigger a reload anyways</div><div class="line">            applyReload(rootWindow, intervalId);</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  function applyReload(rootWindow, intervalId) &#123;</div><div class="line">    clearInterval(intervalId);</div><div class="line">    log.info(&apos;[WDS] App updated. Reloading...&apos;);</div><div class="line">    rootWindow.location.reload();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 reload 操作中，webpack-dev-server/client 会根据 hot 配置决定是刷新浏览器还是对代码进行热更新（HMR）。</p>
+<p>如果配置了热更新模块，就走热更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var hotEmitter = require(&apos;webpack/hot/emitter&apos;);</div><div class="line"></div><div class="line">hotEmitter.emit(&apos;webpackHotUpdate&apos;, currentHash);</div></pre></td></tr></table></figure>
+<h4 id="webpack-接收到最新-hash-值验证并请求模块代码"><a href="#webpack-接收到最新-hash-值验证并请求模块代码" class="headerlink" title="webpack 接收到最新 hash 值验证并请求模块代码"></a>webpack 接收到最新 hash 值验证并请求模块代码</h4><p> webpack/hot/dev-server（以下简称 dev-server） 监听第三步 webpack-dev-server/client 发送的 webpackHotUpdate 消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">	MIT License http://www.opensource.org/licenses/mit-license.php</div><div class="line">	Author Tobias Koppers @sokra</div><div class="line">*/</div><div class="line">/*globals window __webpack_hash__ */</div><div class="line">if (module.hot) &#123;</div><div class="line">	var lastHash;</div><div class="line">	var upToDate = function upToDate() &#123;</div><div class="line">		return lastHash.indexOf(__webpack_hash__) &gt;= 0;</div><div class="line">	&#125;;</div><div class="line">	var log = require(&quot;./log&quot;);</div><div class="line">	var check = function check() &#123;</div><div class="line">		module.hot</div><div class="line">			.check(true) // check</div><div class="line">			.then(function(updatedModules) &#123;</div><div class="line">				if (!updatedModules) &#123;</div><div class="line">					log(&quot;warning&quot;, &quot;[HMR] Cannot find update. Need to do a full reload!&quot;);</div><div class="line">					log(</div><div class="line">						&quot;warning&quot;,</div><div class="line">						&quot;[HMR] (Probably because of restarting the webpack-dev-server)&quot;</div><div class="line">					);</div><div class="line">					window.location.reload();</div><div class="line">					return;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				if (!upToDate()) &#123;</div><div class="line">					check();</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				require(&quot;./log-apply-result&quot;)(updatedModules, updatedModules);</div><div class="line"></div><div class="line">				if (upToDate()) &#123;</div><div class="line">					log(&quot;info&quot;, &quot;[HMR] App is up to date.&quot;);</div><div class="line">				&#125;</div><div class="line">			&#125;)</div><div class="line">			.catch(function(err) &#123;</div><div class="line">				var status = module.hot.status();</div><div class="line">				if ([&quot;abort&quot;, &quot;fail&quot;].indexOf(status) &gt;= 0) &#123;</div><div class="line">					log(</div><div class="line">						&quot;warning&quot;,</div><div class="line">						&quot;[HMR] Cannot apply update. Need to do a full reload!&quot;</div><div class="line">					);</div><div class="line">					log(&quot;warning&quot;, &quot;[HMR] &quot; + (err.stack || err.message));</div><div class="line">					window.location.reload();</div><div class="line">				&#125; else &#123;</div><div class="line">					log(&quot;warning&quot;, &quot;[HMR] Update failed: &quot; + (err.stack || err.message));</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">	&#125;;</div><div class="line">	var hotEmitter = require(&quot;./emitter&quot;);</div><div class="line">  // 监听webpackHotUpdate消息</div><div class="line">	hotEmitter.on(&quot;webpackHotUpdate&quot;, function(currentHash) &#123;</div><div class="line">		lastHash = currentHash;</div><div class="line">		if (!upToDate() &amp;&amp; module.hot.status() === &quot;idle&quot;) &#123;</div><div class="line">			log(&quot;info&quot;, &quot;[HMR] Checking for updates on the server...&quot;);</div><div class="line">			check();</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">	log(&quot;info&quot;, &quot;[HMR] Waiting for update signal from WDS...&quot;);</div><div class="line">&#125; else &#123;</div><div class="line">	throw new Error(&quot;[HMR] Hot Module Replacement is disabled.&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>调用 webpack/lib/HotModuleReplacement.runtime（简称 HMR runtime）中的 check 方法，检测是否有新的更新，在 check 过程中会利用 webpack/lib/JsonpMainTemplate.runtime（简称 jsonp runtime）中的两个方法 hotDownloadUpdateChunk 和 hotDownloadManifest</p>
+<p>第一个方法hotDownloadUpdateChunk是通过 jsonp 请求最新的模块代码，然后将代码返回给 HMR runtime，HMR runtime 会根据返回的新模块代码做进一步处理，可能是刷新页面，也可能是对模块进行热更新。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// webpack/lib/web/JsonpMaintemplate.runtime</div><div class="line"></div><div class="line">// eslint-disable-next-line no-unused-vars</div><div class="line">function hotDownloadUpdateChunk(chunkId) &#123;</div><div class="line">  var script = document.createElement(&quot;script&quot;);</div><div class="line">  script.charset = &quot;utf-8&quot;;</div><div class="line">  script.src = $require$.p + $hotChunkFilename$;</div><div class="line">  if ($crossOriginLoading$) script.crossOrigin = $crossOriginLoading$;</div><div class="line">  document.head.appendChild(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看出，这个函数的逻辑是向 HTML 文档插入 hot-update.js script 脚本。</p>
+<p>第二个方法hotDownloadManifest是调用 AJAX 向服务端请求是否有更新的文件，如果有将发更新的文件列表返回浏览器端</p>
+<p>为什么更新模块的代码不直接在第三步通过 websocket 发送到浏览器端，而是通过 jsonp 来获取呢？</p>
+<p>可能是为了功能块的解耦，各个模块各司其职，dev-server/client 只负责消息的传递而不负责新模块的获取，而这些工作应该有 HMR runtime 来完成，HMR runtime 才应该是获取新代码的地方。再就是因为不使用 webpack-dev-server 的前提，使用 webpack-hot-middleware 和 webpack 配合也可以完成模块热更新流程，在使用 webpack-hot-middleware 中有件有意思的事，它没有使用 websocket，而是使用的 EventSource。综上所述，HMR 的工作流中，不应该把新模块代码放在 websocket 消息中。</p>
+<h4 id="HMR-runtime"><a href="#HMR-runtime" class="headerlink" title="HMR.runtime"></a>HMR.runtime</h4><p>模块热更新的整个过程都是发生在hotApply方法中。</p>
+<p>从上面 hotApply 方法可以看出，模块热替换主要分三个阶段:</p>
+<ul>
+<li>第一个阶段是找出 outdatedModules 和 outdatedDependencies。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">var idx;</div><div class="line">var queue = outdatedModules.slice();</div><div class="line">while (queue.length &gt; 0) &#123;</div><div class="line">  moduleId = queue.pop();</div><div class="line">  module = installedModules[moduleId];</div><div class="line">  if (!module) continue;</div><div class="line"></div><div class="line">  var data = &#123;&#125;;</div><div class="line"></div><div class="line">  // Call dispose handlers</div><div class="line">  var disposeHandlers = module.hot._disposeHandlers;</div><div class="line">  for (j = 0; j &lt; disposeHandlers.length; j++) &#123;</div><div class="line">    cb = disposeHandlers[j];</div><div class="line">    cb(data);</div><div class="line">  &#125;</div><div class="line">  hotCurrentModuleData[moduleId] = data;</div><div class="line"></div><div class="line">  // disable module (this disables requires from this module)</div><div class="line">  module.hot.active = false;</div><div class="line"></div><div class="line">  // remove module from cache</div><div class="line">  delete installedModules[moduleId];</div><div class="line"></div><div class="line">  // when disposing there is no need to call dispose handler</div><div class="line">  delete outdatedDependencies[moduleId];</div><div class="line"></div><div class="line">  // remove &quot;parents&quot; references from all children</div><div class="line">  for (j = 0; j &lt; module.children.length; j++) &#123;</div><div class="line">    var child = installedModules[module.children[j]];</div><div class="line">    if (!child) continue;</div><div class="line">    idx = child.parents.indexOf(moduleId);</div><div class="line">    if (idx &gt;= 0) &#123;</div><div class="line">      child.parents.splice(idx, 1);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>第二个阶段从缓存中删除过期的模块和依赖</li>
+</ul>
+<p>// when disposing there is no need to call dispose handler<br>delete outdatedDependencies[moduleId];</p>
+<ul>
+<li>第三个阶段是将新的模块添加到 modules 中，当下次调用 __webpack<em>require\</em>_ (webpack 重写的 require 方法)方法的时候，就是获取到了新的模块代码了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// webpack/lib/HotModuleReplacement.runtime</div><div class="line"></div><div class="line"></div><div class="line">// insert new code</div><div class="line">for (moduleId in appliedUpdate) &#123;</div><div class="line">  if (Object.prototype.hasOwnProperty.call(appliedUpdate, moduleId)) &#123;</div><div class="line">    modules[moduleId] = appliedUpdate[moduleId];</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="与浏览器live-reload区别"><a href="#与浏览器live-reload区别" class="headerlink" title="与浏览器live reload区别"></a>与浏览器live reload区别</h3><p>这里需要注意三点就可以了。</p>
+<ul>
+<li>live reload是没有保存应用状态的，即刷新之后页面的状态也会丢失。而webapck HMR 则不会刷新浏览器，而是运行时对模块进行热替换，保证了应用状态不会丢失，提升了开发效率。</li>
+<li>自动化。 可以自动刷新，不需要保存再手动刷新的流程</li>
+<li>兼容大多数框架，如React、Vue等</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://zhuanlan.zhihu.com/p/30669007" target="_blank" rel="external">饿了么前端-Webpack HMR 原理解析</a> </p>
+<p><a href="https://zhuanlan.zhihu.com/p/30623057" target="_blank" rel="external">阿里前端-Webpack HMR 原理解析</a> </p>
+<p><a href="http://shepherdwind.com/2017/02/07/webpack-hmr-principle/" target="_blank" rel="external">HMR热更新原理</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/Webpack/" rel="tag">#Webpack</a>
+          
+            <a href="/tags/HMR/" rel="tag">#HMR</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/基于Vue的多页应用的Typescript版/" rel="next" title="基于Vue的多页应用的Typescript版">
+                <i class="fa fa-chevron-left"></i> 基于Vue的多页应用的Typescript版
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/04/Router-前端路由的简单实现/" rel="prev" title="Router-前端路由的简单实现">
+                Router-前端路由的简单实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar-caka.jpeg"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/598c1b2bf265da3e2f7f4926/posts" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack-HMR-原理解析"><span class="nav-number">1.</span> <span class="nav-text">webpack HMR 原理解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HMR原理解析"><span class="nav-number">1.0.1.</span> <span class="nav-text">HMR原理解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码解析"><span class="nav-number">1.0.2.</span> <span class="nav-text">源码解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#watch"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">watch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#devServer通知浏览器文件发生改变"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">devServer通知浏览器文件发生改变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack-dev-server-client-接收到服务端消息做出响应"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">webpack-dev-server/client 接收到服务端消息做出响应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack-接收到最新-hash-值验证并请求模块代码"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">webpack 接收到最新 hash 值验证并请求模块代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HMR-runtime"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">HMR.runtime</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与浏览器live-reload区别"><span class="nav-number">1.0.3.</span> <span class="nav-text">与浏览器live reload区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.0.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

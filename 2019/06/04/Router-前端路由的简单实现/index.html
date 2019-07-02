@@ -1,0 +1,701 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,Router," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="简单实现前端路由 Talk is cheap, show me the code  路由的概念来源于服务端，而在Web前端的SPA应用中，路由主要用于建立URL和UI的映射关系，即URL 变化引起 UI 更新，无需刷新页面。 前端路由前端路由主要解决两个问题：  URL改变不引起页面刷新 检测URL变化  常用方法有两种： hash mode和history mode">
+<meta name="keywords" content="FrontEnd,Router">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Router-前端路由的简单实现">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/Router-前端路由的简单实现/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="简单实现前端路由 Talk is cheap, show me the code  路由的概念来源于服务端，而在Web前端的SPA应用中，路由主要用于建立URL和UI的映射关系，即URL 变化引起 UI 更新，无需刷新页面。 前端路由前端路由主要解决两个问题：  URL改变不引起页面刷新 检测URL变化  常用方法有两种： hash mode和history mode">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-04T13:35:30.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Router-前端路由的简单实现">
+<meta name="twitter:description" content="简单实现前端路由 Talk is cheap, show me the code  路由的概念来源于服务端，而在Web前端的SPA应用中，路由主要用于建立URL和UI的映射关系，即URL 变化引起 UI 更新，无需刷新页面。 前端路由前端路由主要解决两个问题：  URL改变不引起页面刷新 检测URL变化  常用方法有两种： hash mode和history mode">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/04/Router-前端路由的简单实现/"/>
+
+
+  <title> Router-前端路由的简单实现 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Router-前端路由的简单实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-06-04T21:34:12+08:00" content="2019-06-04">
+              2019-06-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简单实现前端路由"><a href="#简单实现前端路由" class="headerlink" title="简单实现前端路由"></a>简单实现前端路由</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<p>路由的概念来源于服务端，而在Web前端的SPA应用中，路由主要用于建立URL和UI的映射关系，即URL 变化引起 UI 更新，无需刷新页面。</p>
+<h3 id="前端路由"><a href="#前端路由" class="headerlink" title="前端路由"></a>前端路由</h3><p>前端路由主要解决两个问题：</p>
+<ul>
+<li>URL改变不引起页面刷新</li>
+<li>检测URL变化</li>
+</ul>
+<p>常用方法有两种： hash mode和history mode</p>
+<a id="more"></a>
+<h4 id="hash-mode"><a href="#hash-mode" class="headerlink" title="hash mode"></a>hash mode</h4><p>hash的来源是锚点，在页面内进行内部导航和跳转用的，也就是#后面的部分</p>
+<p>通过hashchange可以监听URL的变化。</p>
+<p>改变URL的方式只有以下几种：</p>
+<ul>
+<li>浏览器前进后退</li>
+<li>通过a标签改变</li>
+<li>通过window.location改变</li>
+</ul>
+<p>这几种改变会触发hashchange</p>
+<h4 id="history-mode"><a href="#history-mode" class="headerlink" title="history mode"></a>history mode</h4><p>history提供pushState和replaceState方法，这两个方法改变path部分不引起页面刷新</p>
+<p>history也有类似hashchange事件就是popstate事件。</p>
+<p>不同的地方是，<strong>通过浏览器前进后退会触发popstate</strong></p>
+<p>通常通过pushState/replaceState和a标签改变URL是<strong>不会触发popstate</strong>的<br>但是可以通过拦截pushState/replaceState和a标签的调用来检测URL变化。</p>
+<h3 id="原生实践"><a href="#原生实践" class="headerlink" title="原生实践"></a>原生实践</h3><h4 id="基于hash"><a href="#基于hash" class="headerlink" title="基于hash"></a>基于hash</h4><p>html部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// html</div><div class="line">&lt;div class=&quot;app&quot;&gt;</div><div class="line">  &lt;ul&gt;</div><div class="line">    &lt;li&gt;&lt;a href=&quot;#/home&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;li&gt;&lt;a href=&quot;#/main&quot;&gt;Main&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;li&gt;&lt;a href=&quot;#/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;</div><div class="line">  &lt;/ul&gt;</div><div class="line">  &lt;div id=&quot;routerview&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>script部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  window.addEventListener(&apos;DOMContentLoaded&apos;, onLoad);</div><div class="line">  window.addEventListener(&apos;hashchange&apos;, onHashChange);</div><div class="line"></div><div class="line">  var routerview = null;</div><div class="line"></div><div class="line">  function onLoad() &#123;</div><div class="line">    routerview = window.document.getElementById(&apos;routerview&apos;);</div><div class="line">    onHashChange();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  function onHashChange() &#123;</div><div class="line">    console.log(location.hash);</div><div class="line">    switch (location.hash) &#123;</div><div class="line">      case &apos;#/home&apos;:</div><div class="line">        routerview.innerHTML = &apos;Home&apos;</div><div class="line">        break;</div><div class="line">      case &apos;#/main&apos;:</div><div class="line">        routerview.innerHTML = &apos;Main&apos;</div><div class="line">        break;</div><div class="line">      case &apos;#/about&apos;:</div><div class="line">        routerview.innerHTML = &apos;About&apos;</div><div class="line">        break;</div><div class="line">      default:</div><div class="line">        break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h4 id="基于history"><a href="#基于history" class="headerlink" title="基于history"></a>基于history</h4><p>html部分一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  window.addEventListener(&apos;DOMContentLoaded&apos;, onLoad);</div><div class="line">  window.addEventListener(&apos;popstate&apos;, onPopState);</div><div class="line"></div><div class="line">  var routerview = null;</div><div class="line">  onPopState();</div><div class="line">  function onLoad() &#123;</div><div class="line">    routerview = window.document.getElementById(&apos;routerview&apos;);</div><div class="line"></div><div class="line">    var linkList = document.querySelectorAll(&apos;a[href]&apos;);</div><div class="line">    console.log(linkList);</div><div class="line">    linkList.forEach((item) =&gt; item.addEventListener(&apos;click&apos;, (e) =&gt; &#123;</div><div class="line">      e.preventDefault();</div><div class="line">      console.log(item.getAttribute(&apos;href&apos;));</div><div class="line">      history.pushState(null, &apos;&apos;, item.getAttribute(&apos;href&apos;));</div><div class="line">      onPopState();</div><div class="line">    &#125;))</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  function onPopState() &#123;</div><div class="line">    console.log(location.pathname);</div><div class="line">    switch (location.pathname) &#123;</div><div class="line">      case &apos;/home&apos;:</div><div class="line">        routerview.innerHTML = &apos;Home&apos;</div><div class="line">        break;</div><div class="line">      case &apos;/main&apos;:</div><div class="line">        routerview.innerHTML = &apos;Main&apos;</div><div class="line">        break;</div><div class="line">      case &apos;/about&apos;:</div><div class="line">        routerview.innerHTML = &apos;About&apos;</div><div class="line">        break;</div><div class="line">      default:</div><div class="line">        break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h3><h4 id="基于hash-1"><a href="#基于hash-1" class="headerlink" title="基于hash"></a>基于hash</h4><p>router-link 组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;!-- router link --&gt;</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;a @click.prevent=&quot;onClick&quot; href=&apos;&apos;&gt;</div><div class="line">    &lt;slot&gt;&lt;/slot&gt;</div><div class="line">  &lt;/a&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  props: &#123;</div><div class="line">    to: String</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    onClick() &#123;</div><div class="line">      window.location.hash = &apos;#&apos; + this.to</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>router-view 组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;!-- router view --&gt;</div><div class="line">&lt;template&gt;</div><div class="line">  &lt;component :is=&quot;routeView&quot; /&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  data() &#123;</div><div class="line">    return &#123;</div><div class="line">      routeView: null</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  created() &#123;</div><div class="line">    this.boundHashChange = this.onHashChange.bind(this)</div><div class="line">  &#125;,</div><div class="line">  beforeMount() &#123;</div><div class="line">    window.addEventListener(&apos;hashchange&apos;, this.boundHashChange)</div><div class="line">  &#125;,</div><div class="line">  mounted() &#123;</div><div class="line">    this.onHashChange()</div><div class="line">  &#125;,</div><div class="line">  beforeDestroy() &#123;</div><div class="line">    window.removeEventListener(&apos;hashchange&apos;, this.boundHashChange)</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    onHashChange() &#123;</div><div class="line">      const href = window.location.href</div><div class="line">      const path = href.split(&apos;#&apos;)[1]</div><div class="line">      console.log(path);</div><div class="line">      console.log(this.$root.$routes);</div><div class="line">      this.routeView = this.$root.$routes[path] || null</div><div class="line">      console.log(&apos;vue:hashchange:&apos;, path)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>main.js入口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import Vue from &apos;vue&apos;</div><div class="line">import App from &apos;./App3.vue&apos;</div><div class="line">// import router from &apos;./router&apos;</div><div class="line"></div><div class="line">Vue.config.productionTip = false</div><div class="line"></div><div class="line">const routes = &#123;</div><div class="line">  &apos;/home&apos;: &#123;</div><div class="line">    template: &apos;&lt;h2&gt;Home&lt;/h2&gt;&apos;</div><div class="line">  &#125;,</div><div class="line">  &apos;/main&apos;: &#123;</div><div class="line">    template: &apos;&lt;h2&gt;Main&lt;/h2&gt;&apos;</div><div class="line">  &#125;,</div><div class="line">  &apos;/about&apos;: &#123;</div><div class="line">    template: &apos;&lt;h2&gt;About&lt;/h2&gt;&apos;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">Vue.prototype.$routes = routes;</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">  // router,</div><div class="line">  render: h =&gt; h(App)</div><div class="line">&#125;).$mount(&apos;#app&apos;)</div></pre></td></tr></table></figure>
+<h4 id="基于history-1"><a href="#基于history-1" class="headerlink" title="基于history"></a>基于history</h4><p>router-link 组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div&gt;</div><div class="line">    &lt;a href=&quot;&quot; @click.prevent=&quot;go&quot;&gt;</div><div class="line">      &lt;slot&gt;&lt;/slot&gt;</div><div class="line">    &lt;/a&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  props: &#123;</div><div class="line">    to: &#123;</div><div class="line">      type: String,</div><div class="line">      default: &apos;/&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  data() &#123;</div><div class="line">    return &#123;</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  methods: &#123;</div><div class="line">    go: function() &#123;</div><div class="line">      history.pushState(null, &apos;&apos;, this.to);</div><div class="line">      this.$root.$emit(&apos;popstate&apos;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>router-view组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;component :is=&quot;routeView&quot;&gt;&lt;/component&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line"></div><div class="line">  data() &#123;</div><div class="line">    return &#123;</div><div class="line">      routeView: null</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  created() &#123;</div><div class="line">    this.boundPopState = this.onPopState.bind(this)</div><div class="line">  &#125;,</div><div class="line">  beforeMount() &#123;</div><div class="line">    this.$root.$on(&apos;popstate&apos;, this.boundPopState)</div><div class="line">  &#125;,</div><div class="line">  beforeDestroy() &#123;</div><div class="line">    this.$root.$off(&apos;popstate&apos;, this.boundPopState)</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    onPopState() &#123;</div><div class="line">      const href = window.location.href;</div><div class="line">      const path = &apos;/&apos; + href.split(&apos;/&apos;)[href.split(&apos;/&apos;).length - 1];</div><div class="line">      console.log(path);</div><div class="line">      console.log(this.$root.$routes);</div><div class="line">      this.routeView = this.$root.$routes[path] || null;</div><div class="line">      console.log(&apos;[Vue] popstate:&apos;, path);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>main.js入口文件一样</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://mp.weixin.qq.com/s/BJ-JE-t-dLfBq-qQB-DhHw" target="_blank" rel="external">前端路由原理解析</a> </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/Router/" rel="tag">#Router</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/04/HMR原理解析/" rel="next" title="HMR原理解析">
+                <i class="fa fa-chevron-left"></i> HMR原理解析
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar-caka.jpeg"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/598c1b2bf265da3e2f7f4926/posts" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单实现前端路由"><span class="nav-number">1.</span> <span class="nav-text">简单实现前端路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端路由"><span class="nav-number">1.0.1.</span> <span class="nav-text">前端路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hash-mode"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">hash mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#history-mode"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">history mode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原生实践"><span class="nav-number">1.0.2.</span> <span class="nav-text">原生实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于hash"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">基于hash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于history"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">基于history</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-Router"><span class="nav-number">1.0.3.</span> <span class="nav-text">Vue Router</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于hash-1"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">基于hash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于history-1"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">基于history</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.0.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

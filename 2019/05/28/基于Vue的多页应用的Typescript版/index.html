@@ -1,0 +1,706 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,Vue,Typescript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="基于Vue的多页应用的Typescript实践 Talk is cheap, show me the code  Typescript是JavaScript的超集，可以看做对JavaScript的一种强类型约束语言，与C#或Java的写法非常的相似，所以对从后端转前端的童鞋可以说是十分友好的。 最近提炼了公司的基于Vue的多页应用的脚手架项目，也想正好支持一些Typescript，增加多一些的选择">
+<meta name="keywords" content="FrontEnd,Vue,Typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Vue的多页应用的Typescript版">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/基于Vue的多页应用的Typescript版/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="基于Vue的多页应用的Typescript实践 Talk is cheap, show me the code  Typescript是JavaScript的超集，可以看做对JavaScript的一种强类型约束语言，与C#或Java的写法非常的相似，所以对从后端转前端的童鞋可以说是十分友好的。 最近提炼了公司的基于Vue的多页应用的脚手架项目，也想正好支持一些Typescript，增加多一些的选择">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-28T02:29:21.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Vue的多页应用的Typescript版">
+<meta name="twitter:description" content="基于Vue的多页应用的Typescript实践 Talk is cheap, show me the code  Typescript是JavaScript的超集，可以看做对JavaScript的一种强类型约束语言，与C#或Java的写法非常的相似，所以对从后端转前端的童鞋可以说是十分友好的。 最近提炼了公司的基于Vue的多页应用的脚手架项目，也想正好支持一些Typescript，增加多一些的选择">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/28/基于Vue的多页应用的Typescript版/"/>
+
+
+  <title> 基于Vue的多页应用的Typescript版 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于Vue的多页应用的Typescript版
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-05-28T10:28:33+08:00" content="2019-05-28">
+              2019-05-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基于Vue的多页应用的Typescript实践"><a href="#基于Vue的多页应用的Typescript实践" class="headerlink" title="基于Vue的多页应用的Typescript实践"></a>基于Vue的多页应用的Typescript实践</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<p>Typescript是JavaScript的超集，可以看做对JavaScript的一种强类型约束语言，与C#或Java的写法非常的相似，所以对从后端转前端的童鞋可以说是十分友好的。</p>
+<p>最近提炼了公司的<a href="https://github.com/ChangbaFE/mars-multipages-seed" target="_blank" rel="external">基于Vue的多页应用的脚手架项目</a>，也想正好支持一些Typescript，增加多一些的选择。</p>
+<a id="more"></a>
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><p>添加ts-loader和tslint-loader</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i ts-loader tslint-loader --save-dev</div></pre></td></tr></table></figure>
+<p>在module rules中添加ts支持：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// ts 支持</div><div class="line">&#123;</div><div class="line">  test: /\.ts$/,</div><div class="line">  exclude: /node_modules/,</div><div class="line">  enforce: &apos;pre&apos;,</div><div class="line">  loader: &apos;tslint-loader&apos;</div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line">  test: /\.tsx?$/,</div><div class="line">  loader: &apos;ts-loader&apos;, // typescript支持</div><div class="line">  exclude: /node_modules/,</div><div class="line">  options: &#123;</div><div class="line">    appendTsSuffixTo: [/\.vue$/]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="tsconfig-json"><a href="#tsconfig-json" class="headerlink" title="tsconfig.json"></a>tsconfig.json</h3><p>添加tsconfig.json 也是一个配置文件， 与package.json同级即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">// tsconfig.json</div><div class="line">&#123;</div><div class="line">  &quot;compilerOptions&quot;: &#123;</div><div class="line">    // 输出目标ES版本</div><div class="line">    &quot;target&quot;: &quot;es5&quot;,</div><div class="line">    // 采用的模块系统</div><div class="line">    &quot;module&quot;: &quot;esnext&quot;,</div><div class="line">    // 严格模式</div><div class="line">    // &quot;strict&quot;: true,</div><div class="line">    // 在.tsx文件里支持JSX</div><div class="line">    &quot;jsx&quot;: &quot;preserve&quot;,</div><div class="line">    // 使用的JSX工厂函数</div><div class="line">    &quot;jsxFactory&quot;: &quot;h&quot;,</div><div class="line">    // 允许编译javascript文件</div><div class="line">    &quot;allowJs&quot;: true,</div><div class="line">    &quot;importHelpers&quot;: true,</div><div class="line">    // 如何处理模块</div><div class="line">    &quot;moduleResolution&quot;: &quot;node&quot;,</div><div class="line">    // 在表达式和声明上有隐含的any类型时报错</div><div class="line">    &quot;noImplicitAny&quot;: false,</div><div class="line">    // // 启用装饰器</div><div class="line">    &quot;experimentalDecorators&quot;: true,</div><div class="line">    &quot;esModuleInterop&quot;: true,</div><div class="line">    // 允许从没有设置默认导出的模块中默认导入</div><div class="line">    &quot;allowSyntheticDefaultImports&quot;: true,</div><div class="line">    // 支持sourceMap</div><div class="line">    &quot;sourceMap&quot;: true,</div><div class="line">    &quot;baseUrl&quot;: &quot;.&quot;,</div><div class="line">    &quot;paths&quot;: &#123;</div><div class="line">      &quot;@/*&quot;: [</div><div class="line">        &quot;src/*&quot;</div><div class="line">      ]</div><div class="line">    &#125;,</div><div class="line">    &quot;lib&quot;: [</div><div class="line">      &quot;esnext&quot;,</div><div class="line">      &quot;es5&quot;,</div><div class="line">      &quot;es6&quot;,</div><div class="line">      &quot;es7&quot;,</div><div class="line">      &quot;es2015.promise&quot;,</div><div class="line">      &quot;dom&quot;,</div><div class="line">      &quot;dom.iterable&quot;,</div><div class="line">      &quot;scripthost&quot;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  &quot;include&quot;: [</div><div class="line">    &quot;src/**/*.ts&quot;,</div><div class="line">    &quot;src/**/*.tsx&quot;,</div><div class="line">    &quot;src/**/*.vue&quot;</div><div class="line">  ],</div><div class="line">  &quot;exclude&quot;: [</div><div class="line">    &quot;node_modules&quot;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="main-js-gt-main-ts"><a href="#main-js-gt-main-ts" class="headerlink" title="main.js -&gt; main.ts"></a>main.js -&gt; main.ts</h3><ul>
+<li>将每个独立项目中的入口js文件改成ts即可，但是有一点需要注意，引入Vue文件的时候需要加上.vue后缀,否则编辑器识别不到</li>
+<li>webpack脚本中，utils中获取多入口方法，改为识别.ts</li>
+</ul>
+<h3 id="vue-shims-d-ts"><a href="#vue-shims-d-ts" class="headerlink" title="vue-shims.d.ts"></a>vue-shims.d.ts</h3><p>在src中添加typings文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir typings</div></pre></td></tr></table></figure>
+<p>添加vue-shims.d.ts文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">declare module &apos;*.vue&apos; &#123;</div><div class="line">  import Vue from &apos;vue&apos;</div><div class="line">  export default Vue</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是因为，TypeScript并不支持Vue文件，所以需要告诉TypeScript*.vue文件交给vue编辑器来处理。</p>
+<h3 id="vue-class-component"><a href="#vue-class-component" class="headerlink" title="vue-class-component"></a>vue-class-component</h3><p>之后需要改造你的Vue组件写法了</p>
+<p><a href="https://github.com/vuejs/vue-class-component" target="_blank" rel="external">vue-class-component</a></p>
+<blockquote>
+<p>ECMAScript / TypeScript decorator for class-style Vue components.</p>
+</blockquote>
+<p>Note:</p>
+<ul>
+<li><p>methods can be declared directly as class member methods. methods方法，直接写成class的成员方法即可</p>
+</li>
+<li><p>Computed properties can be declared as class property accessors. computed属性要被声明成class的属性访问器</p>
+</li>
+<li><p>Initial data can be declared as class properties (babel-plugin-transform-class-properties is required if you use Babel). initial data要被声明为class的属性</p>
+</li>
+<li><p>data, render and all Vue lifecycle hooks can be directly declared as class member methods as well, but you cannot invoke them on the instance itself. When declaring custom methods, you should avoid these reserved names. data， render函数和Vue的声明周期函数也会被直接声明为class的成员方法</p>
+</li>
+<li><p>For all other options, pass them to the decorator function.</p>
+</li>
+</ul>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://juejin.im/entry/5a373fecf265da4311204d51" target="_blank" rel="external">一起来拥抱强大的TypeScript吧–Ts+Vue完全教程（附Demo项目）</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/Vue/" rel="tag">#Vue</a>
+          
+            <a href="/tags/Typescript/" rel="tag">#Typescript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/20/Webpack多页应用优化实践/" rel="next" title="Webpack多页应用优化实践">
+                <i class="fa fa-chevron-left"></i> Webpack多页应用优化实践
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/04/HMR原理解析/" rel="prev" title="HMR原理解析">
+                HMR原理解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar-caka.jpeg"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/598c1b2bf265da3e2f7f4926/posts" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于Vue的多页应用的Typescript实践"><span class="nav-number">1.</span> <span class="nav-text">基于Vue的多页应用的Typescript实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Webpack"><span class="nav-number">1.0.1.</span> <span class="nav-text">Webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tsconfig-json"><span class="nav-number">1.0.2.</span> <span class="nav-text">tsconfig.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main-js-gt-main-ts"><span class="nav-number">1.0.3.</span> <span class="nav-text">main.js -> main.ts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-shims-d-ts"><span class="nav-number">1.0.4.</span> <span class="nav-text">vue-shims.d.ts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-class-component"><span class="nav-number">1.0.5.</span> <span class="nav-text">vue-class-component</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">1.0.6.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,JS,Webpack," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Webpack多页应用优化实践 Talk is cheap, show me the code  起因在公司搭建了套webpack多页面应用脚手架，开始用着很爽，解决了既想使用Vue的模块化开发，又想做多页打包上线管理的初衷，但是随着业务项目的增加，我发现npm run dev的时候，每次热加载，webpack的反应都很慢。 基本会卡在 1294% assets optimization95% e">
+<meta name="keywords" content="FrontEnd,JS,Webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack多页应用优化实践">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Webpack多页应用优化实践/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="Webpack多页应用优化实践 Talk is cheap, show me the code  起因在公司搭建了套webpack多页面应用脚手架，开始用着很爽，解决了既想使用Vue的模块化开发，又想做多页打包上线管理的初衷，但是随着业务项目的增加，我发现npm run dev的时候，每次热加载，webpack的反应都很慢。 基本会卡在 1294% assets optimization95% e">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/webpack/1/dev-slow.jpg?v=1">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/webpack/1/code-snippet1.jpg">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/webpack/1/webpack-dev-server.jpg">
+<meta property="og:image" content="http://yoursite.com/img/FrontEnd/webpack/1/dev-fast.jpg">
+<meta property="og:updated_time" content="2019-04-20T05:53:11.080Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack多页应用优化实践">
+<meta name="twitter:description" content="Webpack多页应用优化实践 Talk is cheap, show me the code  起因在公司搭建了套webpack多页面应用脚手架，开始用着很爽，解决了既想使用Vue的模块化开发，又想做多页打包上线管理的初衷，但是随着业务项目的增加，我发现npm run dev的时候，每次热加载，webpack的反应都很慢。 基本会卡在 1294% assets optimization95% e">
+<meta name="twitter:image" content="http://yoursite.com/img/FrontEnd/webpack/1/dev-slow.jpg?v=1">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/20/Webpack多页应用优化实践/"/>
+
+
+  <title> Webpack多页应用优化实践 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Webpack多页应用优化实践
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-04-20T13:50:59+08:00" content="2019-04-20">
+              2019-04-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Webpack多页应用优化实践"><a href="#Webpack多页应用优化实践" class="headerlink" title="Webpack多页应用优化实践"></a>Webpack多页应用优化实践</h1><blockquote>
+<p>Talk is cheap, show me the code</p>
+</blockquote>
+<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>在公司搭建了套webpack多页面应用脚手架，开始用着很爽，解决了既想使用Vue的模块化开发，又想做多页打包上线管理的初衷，但是随着业务项目的增加，我发现npm run dev的时候，每次热加载，webpack的反应都很慢。</p>
+<p>基本会卡在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">94% assets optimization</div><div class="line">95% emitting</div></pre></td></tr></table></figure>
+<p>这个步骤很久</p>
+<p>准备具体定位一下问题的原因。由于项目基于vue-cli改写的多页应用脚手架，手动重写了HtmlWebpackPlugin插件，所以基本猜测和这个有关，后来证明也真的是这个引起的。</p>
+<p>我们可以在package.json中启动dev的时候添加–profile命令，去看启动的详情。</p>
+<p><img src="/img/FrontEnd/webpack/1/dev-slow.jpg?v=1" alt=""></p>
+<p>我们可以看到，asset optimization过程耗时2s左右，有时候会更长，所以基本确定就是这个地方卡住了HMR。</p>
+<p>那么问题来了，怎么优化这里？</p>
+<a id="more"></a>
+<h3 id="优化思路1"><a href="#优化思路1" class="headerlink" title="优化思路1"></a>优化思路1</h3><ul>
+<li>第一想法是，在dev的时候，加入参数或手动更改config，只针对当前开发的项目进行模块的加载。</li>
+</ul>
+<p>更改webpack配置是比较直接的方案，比如把当前启动的目录配置好(buildingPage), new HtmlWEbpackPlugin的时候进行判断即可。</p>
+<p><img src="/img/FrontEnd/webpack/1/code-snippet1.jpg" alt=""></p>
+<ul>
+<li>第二个方案，当然也可以手写webpack-dev-server。</li>
+</ul>
+<p>dev-server这个在老版本是在build目录下面的，比较方便改动重写，然而新的版本，是在node_modules中的已经加载的模块，</p>
+<p><img src="/img/FrontEnd/webpack/1/webpack-dev-server.jpg" alt=""></p>
+<p>重写的话需要自己把这个东东搞一套，加入参数进行判断处理，本人还没有时间进行尝试，有时间的可以试试能否改善。</p>
+<p>实践证明第一个方案确实会提高HMR速度，但由于项目是多人共同开发和维护，每个开发者更改自己的config配置，极容易造成提交svn\git冲突，或忘记修改config等状况，所以除了个人维护的项目，并不建议这么做。</p>
+<h4 id="优化思路2"><a href="#优化思路2" class="headerlink" title="优化思路2"></a>优化思路2</h4><p>其实这个问题的具体原因就是改为多入口之后，在HtmlWebpackPlugin中会对每一个入口文件都执行一遍emit中所有代码逻辑，正是这个原因影响了速度。</p>
+<p>在看一些参考资料之后，我发现已经有现有的造轮子可以使用了，就是<a href="https://github.com/daifee/html-webpack-plugin-for-multihtml" target="_blank" rel="external">html-webpack-plugin-for-multihtml</a></p>
+<p>该插件通过在webpack done钩子函数中设置相关变量，来保证原html-webpack-plugin插件中emit仅触发一次全部流程。来达到提速的效果。升级以后，修改文案，HMR的速度从原来的秒级改为毫秒级。</p>
+<p><img src="/img/FrontEnd/webpack/1/dev-fast.jpg" alt=""></p>
+<p>可以看出 asset optimization已经优化到毫秒级。</p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://juejin.im/entry/5b3788f3f265da59645b1be6" target="_blank" rel="external">webpack多页面构建优化不完全指北</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+            <a href="/tags/Webpack/" rel="tag">#Webpack</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/15/重读fastclick源码/" rel="next" title="重读fastclick源码">
+                <i class="fa fa-chevron-left"></i> 重读fastclick源码
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/28/基于Vue的多页应用的Typescript版/" rel="prev" title="基于Vue的多页应用的Typescript版">
+                基于Vue的多页应用的Typescript版 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar-caka.jpeg"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/598c1b2bf265da3e2f7f4926/posts" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Webpack多页应用优化实践"><span class="nav-number">1.</span> <span class="nav-text">Webpack多页应用优化实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#起因"><span class="nav-number">1.0.1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化思路1"><span class="nav-number">1.0.2.</span> <span class="nav-text">优化思路1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化思路2"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">优化思路2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">1.0.3.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
