@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FrontEnd,PWA,ServiceWorker," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="PWAOverviewProgressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。 PWA本质上还是Web App，借助一些新技术也具备了Native App特性，兼顾两者优点  渐进增强 ： 能够让每一位用户使用，无论用户使用什么浏览器，因为它是始终以渐进增强为原则 可安装 ： 可以像原生APP在主屏幕上留有图标 离线缓存 ：通过S">
+<meta name="keywords" content="FrontEnd,PWA,ServiceWorker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pwa实践">
+<meta property="og:url" content="http://yoursite.com/2019/07/11/pwa实践/index.html">
+<meta property="og:site_name" content="Jason Li">
+<meta property="og:description" content="PWAOverviewProgressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。 PWA本质上还是Web App，借助一些新技术也具备了Native App特性，兼顾两者优点  渐进增强 ： 能够让每一位用户使用，无论用户使用什么浏览器，因为它是始终以渐进增强为原则 可安装 ： 可以像原生APP在主屏幕上留有图标 离线缓存 ：通过S">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://note.youdao.com/yws/res/651/017C9B8FC7CB4506860C980AB5C885C9">
+<meta property="og:image" content="http://note.youdao.com/yws/res/671/3A70915294D643EA90F76B96F93742D7">
+<meta property="og:image" content="http://note.youdao.com/yws/res/723/D5DEBB406C8644378974A01795CEA16E">
+<meta property="og:image" content="http://note.youdao.com/yws/res/726/1ACA556171C04FD08DF2E5C1C2DD8DF0">
+<meta property="og:updated_time" content="2019-07-11T09:01:31.709Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pwa实践">
+<meta name="twitter:description" content="PWAOverviewProgressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。 PWA本质上还是Web App，借助一些新技术也具备了Native App特性，兼顾两者优点  渐进增强 ： 能够让每一位用户使用，无论用户使用什么浏览器，因为它是始终以渐进增强为原则 可安装 ： 可以像原生APP在主屏幕上留有图标 离线缓存 ：通过S">
+<meta name="twitter:image" content="http://note.youdao.com/yws/res/651/017C9B8FC7CB4506860C980AB5C885C9">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/11/pwa实践/"/>
+
+
+  <title> pwa实践 | Jason Li </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jason Li</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                pwa实践
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2019-07-11T17:00:16+08:00" content="2019-07-11">
+              2019-07-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/FrontEnd/" itemprop="url" rel="index">
+                    <span itemprop="name">FrontEnd</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a>PWA</h1><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>Progressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。</p>
+<p>PWA本质上还是Web App，借助一些新技术也具备了Native App特性，兼顾两者优点</p>
+<ul>
+<li>渐进增强 ： 能够让每一位用户使用，无论用户使用什么浏览器，因为它是始终以渐进增强为原则</li>
+<li>可安装 ： 可以像原生APP在主屏幕上留有图标</li>
+<li>离线缓存 ：通过Service Worker使得 Web App 也可以做到像 Native App 那样可以离线使用、消息推送的功能</li>
+<li>安全性 ： 通过 HTTPS 来提供服务来防止网络窥探，保证内容不被篡改</li>
+</ul>
+<p>PWA是一系列技术组成的集合，包括Manifest，Service Worker，Web Push等</p>
+<p>涉及到的知识点：</p>
+<ul>
+<li>ES6标准语法</li>
+<li>Promise</li>
+<li>fetch，全新的获取资源的API，它包括Request、Response、Header和Stream</li>
+<li>WebWorker，JavaScript解决单线程的方案</li>
+<li>Cache API（缓存API）</li>
+</ul>
+<a id="more"></a>
+<h3 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h3><h4 id="service-worker"><a href="#service-worker" class="headerlink" title="service worker"></a>service worker</h4><p>字面意思，“服务员”，就是服务于浏览器和服务器之间的，相当于充当服务端与浏览器、浏览器与 Web 应用程序之间的代理服务器</p>
+<p>service worker是<strong>独立于当前页面的运行在浏览器后台进程的脚本</strong>。基于Web Worker事件驱动，带来速度提升网页加载体验，同时大量使用promise，</p>
+<p>利用它，我们可以拦截页面请求，缓存文件，消息推送，静默更新，地理围栏等服务，还可以在客户端通过 indexedDB API 保存持久化信息</p>
+<p>有以下几点特性：</p>
+<ul>
+<li>安全性，必须https 或者 本地localhost / 127.0.0.1这种</li>
+<li>独立于当前网页进程的后台进程，不会对浏览器主线程造成影响</li>
+<li>由于是独立线程，所以不可操作DOM和window，但可以通过postMessage与页面通信</li>
+<li>可以拦截作用域范围内的所有请求</li>
+</ul>
+<h4 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h4><p><img src="http://note.youdao.com/yws/res/651/017C9B8FC7CB4506860C980AB5C885C9" alt="image"></p>
+<h4 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h4><ul>
+<li>支持https</li>
+<li>支持Promise</li>
+<li>支持fetch API</li>
+<li>缓存机制依赖cache API</li>
+</ul>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ol>
+<li>Registration 注册</li>
+<li>Installation 安装</li>
+<li>Activation 激活</li>
+</ol>
+<p><img src="http://note.youdao.com/yws/res/671/3A70915294D643EA90F76B96F93742D7" alt="image"></p>
+<h5 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h5><p>在主进程JS代码中注册SW</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// index.js</div><div class="line">let version = &apos;v1&apos;;</div><div class="line">// 判断浏览器是否支持Service Worker</div><div class="line">if (&apos;serviceWorker&apos; in navigator) &#123;</div><div class="line">  // Service Worker的register注册成功后会返回registration</div><div class="line">  // sw.js就是Service Worker的功能文件</div><div class="line">  navigator.serviceWorker.register(&apos;/sw.js&apos;).then(reg =&gt; &#123;</div><div class="line">    if (localStorage.getItem(&apos;sw_version&apos;) !== version) &#123;</div><div class="line">      reg.update().then(function () &#123;</div><div class="line">          localStorage.setItem(&apos;sw_version&apos;, version);</div><div class="line">          console.log(&apos;service worker updated!&apos;);</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">    console.log(&apos;service worker registed!&apos;);</div><div class="line">  &#125;).catch(err =&gt; &#123;</div><div class="line">    console.log(&apos;Opooos, something wrong happend!&apos;);</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>查看Service Worker是否启用</p>
+</blockquote>
+<p>chrome</p>
+<p>可以在chrome的Application中查看，或者执行下面命令查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome://inspect/#service-workers</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome://serviceworker-internals/</div></pre></td></tr></table></figure>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>install事件绑定在Service Worker文件中，当安装成功后，install事件就会被触发。</p>
+<p>install中一般进行缓存，用到之前提到的Cahce API，它是一个Service Worker上的全局对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// sw.js</div><div class="line">const cache_name = &quot;v1.2&quot;;</div><div class="line"></div><div class="line">const filesToCache = [</div><div class="line">    &apos;/index.js&apos;,</div><div class="line">    &apos;/index.html&apos;,</div><div class="line">    &apos;/index.css&apos;,</div><div class="line">    &apos;/&apos;</div><div class="line">];</div><div class="line">// install</div><div class="line">self.addEventListener(&apos;install&apos;, function (e) &#123;</div><div class="line">    self.skipWaiting();</div><div class="line">    console.log(&apos;installed&apos;);</div><div class="line">    e.waitUntil(</div><div class="line">        caches.open(cache_name).then(cache =&gt; &#123;</div><div class="line">            return cache.addAll(filesToCache);</div><div class="line">        &#125;)</div><div class="line">    );</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>新增install的监听器，e.waitUntil()来确保，Service Worker不会在waitUntil()执行完成之前安装完成</li>
+<li>使用caches.open()创建一个cachev1的新缓存，返回一个缓存的promise对象，当它resolved时候，我们在then方法里面用caches.addAll来添加想要缓存的列表，列表是一个数组，里面的URL是相对于origin的。</li>
+</ul>
+<h5 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h5><p>Service Worker安装完成后会进入激活状态，触发activate事件，这里可以进行一些预处理，旧版本更新，无用缓存处理等。</p>
+<p>sw.js控制着页面资源和请求的缓存，如果 js 内容有更新，当访问网站页面时浏览器获取了新的文件，逐字节比对js 文件发现不同时它会认为有更新启动 更新算法，于是会安装新的文件并触发 install 事件。</p>
+<p>但是此时已经处于激活状态的旧的 Service Worker 还在运行，新的 Service Worker 完成安装后会进入 waiting 状态。直到所有已打开的页面都关闭，旧的 Service Worker 自动停止，新的 Service Worker 才会在接下来重新打开的页面里生效。</p>
+<p>可以在 install 事件中执行 self.skipWaiting() 方法跳过 waiting 状态，然后会直接进入 activate 阶段。接着在 activate 事件发生时，通过执行 self.clients.claim() 方法，更新所有客户端上的 Service Worker。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// cache update</div><div class="line">self.addEventListener(&apos;activate&apos;, function (e) &#123;</div><div class="line">    console.log(&apos;activate&apos;);</div><div class="line">    e.waitUntil(</div><div class="line">        </div><div class="line">        caches.keys().then(function(cacheNames) &#123;</div><div class="line">            console.log(cacheNames);</div><div class="line">            return Promise.all(</div><div class="line">                cacheNames.map(function(cacheName) &#123;</div><div class="line">                    // 如果当前版本和缓存版本不一致</div><div class="line">                    if (cacheName !== cache_name) &#123;</div><div class="line">                        return caches.delete(cacheName);</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">            );</div><div class="line">        &#125;)</div><div class="line">    );</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>当js 文件可能会因为浏览器缓存问题，当文件有了变化时，浏览器里还是旧的文件。这会导致更新得不到响应。</p>
+<p>可以手动更新：</p>
+<p>结合localStorage，进行reg.update()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">navigator.serviceWorker.register(&apos;/sw.js&apos;).then(reg =&gt; &#123;</div><div class="line">    if (localStorage.getItem(&apos;sw_version&apos;) !== version) &#123;</div><div class="line">      reg.update().then(function () &#123;</div><div class="line">          localStorage.setItem(&apos;sw_version&apos;, version);</div><div class="line">          console.log(&apos;service worker updated!&apos;);</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">    console.log(&apos;service worker registed!&apos;);</div><div class="line">  &#125;).catch(err =&gt; &#123;</div><div class="line">    console.log(&apos;Opooos, something wrong happend!&apos;);</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<h5 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h5><p>拦截请求进行缓存等处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">self.addEventListener(&apos;fetch&apos;, function (e) &#123;</div><div class="line">    console.log(&apos;fetch&apos;);</div><div class="line">    e.respondWith(</div><div class="line">        caches.match(e.request)</div><div class="line">        .then(function (response) &#123;</div><div class="line">            // 检测是否已经缓存过</div><div class="line">            if (response) &#123;</div><div class="line">                return response;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            var fetchRequest = e.request.clone();</div><div class="line"></div><div class="line">            return fetch(fetchRequest).then(</div><div class="line">                function (response) &#123;</div><div class="line">                    // 检测请求是否有效</div><div class="line">                    if (!response || response.status !== 200 || response.type !== &apos;basic&apos;) &#123;</div><div class="line">                        return response;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    var responseToCache = response.clone();</div><div class="line"></div><div class="line">                    caches.open(CACHENAME)</div><div class="line">                        .then(function (cache) &#123;</div><div class="line">                            cache.put(e.request, responseToCache);</div><div class="line">                        &#125;);</div><div class="line"></div><div class="line">                    return response;</div><div class="line">                &#125;</div><div class="line">            );</div><div class="line">        &#125;)</div><div class="line">    );</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="Web-Storage"><a href="#Web-Storage" class="headerlink" title="Web Storage"></a>Web Storage</h4><h5 id="cache-API和-IndexedDB"><a href="#cache-API和-IndexedDB" class="headerlink" title="cache API和 IndexedDB"></a>cache API和 IndexedDB</h5><p>针对于离线存储数据，可以有这两种方式</p>
+<p>这两种API都是异步的存储，IndexedDB是基于事件的，而Cache API是基于Promise的</p>
+<p>IndexedDB基本可以在所有浏览器环境使用</p>
+<p><img src="http://note.youdao.com/yws/res/723/D5DEBB406C8644378974A01795CEA16E" alt="image"></p>
+<p>Cache API</p>
+<p><img src="http://note.youdao.com/yws/res/726/1ACA556171C04FD08DF2E5C1C2DD8DF0" alt="image"></p>
+<p>对于PWA，我们可以缓存静态资源，从而使用 Cache API 编写的应用 Application Shell（JS/CSS/HTML 文件），并从 IndexedDB 填充离线页面数据</p>
+<p>对于Web Storage（LocalStorage/SessionStorage）是<strong>同步</strong>的，<strong>不支持 Web worker线程，并且有大小和类型（仅限字符串）的限制。</strong></p>
+<h4 id="添加到桌面"><a href="#添加到桌面" class="headerlink" title="添加到桌面"></a>添加到桌面</h4><p>PWA 添加至桌面的功能实现依赖于 manifest.json。</p>
+<p>为了实现 PWA 应用添加至桌面的功能，除了要求站点支持 HTTPS 之外，还需要准备 manifest.json 文件去配置应用的图标、名称等信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;Hello PWA&quot;,</div><div class="line">  &quot;short_name&quot;: &quot;PWA&quot;,</div><div class="line">  &quot;icon&quot;: &#123;</div><div class="line">    &quot;src&quot;: &quot;./assets/logo_mars.png&quot;,</div><div class="line">    &quot;sizes&quot;: &quot;240x240&quot;,</div><div class="line">    &quot;type&quot;: &quot;image/png&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;lang&quot;: &quot;en-US&quot;,</div><div class="line">  &quot;start_url&quot;: &quot;/index.html&quot;,</div><div class="line">  &quot;display&quot;: &quot;standalone&quot;,</div><div class="line">  &quot;background_color&quot;: &quot;white&quot;,</div><div class="line">  &quot;theme_color&quot;: &quot;white&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用 link 标签将 manifest.json 部署到 PWA 站点 HTML 页面的头部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;manifest&quot; href=&quot;./manifest.json&quot;&gt;</div></pre></td></tr></table></figure>
+<p>参考注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">name: &#123;string&#125; 应用名称，用于安装横幅、启动画面显示</div><div class="line">short_name: &#123;string&#125; 应用短名称，用于主屏幕显示</div><div class="line">icons: &#123;Array.&lt;ImageObject&gt;&#125; 应用图标列表</div><div class="line">    src: &#123;string&#125; 图标 url</div><div class="line">    type &#123;string=&#125; 图标的 mime 类型，非必填项，该字段可让浏览器快速忽略掉不支持的图标类型</div><div class="line">    sizes &#123;string&#125; 图标尺寸，格式为widthxheight，宽高数值以 css 的 px 为单位。如果需要填写多个尺寸，则使用空格进行间隔，如&quot;48x48 96x96 128x128&quot;</div><div class="line">start_url: &#123;string=&#125; 应用启动地址</div><div class="line">scope: &#123;string&#125; 作用域</div><div class="line">    // scope 应遵循如下规则：</div><div class="line"></div><div class="line">    //如果没有在 manifest 中设置 scope，则默认的作用域为 manifest.json 所在文件夹；</div><div class="line">    //scope 可以设置为 ../ 或者更高层级的路径来扩大PWA的作用域；</div><div class="line">    //start_url 必须在作用域范围内；</div><div class="line">    //如果 start_url 为相对地址，其根路径受 scope 所影响；</div><div class="line">    //如果 start_url 为绝对地址（以 / 开头），则该地址将永远以 / 作为根地址；</div><div class="line">background_color: &#123;Color&#125; css色值 可以指定启动画面的背景颜色。</div><div class="line">display: &#123;string&#125; 显示类型</div><div class="line">    //fullscreen	应用的显示界面将占满整个屏幕</div><div class="line">    //standalone	浏览器相关UI（如导航栏、工具栏等）将会被隐藏</div><div class="line">    //minimal-ui	显示形式与standalone类似，浏览器相关UI会最小化为一个按钮，不同浏览器在实现上略有不同</div><div class="line">    //browser	浏览器模式，与普通网页在浏览器中打开的显示一致</div><div class="line">orientation: string 应用显示方向</div><div class="line">    //orientation属性的值有以下几种：</div><div class="line">    //landscape-primary</div><div class="line">    //landscape-secondary</div><div class="line">    //landscape</div><div class="line">    //portrait-primary</div><div class="line">    //portrait-secondary</div><div class="line">    //portrait</div><div class="line">    //natural</div><div class="line">    //any</div><div class="line">theme_color: &#123;Color&#125; // css色值theme_color 属性可以指定 PWA 的主题颜色。可以通过该属性来控制浏览器 UI 的颜色。比如 PWA 启动画面上状态栏、内容页中状态栏、地址栏的颜色，会被 theme_color 所影响。</div><div class="line">related_applications: Array.&lt;AppInfo&gt; 关联应用列表 可以引导用户下载原生应用</div><div class="line">    platform: &#123;string&#125; 应用平台</div><div class="line">    id: &#123;string&#125; 应用id</div></pre></td></tr></table></figure>
+<h4 id="Push-Notification"><a href="#Push-Notification" class="headerlink" title="Push Notification"></a>Push Notification</h4><p>暂未实现</p>
+<h3 id="PWA-方向"><a href="#PWA-方向" class="headerlink" title="PWA 方向"></a>PWA 方向</h3><p>PWA的核心技术包括：</p>
+<ul>
+<li>Web App Manifest – 在主屏幕添加app图标，定义手机标题栏颜色之类</li>
+<li>Service Worker – 缓存，离线开发，以及地理位置信息处理等</li>
+<li>App Shell – 先显示APP的主结构，再填充主数据，更快显示更好体验</li>
+<li>Push Notification – 消息推送，之前有写过“简单了解HTML5中的Web Notification桌面通知”</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.webkong.cn/2018/understanding-pwa/" target="_blank" rel="external">What is PWA?</a></p>
+<p><a href="https://www.zhangxinxu.com/wordpress/2017/07/service-worker-cachestorage-offline-develop/" target="_blank" rel="external">张鑫旭 – 借助Service Worker和cacheStorage缓存及离线开发</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FrontEnd/" rel="tag">#FrontEnd</a>
+          
+            <a href="/tags/PWA/" rel="tag">#PWA</a>
+          
+            <a href="/tags/ServiceWorker/" rel="tag">#ServiceWorker</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/04/Router-前端路由的简单实现/" rel="next" title="Router-前端路由的简单实现">
+                <i class="fa fa-chevron-left"></i> Router-前端路由的简单实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar-caka.jpeg"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">110</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">123</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JasonLi1990" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/thelinker" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/guanqun.li.94" target="_blank" title="facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://se.linkedin.com/in/jasonli1990" target="_blank" title="linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/598c1b2bf265da3e2f7f4926/posts" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PWA"><span class="nav-number">1.</span> <span class="nav-text">PWA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.0.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-Worker"><span class="nav-number">1.0.2.</span> <span class="nav-text">Service Worker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#service-worker"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">service worker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器支持"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">浏览器支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先决条件"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">先决条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生命周期"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注册"><span class="nav-number">1.0.2.4.1.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装"><span class="nav-number">1.0.2.4.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#激活"><span class="nav-number">1.0.2.4.3.</span> <span class="nav-text">激活</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fetch"><span class="nav-number">1.0.2.4.4.</span> <span class="nav-text">fetch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-Storage"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">Web Storage</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cache-API和-IndexedDB"><span class="nav-number">1.0.2.5.1.</span> <span class="nav-text">cache API和 IndexedDB</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加到桌面"><span class="nav-number">1.0.2.6.</span> <span class="nav-text">添加到桌面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Push-Notification"><span class="nav-number">1.0.2.7.</span> <span class="nav-text">Push Notification</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PWA-方向"><span class="nav-number">1.0.3.</span> <span class="nav-text">PWA 方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.0.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2010 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
